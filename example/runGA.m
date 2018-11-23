@@ -45,11 +45,14 @@ Param.n_generation = 1e+5;
 Param.n_gene = 13;
 Param.n_constraint = 9;
 Param.n_parent = Param.n_gene + 1;
-Param.output_intvl = 10;
+Param.output_intvl = 1;
 Param.selection_type = 0;
 Param.vtr = -15 * ( 1 - 1e-2 );
-Param.Pf = 0.45;
+% Param.Pf = 0.45;
 Param.Pf = 0;
+
+% Param = getParam(Param,'Sphere');
+Param = getParam(Param,'g03');
 
 
 
@@ -59,5 +62,5 @@ Param.Pf = 0;
 % end
 
 rng(3);
-% [ best, Population ] = UNDXMGG(Param);
-[ best, Population ] = REXstarJGG(Param);
+[ best, Population ] = UNDXMGG(Param);
+% [ best, Population ] = REXstarJGG(Param);
