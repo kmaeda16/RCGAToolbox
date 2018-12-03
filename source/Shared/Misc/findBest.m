@@ -13,3 +13,10 @@ for i = 1 : n_population
         index = i;
     end
 end
+
+for i = 1 : n_population
+    if isnan(Population(i).f) || isnan(Population(i).phi) ...
+            || isinf(Population(i).f) || isinf(Population(i).phi)
+        error('STOPPED!');
+    end
+end

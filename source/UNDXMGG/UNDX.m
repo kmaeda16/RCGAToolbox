@@ -10,7 +10,6 @@ if length(p1) ~= length(p2) || length(p2) ~= length(p3) || length(p3) ~= length(
     error('Lengths of p1, p2 and p3 must be the same!');
 end
 
-% %{
 n = length(p1.gene);
 
 % v12 is a vector from p1 to p2, v13 is a vector from p1 to p3
@@ -30,37 +29,14 @@ else
     e1 = v12 / d1;
 end
 
-t = randn(1,n) * beta * d2 / sqrt(n);
-% t = ones(1,n) * beta * d2 / sqrt(n);
-temp1 = dot(t,e1);
-temp2 = alpha * d1 * randn;
-% temp2 = alpha * d1 * 1;
-c.gene = 0.5 * ( p1.gene + p2.gene ) + t + ( temp2 - temp1 ) * e1;
-
 % t = randn(1,n) * beta * d2 / sqrt(n);
-% temp1 = dot(t,e1);
-% temp2 = alpha * d1 * randn;
-% c.gene = 0.5 * ( p1.gene + p2.gene ) + t + ( alpha * d1 * randn - dot(t,e1) ) * e1;
-
-%}
-
-%{
-n = length(p1.gene);
-d1 = norm( p2.gene - p1.gene );
-d2 = norm( (p3.gene - p1.gene) - (p3.gene - p1.gene) * (p2.gene - p1.gene)' ...
-    / ( (p2.gene - p1.gene) * (p2.gene - p1.gene)' ) * (p2.gene - p1.gene) );
-e1 = (p2.gene-p1.gene) / norm(p2.gene-p1.gene);
-
-t = randn(1,n) * beta * d2 / n^0.5;
-% t = ones(1,n) * beta * d2 / n^0.5;
-t = t - ( t * e1' ) * e1;
-t = t + randn * alpha * d1 * e1;
-% t = t + 1 * alpha * d1 * e1;
-c.gene = ( p1.gene + p2.gene ) / 2 + t;
-
-
-% c.gene = ( p1.gene + p2.gene ) / 2 + t - ( t * e1' ) * e1 + randn * alpha * d1 * e1;
-%}
+for i = 1 : n
+    t(i) = randn() * beta * d2 / sqrt(n);
+end
+temp1 = dot(t,e1);
+temp2 = alpha * d1 * randn();
+% temp2 = alpha * d1 * randn_test();
+c.gene = 0.5 * ( p1.gene + p2.gene ) + t + ( temp2 - temp1 ) * e1;
 
 for i = 1 : length(c.gene)
     if isnan(c.gene(i))

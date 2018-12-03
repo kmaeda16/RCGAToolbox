@@ -14,13 +14,13 @@ for i = 1 : n_population
     phi_tmp(i) = Population(i).phi;
 end
 	
-for i = 1 : n_population - 1
-    index1 = randi(n_population);
-    index2 = randi(n_population);
-    [index_tmp(index1), index_tmp(index2)] = swap(index_tmp(index1),index_tmp(index2));
-    [f_tmp(index1), f_tmp(index2)] = swap(f_tmp(index1),f_tmp(index2));
-    [phi_tmp(index1), phi_tmp(index2)] = swap(phi_tmp(index1),phi_tmp(index2));
-end
+% for i = 1 : n_population - 1
+%     index1 = randi(n_population);
+%     index2 = randi(n_population);
+%     [index_tmp(index1), index_tmp(index2)] = swap(index_tmp(index1),index_tmp(index2));
+%     [f_tmp(index1), f_tmp(index2)] = swap(f_tmp(index1),f_tmp(index2));
+%     [phi_tmp(index1), phi_tmp(index2)] = swap(phi_tmp(index1),phi_tmp(index2));
+% end
 	
 for i = 1 : n_population
     flg = 0;
@@ -30,7 +30,7 @@ for i = 1 : n_population
             if f_tmp(j) > f_tmp(j+1)
                 [index_tmp(j), index_tmp(j+1)]  = swap(index_tmp(j),index_tmp(j+1));
                 [f_tmp(j), f_tmp(j+1)] = swap(f_tmp(j),f_tmp(j+1));
-                [phi_tmp(j),phi_tmp(j+1)] = swap(phi_tmp(j),phi_tmp(j+1));
+                [phi_tmp(j), phi_tmp(j+1)] = swap(phi_tmp(j),phi_tmp(j+1));
                 flg = 1;
             end
         else
@@ -55,3 +55,4 @@ end
 for i = 1 : n_population
     Population(i) = pop_tmp(index_tmp(i));
 end
+fprintf('');

@@ -65,5 +65,9 @@ if 0 < output_intvl && flg_printed == 0
     writeTransition(elapsedTime,i,Param,best);
 end
 
+for j = 1 : Param.n_population
+    fprintf('%e\t%e\t%e\t%e\t%e\t%e\t%e\n',i,Population(j).gene(1),Population(j).gene(2),Population(j).g(1),Population(j).g(2),Population(j).f,Population(j).phi);
+end
+
 writePopulation(Param,Population);
 writeSolution(elapsedTime,Param,best);

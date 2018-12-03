@@ -76,12 +76,16 @@ for i = 1 : n_children
             break;
         end
         % Generation
-        xi = t * rand(1,n_gene);
+%         xi = t * rand(1,n_gene);
+        for j = 1 : n_gene
+            xi(j) = t * rand();
+        end
         c(i).gene = G.gene + xi .* ( Gb.gene - G.gene );
         for k = 1 : n_parent
-            xi = 2.0 * sqrt( 3.0 / n_parent ) * rand - sqrt (3.0 / n_parent );
+            xi = 2.0 * sqrt( 3.0 / n_parent ) * rand - sqrt( 3.0 / n_parent );
             c(i).gene = c(i).gene + xi .* ( p(k).gene - G.gene );
         end
+%         fprintf(':%e\t%e\t%e\t%e\t%e\t%e\t%e\n',i,c(i).gene(1),c(i).gene(2),c(i).g(1),c(i).g(2),c(i).f,c(i).phi);
         flg_eval = 1;
     end
     % If the generated child is out of range, alter the child

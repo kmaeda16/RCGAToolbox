@@ -6,11 +6,16 @@ Pf = Param.Pf;
 selection_type = Param.selection_type;
 
 % Pick up parents from main population
-ip = randperm(n_population,n_parent);
+% ip = randperm(n_population,n_parent);
+ip = [1 3 5];
 
 p = Population(ip);
 
 c = REXstar(Param,p);
+
+for j = 1 : Param.n_population
+%     fprintf(':%e\t%e\t%e\t%e\t%e\t%e\t%e\n',j,Population(j).gene(1),Population(j).gene(2),Population(j).g(1),Population(j).g(2),Population(j).f,Population(j).phi);
+end
 
 switch selection_type
     case 0

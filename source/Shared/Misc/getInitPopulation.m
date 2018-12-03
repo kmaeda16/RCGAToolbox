@@ -7,8 +7,11 @@ Pf = Param.Pf;
 
 Population(1,1:n_population) = struct('gene',zeros(1,n_gene),'g',zeros(1,n_constraint),'f',0,'phi',0);
 
-for i = 1:n_population
-   Population(i).gene = rand(1,n_gene);
+for i = 1 : n_population
+%    Population(i).gene = rand(1,n_gene);
+    for j = 1 : n_gene
+        Population(i).gene(j) = rand();
+    end
 end
 
 Population = requestFitnessCalc(Param,Population);
