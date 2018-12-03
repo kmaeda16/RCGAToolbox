@@ -32,12 +32,12 @@ Param.out_transition = 'Transition.dat';
 Param.out_population = 'Population.dat';
 Param.out_solution = 'Solution.dat';
 
-% Param.n_population = 5;
-% Param.n_parent = 3;
-% Param.n_children = 5;
-% Param.n_generation = 2;
-% Param.n_gene = 2;
-% Param.output_intvl = 1;
+Param.n_population = 5;
+Param.n_parent = 3;
+Param.n_children = 5;
+Param.n_generation = 2;
+Param.n_gene = 2;
+Param.output_intvl = 1;
 
 Param.n_population = 200;
 Param.n_children = 200;
@@ -52,7 +52,7 @@ Param.vtr = -15 * ( 1 - 1e-2 );
 Param.Pf = 0;
 
 % Param = getParam(Param,'Sphere');
-Param = getParam(Param,'g03');
+Param = getParam(Param,'g05');
 
 
 
