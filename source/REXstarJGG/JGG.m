@@ -6,8 +6,8 @@ Pf = Param.Pf;
 selection_type = Param.selection_type;
 
 % Pick up parents from main population
-% ip = randperm(n_population,n_parent);
-ip = [1 3 5];
+ip = randperm(n_population,n_parent);
+% ip = [1 3 5];
 
 p = Population(ip);
 

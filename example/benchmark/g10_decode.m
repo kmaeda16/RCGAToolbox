@@ -3,13 +3,13 @@ function x = g10_decode(gene)
 lb = zeros(1,8);
 ub = zeros(1,8);
 
-lb(1) = 100; 
-ub(1) = 10000;
+lb(1) = 2; 
+ub(1) = 4;
 
-lb(2:3) = 1000;
-ub(2:3) = 10000;
+lb(2:3) = 3;
+ub(2:3) = 4;
 
-lb(4:8) = 10;
-ub(4:8) = 1000;
+lb(4:8) = 1;
+ub(4:8) = 3;
 
-x = gene .* ( ub - lb ) + lb;
+x = 10 .^ ( gene .* ( ub - lb ) + lb );

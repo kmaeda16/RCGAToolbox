@@ -12,7 +12,7 @@ addpath('../source/Shared/Misc');
 addpath('../source/Shared/Sort');
 
 Param.fitnessfun = @k_tablet;
-Param.decodingfun = @k_tablet_decode;
+Param.decodingfun = @testtest_decode;
 % Param.fitnessfun = @Rosenbrock_chain;
 % Param.decodingfun = @Rosenbrock_chain_decode;
 % Param.fitnessfun = @Rosenbrock_star;
@@ -33,14 +33,14 @@ Param.out_population = 'Population.dat';
 Param.out_solution = 'Solution.dat';
 
 Param.n_gene = 9;
-Param.n_generation = 1000;
-Param.n_population = 5;
-Param.n_children = 5;
-Param.output_intvl = 1;
-Param.n_constraint = 2;
-Param.n_parent = 3;%Param.n_gene + 1;
+Param.n_generation = 300;
+Param.n_population = 20;
+Param.n_children = 20;
+Param.output_intvl = 5;
+Param.n_constraint = 0;
+Param.n_parent = Param.n_gene + 1;
 Param.selection_type = 0;
-Param.vtr = -15 * ( 1 - 1e-2 );
+Param.vtr = 0;
 Param.Pf = 0.45;
 % Param.Pf = 0;
 
@@ -61,7 +61,17 @@ Param.Pf = 0.45;
 
 rng(3);
 % [ best, Population ] = UNDXMGG(Param);
-[ best, Population ] = REXstarJGG(Param);
+% [ best, Population ] = REXstarJGG(Param);
+model = SBmodel('SBMLexampleLevel2.xml');
+measurment = SBmeasurement('MeasurementExample.xls');
+Param.fast = 0;
+Param.ub = 9 * ones(1,9);
+Param.lb = 0 * ones(1,9);
+Param.lb(1) = 0;
+Param.ub(1) = 0;
+Param.lb(9) = 1;
+Param.ub(9) = 1;
+optimizedmodel = REXstarJGG_PE(model,measurment,Param);
 
 %%
 % clear randn_test;
