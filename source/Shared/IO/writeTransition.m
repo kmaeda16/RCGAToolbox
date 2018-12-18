@@ -5,9 +5,7 @@ n_constraint = Param.n_constraint;
 out_transition = Param.out_transition;
 decodingfun = Param.decodingfun;
 
-if  strcmp('NONE',out_transition) == 1 ...
-        || strcmp('None',out_transition) == 1 ...
-        || strcmp('none',out_transition) == 1
+if  strcmpi('none',out_transition)
     return;
 end
     
@@ -33,7 +31,12 @@ else
     end
 end
 
-x = decodingfun(chrom.gene);
+x = feval(decodingfun,chrom.gene);
+
+length_x = length(x);
+if length_x ~= n_gene
+    error('decodingfun should return x with %d elements but it returned x with %d elements.',n_gene,length_x);
+end
     
 fprintf(out,'%e\t%d\t%e\t%e\t',elapsedTime,generation,chrom.f,chrom.phi);
 for i = 1 : n_gene

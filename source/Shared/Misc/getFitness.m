@@ -1,9 +1,15 @@
 function [f, g, phi] = getFitness(Param,chrom)
 
+n_gene = Param.n_gene;
 n_constraint = Param.n_constraint;
 fitnessfun = Param.fitnessfun;
 decodingfun = Param.decodingfun;
-x = decodingfun(chrom.gene);
+x = feval(decodingfun,chrom.gene);
+
+length_x = length(x);
+if length_x ~= n_gene
+    error('decodingfun should return x with %d elements but it returned x with %d elements.',n_gene,length_x);
+end
 
 n_output = nargout(fitnessfun);
 switch n_output

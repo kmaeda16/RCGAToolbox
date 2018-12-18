@@ -6,9 +6,7 @@ n_population = Param.n_population;
 n_gene = Param.n_gene;
 n_constraint = Param.n_constraint;
 
-if  strcmp('NONE',out_population) == 1 ...
-        || strcmp('None',out_population) == 1 ...
-        || strcmp('none',out_population) == 1
+if  strcmpi('none',out_population)
     return;
 end
 

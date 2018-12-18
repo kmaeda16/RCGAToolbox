@@ -5,9 +5,7 @@ n_constraint = Param.n_constraint;
 out_solution = Param.out_solution;
 decodingfun = Param.decodingfun;
 
-if  strcmp('NONE',out_solution) == 1 ...
-        || strcmp('None',out_solution) == 1 ...
-        || strcmp('none',out_solution) == 1
+if  strcmpi('none',out_solution)
     return;
 end
 

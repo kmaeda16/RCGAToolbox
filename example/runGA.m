@@ -3,6 +3,7 @@ clear randn rand;
 
 addpath('benchmark');
 addpath('../app');
+addpath('../debug');
 addpath('../source');
 addpath('../source/UNDXMGG');
 addpath('../source/REXstarJGG');
@@ -24,7 +25,7 @@ Param.out_transition = 'Transition.dat';
 Param.out_population = 'Population.dat';
 Param.out_solution = 'Solution.dat';
 
-Param.n_generation = 1000;
+% Param.n_generation = 1000;
 Param.n_population = 500;
 Param.n_children = 200;
 Param.output_intvl = 20;

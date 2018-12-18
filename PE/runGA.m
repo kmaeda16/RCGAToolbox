@@ -3,6 +3,7 @@ clear randn rand;
 
 addpath('benchmark');
 addpath('../app');
+addpath('../debug');
 addpath('../source');
 addpath('../source/UNDXMGG');
 addpath('../source/REXstarJGG');
