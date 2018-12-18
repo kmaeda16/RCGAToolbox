@@ -3,8 +3,7 @@ function writeTransition(elapsedTime, generation, Param, chrom)
 n_gene = Param.n_gene;
 n_constraint = Param.n_constraint;
 out_transition = Param.out_transition;
-ub = Param.ub;
-lb = Param.lb;
+decodingfun = Param.decodingfun;
 
 if  strcmp('NONE',out_transition) == 1 ...
         || strcmp('None',out_transition) == 1 ...
@@ -34,7 +33,7 @@ else
     end
 end
 
-x = chrom.gene .* ( ub - lb ) + lb;
+x = decodingfun(chrom.gene);
     
 fprintf(out,'%e\t%d\t%e\t%e\t',elapsedTime,generation,chrom.f,chrom.phi);
 for i = 1 : n_gene

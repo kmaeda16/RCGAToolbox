@@ -2,238 +2,187 @@ function Param = getParam(Param,Problem_Name)
 
 switch Problem_Name
     case 'Sphere'
-        fitnessfun   = @Sphere;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @Sphere;
+        Param.decodingfun  = @Sphere_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'ScaledSphere'
-        fitnessfun   = @ScaledSphere;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @ScaledSphere;
+        Param.decodingfun  = @ScaledSphere_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Ellipsoid'
-        fitnessfun   = @Ellipsoid;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @Ellipsoid;
+        Param.decodingfun  = @Ellipsoid_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Cigar'
-        fitnessfun   = @Cigar;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @Cigar;
+        Param.decodingfun  = @Cigar_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'k_tablet'
-        fitnessfun   = @k_tablet;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @k_tablet;
+        Param.decodingfun  = @k_tablet_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'MMbenchmark'
-        fitnessfun   = @MMbenchmark;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -1;
-        ub(1:n_gene) =  1;
+        Param.fitnessfun   = @MMbenchmark;
+        Param.decodingfun  = @MMbenchmark_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Rosenbrock_star'
-        fitnessfun   = @Rosenbrock_star;
-        n_gene       = 50;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -2.048;
-        ub(1:n_gene) =  2.048;
+        Param.fitnessfun   = @Rosenbrock_star;
+        Param.decodingfun  = @Rosenbrock_star_decode;
+        Param.n_gene       = 50;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Rosenbrock_chain'
-        fitnessfun   = @Rosenbrock_chain;
-        n_gene       = 100;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -2.048;
-        ub(1:n_gene) =  2.048;
+        Param.fitnessfun   = @Rosenbrock_chain;
+        Param.decodingfun  = @Rosenbrock_chain_decode;
+        Param.n_gene       = 100;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Ackley'
-        fitnessfun   = @Ackley;
-        n_gene       = 50;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -32.768;
-        ub(1:n_gene) =  32.768;
+        Param.fitnessfun   = @Ackley;
+        Param.decodingfun  = @Ackley_decode;
+        Param.n_gene       = 50;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Bohachevsky'
-        fitnessfun   = @Bohachevsky;
-        n_gene       = 50;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @Bohachevsky;
+        Param.decodingfun  = @Bohachevsky_decode;
+        Param.n_gene       = 50;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Rastrigin'
-        fitnessfun   = @Rastrigin;
-        n_gene       = 20;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -5.12;
-        ub(1:n_gene) =  5.12;
+        Param.fitnessfun   = @Rastrigin;
+        Param.decodingfun  = @Rastrigin_decode;
+        Param.n_gene       = 20;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Schaffer'
-        fitnessfun   = @Schaffer;
-        n_gene       = 20;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -100;
-        ub(1:n_gene) =  100;
+        Param.fitnessfun   = @Schaffer;
+        Param.decodingfun  = @Schaffer_decode;
+        Param.n_gene       = 20;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'Schwefel'
-        fitnessfun   = @Schwefel;
-        n_gene       = 10;
-        n_constraint = 0;
-        vtr          = 1e-6;
-        lb(1:n_gene) = -512;
-        ub(1:n_gene) =  512;
+        Param.fitnessfun   = @Schwefel;
+        Param.decodingfun  = @Schwefel_decode;
+        Param.n_gene       = 10;
+        Param.n_constraint = 0;
+        Param.vtr          = 1e-6;
         
     case 'g01'
-        fitnessfun   = @g01;
-        n_gene       = 13;
-        n_constraint = 9;
-        vtr          = -15 * ( 1 - 1e-2 );
-        lb( 1: 9)    = 0; 
-        ub( 1: 9)    = 1;
-        lb(10:12)    = 0;
-        ub(10:12)    = 100;
-        lb(13)       = 0;
-        ub(13)       = 1;
+        Param.fitnessfun   = @g01;
+        Param.decodingfun  = @g01_decode;
+        Param.n_gene       = 13;
+        Param.n_constraint = 9;
+        Param.vtr          = -15 * ( 1 - 1e-2 );
         
     case 'g02'
-        fitnessfun   = @g02;
-        n_gene       = 20;
-        n_constraint = 2;
-        vtr          = -0.803619 * ( 1 - 1e-2 );
-        lb(1:n_gene) = 0;
-        ub(1:n_gene) = 10;
+        Param.fitnessfun   = @g02;
+        Param.decodingfun  = @g02_decode;
+        Param.n_gene       = 20;
+        Param.n_constraint = 2;
+        Param.vtr          = -0.803619 * ( 1 - 1e-2 );
         
     case 'g03'
-        fitnessfun   = @g03;
-        n_gene       = 10;
-        n_constraint = 1;
-        vtr          = -1 * ( 1 - 1e-2 );
-        lb(1:n_gene) = 0;
-        ub(1:n_gene) = 1;
+        Param.fitnessfun   = @g03;
+        Param.decodingfun  = @g03_decode;
+        Param.n_gene       = 10;
+        Param.n_constraint = 1;
+        Param.vtr          = -1 * ( 1 - 1e-2 );
         
     case 'g04'
-        fitnessfun   = @g04;
-        n_gene       = 5;
-        n_constraint = 6;
-        vtr          = -30665.539 * ( 1 - 1e-2 );
-        lb(1)        = 78; 
-        ub(1)        = 102;
-        lb(2)        = 33;
-        ub(2)        = 45;
-        lb(3:5)      = 27;
-        ub(3:5)      = 45;
+        Param.fitnessfun   = @g04;
+        Param.decodingfun  = @g04_decode;
+        Param.n_gene       = 5;
+        Param.n_constraint = 6;
+        Param.vtr          = -30665.539 * ( 1 - 1e-2 );
         
     case 'g05'
-        fitnessfun   = @g05;
-        n_gene       = 4;
-        n_constraint = 5;
-        vtr          = 5126.4981 * ( 1 + 1e-2 );
-        lb(1:2)      = 0;
-        ub(1:2)      = 1200;
-        lb(3:4)      = -0.55;
-        ub(3:4)      =  0.55;
+        Param.fitnessfun   = @g05;
+        Param.decodingfun  = @g05_decode;
+        Param.n_gene       = 4;
+        Param.n_constraint = 5;
+        Param.vtr          = 5126.4981 * ( 1 + 1e-2 );
         
     case 'g06'
-        fitnessfun   = @g06;
-        n_gene       = 2;
-        n_constraint = 2;
-        vtr          = -6961.81388 * ( 1 - 1e-2 );
-        lb(1)        = 13;
-        ub(1)        = 100;
-        lb(2)        = 0;
-        ub(2)        = 100;
+        Param.fitnessfun   = @g06;
+        Param.decodingfun  = @g06_decode;
+        Param.n_gene       = 2;
+        Param.n_constraint = 2;
+        Param.vtr          = -6961.81388 * ( 1 - 1e-2 );
         
     case 'g07'
-        fitnessfun   = @g07;
-        n_gene       = 10;
-        n_constraint = 8;
-        vtr          = 24.3062091 * ( 1 + 1e-2 );
-        lb(1:n_gene) = -10;
-        ub(1:n_gene) =  10;
+        Param.fitnessfun   = @g07;
+        Param.decodingfun  = @g07_decode;
+        Param.n_gene       = 10;
+        Param.n_constraint = 8;
+        Param.vtr          = 24.3062091 * ( 1 + 1e-2 );
         
     case 'g08'
-        fitnessfun   = @g08;
-        n_gene       = 2;
-        n_constraint = 2;
-        vtr          = -0.095825 * ( 1 - 1e-2 );
-        lb(1:n_gene) =  0;
-        ub(1:n_gene) = 10;
+        Param.fitnessfun   = @g08;
+        Param.decodingfun  = @g08_decode;
+        Param.n_gene       = 2;
+        Param.n_constraint = 2;
+        Param.vtr          = -0.095825 * ( 1 - 1e-2 );
         
     case 'g09'
-        fitnessfun   = @g09;
-        n_gene       = 7;
-        n_constraint = 4;
-        vtr          = 680.6300573 * ( 1 + 1e-2 );
-        lb(1:n_gene) = -10;
-        ub(1:n_gene) =  10;
+        Param.fitnessfun   = @g09;
+        Param.decodingfun  = @g09_decode;
+        Param.n_gene       = 7;
+        Param.n_constraint = 4;
+        Param.vtr          = 680.6300573 * ( 1 + 1e-2 );
         
     case 'g10'
-        fitnessfun   = @g10;
-        n_gene       = 8;
-        n_constraint = 6;
-        vtr          = 7049.3307 * ( 1 + 1e-2 );
-        lb(1)        = 2;
-        ub(1)        = 4;
-        lb(2:3)      = 3;
-        ub(2:3)      = 4;
-        lb(4:8)      = 1;
-        ub(4:8)      = 3;
+        Param.fitnessfun   = @g10;
+        Param.decodingfun  = @g10_decode;
+        Param.n_gene       = 8;
+        Param.n_constraint = 6;
+        Param.vtr          = 7049.3307 * ( 1 + 1e-2 );
         
     case 'g11'
-        fitnessfun   = @g11;
-        n_gene       = 2;
-        n_constraint = 1;
-        vtr          = 0.75 * ( 1 + 1e-2 );
-        lb(1:n_gene) = -1;
-        ub(1:n_gene) =  1;
+        Param.fitnessfun   = @g11;
+        Param.decodingfun  = @g11_decode;
+        Param.n_gene       = 2;
+        Param.n_constraint = 1;
+        Param.vtr          = 0.75 * ( 1 + 1e-2 );
         
     case 'g12'
-        fitnessfun   = @g12;
-        n_gene       = 3;
-        n_constraint = 1;
-        vtr          = -1 * ( 1 - 1e-2 );
-        lb(1:n_gene) =  0;
-        ub(1:n_gene) = 10;
+        Param.fitnessfun   = @g12;
+        Param.decodingfun  = @g12_decode;
+        Param.n_gene       = 3;
+        Param.n_constraint = 1;
+        Param.vtr          = -1 * ( 1 - 1e-2 );
         
     case 'g13'
-        fitnessfun   = @g13;
-        n_gene       = 5;
-        n_constraint = 3;
-        vtr          = 0.0539498 * ( 1 + 1e-2 );
-        lb(1:2)      = -2.3;
-        ub(1:2)      =  2.3;
-        lb(3:5)      = -3.2;
-        ub(3:5)      =  3.2;
+        Param.fitnessfun   = @g13;
+        Param.decodingfun  = @g13_decode;
+        Param.n_gene       = 5;
+        Param.n_constraint = 3;
+        Param.vtr          = 0.0539498 * ( 1 + 1e-2 );
         
     otherwise
         error('Unexpected Problem_Name!');
 end
-
-Param.fitnessfun   = fitnessfun;
-Param.n_gene       = n_gene;
-Param.n_constraint = n_constraint;
-Param.vtr          = vtr;
-Param.lb           = lb;
-Param.ub           = ub;
