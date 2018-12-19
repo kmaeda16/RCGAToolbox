@@ -1,7 +1,7 @@
 clearvars;
 clear randn rand;
 
-addpath('benchmark');
+% addpath('benchmark');
 addpath('../app');
 addpath('../debug');
 addpath('../source');
@@ -23,9 +23,11 @@ Param.out_population = 'Population.dat';
 Param.out_solution = 'Solution.dat';
 
 Param.n_gene = 9;
-Param.n_generation = 300;
+Param.n_generation = 2;
 Param.n_population = 20;
 Param.n_children = 20;
+% Param.n_population = 1000;
+% Param.n_children = 1000;
 Param.output_intvl = 5;
 Param.n_constraint = 0;
 Param.n_parent = Param.n_gene + 1;
@@ -38,12 +40,13 @@ rng(3);
 
 model = 'SBMLexampleLevel2.xml';
 % model = SBmodel('SBMLexampleLevel2.xml');
-% model = 'testtest';
+% model = 'hill_mex';
 measurment = SBmeasurement('MeasurementExample.xls');
-fast_flg = 1;
+fast_flg = 0;
 fitnessfun_PE = @mySSR;
 Param.decodingfun = @mydecodingfun;
 % Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst);
+Param.par = 0;
 optimizedmodel = REXstarJGG_PE(model,measurment,fast_flg,Param,fitnessfun_PE);
 
 

@@ -4,6 +4,7 @@ if isSBmodel(model)
     if fast_flg == 1
         temp = SBstruct(model);
         mex_name = strcat(temp.name,'_mex');
+        clear(mex_name);
         SBPDmakeMEXmodel(model,mex_name);
     else
         mex_name = [];
@@ -24,6 +25,7 @@ else
         if fast_flg == 1
             temp = SBstruct(model);
             mex_name = strcat(temp.name,'_mex');
+            clear(mex_name);
             SBPDmakeMEXmodel(model,mex_name);
         else
             mex_name = [];
@@ -33,15 +35,17 @@ end
 
 Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name);
 
+if Param.n_constraint == 0
+%     Param.interimreportfun = @(i,x,f) x;
+    Param.interimreportfun = @(i,x,f) interimreportfun_PE(i,x,f,model,mst,mex_name);
+else
+%     Param.interimreportfun = @(i,x,f) x;
+    Param.interimreportfun = @(i,x,f,phi,g) interimreportfun_PE(i,x,f,phi,g,model,mst,mex_name);
+end
+
 Param = checkInputs(Param,'REXstarJGG');
 
-if Param.n_constraint == 0
-%     Param.interimreportfun = @(x,f) x;
-    Param.interimreportfun = @(x,f) interimreportfun_PE(x,f,model,mst,mex_name);
-else
-%     Param.interimreportfun = @(x,f) x;
-    Param.interimreportfun = @(x,f,phi,g) interimreportfun_PE(x,f,phi,g,model,mst,mex_name);
-end
+
 
 % best = RCGA_PE_Main(Param,@JGG);
 best = RCGA_Main(Param,@JGG);
