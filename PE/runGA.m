@@ -12,17 +12,6 @@ addpath('../source/Shared/IO');
 addpath('../source/Shared/Misc');
 addpath('../source/Shared/Sort');
 
-Param.fitnessfun = @k_tablet;
-Param.decodingfun = @testtest_decode;
-% Param.fitnessfun = @Rosenbrock_chain;
-% Param.decodingfun = @Rosenbrock_chain_decode;
-% Param.fitnessfun = @Rosenbrock_star;
-% Param.decodingfun = @Rosenbrock_star_decode;
-% Param.fitnessfun = @Schwefel;
-% Param.decodingfun = @Schwefel_decode;
-% Param.fitnessfun = @g01;
-% Param.decodingfun = @g01_decode;
-
 Param.par = 0;
 Param.output_intvl = 1;
 Param.vtr = 1e-6;
@@ -45,55 +34,16 @@ Param.vtr = 0;
 Param.Pf = 0.45;
 % Param.Pf = 0;
 
-% Param.n_gene = 2;
-% Param.n_generation = 1e+5;
-% Param.n_population = 200;
-% Param.n_children = 200;
-% Param.output_intvl = 100;
-
-% Param = getParam(Param,'Sphere');
-% Param = getParam(Param,'g10');
-% Param.fitnessfun   = @ConstrainedSphere;
-% Param.decodingfun  = @Sphere_decode;
-        
-% if 0 < poolsize
-%     parpool(poolsize);
-% end
-
 rng(3);
-% [ best, Population ] = UNDXMGG(Param);
-% [ best, Population ] = REXstarJGG(Param);
-model = SBmodel('SBMLexampleLevel2.xml');
-measurment = SBmeasurement('MeasurementExample.xls');
-Param.fast = 0;
-Param.ub = 9 * ones(1,9);
-Param.lb = 0 * ones(1,9);
-Param.lb(1) = 0;
-Param.ub(1) = 0;
-Param.lb(9) = 1;
-Param.ub(9) = 1;
-optimizedmodel = REXstarJGG_PE(model,measurment,Param);
 
-%%
-% clear randn_test;
-% Population(1).gene(1) = 0.1;
-% Population(1).gene(2) = 0.2;
-% Population(2).gene(1) = 0.2;
-% Population(2).gene(2) = 0.3;
-% Population(3).gene(1) = 0.3;
-% Population(3).gene(2) = 0.4;
-% for i = 1 : 100
-%     c(i) = getNewChild(Population(1), Population(2), Population(3));
-%     fprintf('%e\t%e\n',c(i).gene(1),c(i).gene(2));
-% end
-% 
-% %%
-% clear randn_test rand_test;
-% for i = 1 : 20
-%     Population(i).gene(1) = 0.1;
-%     Population(i).gene(2) = 0.2;
-%     Population(i).f = rand_test();
-%     Population(i).phi = 1 - rand_test();
-%     Population(i).g = rand_test();
-% end
-% Population = SRsort(Population, 0.45);
+model = 'SBMLexampleLevel2.xml';
+% model = SBmodel('SBMLexampleLevel2.xml');
+% model = 'testtest';
+measurment = SBmeasurement('MeasurementExample.xls');
+fast_flg = 1;
+fitnessfun_PE = @mySSR;
+Param.decodingfun = @mydecodingfun;
+% Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst);
+optimizedmodel = REXstarJGG_PE(model,measurment,fast_flg,Param,fitnessfun_PE);
+
+

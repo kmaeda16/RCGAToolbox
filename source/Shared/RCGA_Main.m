@@ -25,6 +25,7 @@ if 0 < output_intvl
     elapsedTime = toc;
     printTransition(elapsedTime,i,best);
     writeTransition(elapsedTime,i,Param,best);
+    interimreport(best,Param);
     flg_printed = 1;
 end
 
@@ -33,6 +34,7 @@ if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= t_limit
     if 0 < output_intvl && flg_printed == 0
         printTransition(elapsedTime,i,best);
         writeTransition(elapsedTime,i,Param,best);
+        interimreport(best,Param);
     end
     writePopulation(Param,Population);
     writeSolution(elapsedTime,Param,best);
@@ -51,6 +53,7 @@ while i < n_generation
         elapsedTime = toc;
         printTransition(elapsedTime,i,best);
         writeTransition(elapsedTime,i,Param,best);
+        interimreport(best,Param);
         flg_printed = 1;
     end
     if (best.phi == 0 && best.f <= vtr) || toc >= t_limit
@@ -62,6 +65,7 @@ if 0 < output_intvl && flg_printed == 0
     elapsedTime = toc;
     printTransition(elapsedTime,i,best);
     writeTransition(elapsedTime,i,Param,best);
+    interimreport(best,Param);
 end
 
 % for j = 1 : Param.n_population

@@ -1,5 +1,5 @@
 function Param = checkInputs(Param,RCGA)
-mfilename
+
 C = {
     'n_gene',...         %  1
     'n_constraint',...   %  2
