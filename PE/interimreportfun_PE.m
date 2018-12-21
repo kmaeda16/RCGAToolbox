@@ -54,20 +54,20 @@ end
 % x_exp(1:3,1:3) = NaN;
 % x_exp(4:end,2) = NaN;
 
-% plot(mst.time,x_exp,'o','LineWidth',2);
-% set(gca,'FontSize',10,'FontName','Arial');
-% legend(statename);
-% hold on;
-% ax = gca;
-% ax.ColorOrderIndex = 1;
-% plot(output.time,x_sim,'-','LineWidth',2);
-% hold off;
-% 
-% xlabel('Time');
-% ylabel('AU');
-% 
-% xlim([time(1) time(end)]);
-% ylim([0 max(max(x_exp))]);
-% title(sprintf('Generation = %d',generation));
-% drawnow;
+plot(mst.time,x_exp,'o','LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+legend(statename);
+hold on;
+ax = gca;
+ax.ColorOrderIndex = 1;
+plot(output.time,x_sim,'-','LineWidth',2);
+hold off;
+
+xlabel('Time');
+ylabel('AU');
+
+xlim([time(1) time(end)]);
+ylim([0 max(max(x_exp))]);
+title(sprintf('Generation = %d',generation));
+drawnow;
 

@@ -23,7 +23,7 @@ Param.out_population = 'Population.dat';
 Param.out_solution = 'Solution.dat';
 
 Param.n_gene = 9;
-Param.n_generation = 2;
+Param.n_generation = 300;
 Param.n_population = 20;
 Param.n_children = 20;
 % Param.n_population = 1000;
@@ -42,7 +42,7 @@ model = 'SBMLexampleLevel2.xml';
 % model = SBmodel('SBMLexampleLevel2.xml');
 % model = 'hill_mex';
 measurment = SBmeasurement('MeasurementExample.xls');
-fast_flg = 0;
+fast_flg = 1;
 fitnessfun_PE = @mySSR;
 Param.decodingfun = @mydecodingfun;
 % Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst);
