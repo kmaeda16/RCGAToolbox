@@ -1,4 +1,4 @@
-function  [ T, X ] = Simulation(x, model, tspan, mex_name)
+function  [ T, X ] = Simulation(x, model, tspan, mex_name, opts)
 
 
 if exist(mex_name,'file') == 3
@@ -11,7 +11,6 @@ if exist(mex_name,'file') == 3
     
     try
 %         output = feval(mex_name,tspan,[],x');
-        opts = struct; %%%%%%%%
         output = SBPDsimulate(mex_name,tspan,[],param_name,x',opts);
     catch
         T = NaN;
@@ -27,7 +26,6 @@ elseif isSBmodel(model)
         st_model.parameters(i).value = x(i);
     end
     new_model = SBmodel(st_model);
-    opts = struct; %%%%%%%%
     output = SBsimulate(new_model,'ode15s',tspan,[],opts);
     
 else

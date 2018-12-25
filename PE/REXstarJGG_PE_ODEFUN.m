@@ -6,7 +6,12 @@ if ~isSBmeasurement(mst)
     fprintf(' Finished.\n');
 end
 
-Param.fitnessfun = @(x) fitnessfun_PE(x, odefun, IC, mst, fast_flag);
+if isfield(Param,'opts')
+    opts = Param.opts;
+else
+    opts = struct;
+end
+Param.fitnessfun = @(x) fitnessfun_PE(x,odefun,IC,mst,fast_flag,opts);
 interimreportfun = Param.interimreportfun;
 Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,odefun,IC,mst,fast_flag);
 

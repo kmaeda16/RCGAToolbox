@@ -20,6 +20,7 @@ C = {
     'out_population',... % 17
     'interimreportfun',...  % 18
     'finalreportfun',...    % 19
+    'opts',...    % 20
     };
 
 tf = isfield(Param,C);
@@ -108,4 +109,9 @@ if ~tf(19) % finalreportfun
     %     warning('out_population not provided. Default value used (i.e. out_population = None).');
 %     Param.finalreportfun = @(elapsedTime,i,Param,best) x;
     Param.finalreportfun = @defaultfinalreportfun;
+end
+if ~tf(20) % opts
+    %     warning('out_population not provided. Default value used (i.e. out_population = None).');
+%     Param.finalreportfun = @(elapsedTime,i,Param,best) x;
+    Param.opts = struct;
 end

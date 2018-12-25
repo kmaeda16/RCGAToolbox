@@ -1,5 +1,7 @@
 function interimreportfun_PE(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flg)
 
+opts = Param.opts;
+
 printTransition(elapsedTime,generation,best);
 writeTransition(elapsedTime,generation,Param,best);
 
@@ -19,7 +21,7 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation(x, model, tspan, mex_name);
+[ T, X ] = Simulation(x, model, tspan, mex_name, opts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;

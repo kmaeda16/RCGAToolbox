@@ -1,5 +1,7 @@
 function interimreportfun_PE_ODEFUN(elapsedTime,generation,Param,Population,best,odefun,IC,mst,fast_flag)
 
+opts = Param.opts;
+
 printTransition(elapsedTime,generation,best);
 writeTransition(elapsedTime,generation,Param,best);
 
@@ -19,7 +21,7 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation_ODEFUN(x, odefun, IC, tspan, fast_flag);
+[ T, X ] = Simulation_ODEFUN(x, odefun, IC, tspan, fast_flag, opts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;

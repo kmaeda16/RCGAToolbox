@@ -39,8 +39,12 @@ if ~isSBmeasurement(mst)
     fprintf(' Finished.\n');
 end
 
-
-Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name);
+if isfield(Param,'opts')
+    opts = Param.opts;
+else
+    opts = struct;
+end
+Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name,opts);
 interimreportfun = Param.interimreportfun;
 Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flag);
 
