@@ -18,7 +18,8 @@ C = {
     'out_transition',... % 15
     'out_solution',...   % 16
     'out_population',... % 17
-    'interimreportfun',... % 18
+    'interimreportfun',...  % 18
+    'finalreportfun',...    % 19
     };
 
 tf = isfield(Param,C);
@@ -100,9 +101,11 @@ if ~tf(17) % out_population
 end
 if ~tf(18) % interimreportfun
     %     warning('out_population not provided. Default value used (i.e. out_population = None).');
-    if Param.n_constraint == 0
-        Param.interimreportfun = @(i,x,f) x;
-    else
-        Param.interimreportfun = @(i,x,f,phi,g) x;
-    end
+%     Param.interimreportfun = @(elapsedTime,i,Param,best) x;
+    Param.interimreportfun = @defaultinterimreportfun;
+end
+if ~tf(19) % finalreportfun
+    %     warning('out_population not provided. Default value used (i.e. out_population = None).');
+%     Param.finalreportfun = @(elapsedTime,i,Param,best) x;
+    Param.finalreportfun = @defaultfinalreportfun;
 end

@@ -1,11 +1,11 @@
-function f = mySSR(x, model, mst, mex_name)
+function f = mySSR_ODEFUN(x, odefun, IC, mst, fast_flag)
 
 if length(mst) > 2
     warning('Measurement has multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
 end
 mst = struct(mst{1});
 
-t0 = 0;
+t0 = IC(x);
 if t0 < mst.time(1)
     tspan = [ t0  mst.time ];
 elseif t0 == mst.time(1)
@@ -14,7 +14,7 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation(x, model, tspan, mex_name);
+[ T, X ] = Simulation_ODEFUN(x, odefun, IC, tspan, fast_flag);
 
 if max(max(isnan(X)))
     f = 1e+10;

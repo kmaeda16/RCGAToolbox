@@ -1,7 +1,7 @@
-function [ x, optimizedmodel ] = REXstarJGG_PE(model,mst,fast_flg,Param,fitnessfun_PE)
+function [ x, optimizedmodel ] = REXstarJGG_PE(model,mst,fast_flag,Param,fitnessfun_PE)
 
 if isSBmodel(model)
-    if fast_flg == 1
+    if fast_flag == 1
         temp = SBstruct(model);
         mex_name = strcat(temp.name,'_mex');
         clear(mex_name);
@@ -22,7 +22,7 @@ else
             fprintf(' Finished.\n');
         end
         % If model is an SBmodel object and fast_flg is one
-        if fast_flg == 1
+        if fast_flag == 1
             temp = SBstruct(model);
             mex_name = strcat(temp.name,'_mex');
             clear(mex_name);
@@ -33,21 +33,19 @@ else
     end
 end
 
-Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name);
-
-if Param.n_constraint == 0
-%     Param.interimreportfun = @(i,x,f) x;
-    Param.interimreportfun = @(i,x,f) interimreportfun_PE(i,x,f,model,mst,mex_name);
-else
-%     Param.interimreportfun = @(i,x,f) x;
-    Param.interimreportfun = @(i,x,f,phi,g) interimreportfun_PE(i,x,f,phi,g,model,mst,mex_name);
+if ~isSBmeasurement(mst)
+    fprintf('Reading %s ...',mst);
+    mst = SBmeasurement(mst);
+    fprintf(' Finished.\n');
 end
+
+
+Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name);
+interimreportfun = Param.interimreportfun;
+Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flag);
 
 Param = checkInputs(Param,'REXstarJGG');
 
-
-
-% best = RCGA_PE_Main(Param,@JGG);
 best = RCGA_Main(Param,@JGG);
 
 x = Param.decodingfun(best.gene);

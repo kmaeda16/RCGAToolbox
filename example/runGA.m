@@ -52,6 +52,8 @@ Param.Pf = 0.45;
 
 rng(3);
 % [ best, Population ] = UNDXMGG(Param);
+Param.interimreport = @interimreportfun;
+Param.finalreport = @finalreportfun;
 [ best, Population ] = REXstarJGG(Param);
 
 %%

@@ -33,7 +33,7 @@ end
 
 
 if n_constraint == 0
-    if nargout(fitnessfun) > 0
+    if nargout(fitnessfun) > 1
         warning('n_constraint was set to %d, but %s returns g.',n_constraint,func2str(fitnessfun));
     end
     f = feval(fitnessfun,x);

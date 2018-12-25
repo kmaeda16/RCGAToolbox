@@ -41,12 +41,17 @@ rng(3);
 model = 'SBMLexampleLevel2.xml';
 % model = SBmodel('SBMLexampleLevel2.xml');
 % model = 'hill_mex';
-measurment = SBmeasurement('MeasurementExample.xls');
-fast_flg = 1;
+% measurment = SBmeasurement('MeasurementExample.xls');
+measurment = 'MeasurementExample.xls';
+fast_flag = 1;
 fitnessfun_PE = @mySSR;
 Param.decodingfun = @mydecodingfun;
-% Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst);
+Param.interimreportfun = @interimreportfun_PE;
 Param.par = 0;
-optimizedmodel = REXstarJGG_PE(model,measurment,fast_flg,Param,fitnessfun_PE);
+% optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,Param,fitnessfun_PE);
 
-
+odefun = @hill;
+IC = @initconc;
+fitnessfun_PE = @mySSR_ODEFUN;
+Param.interimreportfun = @interimreportfun_PE_ODEFUN;
+optimizedmodel = REXstarJGG_PE_ODEFUN(odefun,IC,measurment,fast_flag,Param,fitnessfun_PE);
