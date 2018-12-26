@@ -1,4 +1,4 @@
-function x = REXstarJGG_PE_ODEFUN(odefun,IC,mst,fast_flag,Param,fitnessfun_PE)
+function x = REXstarJGG_odefun(odefun,icfun,mst,fast_flag,Param,fitnessfun_PE)
 
 if ~isSBmeasurement(mst)
     fprintf('Reading %s ...',mst);
@@ -11,9 +11,9 @@ if isfield(Param,'opts')
 else
     opts = struct;
 end
-Param.fitnessfun = @(x) fitnessfun_PE(x,odefun,IC,mst,fast_flag,opts);
+Param.fitnessfun = @(x) fitnessfun_PE(x,odefun,icfun,mst,fast_flag,opts);
 interimreportfun = Param.interimreportfun;
-Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,odefun,IC,mst,fast_flag);
+Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,odefun,icfun,mst,fast_flag);
 
 Param = checkInputs(Param,'REXstarJGG');
 

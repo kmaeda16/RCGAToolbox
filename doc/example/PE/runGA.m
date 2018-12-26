@@ -1,16 +1,8 @@
 clearvars;
 clear randn rand;
 
-% addpath('benchmark');
-addpath('../app');
-addpath('../debug');
-addpath('../source');
-addpath('../source/UNDXMGG');
-addpath('../source/REXstarJGG');
-addpath('../source/Shared');
-addpath('../source/Shared/IO');
-addpath('../source/Shared/Misc');
-addpath('../source/Shared/Sort');
+addpath(genpath('../../../RCGA'));
+addpath('../../../PE');
 
 Param.par = 0;
 Param.output_intvl = 1;
@@ -44,14 +36,14 @@ model = 'SBMLexampleLevel2.xml';
 % measurment = SBmeasurement('MeasurementExample.xls');
 measurment = 'MeasurementExample.xls';
 fast_flag = 1;
-fitnessfun_PE = @mySSR;
+fitnessfun = @SSR_sbml;
 Param.decodingfun = @mydecodingfun;
-Param.interimreportfun = @interimreportfun_PE;
+Param.interimreportfun = @interimreportfun_sbml;
 Param.par = 0;
-% optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,Param,fitnessfun_PE);
+% optimizedmodel = REXstarJGG_sbml(model,measurment,fast_flag,Param,fitnessfun);
 
 odefun = @hill;
-IC = @initconc;
-fitnessfun_PE = @mySSR_ODEFUN;
-Param.interimreportfun = @interimreportfun_PE_ODEFUN;
-optimizedmodel = REXstarJGG_PE_ODEFUN(odefun,IC,measurment,fast_flag,Param,fitnessfun_PE);
+icfun = @initcond;
+fitnessfun = @SSR_odefun;
+Param.interimreportfun = @interimreportfun_odefun;
+optimizedmodel = REXstarJGG_odefun(odefun,icfun,measurment,fast_flag,Param,fitnessfun);

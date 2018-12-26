@@ -1,4 +1,4 @@
-function interimreportfun_PE(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flg)
+function interimreportfun_odefun(elapsedTime,generation,Param,Population,best,odefun,icfun,mst,fast_flag)
 
 opts = Param.opts;
 
@@ -12,16 +12,16 @@ if length(mst) > 2
 end
 mst = struct(mst{1});
 
-t0 = 0;
+t0 = icfun(x);
 if t0 < mst.time(1)
-    tspan = linspace(t0 ,mst.time(end),50)';
+    tspan = linspace(t0 ,mst.time(end),50);
 elseif t0 == mst.time(1)
-    tspan = linspace(mst.time(1),mst.time(end),50)';
+    tspan = linspace(mst.time(1),mst.time(end),50);
 else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation(x, model, tspan, mex_name, opts);
+[ T, X ] = Simulation_odefun(x, odefun, icfun, tspan, fast_flag, opts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;
@@ -36,3 +36,4 @@ t_sim = T;
 x_sim = X;
 t_exp = mst.time;
 plotter(generation,t_sim,x_sim,t_exp,x_exp,'Time','AU',statename);
+

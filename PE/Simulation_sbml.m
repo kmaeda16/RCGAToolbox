@@ -1,5 +1,4 @@
-function  [ T, X ] = Simulation(x, model, tspan, mex_name, opts)
-
+function  [ T, X ] = Simulation_sbml(x, model, tspan, mex_name, opts)
 
 if exist(mex_name,'file') == 3
     
@@ -16,7 +15,7 @@ if exist(mex_name,'file') == 3
     catch
         warning('Error in MEXed ODEs.');
         T = NaN;
-        X = NaN(1,length(x0));
+        X = NaN(1,length(st_model.states));
     end
     
 elseif isIQMmodel(model)
@@ -40,7 +39,7 @@ elseif isIQMmodel(model)
     catch
         warning('Error in IQMsimulate.');
         T = NaN;
-        X = NaN(1,length(x0));
+        X = NaN(1,length(st_model.states));
     end
     
 else

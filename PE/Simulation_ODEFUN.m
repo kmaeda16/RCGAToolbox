@@ -1,6 +1,6 @@
-function  [ T, X ] = Simulation_ODEFUN(x, odefun, IC, tspan, fast_flag, opts)
+function  [ T, X ] = Simulation_odefun(x, odefun, icfun, tspan, fast_flag, opts)
 
-[ t0, x0 ] = IC(x);
+[ t0, x0 ] = icfun(x);
 p = x;
 
 if t0 < tspan(1)

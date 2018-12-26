@@ -18,9 +18,9 @@ C = {
     'out_transition',... % 15
     'out_solution',...   % 16
     'out_population',... % 17
-    'interimreportfun',...  % 18
-    'finalreportfun',...    % 19
-    'opts',...    % 20
+    'interimreportfun',... % 18
+    'finalreportfun',... % 19
+    'opts',...           % 20
     };
 
 tf = isfield(Param,C);

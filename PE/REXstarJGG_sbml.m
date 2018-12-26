@@ -1,11 +1,10 @@
-function [ x, optimizedmodel ] = REXstarJGG_PE(model,mst,fast_flag,Param,fitnessfun_PE)
+function [ x, optimizedmodel ] = REXstarJGG_sbml(model,mst,fast_flag,Param,fitnessfun)
 
 if isSBmodel(model)
     if fast_flag == 1
         temp = SBstruct(model);
         mex_name = strcat(temp.name,'_mex');
         clear(mex_name);
-%         SBPDmakeMEXmodel(model,mex_name);
         IQMmakeMEXmodel(model,mex_name);
     else
         mex_name = [];
@@ -19,17 +18,14 @@ else
         % If model is the name of a SBML file
         if exist(model,'file') == 2
             fprintf('Reading %s ...',model);
-%             model = SBmodel(model);
             model = IQMmodel(model);
             fprintf(' Finished.\n');
         end
         % If model is an SBmodel object and fast_flg is one
         if fast_flag == 1
-%             temp = SBstruct(model);
             temp = IQMstruct(model);
             mex_name = strcat(temp.name,'_mex');
             clear(mex_name);
-%             SBPDmakeMEXmodel(model,mex_name);
             IQMmakeMEXmodel(model,mex_name);
         else
             mex_name = [];
@@ -37,10 +33,8 @@ else
     end
 end
 
-% if ~isSBmeasurement(mst)
 if ~isIQMmeasurement(mst)
     fprintf('Reading %s ...',mst);
-%     mst = SBmeasurement(mst);
     mst = IQMmeasurement(mst);
     fprintf(' Finished.\n');
 end
@@ -50,7 +44,7 @@ if isfield(Param,'opts')
 else
     opts = struct;
 end
-Param.fitnessfun = @(x) fitnessfun_PE(x,model,mst,mex_name,opts);
+Param.fitnessfun = @(x) fitnessfun(x,model,mst,mex_name,opts);
 interimreportfun = Param.interimreportfun;
 Param.interimreportfun = @(elapsedTime,generation,Param,Population,best) interimreportfun(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flag);
 
@@ -60,15 +54,12 @@ best = RCGA_Main(Param,@JGG);
 
 x = Param.decodingfun(best.gene);
 
-% if isSBmodel(model)
 if isIQMmodel(model)
     st_model = struct(model);
     for i = 1 : length(st_model.parameters)
         st_model.parameters(i).value = x(i);
     end
-%     optimizedmodel = SBmodel(st_model);
     optimizedmodel = IQMmodel(st_model);
 else
     optimizedmodel = [];
 end
-

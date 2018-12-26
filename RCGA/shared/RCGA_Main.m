@@ -7,12 +7,8 @@ finalreportfun = Param.finalreportfun;
 n_generation = Param.n_generation;
 n_constraint = Param.n_constraint;
 output_intvl = Param.output_intvl;
-fitnessfun = Param.fitnessfun;
 vtr = Param.vtr;
 t_limit = Param.t_limit;
-out_transition = Param.out_transition;
-out_population = Param.out_population;
-out_solution = Param.out_solution;
 
 flg_printed = 0;
 
@@ -60,7 +56,4 @@ if 0 < output_intvl && flg_printed == 0
     interimreportfun(elapsedTime,i,Param,Population,best);
 end
 
-% for j = 1 : Param.n_population
-%     fprintf('%e\t%e\t%e\t%e\t%e\t%e\t%e\n',i,Population(j).gene(1),Population(j).gene(2),Population(j).g(1),Population(j).g(2),Population(j).f,Population(j).phi);
-% end
 finalreportfun(elapsedTime,Param,Population,best);
