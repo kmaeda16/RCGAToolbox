@@ -13,7 +13,19 @@ end
 if fast_flag == 0
     
     odefun_temp = @(t,x) odefun(t,x,p);
-    [ T, X ] = ode15s(odefun_temp,tspan,x0,opts);
+    if isfield(opts,'method')
+        method = opts.method;
+    else
+        method = 'ode23s';
+    end
+    
+    try
+        [ T, X ] = feval(method,odefun_temp,tspan,x0,opts);
+    catch
+        warning('Error in %s.',method);
+        T = NaN;
+        X = NaN(1,length(x0));
+    end
     
 else
     
@@ -21,11 +33,29 @@ else
     if isempty(fieldnames(opts))
         CVodeInit(odefun_temp, 'BDF', 'Newton', tspan(1), x0);
     else
-        CVodeInit(odefun_temp, 'BDF', 'Newton', tspan(1), x0, opts);
+        if isfield(opts,'LMM')
+            LMM = opts.LMM;
+        else
+            LMM = 'BDF';
+        end
+        if isfield(opts,'NonlinearSolver')
+            NonlinearSolver = opts.NonlinearSolver;
+        else
+            NonlinearSolver = 'Newton';
+        end
+        opts = CVodeSetOptions(opts,'LMM',LMM,'NonlinearSolver',NonlinearSolver);
+        CVodeInit(odefun_temp, LMM, NonlinearSolver, tspan(1), x0, opts);
     end
-    [ status, T, X ] = CVode(tspan(2:end),'Normal');
+    
+    try
+        [ ~, T, X ] = CVode(tspan(2:end),'Normal');
+        T = [t0 T]';
+        X = [x0 X]';
+    catch
+        warning('Error in CVode.');
+        T = NaN;
+        X = NaN(1,length(x0));
+    end
     CVodeFree;
-    T = [t0 T]';
-    X = [x0 X]';
     
 end

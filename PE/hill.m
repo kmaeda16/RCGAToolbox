@@ -39,3 +39,5 @@ dSdt(3) = (+J2-J3)/compart; % {isSpecie:compart:concentration}
 
 % flag = 0;
 % new_data = [];
+
+% fprintf('%e\n',t);

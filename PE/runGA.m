@@ -48,7 +48,7 @@ fitnessfun_PE = @mySSR;
 Param.decodingfun = @mydecodingfun;
 Param.interimreportfun = @interimreportfun_PE;
 Param.par = 0;
-optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,Param,fitnessfun_PE);
+% optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,Param,fitnessfun_PE);
 
 odefun = @hill;
 IC = @initconc;

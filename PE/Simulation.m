@@ -10,29 +10,41 @@ if exist(mex_name,'file') == 3
     end
     
     try
-%         output = feval(mex_name,tspan,[],x');
-        output = SBPDsimulate(mex_name,tspan,[],param_name,x',opts);
+        output = feval(mex_name,tspan,[],x',opts);
+        T = output.time;
+        X = output.statevalues;
     catch
+        warning('Error in MEXed ODEs.');
         T = NaN;
-        X = NaN;
-        return;
+        X = NaN(1,length(x0));
     end
     
-elseif isSBmodel(model)
+elseif isIQMmodel(model)
     
     st_model = struct(model);
     [ ~, n_param ] = size(st_model.parameters);
     for i = 1 : n_param
         st_model.parameters(i).value = x(i);
     end
-    new_model = SBmodel(st_model);
-    output = SBsimulate(new_model,'ode15s',tspan,[],opts);
+    new_model = IQMmodel(st_model);
+    if isfield(opts,'method')
+        method = opts.method;
+    else
+        method = 'ode23s';
+    end
+    
+    try
+        output = IQMsimulate(new_model,method,tspan,[],opts);
+        T = output.time;
+        X = output.statevalues;
+    catch
+        warning('Error in IQMsimulate.');
+        T = NaN;
+        X = NaN(1,length(x0));
+    end
     
 else
     
-    error('No MEX file or SBmodel provided!');
+    error('No MEX file or IQMmodel provided!');
     
 end
-
-T = output.time;
-X = output.statevalues;

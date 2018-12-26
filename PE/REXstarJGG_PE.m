@@ -5,7 +5,8 @@ if isSBmodel(model)
         temp = SBstruct(model);
         mex_name = strcat(temp.name,'_mex');
         clear(mex_name);
-        SBPDmakeMEXmodel(model,mex_name);
+%         SBPDmakeMEXmodel(model,mex_name);
+        IQMmakeMEXmodel(model,mex_name);
     else
         mex_name = [];
     end
@@ -18,24 +19,29 @@ else
         % If model is the name of a SBML file
         if exist(model,'file') == 2
             fprintf('Reading %s ...',model);
-            model = SBmodel(model);
+%             model = SBmodel(model);
+            model = IQMmodel(model);
             fprintf(' Finished.\n');
         end
         % If model is an SBmodel object and fast_flg is one
         if fast_flag == 1
-            temp = SBstruct(model);
+%             temp = SBstruct(model);
+            temp = IQMstruct(model);
             mex_name = strcat(temp.name,'_mex');
             clear(mex_name);
-            SBPDmakeMEXmodel(model,mex_name);
+%             SBPDmakeMEXmodel(model,mex_name);
+            IQMmakeMEXmodel(model,mex_name);
         else
             mex_name = [];
         end
     end
 end
 
-if ~isSBmeasurement(mst)
+% if ~isSBmeasurement(mst)
+if ~isIQMmeasurement(mst)
     fprintf('Reading %s ...',mst);
-    mst = SBmeasurement(mst);
+%     mst = SBmeasurement(mst);
+    mst = IQMmeasurement(mst);
     fprintf(' Finished.\n');
 end
 
@@ -54,12 +60,14 @@ best = RCGA_Main(Param,@JGG);
 
 x = Param.decodingfun(best.gene);
 
-if isSBmodel(model)
+% if isSBmodel(model)
+if isIQMmodel(model)
     st_model = struct(model);
     for i = 1 : length(st_model.parameters)
         st_model.parameters(i).value = x(i);
     end
-    optimizedmodel = SBmodel(st_model);
+%     optimizedmodel = SBmodel(st_model);
+    optimizedmodel = IQMmodel(st_model);
 else
     optimizedmodel = [];
 end
