@@ -53,12 +53,35 @@ if ~isIQMmodel(model)
 end
 % fast_flag = 0;
 
+if ~exist('n_gene','var') || isempty(n_gene)
+    st_model = IQMstruct(model);
+    n_gene = length(st_model.parameters);
+end
+if isempty(n_constraint)
+    n_constraint = 0;
+end
+if isempty(fitnessfun)
+    fitnessfun = @SSR_sbml;
+end
+if isempty(fast_flag)
+    fast_flag = 1;
+end
+if isempty(simopts)
+    simopts = struct;
+end
+if isempty(opts)
+    opts = struct;
+end
+
+
 % If model is an SBmodel object and fast_flg is one
 if fast_flag == 1
     st_model = IQMstruct(model);
     mex_name = strcat(st_model.name,'_mex');
     clear(mex_name);
+    fprintf('Making %s ...\n',mex_name);
     IQMmakeMEXmodel(model,mex_name);
+%     fprintf(' Finished.\n');
 else
     mex_name = [];
 end
@@ -74,25 +97,7 @@ if ~isIQMmeasurement(mst)
 end
 
 
-if ~exist('n_gene','var') || isempty(n_gene)
-    st_model = IQMstruct(model);
-    n_gene = length(st_model.parameters);
-end
-if isempty(n_constraint)
-    n_constraint = 0;
-end
-if isempty(fitnessfun)
-    fitnessfun = @SSR_odefun;
-end
-if isempty(fast_flag)
-    fast_flag = 0;
-end
-if isempty(simopts)
-    simopts = struct;
-end
-if isempty(opts)
-    opts = struct;
-end
+
 
 
 problem.n_gene = n_gene;

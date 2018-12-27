@@ -31,14 +31,29 @@ switch nargin
         simopts = varargin{2};
         opts = varargin{3};
     case 10 
-        n_gene = varargin{1};
-        n_constraint = varargin{2};
-        fitnessfun = varargin{3};
-        fast_flag = varargin{4};
-        simopts = varargin{5};
-        opts = varargin{6};
+        n_constraint = varargin{1};
+        fitnessfun = varargin{2};
+        fast_flag = varargin{3};
+        simopts = varargin{4};
+        opts = varargin{5};
     otherwise
         error('Incorrect number of input arguments');
+end
+
+if isempty(n_constraint)
+    n_constraint = 0;
+end
+if isempty(fitnessfun)
+    fitnessfun = @SSR_odefun;
+end
+if isempty(fast_flag)
+    fast_flag = 1;
+end
+if isempty(simopts)
+    simopts = struct;
+end
+if isempty(opts)
+    opts = struct;
 end
 
 % fast_flag = 0;
@@ -54,23 +69,6 @@ if ~isIQMmeasurement(mst)
     fprintf('Reading %s ...',mst);
     mst = IQMmeasurement(mst);
     fprintf(' Finished.\n');
-end
-
-
-if isempty(n_constraint)
-    n_constraint = 0;
-end
-if isempty(fitnessfun)
-    fitnessfun = @SSR_odefun;
-end
-if isempty(fast_flag)
-    fast_flag = 0;
-end
-if isempty(simopts)
-    simopts = struct;
-end
-if isempty(opts)
-    opts = struct;
 end
 
 

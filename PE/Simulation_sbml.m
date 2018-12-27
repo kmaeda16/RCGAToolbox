@@ -9,11 +9,12 @@ if exist(mex_name,'file') == 3
             param_name{i} = st_model.parameters(i).name;
         end
         output = IQMPsimulate(mex_name,tspan,[],param_name,x,opts);
-%         output = feval(mex_name,tspan,[],x',opts); % This gives the same result
+%         output = feval(mex_name,tspan,[],x',opts); % Alternative way of simulation
         T = output.time;
         X = output.statevalues;
-    catch
-        warning('Error in IQMPsimulate.');
+    catch ME
+        warning(ME.identifier);
+        warning('Error in IQMPsimulate');
         T = NaN;
         X = NaN(1,length(st_model.states));
     end
