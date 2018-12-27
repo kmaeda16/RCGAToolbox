@@ -1,10 +1,10 @@
-function writePopulation(Param, Population)
+function writePopulation(problem, opts, Population)
 
-out_population = Param.out_population;
-decodingfun = Param.decodingfun;
-n_population = Param.n_population;
-n_gene = Param.n_gene;
-n_constraint = Param.n_constraint;
+decodingfun = problem.decodingfun;
+n_gene = problem.n_gene;
+n_constraint = problem.n_constraint;
+n_population = opts.n_population;
+out_population = opts.out_population;
 
 if  strcmpi('none',out_population)
     return;

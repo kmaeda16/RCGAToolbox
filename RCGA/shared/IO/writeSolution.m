@@ -1,9 +1,9 @@
-function writeSolution(elapsedTime, Param, chrom)
+function writeSolution(elapsedTime, problem, opts, chrom)
 
-n_gene = Param.n_gene;
-n_constraint = Param.n_constraint;
-out_solution = Param.out_solution;
-decodingfun = Param.decodingfun;
+n_gene = problem.n_gene;
+n_constraint = problem.n_constraint;
+decodingfun = problem.decodingfun;
+out_solution = opts.out_solution;
 
 if  strcmpi('none',out_solution)
     return;

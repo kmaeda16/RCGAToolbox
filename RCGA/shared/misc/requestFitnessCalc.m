@@ -1,7 +1,7 @@
-function Group = requestFitnessCalc(Param,Group)
+function Group = requestFitnessCalc(problem,opts,Group)
 
-par = Param.par;
-n_constraint = Param.n_constraint;
+n_constraint = problem.n_constraint;
+par = opts.par;
 n_group = length(Group);
 
 f_temp = zeros(n_group,1);
@@ -10,13 +10,11 @@ phi_temp = zeros(n_group,1);
 
 if 0 < par
     parfor i = 1 : n_group
-        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(Param,Group(i));
-%         [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness2(Param,Group(i));
+        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(problem,Group(i));
     end
 else
     for i = 1 : n_group
-        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(Param,Group(i));
-%         [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness2(Param,Group(i));
+        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(problem,Group(i));
     end
 end
 

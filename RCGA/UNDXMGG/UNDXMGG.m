@@ -1,5 +1,14 @@
-function [ best, Population ] = UNDXMGG(Param)
+function [ best, Population ] = UNDXMGG(problem,varargin)
 
-Param = checkInputs(Param,'UNDXMGG');
+switch nargin
+    case 1
+        opts = struct;
+    case 2
+        opts = varargin{1};
+    otherwise
+        error('Incorrect number of input arguments');
+end
 
-[ best, Population ] = RCGA_Main(Param,@MGG);
+[problem, opts] = checkInputs(problem,opts,mfilename);
+
+[ best, Population ] = RCGA_Main(problem,opts,@MGG);

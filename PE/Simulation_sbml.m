@@ -1,19 +1,19 @@
 function  [ T, X ] = Simulation_sbml(x, model, tspan, mex_name, opts)
 
 if exist(mex_name,'file') == 3
-    
-    st_model = struct(model);
-    [ ~, n_param ] = size(st_model.parameters);
-    for i = 1 : n_param
-        param_name{i} = st_model.parameters(i).name;
-    end
-    
+
     try
-        output = feval(mex_name,tspan,[],x',opts);
+        st_model = struct(model);
+        [ ~, n_param ] = size(st_model.parameters);
+        for i = 1 : n_param
+            param_name{i} = st_model.parameters(i).name;
+        end
+        output = IQMPsimulate(mex_name,tspan,[],param_name,x,opts);
+%         output = feval(mex_name,tspan,[],x',opts); % This gives the same result
         T = output.time;
         X = output.statevalues;
     catch
-        warning('Error in MEXed ODEs.');
+        warning('Error in IQMPsimulate.');
         T = NaN;
         X = NaN(1,length(st_model.states));
     end

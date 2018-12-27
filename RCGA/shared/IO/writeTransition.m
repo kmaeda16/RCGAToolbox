@@ -1,9 +1,9 @@
-function writeTransition(elapsedTime, generation, Param, chrom)
+function writeTransition(elapsedTime, generation, problem, opts, chrom)
 
-n_gene = Param.n_gene;
-n_constraint = Param.n_constraint;
-out_transition = Param.out_transition;
-decodingfun = Param.decodingfun;
+n_gene = problem.n_gene;
+n_constraint = problem.n_constraint;
+decodingfun = problem.decodingfun;
+out_transition = opts.out_transition;
 
 if  strcmpi('none',out_transition)
     return;

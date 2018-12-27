@@ -1,11 +1,9 @@
-function interimreportfun_sbml(elapsedTime,generation,Param,Population,best,model,mst,mex_name,fast_flg)
-
-opts = Param.opts;
+function interimreportfun_sbml(elapsedTime,generation,problem,opts,Population,best,model,mst,mex_name,simopts,fast_flag)
 
 printTransition(elapsedTime,generation,best);
-writeTransition(elapsedTime,generation,Param,best);
+writeTransition(elapsedTime,generation,problem,opts,best);
 
-x = Param.decodingfun(best.gene);
+x = problem.decodingfun(best.gene);
 
 if length(mst) > 2
     warning('Measurement has multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
@@ -21,7 +19,7 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation_sbml(x, model, tspan, mex_name, opts);
+[ T, X ] = Simulation_sbml(x, model, tspan, mex_name, simopts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;
