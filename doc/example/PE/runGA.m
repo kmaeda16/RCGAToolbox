@@ -30,25 +30,19 @@ opts.Pf = 0.45;
 
 rng(3);
 
+fast_flag = 1;
+
 model = 'SBMLexampleLevel2.xml';
 % model = SBmodel('SBMLexampleLevel2.xml');
-% model = 'hill_mex';
-% measurment = SBmeasurement('MeasurementExample.xls');
 measurment = 'MeasurementExample.xls';
-fast_flag = 0;
-fitnessfun = @SSR_sbml;
+% measurment = SBmeasurement('MeasurementExample.xls');
 decodingfun = @mydecodingfun;
-opts.interimreportfun = @interimreportfun_sbml;
-opts.par = 0;
-simopts = struct;
 % optimizedmodel = REXstarJGG_sbml(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);
 % optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment);
-% optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],[]);
+optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],[]);
 
 odefun = @hill;
 icfun = @initcond;
-fitnessfun = @SSR_odefun;
-opts.interimreportfun = @interimreportfun_odefun;
 % optimizedmodel = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9);
 % optimizedmodel = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,opts);
-optimizedmodel = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,[],[],fast_flag,[],[]);
+% optimizedmodel = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,[],[],fast_flag,[],[]);

@@ -1,6 +1,6 @@
 function interimreportfun_odefun(elapsedTime,generation,problem,opts,Population,best,odefun,icfun,mst,simopts,fast_flag)
 
-
+n_point = 100;
 printTransition(elapsedTime,generation,best);
 writeTransition(elapsedTime,generation,problem,opts,best);
 
@@ -13,9 +13,9 @@ mst = struct(mst{1});
 
 t0 = icfun(x);
 if t0 < mst.time(1)
-    tspan = linspace(t0 ,mst.time(end),50);
+    tspan = linspace(t0 ,mst.time(end),n_point);
 elseif t0 == mst.time(1)
-    tspan = linspace(mst.time(1),mst.time(end),50);
+    tspan = linspace(mst.time(1),mst.time(end),n_point);
 else
     error('t0 <= mst.time(1) must be satisfied!');
 end

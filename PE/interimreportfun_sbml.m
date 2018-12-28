@@ -1,5 +1,6 @@
 function interimreportfun_sbml(elapsedTime,generation,problem,opts,Population,best,model,mst,mex_name,simopts,fast_flag)
 
+n_point = 100;
 printTransition(elapsedTime,generation,best);
 writeTransition(elapsedTime,generation,problem,opts,best);
 
@@ -12,9 +13,9 @@ mst = struct(mst{1});
 
 t0 = 0;
 if t0 < mst.time(1)
-    tspan = linspace(t0 ,mst.time(end),50)';
+    tspan = linspace(t0 ,mst.time(end),n_point)';
 elseif t0 == mst.time(1)
-    tspan = linspace(mst.time(1),mst.time(end),50)';
+    tspan = linspace(mst.time(1),mst.time(end),n_point)';
 else
     error('t0 <= mst.time(1) must be satisfied!');
 end
