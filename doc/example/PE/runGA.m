@@ -40,10 +40,10 @@ decodingfun = @mydecodingfun;
 % optimizedmodel = REXstarJGG_sbml(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);
 % optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment);
 % optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],[]);
-[Results,optimizedmodel] = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],opts);
+% [Results,optimizedmodel] = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],opts);
 
 odefun = @hill;
 icfun = @initcond;
 % Results = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9);
 % Results = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,opts);
-% Results = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,[],[],fast_flag,[],opts);
+Results = REXstarJGG_odefun(odefun,icfun,decodingfun,measurment,9,[],[],fast_flag,[],opts);

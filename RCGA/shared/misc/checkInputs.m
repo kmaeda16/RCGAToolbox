@@ -58,64 +58,64 @@ if ~isempty(strfind(RCGA_Type,'UNDXMGG'))
 end
 
 if ~tf(1) % n_population
-    disp('n_population not provided. Default value used (i.e. n_population = 20 * n_gene).');
+%     disp('n_population not provided. Default value used (i.e. n_population = 20 * n_gene).');
     opts.n_population = 20 * problem.n_gene;
 end
 if ~tf(2) % n_children
-    disp('n_children not provided. Default value used (i.e. n_children = 5 * n_gene).');
+%     disp('n_children not provided. Default value used (i.e. n_children = 5 * n_gene).');
     opts.n_children = 5 * problem.n_gene;
 end
 if ~tf(3) % n_parent
-    disp('n_parent not provided. Default value used (i.e. n_parent = n_gene + 1).');
+%     disp('n_parent not provided. Default value used (i.e. n_parent = n_gene + 1).');
     opts.n_parent = problem.n_gene + 1;
 end
 if ~tf(4) % t_rextar
-    disp('t_rextar not provided. Default value used (i.e. t_rextar = 6.0).');
+%     disp('t_rextar not provided. Default value used (i.e. t_rextar = 6.0).');
     opts.t_rextar = 6.0;
 end
 if ~tf(5) % selection_type
-    disp('selection_type not provided. Default value used (i.e. selection_type = 0).');
+%     disp('selection_type not provided. Default value used (i.e. selection_type = 0).');
     opts.selection_type = 0;
 end
 if ~tf(6) % Pf
     if problem.n_constraint > 0
-        disp('Pf not provided. Default value used (i.e. Pf = 0.45).');
+%         disp('Pf not provided. Default value used (i.e. Pf = 0.45).');
         opts.Pf = 0.45;
     else
-        disp('Pf not provided. Default value used (i.e. Pf = 0).');
+%         disp('Pf not provided. Default value used (i.e. Pf = 0).');
         opts.Pf = 0;
     end
 end
 if ~tf(7) % n_generation
-    disp('n_generation not provided. Default value used (i.e. n_generation = 1000).');
+%     disp('n_generation not provided. Default value used (i.e. n_generation = 1000).');
     opts.n_generation = 1000;
 end
 if ~tf(8) % t_limit
-    disp('t_limit not provided. Default value used (i.e. t_limit = 1000).');
+%     disp('t_limit not provided. Default value used (i.e. t_limit = 1000).');
     opts.t_limit = 1000;
 end
 if ~tf(9) % vtr
-    disp('vtr not provided. Default value used (i.e. vtr = 0).');
+%     disp('vtr not provided. Default value used (i.e. vtr = 0).');
     opts.vtr = 0;
 end
 if ~tf(10) % output_intvl
-    disp('output_intvl not provided. Default value used (i.e. output_intvl = 1).');
+%     disp('output_intvl not provided. Default value used (i.e. output_intvl = 1).');
     opts.output_intvl = 1;
 end
 if ~tf(11) % out_transition
-    disp('out_transition not provided. Default value used (i.e. out_transition = None).');
+%     disp('out_transition not provided. Default value used (i.e. out_transition = None).');
     opts.out_transition = 'None';
 end
 if ~tf(12) % out_best
-    disp('out_best not provided. Default value used (i.e. out_best = None).');
+%     disp('out_best not provided. Default value used (i.e. out_best = None).');
     opts.out_best = 'None';
 end
 if ~tf(13) % out_population
-    disp('out_population not provided. Default value used (i.e. out_population = None).');
+%     disp('out_population not provided. Default value used (i.e. out_population = None).');
     opts.out_population = 'None';
 end
 if ~tf(14) % out_report
-    disp('out_report not provided. Default value used (i.e. out_report = None).');
+%     disp('out_report not provided. Default value used (i.e. out_report = None).');
     opts.out_report = 'None';
 end
 if ~tf(15) % interimreportfun
@@ -129,6 +129,6 @@ if ~tf(16) % finalreportfun
     opts.finalreportfun = @defaultfinalreportfun;
 end
 if ~tf(17) % par
-    disp('par not provided. Default value used (i.e. par = 0).');
+%     disp('par not provided. Default value used (i.e. par = 0).');
     opts.par = 0;
 end

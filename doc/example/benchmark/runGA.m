@@ -30,5 +30,5 @@ opts.output_intvl = 100;
 % Param.Pf = 0;
 
 rng(3);
-% Results = UNDXMGG(problem,opts);
-Results = REXstarJGG(problem,opts);
+Results = UNDXMGG(problem,opts);
+% Results = REXstarJGG(problem,opts);

@@ -11,4 +11,6 @@ end
 
 [problem, opts] = checkInputs(problem,opts,mfilename);
 
+printWelcomeMessage(problem,opts,mfilename);
+
 Results = RCGA_Main(problem,opts,@JGG);
