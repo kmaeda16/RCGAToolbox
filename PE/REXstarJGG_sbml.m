@@ -1,4 +1,4 @@
-function [ x, optimizedmodel ] = REXstarJGG_sbml(model,decodingfun,mst,varargin)
+function [ Results, optimizedmodel ] = REXstarJGG_sbml(model,decodingfun,mst,varargin)
 % REXstarJGG_sbml(model,decodingfun,mst);
 % REXstarJGG_sbml(model,decodingfun,mst,opts); 4
 % REXstarJGG_sbml(model,decodingfun,mst,simopts,opts); 5 
@@ -114,14 +114,12 @@ opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) .
     elapsedTime,generation,problem,opts,Population,best,...
     model,mst,mex_name,simopts,fast_flag);
 
-best = REXstarJGG(problem,opts);
-
-x = decodingfun(best.gene);
+Results = REXstarJGG(problem,opts);
 
 if isIQMmodel(model)
     st_model = struct(model);
     for i = 1 : length(st_model.parameters)
-        st_model.parameters(i).value = x(i);
+        st_model.parameters(i).value = Results.Best.x(i);
     end
     optimizedmodel = IQMmodel(st_model);
 else

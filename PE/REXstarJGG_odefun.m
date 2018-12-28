@@ -1,4 +1,4 @@
-function x = REXstarJGG_odefun(odefun,icfun,decodingfun,mst,n_gene,varargin)
+function Results = REXstarJGG_odefun(odefun,icfun,decodingfun,mst,n_gene,varargin)
 % REXstarJGG_odefun(odefun,icfun,decodingfun,mst,n_gene); 5
 % REXstarJGG_odefun(odefun,icfun,decodingfun,mst,n_gene,opts); 6
 % REXstarJGG_odefun(odefun,icfun,decodingfun,mst,n_gene,simopts,opts); 7
@@ -86,6 +86,4 @@ opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) .
     elapsedTime,generation,problem,opts,Population,best,...
     odefun,icfun,mst,simopts,fast_flag);
 
-best = REXstarJGG(problem,opts);
-
-x = decodingfun(best.gene);
+Results = REXstarJGG(problem,opts);

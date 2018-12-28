@@ -6,10 +6,11 @@ addpath(genpath('../../../RCGA'));
 
 problem = struct;
 opts = struct;
-[ problem, opts ] = getParam(problem,opts,'Sphere');
+[ problem, opts ] = getParam(problem,opts,'g01');
+% opts.t_limit = 1;
 
 % opts.par = 0;
-% opts.output_intvl = 1;
+opts.output_intvl = 100;
 % opts.vtr = 1e-6;
 % opts.t_limit = 1e+4;
 % opts.t_rextar = 6.0;
@@ -18,7 +19,7 @@ opts = struct;
 % opts.out_population = 'Population.dat';
 % opts.out_solution = 'Solution.dat';
 
-% Param.n_generation = 1000;
+% opts.n_generation = 2;
 % opts.n_population = 500;
 % opts.n_children = 200;
 % opts.output_intvl = 20;
@@ -29,7 +30,5 @@ opts = struct;
 % Param.Pf = 0;
 
 rng(3);
-% [ best, Population ] = UNDXMGG(problem,opts);
-[ best, Population ] = UNDXMGG(problem,opts);
-% [ best, Population ] = REXstarJGG(problem,opts);
-% [ best, Population ] = REXstarJGG(problem,1,2);
+% Results = UNDXMGG(problem,opts);
+Results = REXstarJGG(problem,opts);

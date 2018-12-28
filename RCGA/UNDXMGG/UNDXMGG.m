@@ -1,4 +1,4 @@
-function [ best, Population ] = UNDXMGG(problem,varargin)
+function Results = UNDXMGG(problem,varargin)
 
 switch nargin
     case 1
@@ -11,4 +11,4 @@ end
 
 [problem, opts] = checkInputs(problem,opts,mfilename);
 
-[ best, Population ] = RCGA_Main(problem,opts,@MGG);
+Results = RCGA_Main(problem,opts,@MGG);

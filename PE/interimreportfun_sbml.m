@@ -1,7 +1,7 @@
 function interimreportfun_sbml(elapsedTime,generation,problem,opts,Population,best,model,mst,mex_name,simopts,fast_flag)
 
 n_point = 100;
-printTransition(elapsedTime,generation,best);
+printTransition(elapsedTime,generation,problem,best);
 writeTransition(elapsedTime,generation,problem,opts,best);
 
 x = problem.decodingfun(best.gene);

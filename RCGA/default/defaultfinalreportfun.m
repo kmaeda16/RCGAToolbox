@@ -1,4 +1,4 @@
-function defaultfinalreportfun(elapsedTime,problem,opts,Population,best)
+function defaultfinalreportfun(elapsedTime,generation,problem,opts,Population,best)
 
-writePopulation(problem,opts,Population);
-writeSolution(elapsedTime,problem,opts,best);
+writeFinalPopulation(problem,opts,Population);
+writeBest(elapsedTime,generation,problem,opts,best);

@@ -1,7 +1,7 @@
 function interimreportfun_odefun(elapsedTime,generation,problem,opts,Population,best,odefun,icfun,mst,simopts,fast_flag)
 
 n_point = 100;
-printTransition(elapsedTime,generation,best);
+printTransition(elapsedTime,generation,problem,best);
 writeTransition(elapsedTime,generation,problem,opts,best);
 
 x = problem.decodingfun(best.gene);

@@ -1,4 +1,4 @@
-function writePopulation(problem, opts, Population)
+function writeFinalPopulation(problem, opts, Population)
 
 decodingfun = problem.decodingfun;
 n_gene = problem.n_gene;
@@ -6,7 +6,7 @@ n_constraint = problem.n_constraint;
 n_population = opts.n_population;
 out_population = opts.out_population;
 
-if  strcmpi('none',out_population)
+if strcmpi('none',out_population)
     return;
 end
 
@@ -16,18 +16,24 @@ if out == -1
     return;
 end
 
-fprintf(out,'No\tf\tphi\t');
+fprintf(out,'f\t');
+if n_constraint > 0
+    fprintf(out,'phi\t');
+end
 for j = 1 : n_gene
-    fprintf(out,'x[%d]\t',j);
+    fprintf(out,'x(%d)\t',j);
 end
 for j = 1 : n_constraint
-    fprintf(out,'g[%d]\t',j);
+    fprintf(out,'g(%d)\t',j);
 end
 fprintf(out,'\n');
 
 for i = 1 : n_population
     x = decodingfun(Population(i).gene);
-    fprintf(out,'%d\t%e\t%e\t',i,Population(i).f,Population(i).phi);
+    fprintf(out,'%e\t',Population(i).f);
+    if n_constraint > 0
+        fprintf(out,'%e\t',Population(i).phi);
+    end
     for j = 1 : n_gene
         fprintf(out,'%e\t',x(j));
     end

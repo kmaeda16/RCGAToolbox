@@ -1,4 +1,4 @@
-function defaultinterimreportfun(elapsedTime,i,problem,opts,Population,best)
+function defaultinterimreportfun(elapsedTime,generation,problem,opts,Population,best)
 
-printTransition(elapsedTime,i,best);
-writeTransition(elapsedTime,i,problem,opts,best);
+printTransition(elapsedTime,generation,problem,best);
+writeTransition(elapsedTime,generation,problem,opts,best);

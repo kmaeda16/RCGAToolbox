@@ -43,11 +43,12 @@ C2 = {
     'vtr',...            %  9
     'output_intvl',...   % 10
     'out_transition',... % 11
-    'out_solution',...   % 12
+    'out_best',...       % 12
     'out_population',... % 13
-    'interimreportfun',... % 14
-    'finalreportfun',... % 15
-    'par', ...           % 16
+    'out_report',...     % 14
+    'interimreportfun',... % 15
+    'finalreportfun',... % 16
+    'par', ...           % 17
     };
 
 tf = isfield(opts,C2);
@@ -105,25 +106,29 @@ if ~tf(11) % out_transition
     disp('out_transition not provided. Default value used (i.e. out_transition = None).');
     opts.out_transition = 'None';
 end
-if ~tf(12) % out_solution
-    disp('out_solution not provided. Default value used (i.e. out_solution = None).');
-    opts.out_solution = 'None';
+if ~tf(12) % out_best
+    disp('out_best not provided. Default value used (i.e. out_best = None).');
+    opts.out_best = 'None';
 end
 if ~tf(13) % out_population
     disp('out_population not provided. Default value used (i.e. out_population = None).');
     opts.out_population = 'None';
 end
-if ~tf(14) % interimreportfun
+if ~tf(14) % out_report
+    disp('out_report not provided. Default value used (i.e. out_report = None).');
+    opts.out_report = 'None';
+end
+if ~tf(15) % interimreportfun
     %     disp('out_population not provided. Default value used (i.e. out_population = None).');
 %     Param.interimreportfun = @(elapsedTime,i,Param,best) x;
     opts.interimreportfun = @defaultinterimreportfun;
 end
-if ~tf(15) % finalreportfun
+if ~tf(16) % finalreportfun
     %     disp('out_population not provided. Default value used (i.e. out_population = None).');
 %     Param.finalreportfun = @(elapsedTime,i,Param,best) x;
     opts.finalreportfun = @defaultfinalreportfun;
 end
-if ~tf(16) % par
+if ~tf(17) % par
     disp('par not provided. Default value used (i.e. par = 0).');
     opts.par = 0;
 end
