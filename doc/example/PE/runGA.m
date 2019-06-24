@@ -33,7 +33,7 @@ rng(3);
 fast_flag = 0;
 % fast_flag = 1;
 
-measurment = 'MeasurementExample.xls';
+measurement = 'MeasurementExample.xls';
 % measurment = SBmeasurement('MeasurementExample.xls');
 decodingfun = @mydecodingfun;
 
@@ -44,7 +44,7 @@ model = 'SBMLexampleLevel2.xml';
 % optimizedmodel = REXstarJGG_sbml(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);
 % optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment);
 % optimizedmodel = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],[]);
-[Results,optimizedmodel] = REXstarJGG_sbml(model,decodingfun,measurment,[],[],[],fast_flag,[],opts);
+[Results,optimizedmodel] = REXstarJGG_sbml(model,decodingfun,measurement,[],[],[],fast_flag,[],opts);
 
 %% MATLAB ODEFUN ver
 odefun = @hill;
