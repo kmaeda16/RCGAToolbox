@@ -1,4 +1,4 @@
-function f = SSR_sbml(x, model, mst, mex_name, opts)
+function f = SSR_c(x, mst, mex_name, n_var, opts)
 
 if length(mst) > 2
     warning('Measurement has multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
@@ -14,7 +14,7 @@ else
     error('0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation_sbml(x, model, tspan, mex_name, opts);
+[ T, X ] = Simulation_c(x, tspan, mex_name, n_var, opts);
 
 if max(max(isnan(X)))
     f = 1e+10;
