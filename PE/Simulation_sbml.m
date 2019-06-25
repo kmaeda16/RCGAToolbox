@@ -1,50 +1,49 @@
-function  [ T, X ] = Simulation_sbml(x, model, tspan, mex_name, opts)
+function  [ T, X ] = Simulation_sbml(x, mex_name, tspan, opts)
+
+t0 = 0;
+x0 = feval(mex_name);
+p = x;
+
+if t0 < tspan(1)
+    tspan = [ t0  tspan ];
+elseif t0 == tspan(1)
+else
+    error('t0 <= mst.time(1) must be satisfied!');
+end
 
 if exist(mex_name,'file') == 3
 
     try
-        st_model = struct(model);
-        [ ~, n_param ] = size(st_model.parameters);
-        for i = 1 : n_param
-            param_name{i} = st_model.parameters(i).name;
-        end
-        output = IQMPsimulate(mex_name,tspan,[],param_name,x,opts);
-%         output = feval(mex_name,tspan,[],x',opts); % Alternative way of simulation
+        output = feval(mex_name,tspan,[],p',opts);
         T = output.time;
         X = output.statevalues;
     catch ME
         warning(ME.identifier);
         warning('Error in IQMPsimulate');
         T = NaN;
-        X = NaN(1,length(st_model.states));
+        X = NaN(1,length(x0));
     end
     
-elseif isIQMmodel(model)
+elseif exist(mex_name,'file') == 2
     
-    st_model = struct(model);
-    [ ~, n_param ] = size(st_model.parameters);
-    for i = 1 : n_param
-        st_model.parameters(i).value = x(i);
-    end
-    new_model = IQMmodel(st_model);
+    odefun = @(t,y) odefun_temp(t,y,p);
     if isfield(opts,'method')
         method = opts.method;
     else
+%         method = 'ode15s';
         method = 'ode23s';
     end
     
     try
-        output = IQMsimulate(new_model,method,tspan,[],opts);
-        T = output.time;
-        X = output.statevalues;
+        [T, X] = feval(method,odefun,tspan,x0,opts);
     catch
-        warning('Error in IQMsimulate.');
+        warning('Error in %s.',method);
         T = NaN;
-        X = NaN(1,length(st_model.states));
+        X = NaN(1,length(x0));
     end
     
 else
     
-    error('No MEX file or IQMmodel provided!');
+    error('No MEX file or odefun file provided!');
     
 end

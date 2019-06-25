@@ -83,7 +83,9 @@ if fast_flag == 1
     IQMmakeMEXmodel(model,mex_name);
 %     fprintf(' Finished.\n');
 else
-    mex_name = [];
+    st_model = IQMstruct(model);
+    mex_name = strcat(st_model.name,'_odefun');
+    IQMcreateODEfile(model,mex_name);
 end
 
 if isempty(which('IQMmodel'))
@@ -102,7 +104,7 @@ end
 
 problem.n_gene = n_gene;
 problem.n_constraint = n_constraint;
-problem.fitnessfun = @(x) fitnessfun(x,model,mst,mex_name,simopts);
+problem.fitnessfun = @(x) fitnessfun(x,mex_name,mst,simopts);
 problem.decodingfun = decodingfun;
 
 if ~isfield(opts,'interimreportfun')
@@ -112,7 +114,7 @@ interimreportfun = opts.interimreportfun;
 opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
     interimreportfun(...
     elapsedTime,generation,problem,opts,Population,best,...
-    model,mst,mex_name,simopts,fast_flag);
+    mex_name,mst,simopts,fast_flag);
 
 Results = REXstarJGG(problem,opts);
 

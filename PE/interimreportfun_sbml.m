@@ -1,4 +1,4 @@
-function interimreportfun_sbml(elapsedTime,generation,problem,opts,Population,best,model,mst,mex_name,simopts,fast_flag)
+function interimreportfun_sbml(elapsedTime,generation,problem,opts,Population,best,mex_name,mst,simopts,fast_flag)
 
 n_point = 100;
 printTransition(elapsedTime,generation,problem,best);
@@ -20,7 +20,7 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation_sbml(x, model, tspan, mex_name, simopts);
+[ T, X ] = Simulation_sbml(x, mex_name, tspan, simopts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;

@@ -16,6 +16,7 @@ if fast_flag == 0
     if isfield(opts,'method')
         method = opts.method;
     else
+%         method = 'ode15s';
         method = 'ode23s';
     end
     
