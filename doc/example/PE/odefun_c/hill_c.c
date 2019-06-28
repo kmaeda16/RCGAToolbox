@@ -2,7 +2,7 @@
 #include "stdarg.h"
 #include "math.h"
 #include "CVODEmex25.h"
-#include "hill_mex.h"
+#include "hill_c.h"
 #include "mexsplineaddon.h"
 #include "mexmathaddon.h"
 #include "kineticformulas.h"

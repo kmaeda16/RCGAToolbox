@@ -1,16 +1,16 @@
-function [output] = odefun_temp(varargin)
+function [output] = hill_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % hill
-% Generated: 25-Jun-2019 11:50:12
+% Generated: 28-Jun-2019 12:53:57
 % 
-% [output] = odefun_temp() => output = initial conditions in column vector
-% [output] = odefun_temp('states') => output = state names in cell-array
-% [output] = odefun_temp('algebraic') => output = algebraic variable names in cell-array
-% [output] = odefun_temp('parameters') => output = parameter names in cell-array
-% [output] = odefun_temp('parametervalues') => output = parameter values in column vector
-% [output] = odefun_temp('variablenames') => output = variable names in cell-array
-% [output] = odefun_temp('variableformulas') => output = variable formulas in cell-array
-% [output] = odefun_temp(time,statevector) => output = time derivatives in column vector
+% [output] = hill_odefun() => output = initial conditions in column vector
+% [output] = hill_odefun('states') => output = state names in cell-array
+% [output] = hill_odefun('algebraic') => output = algebraic variable names in cell-array
+% [output] = hill_odefun('parameters') => output = parameter names in cell-array
+% [output] = hill_odefun('parametervalues') => output = parameter values in column vector
+% [output] = hill_odefun('variablenames') => output = variable names in cell-array
+% [output] = hill_odefun('variableformulas') => output = variable formulas in cell-array
+% [output] = hill_odefun(time,statevector) => output = time derivatives in column vector
 % 
 % State names and ordering:
 % 

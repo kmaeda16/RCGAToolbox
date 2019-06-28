@@ -73,6 +73,11 @@ if isempty(opts)
     opts = struct;
 end
 
+if ~isIQMmeasurement(mst)
+    fprintf('Reading %s ...',mst);
+    mst = IQMmeasurement(mst);
+    fprintf(' Finished.\n');
+end
 
 % If model is an SBmodel object and fast_flg is one
 if fast_flag == 1
@@ -82,38 +87,35 @@ if fast_flag == 1
     fprintf('Making %s ...\n',mex_name);
     IQMmakeMEXmodel(model,mex_name);
 %     fprintf(' Finished.\n');
+    Simulation = @Simulation_mex;
+    
 else
     st_model = IQMstruct(model);
     mex_name = strcat(st_model.name,'_odefun');
+    fprintf('Making %s ...\n',mex_name);
     IQMcreateODEfile(model,mex_name);
+    mex_name = str2func(mex_name);
+    Simulation = @Simulation_odexx;
 end
 
 if isempty(which('IQMmodel'))
     error('IQMTools is not properly installed.');
 end
 
-if ~isIQMmeasurement(mst)
-    fprintf('Reading %s ...',mst);
-    mst = IQMmeasurement(mst);
-    fprintf(' Finished.\n');
-end
-
-
-
 
 
 problem.n_gene = n_gene;
 problem.n_constraint = n_constraint;
-problem.fitnessfun = @(x) fitnessfun(x,mex_name,mst,simopts);
+% problem.fitnessfun = @(x) fitnessfun(x,mex_name,mst,simopts);
 problem.decodingfun = decodingfun;
-
+problem.fitnessfun = @(x) fitnessfun(Simulation,x,mex_name,mst,simopts);
 if ~isfield(opts,'interimreportfun')
     opts.interimreportfun = @interimreportfun_sbml;
 end
 interimreportfun = opts.interimreportfun;
 opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
     interimreportfun(...
-    elapsedTime,generation,problem,opts,Population,best,...
+    Simulation, elapsedTime,generation,problem,opts,Population,best,...
     mex_name,mst,simopts,fast_flag);
 
 Results = REXstarJGG(problem,opts);
