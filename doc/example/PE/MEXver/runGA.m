@@ -49,11 +49,15 @@ decodingfun = @mydecodingfun;
 % Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);
 
 %% MATLAB ODEFUN ver
-odefun = @hill_odefun;
+% odefun = @hill_odefun;
 % Results = REXstarJGG_PE(odefun,icfun,decodingfun,measurment,9);
 % Results = REXstarJGG_PE(odefun,icfun,decodingfun,measurment,9,opts);
-Results = REXstarJGG_PE(odefun,decodingfun,measurement,[],[],fast_flag,[],opts);
+% Results = REXstarJGG_PE(odefun,decodingfun,measurement,[],[],fast_flag,[],opts);
 
 %% C ODEFUN ver
 % model = 'hill_c';
 % Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);
+
+%% MEX ver
+model = 'hill_c';
+Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);

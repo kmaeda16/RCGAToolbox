@@ -31,9 +31,9 @@ opts.Pf = 0.45;
 
 rng(3);
 
-% fast_flag = 0; % ODEXX
+fast_flag = 0; % ODEXX
 % fast_flag = 1; % SundialsTB
-fast_flag = 2; % MEX
+% fast_flag = 2; % MEX
 
 measurement = 'MeasurementExample.xls';
 % measurment = SBmeasurement('MeasurementExample.xls');
@@ -42,11 +42,12 @@ decodingfun = @mydecodingfun;
 %% SBML ver
 % opts.method = 'ode15s';
 model = 'SBMLexampleLevel2.xml';
+model = 'SBMLexampleLevel2';
 % model = IQMmodel('SBMLexampleLevel2.xml');
 % optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);
 % optimizedmodel = REXstarJGG_PE(model,decodingfun,measurement);
 % optimizedmodel = REXstarJGG_PE(model,decodingfun,measurement,[],[],[],fast_flag,[],[]);
-% Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);
+Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);
 
 %% MATLAB ODEFUN ver
 % odefun = @hill_odefun;

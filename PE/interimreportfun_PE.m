@@ -1,4 +1,4 @@
-function interimreportfun_c(elapsedTime,generation,problem,opts,Population,best,mst,mex_name,n_var,simopts,fast_flag)
+function interimreportfun_PE(Simulation,elapsedTime,generation,problem,opts,Population,best,mex_name,mst,simopts,fast_flag)
 
 n_point = 100;
 printTransition(elapsedTime,generation,problem,best);
@@ -20,7 +20,8 @@ else
     error('t0 <= mst.time(1) must be satisfied!');
 end
 
-[ T, X ] = Simulation_c(x, tspan, mex_name, n_var, simopts);
+% [ T, X ] = Simulation_sbml(x, mex_name, tspan, simopts);
+[ T, X ] = feval(Simulation, x, mex_name, tspan, simopts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;

@@ -10,25 +10,25 @@ function Results = REXstarJGG_PE(model,decodingfun,mst,varargin)
 switch nargin
     case 3
         n_constraint = 0;
-        fitnessfun = @SSR_sbml;
+        fitnessfun = @SSR;
         fast_flag = 0;
         simopts = struct;
         opts = struct;
     case 4
         n_constraint = 0;
-        fitnessfun = @SSR_sbml;
+        fitnessfun = @SSR;
         fast_flag = 0;
         simopts = struct;
         opts = varargin{1};
     case 5
         n_constraint = 0;
-        fitnessfun = @SSR_sbml;
+        fitnessfun = @SSR;
         fast_flag = 0;
         simopts = varargin{1};
         opts = varargin{2};
     case 6
         n_constraint = 0;
-        fitnessfun = @SSR_sbml;
+        fitnessfun = @SSR;
         fast_flag = varargin{1};
         simopts = varargin{2};
         opts = varargin{3};
@@ -46,7 +46,7 @@ if isempty(n_constraint)
     n_constraint = 0;
 end
 if isempty(fitnessfun)
-    fitnessfun = @SSR_sbml;
+    fitnessfun = @SSR;
 end
 if isempty(fast_flag)
     fast_flag = 0;
@@ -96,7 +96,6 @@ if ischar(model)
         st_model = struct(sbm);
         switch fast_flag
             case {0, 1}
-                sbm = IQMmodel(model);
                 odefun_name = strcat(st_model.name,'_odefun');
                 fprintf('Making %s ...\n',odefun_name);
                 IQMcreateODEfile(sbm,odefun_name);
@@ -105,9 +104,9 @@ if ischar(model)
                 mex_name = strcat(st_model.name,'_mex');
                 clear(mex_name);
                 fprintf('Making %s ...\n',mex_name);
-                IQMmakeMEXmodel(model,mex_name,1);
+                IQMmakeMEXmodel(sbm,mex_name,1);
                 mexcompileIQM(mex_name);
-                model = mex_name;
+                model = str2func(mex_name);
             otherwise
                 error('Unexpected fast_flag!');
         end 
@@ -124,15 +123,15 @@ if ischar(model)
                 case {0, 1}
                     odefun_name = strcat(st_model.name,'_odefun');
                     fprintf('Making %s ...\n',odefun_name);
-                    IQMcreateODEfile(model,odefun_name);
+                    IQMcreateODEfile(sbm,odefun_name);
                     model = str2func(odefun_name);
                 case 2
                     mex_name = strcat(st_model.name,'_mex');
                     clear(mex_name);
                     fprintf('Making %s ...\n',mex_name);
-                    IQMmakeMEXmodel(model,mex_name,1);
+                    IQMmakeMEXmodel(sbm,mex_name,1);
                     mexcompileIQM(mex_name);
-                    model = mex_name;
+                    model = str2func(mex_name);
                 otherwise
                     error('Unexpected fast_flag!');
             end
@@ -143,15 +142,15 @@ if ischar(model)
                 case {0, 1}
                     odefun_name = strcat(st_model.name,'_odefun');
                     fprintf('Making %s ...\n',odefun_name);
-                    IQMcreateODEfile(model,odefun_name);
+                    IQMcreateODEfile(sbm,odefun_name);
                     model = str2func(odefun_name);
                 case 2
                     mex_name = strcat(st_model.name,'_mex');
                     clear(mex_name);
                     fprintf('Making %s ...\n',mex_name);
-                    IQMmakeMEXmodel(model,mex_name,1);
+                    IQMmakeMEXmodel(sbm,mex_name,1);
                     mexcompileIQM(mex_name);
-                    model = mex_name;
+                    model = str2func(mex_name);
                 otherwise
                     error('Unexpected fast_flag!');
             end
@@ -167,9 +166,9 @@ end
 filename = func2str(model);
 file_type = exist(filename,'file');
 if  file_type == 0
-    error('%s does not exist!',model);
+    error('%s does not exist!',filename);
 elseif file_type < 2 || 3 < file_type
-    error('%s is neither an m file nor a MEX file!',model);
+    error('%s is neither an m file nor a MEX file!',filename);
 end
 
 try
@@ -225,7 +224,7 @@ problem.n_constraint = n_constraint;
 problem.decodingfun = decodingfun;
 problem.fitnessfun = @(x) fitnessfun(Simulation,x,model,mst,simopts);
 if ~isfield(opts,'interimreportfun')
-    opts.interimreportfun = @interimreportfun_sbml;
+    opts.interimreportfun = @interimreportfun_PE;
 end
 interimreportfun = opts.interimreportfun;
 opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
