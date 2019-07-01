@@ -1,10 +1,12 @@
-function [f, g]= SSR(Simulation, x, model, mst, opts)
-% function f = SSR_sbml(x, mex_name, mst, opts)
+function f = SSR(Simulation, x, modelfun, mst, opts)
 
+
+%% Setting experimental data
 if length(mst) > 2
     warning('Measurement has multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
 end
 mst = struct(mst{1});
+
 
 %% Checking time errors
 t0 = 0;
@@ -16,23 +18,30 @@ else
     error('Time of the first experimental datapoint should be AFTER or EQUAL TO time 0');
 end
 
-%%
-y0 = model();
-[ ~, X ] = feval(Simulation, model, tspan, y0, x', opts);
 
+%% Running simulation
+y0 = modelfun();
+[ ~, X ] = feval(Simulation, modelfun, tspan, y0, x', opts);
+
+
+%% If simulation faild, return f = 1e+10
 if max(max(isnan(X)))
+    warning('Simulation failed!');
     f = 1e+10;
     return;
 end
 
+
+%% Preparing x_sim and x_exp
 x_sim = X;
-x_exp = zeros(size(x_sim));
-for i = 1 : length(mst.data)
+[n_row, n_col] = size(x_sim);
+x_exp = zeros([n_row n_col]);
+for i = 1 : n_col
     x_exp(:,i) = mst.data(i).values;
 end
 
 
-[n_row, n_col] = size(x_exp);
+%% Calculating SSR
 f = 0;
 for i = 1 : n_row
     for j = 1 : n_col
@@ -44,4 +53,4 @@ for i = 1 : n_row
         end
     end
 end
-g = 0;
+
