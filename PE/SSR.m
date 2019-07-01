@@ -1,4 +1,4 @@
-function [f, g]= SSR_sbml(Simulation, x, mex_name, mst, opts)
+function [f, g]= SSR(Simulation, x, model, mst, opts)
 % function f = SSR_sbml(x, mex_name, mst, opts)
 
 if length(mst) > 2
@@ -6,17 +6,19 @@ if length(mst) > 2
 end
 mst = struct(mst{1});
 
+%% Checking time errors
 t0 = 0;
 if t0 < mst.time(1)
     tspan = [ t0  mst.time ];
 elseif t0 == mst.time(1)
     tspan = mst.time;
 else
-    error('0 <= mst.time(1) must be satisfied!');
+    error('Time of the first experimental datapoint should be AFTER or EQUAL TO time 0');
 end
 
-% [ T, X ] = Simulation_sbml(x, mex_name, tspan, opts);
-[ T, X ] = feval(Simulation,x, mex_name, tspan, opts);
+%%
+y0 = model();
+[ ~, X ] = feval(Simulation, model, tspan, y0, x', opts);
 
 if max(max(isnan(X)))
     f = 1e+10;

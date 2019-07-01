@@ -11,17 +11,19 @@ if length(mst) > 2
 end
 mst = struct(mst{1});
 
+%% Checking time errors
 t0 = 0;
 if t0 < mst.time(1)
     tspan = linspace(t0 ,mst.time(end),n_point)';
 elseif t0 == mst.time(1)
     tspan = linspace(mst.time(1),mst.time(end),n_point)';
 else
-    error('t0 <= mst.time(1) must be satisfied!');
+    error('Time of the first experimental datapoint should be AFTER or EQUAL TO time 0');
 end
 
-% [ T, X ] = Simulation_sbml(x, mex_name, tspan, simopts);
-[ T, X ] = feval(Simulation, x, mex_name, tspan, simopts);
+%%
+y0 = mex_name();
+[ T, X ] = feval(Simulation, mex_name, tspan, y0, x', opts);
 
 for i = 1 : length(mst.data)
     x_exp(:,i) = mst.data(i).values;

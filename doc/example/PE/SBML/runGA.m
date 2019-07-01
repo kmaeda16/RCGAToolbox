@@ -31,8 +31,8 @@ opts.Pf = 0.45;
 
 rng(3);
 
-fast_flag = 0; % ODEXX
-% fast_flag = 1; % SundialsTB
+% fast_flag = 0; % ODEXX
+fast_flag = 1; % SundialsTB
 % fast_flag = 2; % MEX
 
 measurement = 'MeasurementExample.xls';
