@@ -2,13 +2,17 @@ function [ T, Y ] = Simulation_stb(odefun, tspan, y0, param, options)
 % Simulation_stb simulates an ODE model using CVODE from SundialsTB.
 % 
 % [SYNTAX]
-% [ T, Y ] = Simulation_odexx(odefun, param, tspan, options)
+% [ T, Y ] = Simulation_stb(odefun, tspan, y0)
+% [ T, Y ] = Simulation_stb(odefun, tspan, y0, param)
+% [ T, Y ] = Simulation_stb(odefun, tspan, y0, [], options)
+% [ T, Y ] = Simulation_stb(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
 % odefun :  ODEFUN file.
 % tspan  :  [t0, tf] or [t0, t1, ..., tf].
 % y0     :  Initial value vector.
-% param  :  Parameter value vector.
+% param  :  Parameter value vector. If param is not given, default
+%           parameter values provided in odefun will be used.
 % options:  Structure with integrator options.
 %           * options.LMM: Linear Multistep Method (default: 'BDF')
 %           * options.NonlinearSolver: Type of nonlinear solver used
@@ -24,6 +28,16 @@ function [ T, Y ] = Simulation_stb(odefun, tspan, y0, param, options)
 % T      :  Column vector of timepoints
 % Y      :  Variable matrix. Each column corresponds to each variable. 
 %           Each row of Y corresponds to each row of T. 
+
+
+%% Handling inputs
+if nargin == 3
+    param = [];
+    options = [];
+end
+if nargin == 4
+    options = [];
+end
 
 
 %% Checking file errors 
@@ -47,12 +61,23 @@ end
 if isempty(param)
     param = feval(odefun,'parametervalues');
 end
+if length(param) ~= length(feval(odefun,'parametervalues'))
+    error('%s has %d parameters, but %d parameters were provided to %s!',...
+        func2str(odefun),length(feval(odefun,'parametervalues')),...
+        length(param),mfilename);
+end
+
+% y0 must be a column vector for CVodeInit
+[n_row, n_col] = size(y0);
+if n_col > n_row
+    y0 = y0';
+end
 
 odefun_temp = @(t,y) wrapper_odefun(odefun,t,y,param);
 
 
 %% Setting solver and initializing CVode
-if isempty(fieldnames(options))
+if isempty(options) || isempty(fieldnames(options))
     CVodeInit(odefun_temp, 'BDF', 'Newton', tspan(1), y0);
 else
     if isfield(options,'LMM')
@@ -75,8 +100,8 @@ try
     [ ~, T, Y ] = CVode(tspan(2:end),'Normal');
     T = [tspan(1) T]';
     Y = [y0 Y]';
-catch
-    warning('Error in CVode.');
+catch ME
+    warning('%s',ME.message);
     T = NaN;
     Y = NaN(1,length(y0));
 end

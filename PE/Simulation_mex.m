@@ -2,7 +2,10 @@ function [ T, Y ] = Simulation_mex(mexfun, tspan, y0, param, options)
 % Simulation_mex simulates a MEXed model using CVODE from IQM Tools.
 % 
 % [SYNTAX]
-% [ T, Y ] = Simulation_mex(mexfun, param, tspan, options)
+% [ T, Y ] = Simulation_mex(odefun, tspan, y0)
+% [ T, Y ] = Simulation_mex(odefun, tspan, y0, param)
+% [ T, Y ] = Simulation_mex(odefun, tspan, y0, [], options)
+% [ T, Y ] = Simulation_mex(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
 % odefun :  ODEFUN file.
@@ -26,6 +29,16 @@ function [ T, Y ] = Simulation_mex(mexfun, tspan, y0, param, options)
 %           Each row of Y corresponds to each row of T. 
 
 
+%% Handling inputs
+if nargin == 3
+    param = [];
+    options = [];
+end
+if nargin == 4
+    options = [];
+end
+
+
 %% Checking file errors 
 mexfun_name = func2str(mexfun);
 flg = exist(mexfun_name,'file');
@@ -47,15 +60,25 @@ end
 if isempty(param)
     param = feval(mexfun,'parametervalues');
 end
+if length(param) ~= length(feval(mexfun,'parametervalues'))
+    error('%s has %d parameters, but %d parameters were provided to %s!',...
+        func2str(mexfun),length(feval(mexfun,'parametervalues')),...
+        length(param),mfilename);
+end
 
+% tspan must be a column vector to get T as a column vector
+[n_row, n_col] = size(tspan);
+if n_col > n_row
+    tspan = tspan';
+end
 
 %% Running MEX
 try
     output = feval(mexfun,tspan,y0,param,options);
     T = output.time;
     Y = output.statevalues;
-catch
-    warning('Error in excuting mexed %s',mexfun_name);
+catch ME
+    warning('%s',ME.message);
     T = NaN;
     Y = NaN(1,length(y0));
 end
