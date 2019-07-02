@@ -72,6 +72,7 @@ if n_col > n_row
     tspan = tspan';
 end
 
+
 %% Running MEX
 try
     output = feval(mexfun,tspan,y0,param,options);

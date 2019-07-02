@@ -1,10 +1,32 @@
 function Results = REXstarJGG_PE(model,decodingfun,mst,varargin)
-% function [ Results, optimizedmodel ] = REXstarJGG_PE(model,decodingfun,mst,varargin)
-% REXstarJGG_PE(model,decodingfun,mst);
-% REXstarJGG_PE(model,decodingfun,mst,opts); 4
-% REXstarJGG_PE(model,decodingfun,mst,simopts,opts); 5 
-% REXstarJGG_PE(model,decodingfun,mst,fast_flag,simopts,opts); 6
-% REXstarJGG_PE(model,decodingfun,mst,n_constraint,fitnessfun,fast_flag,simopts,opts); 8
+% REXstarJGG_PE estimates parameters included in model by fitting it to
+% experimental data mst.
+% 
+% [SYNTAX]
+% Results = REXstarJGG_PE(model,decodingfun,mst)
+% Results = REXstarJGG_PE(model,decodingfun,mst,opts)
+% Results = REXstarJGG_PE(model,decodingfun,mst,simopts,opts)
+% Results = REXstarJGG_PE(model,decodingfun,mst,fast_flag,simopts,opts)
+% Results = REXstarJGG_PE(model,decodingfun,mst,n_constraint, ...
+%                         fitnessfun,fast_flag,simopts,opts)
+% 
+% [INPUT]
+% model       : IQMmodel or file names (*.sbml, *.xml, *.m, *.c)
+% decodingfun : Function handle for decoding function
+% mst         : Experimental data (IQMmeasurement) or filename
+% n_constraint: Number of constraints.
+% fitnessfun  : Function handle for fitness function
+% fast_flag   : Solver flag
+%               * fast_flag = 0 : ODEXX by MATLAB
+%               * fast_flag = 1 : CVODE by SundialsTB
+%               * fast_flag = 2 : CVODE by IQM Tools
+% simopts     : Structure with integrator options. Fields depend on
+%               Simulation_*. See 'help Simulation_'.
+% opts        : Structure with RCGA options
+% 
+% [OUTPUT]
+% Results:  Objective function value (scaler)
+
 
 %% Handling input arguments
 switch nargin
@@ -80,6 +102,7 @@ if isIQMmodel(model)
             error('Unexpected fast_flag!');
     end
 end
+
 
 %% if model is a string, it is converted into a function handle
 if ischar(model)
@@ -161,8 +184,8 @@ if ischar(model)
 
 end
 
-%% Error handling
 
+%% Error handling
 filename = func2str(model);
 file_type = exist(filename,'file');
 if  file_type == 0
@@ -179,8 +202,8 @@ catch ME
     error('%s should return default parameter values when ''parametervalues'' is given as an argument!');
 end
 
-%% Set
 
+%% Set
 % odefun.m
 switch fast_flag
     case 0
@@ -208,42 +231,35 @@ if exist_flag == 3 && ~( fast_flag == 2 )
     Simulation = @Simulation_mex;
 end
 
-%% Reading measurement
 
+%% Reading measurement
 if ~isIQMmeasurement(mst)
     fprintf('Reading %s ...',mst);
     mst = IQMmeasurement(mst);
     fprintf(' Finished.\n');
 end
 
-%% Prepering inputs for REXstarJGG
+if 1 < length(mst)
+    warning('Provided experimental data include multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
+end
+mst = mst{1};
 
+
+%% Prepering inputs for REXstarJGG
 problem.n_gene = n_param;
 problem.n_constraint = n_constraint;
 % problem.fitnessfun = @(x) fitnessfun(x,mex_name,mst,simopts);
 problem.decodingfun = decodingfun;
-problem.fitnessfun = @(x) fitnessfun(Simulation,x,model,mst,simopts);
+problem.fitnessfun = @(x) fitnessfun(x,Simulation,model,mst,simopts);
 if ~isfield(opts,'interimreportfun')
     opts.interimreportfun = @interimreportfun_PE;
 end
 interimreportfun = opts.interimreportfun;
 opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
     interimreportfun(...
-    Simulation, elapsedTime,generation,problem,opts,Population,best,...
-    model,mst,simopts,fast_flag);
+    elapsedTime,generation,problem,opts,Population,best,...
+    Simulation,model,mst,simopts);
+
 
 %% Run parameter estimation
-
 Results = REXstarJGG(problem,opts);
-
-%% If model was a IQMmodel
-
-% if isIQMmodel(model)
-%     st_model = struct(model);
-%     for i = 1 : length(st_model.parameters)
-%         st_model.parameters(i).value = Results.Best.x(i);
-%     end
-%     optimizedmodel = IQMmodel(st_model);
-% else
-%     optimizedmodel = [];
-% end

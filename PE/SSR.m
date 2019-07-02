@@ -1,11 +1,31 @@
-function f = SSR(Simulation, x, modelfun, mst, opts)
+function f = SSR(param, Simulation, modelfun, mst, simopts)
+% SSR calculates the sum of squared resudials between simulation and
+% experimental data
+% 
+% [SYNTAX]
+% f = SSR(x, Simulation, modelfun, mst)
+% f = SSR(x, Simulation, modelfun, mst, simopts)
+% 
+% [INPUT]
+% param     :  Parameter value vector
+% Simulation:  Function handle for Simulation_*
+% modelfun  :  Function handle for model (odefun or mex)
+% mst       :  Experimental data (IQMmeasurement)
+% simopts   :  Structure with integrator options. Fields depend on
+%              Simulation_*. See 'help Simulation_'.
+% 
+% [OUTPUT]
+% f:  Objective function value (scaler)
 
 
-%% Setting experimental data
-if length(mst) > 2
-    warning('Measurement has multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
+%% Handling inputs
+if nargin == 4
+    simopts = [];
 end
-mst = struct(mst{1});
+
+
+%% Converting IQMmeasuremen into structure
+mst = struct(mst);
 
 
 %% Checking time errors
@@ -21,23 +41,23 @@ end
 
 %% Running simulation
 y0 = modelfun();
-[ ~, X ] = feval(Simulation, modelfun, tspan, y0, x', opts);
+[ ~, Y ] = feval(Simulation, modelfun, tspan, y0, param, simopts);
 
 
 %% If simulation faild, return f = 1e+10
-if max(max(isnan(X)))
+if max(max(isnan(Y)))
     warning('Simulation failed!');
     f = 1e+10;
     return;
 end
 
 
-%% Preparing x_sim and x_exp
-x_sim = X;
-[n_row, n_col] = size(x_sim);
-x_exp = zeros([n_row n_col]);
+%% Preparing Y_sim and Y_exp
+Y_sim = Y;
+[n_row, n_col] = size(Y_sim);
+Y_exp = zeros([n_row n_col]);
 for i = 1 : n_col
-    x_exp(:,i) = mst.data(i).values;
+    Y_exp(:,i) = mst.data(i).values;
 end
 
 
@@ -45,12 +65,11 @@ end
 f = 0;
 for i = 1 : n_row
     for j = 1 : n_col
-        if ~isnan(x_exp(i,j))
-%             f = f + abs( x_sim(i,j) - x_exp(i,j) );
-%             f = f + abs( ( x_sim(i,j) - x_exp(i,j) ) / x_exp(i,j) );
-            f = f + ( x_sim(i,j) - x_exp(i,j) ) ^ 2;
-%             f = f + ( ( x_sim(i,j) - x_exp(i,j) ) / x_exp(i,j) ) ^ 2;
+        if ~isnan(Y_exp(i,j))
+            % f = f + abs( Y_sim(i,j) - Y_exp(i,j) );
+            % f = f + abs( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) );
+            f = f + ( Y_sim(i,j) - Y_exp(i,j) ) ^ 2;
+            % f = f + ( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) ) ^ 2;
         end
     end
 end
-
