@@ -1,9 +1,21 @@
 function printWelcomeMessage(problem, opts, RCGA_Type)
+% printWelcomeMessage prints problems and options
+% 
+% [SYNTAX]
+% printWelcomeMessage(problem, opts, RCGA_Type)
+% 
+% [INPUT]
+% problem :  Problem structure.
+% opts    :  RCGA options. See XXXXXXXXXXX for options.
 
-if isempty(strfind(RCGA_Type,'REXstarJGG')) && isempty(strfind(RCGA_Type,'UNDXMGG'))
-    error('RCGA_Type must include REXstarJGG or UNDXMGG');
+
+%% Checking RCGA_Type
+if ~strcmp(RCGA_Type,'REXstarJGG') && ~strcmp(RCGA_Type,'UNDXMGG')
+    error('RCGA_Type must be REXstarJGG or UNDXMGG.');
 end
 
+
+%% Prenting details
 fprintf('\n');
 fprintf('==========================================\n\n');
 fprintf('        %s by RCGAToolbox\n\n',RCGA_Type);
@@ -16,7 +28,7 @@ fprintf('          n_gene: %d\n',problem.n_gene);
 fprintf('    n_constraint: %d\n',problem.n_constraint);
 fprintf('      fitnessfun: %s\n',func2str(problem.fitnessfun));
 fprintf('     decodingfun: %s\n',func2str(problem.decodingfun));
-disp('--------------- GA Options ---------------');
+disp('-------------- RCGA Options --------------');
 fprintf('    n_population: %d\n',opts.n_population);
 fprintf('      n_children: %d\n',opts.n_children);
 if isempty(strfind(RCGA_Type,'UNDXMGG'))

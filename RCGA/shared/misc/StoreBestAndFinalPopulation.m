@@ -1,3 +1,6 @@
+% Script StoreBestAndFinalPopulation
+% This script is called by RCGA_Main
+
 Results.Best.time = elapsedTime;
 Results.Best.neval = n_population + ( i - 1 ) * n_children;
 Results.Best.generation = i;

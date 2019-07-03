@@ -1,16 +1,36 @@
 function [f, g, phi] = getFitness(problem,chrom)
+% getFitness returns f, g, and phi for an individual chrom.
+% 
+% [SYNTAX]
+% [f, g, phi] = getFitness(problem,chrom)
+% 
+% [INPUT]
+% problem :  Problem structure
+% chrom   :  Individual
+% 
+% [OUTPUT]
+% f   :  Value of fitness functions
+% g   :  Values of constraint functions
+% phi :  Value of penalty function
 
+
+%% Shortening variable names
 n_gene = problem.n_gene;
 n_constraint = problem.n_constraint;
 fitnessfun = problem.fitnessfun;
 decodingfun = problem.decodingfun;
-x = feval(decodingfun,chrom.gene);
 
+
+%% Decoding genes to x
+x = feval(decodingfun,chrom.gene);
 length_x = length(x);
+
 if length_x ~= n_gene
-    error('decodingfun should return x with %d elements but it returned x with %d elements.',n_gene,length_x);
+    error('decodingfun should return a vector with %d elements but it returned a vector with %d elements.',n_gene,length_x);
 end
 
+
+%% Getting f, g, and phi
 if n_constraint == 0
     if nargout(fitnessfun) > 1
         warning('n_constraint was set to %d, but %s returns g.',n_constraint,func2str(fitnessfun));
