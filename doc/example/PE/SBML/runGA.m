@@ -50,7 +50,7 @@ model = 'SBMLexampleLevel2';
 % optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);
 % optimizedmodel = REXstarJGG_PE(model,decodingfun,measurement);
 % optimizedmodel = REXstarJGG_PE(model,decodingfun,measurement,[],[],[],fast_flag,[],[]);
-% Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,simopts,opts);
+Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,simopts,opts);
 
 %% MATLAB ODEFUN ver
 % odefun = @hill_odefun;
@@ -62,4 +62,4 @@ odefun = 'hill_odefun.m';
 
 %% C ODEFUN ver
 % model = 'hill_c';
-Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);
+% Results = REXstarJGG_PE(model,decodingfun,measurement,[],[],fast_flag,[],opts);

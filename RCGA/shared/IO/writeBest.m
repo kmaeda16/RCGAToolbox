@@ -1,4 +1,16 @@
 function writeBest(elapsedTime, generation, problem, opts, best)
+% writeBest make a elapsed time, generation, fitness, and phi of the
+% best individual.
+% 
+% [SYNTAX]
+% printTransition(elapsedTime, generation, problem, best)
+% 
+% [INPUT]
+% elapsedTime:  Elaplsed time (sec)
+% generation :  Generation
+% problem    :  Problem structure
+% best       :  Structure of the the best individual
+
 
 n_gene = problem.n_gene;
 n_constraint = problem.n_constraint;

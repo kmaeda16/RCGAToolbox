@@ -1,5 +1,19 @@
-function Population = SRsort(Population, Pf)
+function Sorted_Population = SRsort(Population, Pf)
+% SRsort is a function of stochastic ranking sort.
+% 
+% [SYNTAX]
+% Population = SRsort(Population, Pf)
+% 
+% [INPUT]
+% Population :  (Unsorted) Population
+% Pf         :  Probability that only f is used in comparisons of
+%               individuals
+% 
+% [OUTPUT]
+% Population :  Sorted population
 
+
+%% Preparation
 n_population = length(Population);
 n_gene = length(Population(1).gene);
 n_constraint = length(Population(1).g);
@@ -13,7 +27,9 @@ for i = 1 : n_population
     f_tmp(i) = Population(i).f;
     phi_tmp(i) = Population(i).phi;
 end
-	
+
+
+%% For debug
 % for i = 1 : n_population - 1
 %     index1 = randi(n_population);
 %     index2 = randi(n_population);
@@ -21,7 +37,9 @@ end
 %     [f_tmp(index1), f_tmp(index2)] = swap(f_tmp(index1),f_tmp(index2));
 %     [phi_tmp(index1), phi_tmp(index2)] = swap(phi_tmp(index1),phi_tmp(index2));
 % end
-	
+
+
+%% Stochastic ranking sort
 for i = 1 : n_population
     flg = 0;
     for j = 1 : n_population - 1
@@ -47,12 +65,10 @@ for i = 1 : n_population
     end
 end
 
-pop_tmp(1,1:n_population) = struct('gene',zeros(1,n_gene),'g',zeros(1,n_constraint),'f',0,'phi',0);
+
+%% Making output variable
+Sorted_Population(1,1:n_population) = struct('gene',zeros(1,n_gene),'g',zeros(1,n_constraint),'f',0,'phi',0);
 
 for i = 1 : n_population
-    pop_tmp(i) = Population(i);
+    Sorted_Population(i) = Population(index_tmp(i));
 end
-for i = 1 : n_population
-    Population(i) = pop_tmp(index_tmp(i));
-end
-fprintf('');
