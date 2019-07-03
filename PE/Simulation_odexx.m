@@ -27,11 +27,16 @@ function [ T, Y ] = Simulation_odexx(odefun, tspan, y0, param, options)
 
 
 %% Handling inputs
-if nargin == 3
-    param = [];
-    options = [];
+if ~exist('tspan','var')
+    tspan = [];
 end
-if nargin == 4
+if ~exist('y0','var')
+    y0 = [];
+end
+if ~exist('param','var')
+    param = [];
+end
+if ~exist('options','var')
     options = [];
 end
 

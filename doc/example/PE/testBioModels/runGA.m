@@ -3,7 +3,7 @@ clear randn rand;
 
 addpath(genpath('../../../../RCGA'));
 addpath('../../../../PE');
-addpath('../Common');
+% addpath('../Common');
 
 opts.par = 0;
 opts.output_intvl = 1;
@@ -15,10 +15,10 @@ opts.out_transition = 'Transition.dat';
 opts.out_population = 'Population.dat';
 opts.out_best = 'Best.dat';
 
-problem.n_gene = 9;
-opts.n_generation = 50;
-opts.n_population = 20;
-opts.n_children = 20;
+problem.n_gene = 18;
+opts.n_generation = 500;
+opts.n_population = 200;
+opts.n_children = 200;
 % Param.n_population = 1000;
 % Param.n_children = 1000;
 opts.output_intvl = 5;
@@ -32,11 +32,12 @@ opts.Pf = 0.45;
 rng(3);
 
 % fast_flag = 0; % ODEXX
-fast_flag = 1; % SundialsTB
-% fast_flag = 2; % MEX
+% fast_flag = 1; % SundialsTB
+fast_flag = 2; % MEX
 
-measurement = 'MeasurementExample.xls';
+% measurement = 'BIOMD0000000295_url.xls';
 % measurment = SBmeasurement('MeasurementExample.xls');
+measurement = 'Book1.csv';
 decodingfun = @mydecodingfun;
 
 %% SBML ver
@@ -44,7 +45,7 @@ decodingfun = @mydecodingfun;
 simopts.abstol = 1e-6;
 simopts.reltol = 1e-6;
 % model = 'SBMLexampleLevel2.xml';
-model = 'SBMLexampleLevel2';
+model = 'BIOMD0000000295_url.xml';
 % model = IQMmodel('SBMLexampleLevel2.xml');
 % model = IQMmodel('SBMLexampleLevel2');
 % optimizedmodel = REXstarJGG_PE(model,measurment,fast_flag,fitnessfun,decodingfun,simopts,opts);

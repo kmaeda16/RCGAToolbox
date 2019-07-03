@@ -255,7 +255,9 @@ end
 if 1 < length(mst)
     warning('Provided experimental data include multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
 end
-mst = mst{1};
+if iscell(mst)
+    mst = mst{1};
+end
 
 
 %% Prepering inputs for REXstarJGG

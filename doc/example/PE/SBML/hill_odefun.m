@@ -1,7 +1,7 @@
 function [output] = hill_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % hill
-% Generated: 03-Jul-2019 13:09:21
+% Generated: 03-Jul-2019 18:26:14
 % 
 % [output] = hill_odefun() => output = initial conditions in column vector
 % [output] = hill_odefun('states') => output = state names in cell-array
