@@ -1,18 +1,38 @@
 function c = getNewChild(p1, p2, p3)
-% Handler of UNDX function
-% Checking wheather children are in search region 
+% getNewChild generates a child with UNDX and checks wheather it is in
+% search region
+% 
+% [SYNTAX]
+% c = getNewChild(p1, p2, p3)
+% 
+% [INPUT]
+% p1 :  First main parent
+% p2 :  Second main parent
+% p3 :  Sub-parent
+% 
+% [OUTPUT]
+% c :  Generated child
 
-maxitr = 100;
 
+%% Default number of trials of generating children
+maxitr = 100; % You can change this line
+
+
+%% Checking whether c is valid
 for i = 1 : maxitr
     c = UNDX(p1,p2,p3);
     c.f = Inf;
     c.g = Inf(size(p1.g));
     c.phi = Inf;
+    if max(isnan(c.genes))
+        warning('Generated child has nan in its genes!');
+    end
     if min( 0 <= c.gene & c.gene <= 1 )
         return;
     end
 end
 
+
+%% If genes out of bounds, put them bounds
 c.gene(1<c.gene) = 1;
 c.gene(c.gene<0) = 0;
