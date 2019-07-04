@@ -1,83 +1,42 @@
-function Results = REXstarJGG_PE(model,decodingfun,mst,varargin)
-% REXstarJGG_PE estimates parameters included in model by fitting it to
-% experimental data mst.
+function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
+% RCGAsimulate simulates model.
 % 
 % [SYNTAX]
-% Results = REXstarJGG_PE(model,decodingfun,mst)
-% Results = REXstarJGG_PE(model,decodingfun,mst,opts)
-% Results = REXstarJGG_PE(model,decodingfun,mst,simopts,opts)
-% Results = REXstarJGG_PE(model,decodingfun,mst,fast_flag,simopts,opts)
-% Results = REXstarJGG_PE(model,decodingfun,mst,n_constraint, ...
-%                         fitnessfun,fast_flag,simopts,opts)
+% [ T, Y ] = RCGAsimulate(odefun, tspan, y0)
+% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, param)
+% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, [], options)
+% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
-% model       : IQMmodel or file name (*.sbml, *.xml, *.m, or *.c)
-% decodingfun : Function handle for decoding function
-% mst         : Experimental data (IQMmeasurement) or filename
-% n_constraint: Number of constraints.
-% fitnessfun  : Function handle for fitness function
-% fast_flag   : Solver flag
-%               * fast_flag = 0 : ODEXX by MATLAB
-%               * fast_flag = 1 : CVODE by SundialsTB
-%               * fast_flag = 2 : CVODE by IQM Tools
-% simopts     : Structure with integrator options. Fields depend on
-%               Simulation_*. See 'help Simulation_*'.
-% opts        : Structure with RCGA options
+% odefun :  IQMmodel, File names of SBML, or ODE function, or MEX files.
+%           File function of ODE function or MEX function.
+% tspan  :  [t0, tf] or [t0, t1, ..., tf]. (default: [0 10])
+% y0     :  Initial value vector. (default: Values stored in the model)
+% param  :  Parameter value vector. (default: Values stored in the model)
+% options:  Structure with integrator options. Fields depend on
+%           Simulation_*. See 'help Simulation_*'.
 % 
 % [OUTPUT]
-% Results:  Objective function value (scaler)
+% T      :  Column vector of timepoints
+% Y      :  Variable matrix. Each column corresponds to each variable. 
+%           Each row of Y corresponds to each row of T. 
 
 
-%% Handling input arguments
-switch nargin
-    case 3
-        n_constraint = 0;
-        fitnessfun = @SSR;
-        fast_flag = 0;
-        simopts = struct;
-        opts = struct;
-    case 4
-        n_constraint = 0;
-        fitnessfun = @SSR;
-        fast_flag = 0;
-        simopts = struct;
-        opts = varargin{1};
-    case 5
-        n_constraint = 0;
-        fitnessfun = @SSR;
-        fast_flag = 0;
-        simopts = varargin{1};
-        opts = varargin{2};
-    case 6
-        n_constraint = 0;
-        fitnessfun = @SSR;
-        fast_flag = varargin{1};
-        simopts = varargin{2};
-        opts = varargin{3};
-    case 8
-        n_constraint = varargin{1};
-        fitnessfun = varargin{2};
-        fast_flag = varargin{3};
-        simopts = varargin{4};
-        opts = varargin{5};
-    otherwise
-        error('Incorrect number of input arguments');
+%% Handling inputs
+if ~exist('tspan','var')
+    tspan = [];
 end
-
-if isempty(n_constraint)
-    n_constraint = 0;
+if ~exist('y0','var')
+    y0 = [];
 end
-if isempty(fitnessfun)
-    fitnessfun = @SSR;
+if ~exist('param','var')
+    param = [];
 end
-if isempty(fast_flag)
+if ~exist('fast_flag','var')
     fast_flag = 0;
 end
-if isempty(simopts)
-    simopts = struct;
-end
-if isempty(opts)
-    opts = struct;
+if ~exist('options','var')
+    options = [];
 end
 
 
@@ -203,16 +162,6 @@ elseif file_type < 2 || 3 < file_type
 end
 
 
-%% Checking whether model returns the number of parameters
-try
-    output = feval(model,'parametervalues');
-    n_param = length(output);
-catch ME
-    warning(ME.message);
-    error('%s should return default parameter values when ''parametervalues'' is given as an argument!',func2str(model));
-end
-
-
 %% Setting Simulation function
 switch fast_flag
     case 0
@@ -241,39 +190,5 @@ if exist_flag == 3 && ~( fast_flag == 2 )
 end
 
 
-%% Reading measurement
-if ~isIQMmeasurement(mst)
-    if ischar(mst)
-        fprintf('Reading %s ...',mst);
-        mst = IQMmeasurement(mst);
-        fprintf(' Finished.\n');
-    else
-        error('mst must be an IQMmeasurement or a file name!');
-    end
-end
-
-if 1 < length(mst)
-    warning('Provided experimental data include multiple measurment deta sets, but only the first data set will be used for fitness calculation.');
-end
-if iscell(mst)
-    mst = mst{1};
-end
-
-
-%% Prepering inputs for REXstarJGG
-problem.n_gene = n_param;
-problem.n_constraint = n_constraint;
-problem.decodingfun = decodingfun;
-problem.fitnessfun = @(x) fitnessfun(x,Simulation,model,mst,simopts);
-if ~isfield(opts,'interimreportfun')
-    opts.interimreportfun = @interimreportfun_PE;
-end
-interimreportfun = opts.interimreportfun;
-opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
-    interimreportfun(...
-    elapsedTime,generation,problem,opts,Population,best,...
-    Simulation,model,mst,simopts);
-
-
-%% Run parameter estimation
-Results = REXstarJGG(problem,opts);
+%%
+[ T, Y ] = feval(Simulation, model, tspan, y0, param, options);

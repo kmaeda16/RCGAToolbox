@@ -57,7 +57,7 @@ end
 
 %% Setting the initial condition and parameters
 if isempty(tspan)
-    tspan = [0 10];
+    tspan = 0:0.1:10;
 end
 if isempty(y0)
     y0 = feval(mexfun);
