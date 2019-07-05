@@ -1,0 +1,4781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created by COPASI version 4.24 (Build 197) on 2019-04-13 19:04 with libSBML version 5.17.0. -->
+<sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
+  <model metaid="COPASI0" id="Maeda2019_AmmoniumTransportAssimilation" name="Maeda2019_AmmoniumTransportAssimilation">
+    <notes>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+        <pre>The E. coli ammonium transport and assimilation network. This SBML model simulates Kim&apos;s experiment with glucose as a carbon source and external NH4+ = 4 microM for wild type (the refined active transporter model). SBML does not support some of the functions required for the complete simulations shown in the original article. For the complete simulations, please refer to the MATLAB program provided as a part of the original article: Maeda K, Westerhoff HV, Kurata H, Boogerd FC: Ranking network mechanisms by how they fit diverse experiments and deciding on E. coli&apos;s ammonium transport and assimilation network. npj Systems Biology and Applications 2019, 5(1):14, https://doi.org/10.1038/s41540-019-0091-6.</pre>
+      </body>
+    </notes>
+    <annotation>
+      <COPASI xmlns="http://www.copasi.org/static/sbml">
+        <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+          <rdf:Description rdf:about="#COPASI0">
+            <dcterms:created>
+              <rdf:Description>
+                <dcterms:W3CDTF>2019-01-09T18:29:53Z</dcterms:W3CDTF>
+              </rdf:Description>
+            </dcterms:created>
+          </rdf:Description>
+        </rdf:RDF>
+      </COPASI>
+    </annotation>
+    <listOfFunctionDefinitions>
+      <functionDefinition id="Function_for_vamtb" name="Function for vamtb">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> Kamtbnh </ci>
+            </bvar>
+            <bvar>
+              <ci> NH4int </ci>
+            </bvar>
+            <bvar>
+              <ci> NH4surf </ci>
+            </bvar>
+            <bvar>
+              <ci> Vamtb_app </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> phi </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vamtb_app </ci>
+                  <apply>
+                    <minus/>
+                    <ci> NH4surf </ci>
+                    <apply>
+                      <divide/>
+                      <ci> NH4int </ci>
+                      <ci> phi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> Kamtbnh </ci>
+                  <ci> NH4surf </ci>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vdiff" name="Function for vdiff">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> NH3int </ci>
+            </bvar>
+            <bvar>
+              <ci> NH3surf </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kdiff </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kdiff </ci>
+                <apply>
+                  <minus/>
+                  <ci> NH3surf </ci>
+                  <ci> NH3int </ci>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vdead" name="Function for vdead">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GSAMP </ci>
+            </bvar>
+            <bvar>
+              <ci> Kdeadgsamp </ci>
+            </bvar>
+            <bvar>
+              <ci> Vdead_app </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vdead_app </ci>
+                  <ci> GSAMP </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> Kdeadgsamp </ci>
+                  <ci> GSAMP </ci>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vglndemf" name="Function for vglndemf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLNdemf </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> mu </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mu </ci>
+                <ci> GLNdemf </ci>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vglndemn" name="Function for vglndemn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLNdemn </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> mu </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mu </ci>
+                <ci> GLNdemn </ci>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vgludemf" name="Function for vgludemf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLUdemf </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> mu </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mu </ci>
+                <ci> GLUdemf </ci>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vad" name="Function for vad">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GS </ci>
+            </bvar>
+            <bvar>
+              <ci> Kadgs </ci>
+            </bvar>
+            <bvar>
+              <ci> Vad_app </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> Vad_app </ci>
+                  <ci> GS </ci>
+                </apply>
+                <apply>
+                  <plus/>
+                  <ci> Kadgs </ci>
+                  <ci> GS </ci>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vgdh" name="Function for vgdh">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLU </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdheq </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdhglu </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdhnadp </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdhnadph </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdhnh </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgdhog </ci>
+            </bvar>
+            <bvar>
+              <ci> NADP </ci>
+            </bvar>
+            <bvar>
+              <ci> NADPH </ci>
+            </bvar>
+            <bvar>
+              <ci> NH4int </ci>
+            </bvar>
+            <bvar>
+              <ci> OG </ci>
+            </bvar>
+            <bvar>
+              <ci> Vgdh </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> Vgdh </ci>
+                    <apply>
+                      <times/>
+                      <ci> Kgdhog </ci>
+                      <ci> Kgdhnh </ci>
+                      <ci> Kgdhnadph </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <times/>
+                      <ci> OG </ci>
+                      <ci> NH4int </ci>
+                      <ci> NADPH </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> GLU </ci>
+                        <ci> NADP </ci>
+                      </apply>
+                      <ci> Kgdheq </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NH4int </ci>
+                      <ci> Kgdhnh </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> OG </ci>
+                      <ci> Kgdhog </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GLU </ci>
+                      <ci> Kgdhglu </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NADPH </ci>
+                      <ci> Kgdhnadph </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> NADP </ci>
+                      <ci> Kgdhnadp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vgludemn" name="Function for vgludemn">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLUdemn </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> mu </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> mu </ci>
+                <ci> GLUdemn </ci>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnk2" name="Function for vutglnk2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnK_AmtBfree </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnKUMP </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnk </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnk </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnk </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                          <ci> GlnKUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnkump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnK_AmtBfree </ci>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnk3" name="Function for vutglnk3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnK_AmtBfree </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnKUMP2 </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnk </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnk </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnk </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                          <ci> GlnKUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnkump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnK_AmtBfree </ci>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnb1" name="Function for vurglnb1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnBUMP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnbump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                        <ci> GlnBUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnb2" name="Function for vurglnb2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnBUMP2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnbump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                        <ci> GlnBUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnb3" name="Function for vutglnb3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnB </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnBUMP2 </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnb </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnb </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnb </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                          <ci> GlnBUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnbump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnB </ci>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnk3" name="Function for vurglnk3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnKUMP3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnkump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                        <ci> GlnKUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnk1" name="Function for vutglnk1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnK_AmtBfree </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnk </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnK_AmtBfree </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnk </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnk </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnK_AmtBfree </ci>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnk </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                          <ci> GlnKUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnkump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnK_AmtBfree </ci>
+                          <ci> GlnKUMP </ci>
+                          <ci> GlnKUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnb1" name="Function for vutglnb1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnB </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnB </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnb </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnb </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnb </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                          <ci> GlnBUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnbump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnB </ci>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vutglnb2" name="Function for vutglnb2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnB </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnb </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutiglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kutippi </ci>
+            </bvar>
+            <bvar>
+              <ci> Kututp </ci>
+            </bvar>
+            <bvar>
+              <ci> PPi </ci>
+            </bvar>
+            <bvar>
+              <ci> UTP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcatutglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcatutglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnBUMP </ci>
+                  <ci> UTP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kutgln </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <apply>
+                      <times/>
+                      <ci> Kutiglnb </ci>
+                      <ci> Kututp </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kututp </ci>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <ci> Kutglnb </ci>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <ci> GlnB </ci>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                      </apply>
+                      <ci> UTP </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> Kutglnb </ci>
+                        <ci> UTP </ci>
+                        <apply>
+                          <plus/>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                          <ci> GlnBUMP3 </ci>
+                        </apply>
+                      </apply>
+                      <ci> Kutiglnbump </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <apply>
+                          <plus/>
+                          <ci> GlnB </ci>
+                          <ci> GlnBUMP </ci>
+                          <ci> GlnBUMP2 </ci>
+                        </apply>
+                        <ci> UTP </ci>
+                        <ci> PPi </ci>
+                      </apply>
+                      <ci> Kutippi </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnb3" name="Function for vurglnb3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnBUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnbump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnb </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnb </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnBUMP3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnbump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnBUMP </ci>
+                        <ci> GlnBUMP2 </ci>
+                        <ci> GlnBUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vgog" name="Function for vgog">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GLU </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgoggln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgogglu </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgognadp </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgognadph </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgogog </ci>
+            </bvar>
+            <bvar>
+              <ci> NADP </ci>
+            </bvar>
+            <bvar>
+              <ci> NADPH </ci>
+            </bvar>
+            <bvar>
+              <ci> OG </ci>
+            </bvar>
+            <bvar>
+              <ci> Vgog </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <divide/>
+                  <apply>
+                    <times/>
+                    <ci> Vgog </ci>
+                    <ci> GLN </ci>
+                    <ci> OG </ci>
+                    <ci> NADPH </ci>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <ci> Kgoggln </ci>
+                    <ci> Kgogog </ci>
+                    <ci> Kgognadph </ci>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kgoggln </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GLU </ci>
+                      <ci> Kgogglu </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> OG </ci>
+                      <ci> Kgogog </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GLU </ci>
+                      <ci> Kgogglu </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NADPH </ci>
+                      <ci> Kgognadph </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> NADP </ci>
+                      <ci> Kgognadp </ci>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnk1" name="Function for vurglnk1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnKUMP </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnkump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                        <ci> GlnKUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vgs" name="Function for vgs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> ADP </ci>
+            </bvar>
+            <bvar>
+              <ci> ATP </ci>
+            </bvar>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GLU </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgsadp </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgsatp </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgseq </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgsgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgsglu </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgsnh </ci>
+            </bvar>
+            <bvar>
+              <ci> Kgspi </ci>
+            </bvar>
+            <bvar>
+              <ci> NH4int </ci>
+            </bvar>
+            <bvar>
+              <ci> Pi </ci>
+            </bvar>
+            <bvar>
+              <ci> Vgs_app </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <apply>
+                    <divide/>
+                    <ci> Vgs_app </ci>
+                    <apply>
+                      <times/>
+                      <ci> Kgsatp </ci>
+                      <ci> Kgsnh </ci>
+                      <ci> Kgsglu </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <minus/>
+                    <apply>
+                      <times/>
+                      <ci> ATP </ci>
+                      <ci> NH4int </ci>
+                      <ci> GLU </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> ADP </ci>
+                        <ci> GLN </ci>
+                        <ci> Pi </ci>
+                      </apply>
+                      <ci> Kgseq </ci>
+                    </apply>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> ATP </ci>
+                      <ci> Kgsatp </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> ADP </ci>
+                      <ci> Kgsadp </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> Pi </ci>
+                      <ci> Kgspi </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> ADP </ci>
+                        <ci> Pi </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> Kgsadp </ci>
+                        <ci> Kgspi </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> NH4int </ci>
+                      <ci> Kgsnh </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GLN </ci>
+                      <ci> Kgsgln </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <ci> GLU </ci>
+                      <ci> Kgsglu </ci>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> GLN </ci>
+                        <ci> NH4int </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> Kgsgln </ci>
+                        <ci> Kgsnh </ci>
+                      </apply>
+                    </apply>
+                    <apply>
+                      <divide/>
+                      <apply>
+                        <times/>
+                        <ci> GLU </ci>
+                        <ci> NH4int </ci>
+                      </apply>
+                      <apply>
+                        <times/>
+                        <ci> Kgsglu </ci>
+                        <ci> Kgsnh </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+      <functionDefinition id="Function_for_vurglnk2" name="Function for vurglnk2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <lambda>
+            <bvar>
+              <ci> GLN </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP2 </ci>
+            </bvar>
+            <bvar>
+              <ci> GlnKUMP3 </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurgln </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurglnkump </ci>
+            </bvar>
+            <bvar>
+              <ci> Kurump </ci>
+            </bvar>
+            <bvar>
+              <ci> UMP </ci>
+            </bvar>
+            <bvar>
+              <ci> UTase </ci>
+            </bvar>
+            <bvar>
+              <ci> default </ci>
+            </bvar>
+            <bvar>
+              <ci> kcaturglnk </ci>
+            </bvar>
+            <apply>
+              <divide/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> kcaturglnk </ci>
+                  <ci> UTase </ci>
+                  <ci> GlnKUMP2 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <apply>
+                    <plus/>
+                    <cn> 1 </cn>
+                    <apply>
+                      <divide/>
+                      <ci> Kurgln </ci>
+                      <ci> GLN </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <plus/>
+                    <ci> Kurglnkump </ci>
+                    <apply>
+                      <times/>
+                      <apply>
+                        <plus/>
+                        <cn> 1 </cn>
+                        <apply>
+                          <divide/>
+                          <ci> UMP </ci>
+                          <ci> Kurump </ci>
+                        </apply>
+                      </apply>
+                      <apply>
+                        <plus/>
+                        <ci> GlnKUMP </ci>
+                        <ci> GlnKUMP2 </ci>
+                        <ci> GlnKUMP3 </ci>
+                      </apply>
+                    </apply>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> default </ci>
+            </apply>
+          </lambda>
+        </math>
+      </functionDefinition>
+    </listOfFunctionDefinitions>
+    <listOfUnitDefinitions>
+      <unitDefinition id="time" name="time">
+        <listOfUnits>
+          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+        </listOfUnits>
+      </unitDefinition>
+      <unitDefinition id="substance" name="substance">
+        <listOfUnits>
+          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+        </listOfUnits>
+      </unitDefinition>
+    </listOfUnitDefinitions>
+    <listOfCompartments>
+      <compartment metaid="COPASI1" id="default" name="default" spatialDimensions="3" size="1" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI1">
+              <bqmodel:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000410"/>
+                </rdf:Bag>
+              </bqmodel:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+              <rdf:Description rdf:about="#COPASI1">
+                <bqmodel:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000410"/>
+                  </rdf:Bag>
+                </bqmodel:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species metaid="COPASI2" id="ADP" name="ADP" compartment="default" initialConcentration="0.56" boundaryCondition="true" constant="true">
+        <annotation>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI2">
+                <dcterms:created>
+                  <rdf:Description>
+                    <dcterms:W3CDTF>2019-01-09T18:30:28Z</dcterms:W3CDTF>
+                  </rdf:Description>
+                </dcterms:created>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species id="ATP" name="ATP" compartment="default" initialConcentration="9.6" boundaryCondition="true" constant="true"/>
+      <species metaid="COPASI3" id="GLN" name="GLN" compartment="default" initialConcentration="2" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI3">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00064"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI3">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00064"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI4" id="GLU" name="GLU" compartment="default" initialConcentration="80" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00025"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI4">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00025"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI5" id="GS" name="GS" compartment="default" initialConcentration="0.01083759" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/ec-code/6.3.1.2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI5">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/ec-code/6.3.1.2"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species id="GSAMP" name="GSAMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species metaid="COPASI6" id="GlnB" name="GlnB" compartment="default" initialConcentration="0.00065" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/interpro/IPR002187"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI6">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/interpro/IPR002187"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species id="GlnBUMP" name="GlnBUMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species id="GlnBUMP2" name="GlnBUMP2" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species id="GlnBUMP3" name="GlnBUMP3" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species metaid="COPASI7" id="GlnK" name="GlnK" compartment="default" initialConcentration="0.002033376" boundaryCondition="false" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.biocyc.org/gene?orgid=ECOLI&amp;id=PROTEIN-PII2"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI7">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://www.biocyc.org/gene?orgid=ECOLI&amp;id=PROTEIN-PII2"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species id="GlnKUMP" name="GlnKUMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species id="GlnKUMP2" name="GlnKUMP2" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species id="GlnKUMP3" name="GlnKUMP3" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
+      <species metaid="COPASI8" id="NADP" name="NADP" compartment="default" initialConcentration="0.076" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00006"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI8">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00006"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI9" id="NADPH" name="NADPH" compartment="default" initialConcentration="0.12" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00005"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI9">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00005"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species id="NHxint" name="NHxint" compartment="default" initialConcentration="0.02" boundaryCondition="false" constant="false"/>
+      <species metaid="COPASI10" id="OG" name="OG" compartment="default" initialConcentration="3.86260171443297" boundaryCondition="true" constant="false">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI10">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI10">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI11" id="PPi" name="PPi" compartment="default" initialConcentration="0.05" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI11">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00013"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI11">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00013"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI12" id="Pi" name="Pi" compartment="default" initialConcentration="10" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI12">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI12">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI13" id="UMP" name="UMP" compartment="default" initialConcentration="0.01" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI13">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00105"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI13">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00105"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+      <species metaid="COPASI14" id="UTP" name="UTP" compartment="default" initialConcentration="8.3" boundaryCondition="true" constant="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI14">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00075"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI14">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00075"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="Acell" name="Acell" value="9.18e-12" constant="true"/>
+      <parameter id="AmtB" name="AmtB" value="0.001683954" constant="true"/>
+      <parameter id="AmtB_GlnKfree" name="AmtB_GlnKfree" value="0.00106774115968089" constant="false"/>
+      <parameter id="Dpsi" name="Dpsi" value="-0.15" constant="true"/>
+      <parameter id="EXTERNAL" name="EXTERNAL" value="0" constant="true"/>
+      <parameter id="F" name="F" value="96485" constant="true"/>
+      <parameter id="GLNdemf" name="GLNdemf" value="84.65745" constant="true"/>
+      <parameter id="GLNdemn" name="GLNdemn" value="645.1632" constant="true"/>
+      <parameter id="GLUdemf" name="GLUdemf" value="316.0761" constant="true"/>
+      <parameter id="GLUdemn" name="GLUdemn" value="2116.809" constant="true"/>
+      <parameter id="GStotal" name="GStotal" value="0.01083759" constant="false"/>
+      <parameter id="GlnBOG1" name="GlnBOG1" value="2.3934824459275e-06" constant="false"/>
+      <parameter id="GlnBUMP3OG3" name="GlnBUMP3OG3" value="0" constant="false"/>
+      <parameter id="GlnB_OGfree" name="GlnB_OGfree" value="1.02282466419361e-09" constant="false"/>
+      <parameter id="GlnKAmtB" name="GlnKAmtB" value="0.000616212840319108" constant="false"/>
+      <parameter id="GlnKOG1" name="GlnKOG1" value="0.000749732072892402" constant="false"/>
+      <parameter id="GlnKOG2" name="GlnKOG2" value="0.000534784406987038" constant="false"/>
+      <parameter id="GlnKOG3" name="GlnKOG3" value="0.000132610542305484" constant="false"/>
+      <parameter id="GlnK_AmtBfree" name="GlnK_AmtBfree" value="0.00141716315968089" constant="false"/>
+      <parameter id="GlnK_OGfree" name="GlnK_OGfree" value="0.000616248977815077" constant="false"/>
+      <parameter id="Hext" name="Hext" value="3.98107170553497e-05" constant="false"/>
+      <parameter id="Hint" name="Hint" value="2.51188643150958e-05" constant="false"/>
+      <parameter id="Ka" name="Ka" value="1.12201845430197e-06" constant="false"/>
+      <parameter id="Kadgln" name="Kadgln" value="0.9525115" constant="true"/>
+      <parameter id="Kadglnbog" name="Kadglnbog" value="1.199286e-05" constant="true"/>
+      <parameter id="Kadgs" name="Kadgs" value="7.485307e-05" constant="true"/>
+      <parameter id="Kamtbnh" name="Kamtbnh" value="0.005" constant="true"/>
+      <parameter id="Kdeadgln" name="Kdeadgln" value="0.2023639" constant="true"/>
+      <parameter id="Kdeadglnbog" name="Kdeadglnbog" value="2.588919e-06" constant="true"/>
+      <parameter id="Kdeadglnbump" name="Kdeadglnbump" value="7.074544e-06" constant="true"/>
+      <parameter id="Kdeadgsamp" name="Kdeadgsamp" value="0.0004478599" constant="true"/>
+      <parameter id="Kgdheq" name="Kgdheq" value="1290" constant="true"/>
+      <parameter id="Kgdhglu" name="Kgdhglu" value="6.278361" constant="true"/>
+      <parameter id="Kgdhnadp" name="Kgdhnadp" value="0.03482614" constant="true"/>
+      <parameter id="Kgdhnadph" name="Kgdhnadph" value="0.04858572" constant="true"/>
+      <parameter id="Kgdhnh" name="Kgdhnh" value="1.1" constant="true"/>
+      <parameter id="Kgdhog" name="Kgdhog" value="0.5188787" constant="true"/>
+      <parameter id="Kglnbog1" name="Kglnbog1" value="0.004951903" constant="true"/>
+      <parameter id="Kglnbog2" name="Kglnbog2" value="0.137803" constant="true"/>
+      <parameter id="Kglnbog3" name="Kglnbog3" value="0.1487975" constant="true"/>
+      <parameter id="Kglnbumpog1" name="Kglnbumpog1" value="0.02412875" constant="true"/>
+      <parameter id="Kglnbumpog2" name="Kglnbumpog2" value="0.1516126" constant="true"/>
+      <parameter id="Kglnbumpog3" name="Kglnbumpog3" value="0.1329721" constant="true"/>
+      <parameter id="Kglnkamtb" name="Kglnkamtb" value="6.261715e-08" constant="true"/>
+      <parameter id="Kglnkog1" name="Kglnkog1" value="9.5247" constant="true"/>
+      <parameter id="Kglnkog2" name="Kglnkog2" value="5.41511" constant="true"/>
+      <parameter id="Kglnkog3" name="Kglnkog3" value="5.192295" constant="true"/>
+      <parameter id="Kgoggln" name="Kgoggln" value="0.2874419" constant="true"/>
+      <parameter id="Kgogglu" name="Kgogglu" value="6.920785" constant="true"/>
+      <parameter id="Kgognadp" name="Kgognadp" value="0.003391094" constant="true"/>
+      <parameter id="Kgognadph" name="Kgognadph" value="0.001641051" constant="true"/>
+      <parameter id="Kgogog" name="Kgogog" value="0.006878996" constant="true"/>
+      <parameter id="Kgrowthgln" name="Kgrowthgln" value="1.507154" constant="true"/>
+      <parameter id="Kgrowthglu" name="Kgrowthglu" value="31.16965" constant="true"/>
+      <parameter id="Kgsadp" name="Kgsadp" value="0.07306878" constant="true"/>
+      <parameter id="Kgsatp" name="Kgsatp" value="0.2640569" constant="true"/>
+      <parameter id="Kgseq" name="Kgseq" value="460" constant="true"/>
+      <parameter id="Kgsgln" name="Kgsgln" value="5.811517" constant="true"/>
+      <parameter id="Kgsglu" name="Kgsglu" value="4.12683" constant="true"/>
+      <parameter id="Kgsnh" name="Kgsnh" value="0.1" constant="true"/>
+      <parameter id="Kgspi" name="Kgspi" value="4.513852" constant="true"/>
+      <parameter id="Kurgln" name="Kurgln" value="0.06360099" constant="true"/>
+      <parameter id="Kurglnbump" name="Kurglnbump" value="0.004632101" constant="true"/>
+      <parameter id="Kurglnkump" name="Kurglnkump" value="0.001979528" constant="true"/>
+      <parameter id="Kurump" name="Kurump" value="8.339747" constant="true"/>
+      <parameter id="Kutgln" name="Kutgln" value="0.0640159" constant="true"/>
+      <parameter id="Kutglnb" name="Kutglnb" value="0.002925671" constant="true"/>
+      <parameter id="Kutglnk" name="Kutglnk" value="0.00456417" constant="true"/>
+      <parameter id="Kutiglnb" name="Kutiglnb" value="0.001856939" constant="true"/>
+      <parameter id="Kutiglnbump" name="Kutiglnbump" value="0.003632328" constant="true"/>
+      <parameter id="Kutiglnk" name="Kutiglnk" value="0.001768462" constant="true"/>
+      <parameter id="Kutiglnkump" name="Kutiglnkump" value="0.002457601" constant="true"/>
+      <parameter id="Kutippi" name="Kutippi" value="0.1079356" constant="true"/>
+      <parameter id="Kututp" name="Kututp" value="0.04173016" constant="true"/>
+      <parameter id="NH3ext" name="NH3ext" value="0.000112735308554336" constant="false"/>
+      <parameter id="NH3int" name="NH3int" value="0.000855168222930722" constant="false"/>
+      <parameter id="NH3surf" name="NH3surf" value="0.000112735308554336" constant="false"/>
+      <parameter id="NH4ext" name="NH4ext" value="0.00399999969144566" constant="false"/>
+      <parameter id="NH4int" name="NH4int" value="0.0191448317770693" constant="false"/>
+      <parameter id="NH4surf" name="NH4surf" value="0.00399999969144566" constant="false"/>
+      <parameter id="NHxext" name="NHxext" value="0.004112735" constant="true"/>
+      <parameter id="NHxsurf" name="NHxsurf" value="0.004112735" constant="false"/>
+      <parameter id="Nintstar" name="Nintstar" value="0.033" constant="true"/>
+      <parameter id="OGbasal" name="OGbasal" value="0.5500384" constant="true"/>
+      <parameter id="Pcm" name="Pcm" value="0.07339047" constant="true"/>
+      <parameter id="R" name="R" value="8.314" constant="true"/>
+      <parameter id="T" name="T" value="310" constant="true"/>
+      <parameter id="UTase" name="UTase" value="0.0006" constant="true"/>
+      <parameter id="Vad" name="Vad" value="0.4183307" constant="true"/>
+      <parameter id="Vad_app" name="Vad_app" value="0.0239873407805062" constant="false"/>
+      <parameter id="Vamtb" name="Vamtb" value="1339.3405600884" constant="false"/>
+      <parameter id="Vamtb_app" name="Vamtb_app" value="849.232842961532" constant="false"/>
+      <parameter id="Vcell" name="Vcell" value="2.15e-18" constant="true"/>
+      <parameter id="Vdead" name="Vdead" value="0.6593675" constant="true"/>
+      <parameter id="Vdead_app" name="Vdead_app" value="0.0103772347822307" constant="false"/>
+      <parameter id="Vgdh" name="Vgdh" value="352.6402" constant="true"/>
+      <parameter id="Vgog" name="Vgog" value="83.19334" constant="true"/>
+      <parameter id="Vgs" name="Vgs" value="574.9279720737" constant="false"/>
+      <parameter id="Vgs_app" name="Vgs_app" value="581.827107738584" constant="false"/>
+      <parameter id="a1" name="a1" value="1e-22" constant="true"/>
+      <parameter id="aamp" name="aamp" value="10" constant="true"/>
+      <parameter id="b1" name="b1" value="0.7532627" constant="true"/>
+      <parameter id="bamp" name="bamp" value="2.3667" constant="true"/>
+      <parameter id="c1" name="c1" value="0.2959227" constant="true"/>
+      <parameter id="camp" name="camp" value="0.1012" constant="true"/>
+      <parameter id="d1" name="d1" value="0.01584525" constant="true"/>
+      <parameter id="damp" name="damp" value="10.8688" constant="true"/>
+      <parameter id="e1" name="e1" value="1e-22" constant="true"/>
+      <parameter id="f1" name="f1" value="0.6629458" constant="true"/>
+      <parameter id="g1" name="g1" value="14.42668" constant="true"/>
+      <parameter id="h1" name="h1" value="0.2074902" constant="true"/>
+      <parameter id="i1" name="i1" value="1e-22" constant="true"/>
+      <parameter id="j1" name="j1" value="1e-22" constant="true"/>
+      <parameter id="k1" name="k1" value="1e-22" constant="true"/>
+      <parameter id="kappa" name="kappa" value="7.889806" constant="true"/>
+      <parameter id="kcatamtb" name="kcatamtb" value="795354.6" constant="true"/>
+      <parameter id="kcatgs" name="kcatgs" value="53049.43" constant="true"/>
+      <parameter id="kcaturglnb" name="kcaturglnb" value="2.815787" constant="true"/>
+      <parameter id="kcaturglnk" name="kcaturglnk" value="17.31281" constant="true"/>
+      <parameter id="kcatutglnb" name="kcatutglnb" value="132.2476" constant="true"/>
+      <parameter id="kcatutglnk" name="kcatutglnk" value="74.26847" constant="true"/>
+      <parameter id="kdb" name="kdb" value="13.93793" constant="true"/>
+      <parameter id="kdiff" name="kdiff" value="313360.239348837" constant="false"/>
+      <parameter id="l1" name="l1" value="0.01740505" constant="true"/>
+      <parameter id="m1" name="m1" value="0.8794302" constant="true"/>
+      <parameter id="mu" name="mu" value="0.00879460681233234" constant="false"/>
+      <parameter id="n1" name="n1" value="9.963059" constant="true"/>
+      <parameter id="n1amp" name="n1amp" value="1.1456" constant="true"/>
+      <parameter id="n2amp" name="n2amp" value="19.2166" constant="true"/>
+      <parameter id="nAMP" name="nAMP" value="0" constant="false"/>
+      <parameter id="o1" name="o1" value="1.291713" constant="true"/>
+      <parameter id="pHext" name="pHext" value="7.4" constant="true"/>
+      <parameter id="pHint" name="pHint" value="7.6" constant="true"/>
+      <parameter id="pKa" name="pKa" value="8.95" constant="true"/>
+      <parameter id="phi" name="phi" value="274.618407833867" constant="false"/>
+      <parameter id="tau" name="tau" value="78.815027817727" constant="false"/>
+      <parameter id="tau0" name="tau0" value="45.83115" constant="true"/>
+      <parameter id="theta_ad" name="theta_ad" value="0.0573406177947404" constant="false"/>
+      <parameter id="theta_dead" name="theta_dead" value="0.0157381654118995" constant="false"/>
+      <parameter id="theta_gs" name="theta_gs" value="1.012" constant="false"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="GStotal">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <ci> GS </ci>
+            <ci> GSAMP </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vgs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> kcatgs </ci>
+            <ci> GStotal </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Ka">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn> 10 </cn>
+              <apply>
+                <minus/>
+                <ci> pKa </ci>
+              </apply>
+            </apply>
+            <cn> 1000 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Hint">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn> 10 </cn>
+              <apply>
+                <minus/>
+                <ci> pHint </ci>
+              </apply>
+            </apply>
+            <cn> 1000 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Hext">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn> 10 </cn>
+              <apply>
+                <minus/>
+                <ci> pHext </ci>
+              </apply>
+            </apply>
+            <cn> 1000 </cn>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH4int">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxint </ci>
+              <ci> Hint </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hint </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="OG">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <plus/>
+            <apply>
+              <times/>
+              <ci> kappa </ci>
+              <apply>
+                <minus/>
+                <cn> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> NH4int </ci>
+                  <ci> Nintstar </ci>
+                </apply>
+              </apply>
+            </apply>
+            <ci> OGbasal </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnBOG1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <cn> 3 </cn>
+                <ci> GlnB </ci>
+                <ci> OG </ci>
+              </apply>
+              <ci> Kglnbog1 </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnbog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbog1 </ci>
+                  <ci> Kglnbog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbog1 </ci>
+                  <ci> Kglnbog2 </ci>
+                  <ci> Kglnbog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnB_OGfree">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> GlnB </ci>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnbog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbog1 </ci>
+                  <ci> Kglnbog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbog1 </ci>
+                  <ci> Kglnbog2 </ci>
+                  <ci> Kglnbog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnKOG2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <cn> 3 </cn>
+                <ci> GlnK </ci>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 2 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kglnkog1 </ci>
+                <ci> Kglnkog2 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnkog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                  <ci> Kglnkog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnBUMP3OG3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> GlnBUMP3 </ci>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kglnbumpog1 </ci>
+                <ci> Kglnbumpog2 </ci>
+                <ci> Kglnbumpog3 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnbumpog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbumpog1 </ci>
+                  <ci> Kglnbumpog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnbumpog1 </ci>
+                  <ci> Kglnbumpog2 </ci>
+                  <ci> Kglnbumpog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnK_OGfree">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <ci> GlnK </ci>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnkog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                  <ci> Kglnkog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="AmtB_GlnKfree">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn> 0.5 </cn>
+            <apply>
+              <plus/>
+              <apply>
+                <minus/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <minus/>
+                    <ci> GlnK_OGfree </ci>
+                  </apply>
+                  <ci> AmtB </ci>
+                </apply>
+                <ci> Kglnkamtb </ci>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <plus/>
+                  <apply>
+                    <times/>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <minus/>
+                        <ci> GlnK_OGfree </ci>
+                        <ci> AmtB </ci>
+                      </apply>
+                      <ci> Kglnkamtb </ci>
+                    </apply>
+                    <apply>
+                      <plus/>
+                      <apply>
+                        <minus/>
+                        <ci> GlnK_OGfree </ci>
+                        <ci> AmtB </ci>
+                      </apply>
+                      <ci> Kglnkamtb </ci>
+                    </apply>
+                  </apply>
+                  <apply>
+                    <times/>
+                    <cn> 4 </cn>
+                    <ci> Kglnkamtb </ci>
+                    <ci> AmtB </ci>
+                  </apply>
+                </apply>
+                <cn> 0.5 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnKOG3">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> GlnK </ci>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+              </apply>
+              <apply>
+                <times/>
+                <ci> Kglnkog1 </ci>
+                <ci> Kglnkog2 </ci>
+                <ci> Kglnkog3 </ci>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnkog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                  <ci> Kglnkog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnKOG1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <cn> 3 </cn>
+                <ci> GlnK </ci>
+                <ci> OG </ci>
+              </apply>
+              <ci> Kglnkog1 </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <ci> OG </ci>
+                </apply>
+                <ci> Kglnkog1 </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <cn> 3 </cn>
+                  <apply>
+                    <power/>
+                    <ci> OG </ci>
+                    <cn> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <power/>
+                  <ci> OG </ci>
+                  <cn> 3 </cn>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kglnkog1 </ci>
+                  <ci> Kglnkog2 </ci>
+                  <ci> Kglnkog3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnKAmtB">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> AmtB </ci>
+            <ci> AmtB_GlnKfree </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="GlnK_AmtBfree">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <minus/>
+            <ci> GlnK </ci>
+            <ci> GlnKAmtB </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NHxsurf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <ci> NHxext </ci>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH4surf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxsurf </ci>
+              <ci> Hext </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hext </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH3int">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxint </ci>
+              <ci> Ka </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hint </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH4ext">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxext </ci>
+              <ci> Hext </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hext </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vamtb_app">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> kcatamtb </ci>
+            <ci> AmtB_GlnKfree </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vamtb">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> kcatamtb </ci>
+            <ci> AmtB </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH3ext">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxext </ci>
+              <ci> Ka </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hext </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="NH3surf">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> NHxsurf </ci>
+              <ci> Ka </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <ci> Ka </ci>
+              <ci> Hext </ci>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="theta_ad">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> a1 </ci>
+                  <ci> GlnBOG1 </ci>
+                </apply>
+                <ci> Kadglnbog </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> b1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <ci> Kadgln </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> c1 </ci>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kadglnbog </ci>
+                  <ci> Kadgln </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <ci> GlnBOG1 </ci>
+                <ci> Kadglnbog </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> GLN </ci>
+                <ci> Kadgln </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> d1 </ci>
+                  <ci> Kadglnbog </ci>
+                  <ci> Kadgln </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vad_app">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> theta_ad </ci>
+            <ci> Vad </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="theta_dead">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <plus/>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> e1 </ci>
+                  <ci> GlnBOG1 </ci>
+                </apply>
+                <ci> Kdeadglnbog </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> f1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <ci> Kdeadgln </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> g1 </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <ci> Kdeadglnbump </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> h1 </ci>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadgln </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> i1 </ci>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> j1 </ci>
+                  <ci> GLN </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kdeadgln </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> k1 </ci>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadgln </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <divide/>
+                <ci> GlnBOG1 </ci>
+                <ci> Kdeadglnbog </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> GLN </ci>
+                <ci> Kdeadgln </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <ci> GlnBUMP3OG3 </ci>
+                <ci> Kdeadglnbump </ci>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> l1 </ci>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadgln </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> m1 </ci>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GLN </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> n1 </ci>
+                  <ci> Kdeadgln </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+              <apply>
+                <divide/>
+                <apply>
+                  <times/>
+                  <ci> GlnBOG1 </ci>
+                  <ci> GLN </ci>
+                  <ci> GlnBUMP3OG3 </ci>
+                </apply>
+                <apply>
+                  <times/>
+                  <ci> o1 </ci>
+                  <ci> Kdeadglnbog </ci>
+                  <ci> Kdeadgln </ci>
+                  <ci> Kdeadglnbump </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vdead_app">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> theta_dead </ci>
+            <ci> Vdead </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="nAMP">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <cn> 12 </cn>
+              <ci> GSAMP </ci>
+            </apply>
+            <ci> GStotal </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="theta_gs">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <apply>
+                <divide/>
+                <ci> aamp </ci>
+                <apply>
+                  <plus/>
+                  <cn> 1 </cn>
+                  <apply>
+                    <power/>
+                    <apply>
+                      <divide/>
+                      <ci> nAMP </ci>
+                      <ci> bamp </ci>
+                    </apply>
+                    <ci> n1amp </ci>
+                  </apply>
+                </apply>
+              </apply>
+              <ci> camp </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> nAMP </ci>
+                  <ci> damp </ci>
+                </apply>
+                <ci> n2amp </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="Vgs_app">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> theta_gs </ci>
+            <ci> Vgs </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="phi">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <exp/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <apply>
+                  <minus/>
+                  <ci> F </ci>
+                </apply>
+                <ci> Dpsi </ci>
+              </apply>
+              <apply>
+                <times/>
+                <ci> R </ci>
+                <ci> T </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="kdiff">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <times/>
+              <ci> Pcm </ci>
+              <ci> Acell </ci>
+            </apply>
+            <ci> Vcell </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="tau">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <ci> tau0 </ci>
+            <apply>
+              <plus/>
+              <cn> 1 </cn>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Kgrowthglu </ci>
+                  <ci> GLU </ci>
+                </apply>
+                <cn> 2 </cn>
+              </apply>
+              <apply>
+                <power/>
+                <apply>
+                  <divide/>
+                  <ci> Kgrowthgln </ci>
+                  <ci> GLN </ci>
+                </apply>
+                <cn> 2 </cn>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="mu">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <ln/>
+              <cn> 2 </cn>
+            </apply>
+            <ci> tau </ci>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction metaid="COPASI15" id="vad" name="vad" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI15">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03473"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI15">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03473"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GS" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GSAMP" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vad </ci>
+                <ci> GS </ci>
+                <ci> Kadgs </ci>
+                <ci> Vad_app </ci>
+                <ci> default </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vamtb" name="vamtb" reversible="true">
+        <listOfProducts>
+          <speciesReference species="NHxint" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vamtb </ci>
+                <ci> Kamtbnh </ci>
+                <ci> NH4int </ci>
+                <ci> NH4surf </ci>
+                <ci> Vamtb_app </ci>
+                <ci> default </ci>
+                <ci> phi </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI16" id="vdead" name="vdead" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI16">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03474"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI16">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03474"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GSAMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GS" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vdead </ci>
+                <ci> GSAMP </ci>
+                <ci> Kdeadgsamp </ci>
+                <ci> Vdead_app </ci>
+                <ci> default </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vdiff" name="vdiff" reversible="true">
+        <listOfProducts>
+          <speciesReference species="NHxint" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vdiff </ci>
+                <ci> NH3int </ci>
+                <ci> NH3surf </ci>
+                <ci> default </ci>
+                <ci> kdiff </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI17" id="vgdh" name="vgdh" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI17">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00248"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI17">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00248"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="NADPH" stoichiometry="1"/>
+          <speciesReference species="OG" stoichiometry="1"/>
+          <speciesReference species="NHxint" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADP" stoichiometry="1"/>
+          <speciesReference species="GLU" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vgdh </ci>
+                <ci> GLU </ci>
+                <ci> Kgdheq </ci>
+                <ci> Kgdhglu </ci>
+                <ci> Kgdhnadp </ci>
+                <ci> Kgdhnadph </ci>
+                <ci> Kgdhnh </ci>
+                <ci> Kgdhog </ci>
+                <ci> NADP </ci>
+                <ci> NADPH </ci>
+                <ci> NH4int </ci>
+                <ci> OG </ci>
+                <ci> Vgdh </ci>
+                <ci> default </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vglndemf" name="vglndemf" reversible="true">
+        <listOfReactants>
+          <speciesReference species="GLN" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vglndemf </ci>
+                <ci> GLNdemf </ci>
+                <ci> default </ci>
+                <ci> mu </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vglndemn" name="vglndemn" reversible="true">
+        <listOfReactants>
+          <speciesReference species="GLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="GLU" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vglndemn </ci>
+                <ci> GLNdemn </ci>
+                <ci> default </ci>
+                <ci> mu </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vgludemf" name="vgludemf" reversible="true">
+        <listOfReactants>
+          <speciesReference species="GLU" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vgludemf </ci>
+                <ci> GLUdemf </ci>
+                <ci> default </ci>
+                <ci> mu </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vgludemn" name="vgludemn" reversible="true">
+        <listOfReactants>
+          <speciesReference species="GLU" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="OG" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vgludemn </ci>
+                <ci> GLUdemn </ci>
+                <ci> default </ci>
+                <ci> mu </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI18" id="vgog" name="vgog" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI18">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00114"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI18">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00114"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="OG" stoichiometry="1"/>
+          <speciesReference species="NADPH" stoichiometry="1"/>
+          <speciesReference species="GLN" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="NADP" stoichiometry="1"/>
+          <speciesReference species="GLU" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vgog </ci>
+                <ci> GLN </ci>
+                <ci> GLU </ci>
+                <ci> Kgoggln </ci>
+                <ci> Kgogglu </ci>
+                <ci> Kgognadp </ci>
+                <ci> Kgognadph </ci>
+                <ci> Kgogog </ci>
+                <ci> NADP </ci>
+                <ci> NADPH </ci>
+                <ci> OG </ci>
+                <ci> Vgog </ci>
+                <ci> default </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI19" id="vgs" name="vgs" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI19">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00253"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI19">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00253"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="NHxint" stoichiometry="1"/>
+          <speciesReference species="ATP" stoichiometry="1"/>
+          <speciesReference species="GLU" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="Pi" stoichiometry="1"/>
+          <speciesReference species="ADP" stoichiometry="1"/>
+          <speciesReference species="GLN" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vgs </ci>
+                <ci> ADP </ci>
+                <ci> ATP </ci>
+                <ci> GLN </ci>
+                <ci> GLU </ci>
+                <ci> Kgsadp </ci>
+                <ci> Kgsatp </ci>
+                <ci> Kgseq </ci>
+                <ci> Kgsgln </ci>
+                <ci> Kgsglu </ci>
+                <ci> Kgsnh </ci>
+                <ci> Kgspi </ci>
+                <ci> NH4int </ci>
+                <ci> Pi </ci>
+                <ci> Vgs_app </ci>
+                <ci> default </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI20" id="vurglnb1" name="vurglnb1" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI20">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI20">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnBUMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnB" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnBUMP3"/>
+          <modifierSpeciesReference species="GLN"/>
+          <modifierSpeciesReference species="GlnBUMP2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnb1 </ci>
+                <ci> GLN </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnbump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI21" id="vurglnb2" name="vurglnb2" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI21">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI21">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnBUMP2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnBUMP3"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnb2 </ci>
+                <ci> GLN </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnbump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI22" id="vurglnb3" name="vurglnb3" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI22">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI22">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnBUMP3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GLN"/>
+          <modifierSpeciesReference species="GlnBUMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnb3 </ci>
+                <ci> GLN </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnbump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI23" id="vurglnk1" name="vurglnk1" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI23">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI23">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnKUMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnK" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP3"/>
+          <modifierSpeciesReference species="GlnKUMP2"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnk1 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnkump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI24" id="vurglnk2" name="vurglnk2" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI24">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI24">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnKUMP2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP3"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnk2 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnkump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI25" id="vurglnk3" name="vurglnk3" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI25">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI25">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="GlnKUMP3" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="UMP" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vurglnk3 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> Kurgln </ci>
+                <ci> Kurglnkump </ci>
+                <ci> Kurump </ci>
+                <ci> UMP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcaturglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI26" id="vutglnb1" name="vutglnb1" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI26">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI26">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnB" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnBUMP3"/>
+          <modifierSpeciesReference species="GlnBUMP2"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnb1 </ci>
+                <ci> GLN </ci>
+                <ci> GlnB </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnb </ci>
+                <ci> Kutiglnb </ci>
+                <ci> Kutiglnbump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI27" id="vutglnb2" name="vutglnb2" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI27">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI27">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnBUMP3"/>
+          <modifierSpeciesReference species="GlnB"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnb2 </ci>
+                <ci> GLN </ci>
+                <ci> GlnB </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnb </ci>
+                <ci> Kutiglnb </ci>
+                <ci> Kutiglnbump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI28" id="vutglnb3" name="vutglnb3" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI28">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI28">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnBUMP3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnB"/>
+          <modifierSpeciesReference species="GLN"/>
+          <modifierSpeciesReference species="GlnBUMP"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnb3 </ci>
+                <ci> GLN </ci>
+                <ci> GlnB </ci>
+                <ci> GlnBUMP </ci>
+                <ci> GlnBUMP2 </ci>
+                <ci> GlnBUMP3 </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnb </ci>
+                <ci> Kutiglnb </ci>
+                <ci> Kutiglnbump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnb </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI29" id="vutglnk1" name="vutglnk1" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI29">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI29">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnK" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP3"/>
+          <modifierSpeciesReference species="GlnKUMP2"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnk1 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> GlnK_AmtBfree </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnk </ci>
+                <ci> Kutiglnk </ci>
+                <ci> Kutiglnkump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI30" id="vutglnk2" name="vutglnk2" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI30">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI30">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP3"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnk2 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> GlnK_AmtBfree </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnk </ci>
+                <ci> Kutiglnk </ci>
+                <ci> Kutiglnkump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction metaid="COPASI31" id="vutglnk3" name="vutglnk3" reversible="true">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
+            <rdf:Description rdf:about="#COPASI31">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+          <COPASI xmlns="http://www.copasi.org/static/sbml">
+            <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+              <rdf:Description rdf:about="#COPASI31">
+                <CopasiMT:is>
+                  <rdf:Bag>
+                    <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+                  </rdf:Bag>
+                </CopasiMT:is>
+              </rdf:Description>
+            </rdf:RDF>
+          </COPASI>
+        </annotation>
+        <listOfReactants>
+          <speciesReference species="UTP" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="PPi" stoichiometry="1"/>
+          <speciesReference species="GlnKUMP3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="GlnKUMP"/>
+          <modifierSpeciesReference species="GLN"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> default </ci>
+              <apply>
+                <ci> Function_for_vutglnk3 </ci>
+                <ci> GLN </ci>
+                <ci> GlnKUMP </ci>
+                <ci> GlnKUMP2 </ci>
+                <ci> GlnKUMP3 </ci>
+                <ci> GlnK_AmtBfree </ci>
+                <ci> Kutgln </ci>
+                <ci> Kutglnk </ci>
+                <ci> Kutiglnk </ci>
+                <ci> Kutiglnkump </ci>
+                <ci> Kutippi </ci>
+                <ci> Kututp </ci>
+                <ci> PPi </ci>
+                <ci> UTP </ci>
+                <ci> UTase </ci>
+                <ci> default </ci>
+                <ci> kcatutglnk </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

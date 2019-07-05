@@ -47,12 +47,14 @@ if isIQMmodel(model)
     switch fast_flag
         case {0, 1}
             odefun_name = strcat(st_model.name,'_odefun');
+            odefun_name = regexprep(odefun_name,'\W','');
             fprintf('Making %s.m ...',odefun_name);
             IQMcreateODEfile(model,odefun_name);
             fprintf(' Finished.\n');
             model = odefun_name;
         case 2
             mex_name = strcat(st_model.name,'_mex');
+            mex_name = regexprep(mex_name,'\W','');
             clear(mex_name);
             fprintf('Making %s.%s ...',mex_name,mexext);
             IQMmakeMEXmodel(model,mex_name,1);
@@ -77,16 +79,15 @@ if ischar(model)
         model = str2func(filename);
     elseif strcmp('.sbml',ext) || strcmp('.xml',ext)
         sbm = IQMmodel(model);
-        st_model = struct(sbm);
         switch fast_flag
             case {0, 1}
-                odefun_name = strcat(st_model.name,'_odefun');
+                odefun_name = strcat(filename,'_odefun');
                 fprintf('Making %s.m ...',odefun_name);
                 IQMcreateODEfile(sbm,odefun_name);
                 fprintf(' Finished.\n');
                 model = str2func(odefun_name);
             case 2
-                mex_name = strcat(st_model.name,'_mex');
+                mex_name = strcat(filename,'_mex');
                 clear(mex_name);
                 fprintf('Making %s.%s ...',mex_name,mexext);
                 IQMmakeMEXmodel(sbm,mex_name,1);
@@ -104,16 +105,15 @@ if ischar(model)
             model = str2func(filename);
         elseif exist(strcat(model,'.sbml'),'file')
             sbm = IQMmodel(strcat(model,'.sbml'));
-            st_model = struct(sbm);
             switch fast_flag
                 case {0, 1}
-                    odefun_name = strcat(st_model.name,'_odefun');
+                    odefun_name = strcat(filename,'_odefun');
                     fprintf('Making %s.m ...',odefun_name);
                     IQMcreateODEfile(sbm,odefun_name);
                     fprintf(' Finished.\n');
                     model = str2func(odefun_name);
                 case 2
-                    mex_name = strcat(st_model.name,'_mex');
+                    mex_name = strcat(filename,'_mex');
                     clear(mex_name);
                     fprintf('Making %s.%s ...',mex_name,mexext);
                     IQMmakeMEXmodel(sbm,mex_name,1);
@@ -125,16 +125,15 @@ if ischar(model)
             end
         elseif exist(strcat(model,'.xml'),'file')
             sbm = IQMmodel(strcat(model,'.xml'));
-            st_model = struct(sbm);
             switch fast_flag
                 case {0, 1}
-                    odefun_name = strcat(st_model.name,'_odefun');
+                    odefun_name = strcat(filename,'_odefun');
                     fprintf('Making %s.m ...',odefun_name);
                     IQMcreateODEfile(sbm,odefun_name);
                     fprintf(' Finished.\n');
                     model = str2func(odefun_name);
                 case 2
-                    mex_name = strcat(st_model.name,'_mex');
+                    mex_name = strcat(filename,'_mex');
                     clear(mex_name);
                     fprintf('Making %s.%s ...',mex_name,mexext);
                     IQMmakeMEXmodel(sbm,mex_name,1);

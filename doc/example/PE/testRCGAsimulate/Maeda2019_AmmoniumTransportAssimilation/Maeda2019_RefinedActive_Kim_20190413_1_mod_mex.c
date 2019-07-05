@@ -2,7 +2,7 @@
 #include "stdarg.h"
 #include "math.h"
 #include "CVODEmex25.h"
-#include "Maeda2019_AmmoniumTransportAssimilation_mex.h"
+#include "Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.h"
 #include "mexsplineaddon.h"
 #include "mexmathaddon.h"
 #include "kineticformulas.h"

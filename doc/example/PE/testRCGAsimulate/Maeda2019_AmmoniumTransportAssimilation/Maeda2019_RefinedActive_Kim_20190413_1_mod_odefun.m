@@ -1,16 +1,16 @@
-function [output] = Maeda2019_AmmoniumTransportAssimilation_odefun(varargin)
+function [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Maeda2019_AmmoniumTransportAssimilation
-% Generated: 04-Jul-2019 18:34:30
+% Generated: 05-Jul-2019 16:25:53
 % 
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun() => output = initial conditions in column vector
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('states') => output = state names in cell-array
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('algebraic') => output = algebraic variable names in cell-array
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('parameters') => output = parameter names in cell-array
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('parametervalues') => output = parameter values in column vector
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('variablenames') => output = variable names in cell-array
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun('variableformulas') => output = variable formulas in cell-array
-% [output] = Maeda2019_AmmoniumTransportAssimilation_odefun(time,statevector) => output = time derivatives in column vector
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun() => output = initial conditions in column vector
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('states') => output = state names in cell-array
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('algebraic') => output = algebraic variable names in cell-array
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('parameters') => output = parameter names in cell-array
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('parametervalues') => output = parameter values in column vector
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('variablenames') => output = variable names in cell-array
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('variableformulas') => output = variable formulas in cell-array
+% [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun(time,statevector) => output = time derivatives in column vector
 % 
 % State names and ordering:
 % 
@@ -72,7 +72,7 @@ elseif nargin == 1,
 			'Vgdh', 'Vgog', 'a1', 'aamp', 'b1', 'bamp', 'c1', 'camp', 'd1', 'damp', ...
 			'e1', 'f1', 'g1', 'h1', 'i1', 'j1', 'k1', 'kappa', 'kcatamtb', 'kcatgs', ...
 			'kcaturglnb', 'kcaturglnk', 'kcatutglnb', 'kcatutglnk', 'kdb', 'l1', 'm1', 'n1', 'n1amp', 'n2amp', ...
-			'o1', 'pHext', 'pHint', 'pKa', 'tau0', 'default'};
+			'o1', 'pHext', 'pHint', 'pKa', 'tau0', 'default0'};
 	elseif strcmp(varargin{1},'parametervalues'),
 		% Return parameter values in column vector
 		output = [9.18e-12, 0.00168395, -0.15, 0, 96485, 84.6574, 645.163, 316.076, 2116.81, 0.952511, ...
@@ -255,7 +255,7 @@ if isempty(parameterValuesNew),
 	pHint = 7.6;
 	pKa = 8.95;
 	tau0 = 45.8312;
-	default = 1;
+	default0 = 1;
 else
 	Acell = parameterValuesNew(1);
 	AmtB = parameterValuesNew(2);
@@ -362,7 +362,7 @@ else
 	pHint = parameterValuesNew(103);
 	pKa = parameterValuesNew(104);
 	tau0 = parameterValuesNew(105);
-	default = parameterValuesNew(106);
+	default0 = parameterValuesNew(106);
 end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -408,50 +408,50 @@ mu = log(2)/tau;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REACTION KINETICS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-vad = default * Function_for_vad(GS, Kadgs, Vad_app, default);
-vamtb = default * Function_for_vamtb(Kamtbnh, NH4int, NH4surf, Vamtb_app, default, phi);
-vdead = default * Function_for_vdead(GSAMP, Kdeadgsamp, Vdead_app, default);
-vdiff = default * Function_for_vdiff(NH3int, NH3surf, default, kdiff);
-vgdh = default * Function_for_vgdh(GLU, Kgdheq, Kgdhglu, Kgdhnadp, Kgdhnadph, Kgdhnh, Kgdhog, NADP, NADPH, NH4int, OG, Vgdh, default);
-vglndemf = default * Function_for_vglndemf(GLNdemf, default, mu);
-vglndemn = default * Function_for_vglndemn(GLNdemn, default, mu);
-vgludemf = default * Function_for_vgludemf(GLUdemf, default, mu);
-vgludemn = default * Function_for_vgludemn(GLUdemn, default, mu);
-vgog = default * Function_for_vgog(GLN, GLU, Kgoggln, Kgogglu, Kgognadp, Kgognadph, Kgogog, NADP, NADPH, OG, Vgog, default);
-vgs = default * Function_for_vgs(ADP, ATP, GLN, GLU, Kgsadp, Kgsatp, Kgseq, Kgsgln, Kgsglu, Kgsnh, Kgspi, NH4int, Pi, Vgs_app, default);
-vurglnb1 = default * Function_for_vurglnb1(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default, kcaturglnb);
-vurglnb2 = default * Function_for_vurglnb2(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default, kcaturglnb);
-vurglnb3 = default * Function_for_vurglnb3(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default, kcaturglnb);
-vurglnk1 = default * Function_for_vurglnk1(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default, kcaturglnk);
-vurglnk2 = default * Function_for_vurglnk2(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default, kcaturglnk);
-vurglnk3 = default * Function_for_vurglnk3(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default, kcaturglnk);
-vutglnb1 = default * Function_for_vutglnb1(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnb);
-vutglnb2 = default * Function_for_vutglnb2(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnb);
-vutglnb3 = default * Function_for_vutglnb3(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnb);
-vutglnk1 = default * Function_for_vutglnk1(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnk);
-vutglnk2 = default * Function_for_vutglnk2(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnk);
-vutglnk3 = default * Function_for_vutglnk3(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default, kcatutglnk);
+vad = default0 * Function_for_vad(GS, Kadgs, Vad_app, default0);
+vamtb = default0 * Function_for_vamtb(Kamtbnh, NH4int, NH4surf, Vamtb_app, default0, phi);
+vdead = default0 * Function_for_vdead(GSAMP, Kdeadgsamp, Vdead_app, default0);
+vdiff = default0 * Function_for_vdiff(NH3int, NH3surf, default0, kdiff);
+vgdh = default0 * Function_for_vgdh(GLU, Kgdheq, Kgdhglu, Kgdhnadp, Kgdhnadph, Kgdhnh, Kgdhog, NADP, NADPH, NH4int, OG, Vgdh, default0);
+vglndemf = default0 * Function_for_vglndemf(GLNdemf, default0, mu);
+vglndemn = default0 * Function_for_vglndemn(GLNdemn, default0, mu);
+vgludemf = default0 * Function_for_vgludemf(GLUdemf, default0, mu);
+vgludemn = default0 * Function_for_vgludemn(GLUdemn, default0, mu);
+vgog = default0 * Function_for_vgog(GLN, GLU, Kgoggln, Kgogglu, Kgognadp, Kgognadph, Kgogog, NADP, NADPH, OG, Vgog, default0);
+vgs = default0 * Function_for_vgs(ADP, ATP, GLN, GLU, Kgsadp, Kgsatp, Kgseq, Kgsgln, Kgsglu, Kgsnh, Kgspi, NH4int, Pi, Vgs_app, default0);
+vurglnb1 = default0 * Function_for_vurglnb1(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default0, kcaturglnb);
+vurglnb2 = default0 * Function_for_vurglnb2(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default0, kcaturglnb);
+vurglnb3 = default0 * Function_for_vurglnb3(GLN, GlnBUMP, GlnBUMP2, GlnBUMP3, Kurgln, Kurglnbump, Kurump, UMP, UTase, default0, kcaturglnb);
+vurglnk1 = default0 * Function_for_vurglnk1(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default0, kcaturglnk);
+vurglnk2 = default0 * Function_for_vurglnk2(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default0, kcaturglnk);
+vurglnk3 = default0 * Function_for_vurglnk3(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, Kurgln, Kurglnkump, Kurump, UMP, UTase, default0, kcaturglnk);
+vutglnb1 = default0 * Function_for_vutglnb1(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnb);
+vutglnb2 = default0 * Function_for_vutglnb2(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnb);
+vutglnb3 = default0 * Function_for_vutglnb3(GLN, GlnB, GlnBUMP, GlnBUMP2, GlnBUMP3, Kutgln, Kutglnb, Kutiglnb, Kutiglnbump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnb);
+vutglnk1 = default0 * Function_for_vutglnk1(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnk);
+vutglnk2 = default0 * Function_for_vutglnk2(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnk);
+vutglnk3 = default0 * Function_for_vutglnk3(GLN, GlnKUMP, GlnKUMP2, GlnKUMP3, GlnK_AmtBfree, Kutgln, Kutglnk, Kutiglnk, Kutiglnkump, Kutippi, Kututp, PPi, UTP, UTase, default0, kcatutglnk);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DIFFERENTIAL EQUATIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ADP_dot = 0;
 ATP_dot = 0;
-GLN_dot = (-vglndemf-vglndemn-vgog+vgs)/default;
-GLU_dot = (+vgdh+vglndemn-vgludemf-vgludemn+2*vgog-vgs)/default;
-GS_dot = (-vad+vdead)/default;
-GSAMP_dot = (+vad-vdead)/default;
-GlnB_dot = (+vurglnb1-vutglnb1)/default;
-GlnBUMP_dot = (-vurglnb1+vurglnb2+vutglnb1-vutglnb2)/default;
-GlnBUMP2_dot = (-vurglnb2+vurglnb3+vutglnb2-vutglnb3)/default;
-GlnBUMP3_dot = (-vurglnb3+vutglnb3)/default;
-GlnK_dot = (+vurglnk1-vutglnk1)/default;
-GlnKUMP_dot = (-vurglnk1+vurglnk2+vutglnk1-vutglnk2)/default;
-GlnKUMP2_dot = (-vurglnk2+vurglnk3+vutglnk2-vutglnk3)/default;
-GlnKUMP3_dot = (-vurglnk3+vutglnk3)/default;
+GLN_dot = (-vglndemf-vglndemn-vgog+vgs)/default0;
+GLU_dot = (+vgdh+vglndemn-vgludemf-vgludemn+2*vgog-vgs)/default0;
+GS_dot = (-vad+vdead)/default0;
+GSAMP_dot = (+vad-vdead)/default0;
+GlnB_dot = (+vurglnb1-vutglnb1)/default0;
+GlnBUMP_dot = (-vurglnb1+vurglnb2+vutglnb1-vutglnb2)/default0;
+GlnBUMP2_dot = (-vurglnb2+vurglnb3+vutglnb2-vutglnb3)/default0;
+GlnBUMP3_dot = (-vurglnb3+vutglnb3)/default0;
+GlnK_dot = (+vurglnk1-vutglnk1)/default0;
+GlnKUMP_dot = (-vurglnk1+vurglnk2+vutglnk1-vutglnk2)/default0;
+GlnKUMP2_dot = (-vurglnk2+vurglnk3+vutglnk2-vutglnk3)/default0;
+GlnKUMP3_dot = (-vurglnk3+vutglnk3)/default0;
 NADP_dot = 0;
 NADPH_dot = 0;
-NHxint_dot = (+vamtb+vdiff-vgdh-vgs)/default;
+NHxint_dot = (+vamtb+vdiff-vgdh-vgs)/default0;
 PPi_dot = 0;
 Pi_dot = 0;
 UMP_dot = 0;
@@ -490,119 +490,119 @@ return
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % FUNCTIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function [result] = Function_for_vamtb(Kamtbnh,NH4int,NH4surf,Vamtb_app,default,phi)
+function [result] = Function_for_vamtb(Kamtbnh,NH4int,NH4surf,Vamtb_app,default0,phi)
 global time
-result = Vamtb_app*(NH4surf-NH4int/phi)/(Kamtbnh+NH4surf)/default;
+result = Vamtb_app*(NH4surf-NH4int/phi)/(Kamtbnh+NH4surf)/default0;
 return
 
-function [result] = Function_for_vdiff(NH3int,NH3surf,default,kdiff)
+function [result] = Function_for_vdiff(NH3int,NH3surf,default0,kdiff)
 global time
-result = kdiff*(NH3surf-NH3int)/default;
+result = kdiff*(NH3surf-NH3int)/default0;
 return
 
-function [result] = Function_for_vdead(GSAMP,Kdeadgsamp,Vdead_app,default)
+function [result] = Function_for_vdead(GSAMP,Kdeadgsamp,Vdead_app,default0)
 global time
-result = Vdead_app*GSAMP/(Kdeadgsamp+GSAMP)/default;
+result = Vdead_app*GSAMP/(Kdeadgsamp+GSAMP)/default0;
 return
 
-function [result] = Function_for_vglndemf(GLNdemf,default,mu)
+function [result] = Function_for_vglndemf(GLNdemf,default0,mu)
 global time
-result = mu*GLNdemf/default;
+result = mu*GLNdemf/default0;
 return
 
-function [result] = Function_for_vglndemn(GLNdemn,default,mu)
+function [result] = Function_for_vglndemn(GLNdemn,default0,mu)
 global time
-result = mu*GLNdemn/default;
+result = mu*GLNdemn/default0;
 return
 
-function [result] = Function_for_vgludemf(GLUdemf,default,mu)
+function [result] = Function_for_vgludemf(GLUdemf,default0,mu)
 global time
-result = mu*GLUdemf/default;
+result = mu*GLUdemf/default0;
 return
 
-function [result] = Function_for_vad(GS,Kadgs,Vad_app,default)
+function [result] = Function_for_vad(GS,Kadgs,Vad_app,default0)
 global time
-result = Vad_app*GS/(Kadgs+GS)/default;
+result = Vad_app*GS/(Kadgs+GS)/default0;
 return
 
-function [result] = Function_for_vgdh(GLU,Kgdheq,Kgdhglu,Kgdhnadp,Kgdhnadph,Kgdhnh,Kgdhog,NADP,NADPH,NH4int,OG,Vgdh,default)
+function [result] = Function_for_vgdh(GLU,Kgdheq,Kgdhglu,Kgdhnadp,Kgdhnadph,Kgdhnh,Kgdhog,NADP,NADPH,NH4int,OG,Vgdh,default0)
 global time
-result = Vgdh/(Kgdhog*Kgdhnh*Kgdhnadph)*(OG*NH4int*NADPH-GLU*NADP/Kgdheq)/((1+NH4int/Kgdhnh)*(1+OG/Kgdhog+GLU/Kgdhglu)*(1+NADPH/Kgdhnadph+NADP/Kgdhnadp))/default;
+result = Vgdh/(Kgdhog*Kgdhnh*Kgdhnadph)*(OG*NH4int*NADPH-GLU*NADP/Kgdheq)/((1+NH4int/Kgdhnh)*(1+OG/Kgdhog+GLU/Kgdhglu)*(1+NADPH/Kgdhnadph+NADP/Kgdhnadp))/default0;
 return
 
-function [result] = Function_for_vgludemn(GLUdemn,default,mu)
+function [result] = Function_for_vgludemn(GLUdemn,default0,mu)
 global time
-result = mu*GLUdemn/default;
+result = mu*GLUdemn/default0;
 return
 
-function [result] = Function_for_vutglnk2(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnk)
+function [result] = Function_for_vutglnk2(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnk)
 global time
-result = kcatutglnk*UTase*GlnKUMP*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnk*UTase*GlnKUMP*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vutglnk3(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnk)
+function [result] = Function_for_vutglnk3(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnk)
 global time
-result = kcatutglnk*UTase*GlnKUMP2*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnk*UTase*GlnKUMP2*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vurglnb1(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default,kcaturglnb)
+function [result] = Function_for_vurglnb1(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default0,kcaturglnb)
 global time
-result = kcaturglnb*UTase*GlnBUMP/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default;
+result = kcaturglnb*UTase*GlnBUMP/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default0;
 return
 
-function [result] = Function_for_vurglnb2(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default,kcaturglnb)
+function [result] = Function_for_vurglnb2(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default0,kcaturglnb)
 global time
-result = kcaturglnb*UTase*GlnBUMP2/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default;
+result = kcaturglnb*UTase*GlnBUMP2/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default0;
 return
 
-function [result] = Function_for_vutglnb3(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnb)
+function [result] = Function_for_vutglnb3(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnb)
 global time
-result = kcatutglnb*UTase*GlnBUMP2*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnb*UTase*GlnBUMP2*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vurglnk3(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default,kcaturglnk)
+function [result] = Function_for_vurglnk3(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default0,kcaturglnk)
 global time
-result = kcaturglnk*UTase*GlnKUMP3/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default;
+result = kcaturglnk*UTase*GlnKUMP3/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default0;
 return
 
-function [result] = Function_for_vutglnk1(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnk)
+function [result] = Function_for_vutglnk1(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,GlnK_AmtBfree,Kutgln,Kutglnk,Kutiglnk,Kutiglnkump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnk)
 global time
-result = kcatutglnk*UTase*GlnK_AmtBfree*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnk*UTase*GlnK_AmtBfree*UTP/((1+GLN/Kutgln)*(Kutiglnk*Kututp+Kututp*(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)+Kutglnk*UTP+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP+Kutglnk*UTP*(GlnKUMP+GlnKUMP2+GlnKUMP3)/Kutiglnkump+(GlnK_AmtBfree+GlnKUMP+GlnKUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vutglnb1(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnb)
+function [result] = Function_for_vutglnb1(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnb)
 global time
-result = kcatutglnb*UTase*GlnB*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnb*UTase*GlnB*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vutglnb2(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default,kcatutglnb)
+function [result] = Function_for_vutglnb2(GLN,GlnB,GlnBUMP,GlnBUMP2,GlnBUMP3,Kutgln,Kutglnb,Kutiglnb,Kutiglnbump,Kutippi,Kututp,PPi,UTP,UTase,default0,kcatutglnb)
 global time
-result = kcatutglnb*UTase*GlnBUMP*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default;
+result = kcatutglnb*UTase*GlnBUMP*UTP/((1+GLN/Kutgln)*(Kutiglnb*Kututp+Kututp*(GlnB+GlnBUMP+GlnBUMP2)+Kutglnb*UTP+(GlnB+GlnBUMP+GlnBUMP2)*UTP+Kutglnb*UTP*(GlnBUMP+GlnBUMP2+GlnBUMP3)/Kutiglnbump+(GlnB+GlnBUMP+GlnBUMP2)*UTP*PPi/Kutippi))/default0;
 return
 
-function [result] = Function_for_vurglnb3(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default,kcaturglnb)
+function [result] = Function_for_vurglnb3(GLN,GlnBUMP,GlnBUMP2,GlnBUMP3,Kurgln,Kurglnbump,Kurump,UMP,UTase,default0,kcaturglnb)
 global time
-result = kcaturglnb*UTase*GlnBUMP3/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default;
+result = kcaturglnb*UTase*GlnBUMP3/((1+Kurgln/GLN)*(Kurglnbump+(1+UMP/Kurump)*(GlnBUMP+GlnBUMP2+GlnBUMP3)))/default0;
 return
 
-function [result] = Function_for_vgog(GLN,GLU,Kgoggln,Kgogglu,Kgognadp,Kgognadph,Kgogog,NADP,NADPH,OG,Vgog,default)
+function [result] = Function_for_vgog(GLN,GLU,Kgoggln,Kgogglu,Kgognadp,Kgognadph,Kgogog,NADP,NADPH,OG,Vgog,default0)
 global time
-result = Vgog*GLN*OG*NADPH/(Kgoggln*Kgogog*Kgognadph)/((1+GLN/Kgoggln+GLU/Kgogglu)*(1+OG/Kgogog+GLU/Kgogglu)*(1+NADPH/Kgognadph+NADP/Kgognadp))/default;
+result = Vgog*GLN*OG*NADPH/(Kgoggln*Kgogog*Kgognadph)/((1+GLN/Kgoggln+GLU/Kgogglu)*(1+OG/Kgogog+GLU/Kgogglu)*(1+NADPH/Kgognadph+NADP/Kgognadp))/default0;
 return
 
-function [result] = Function_for_vurglnk1(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default,kcaturglnk)
+function [result] = Function_for_vurglnk1(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default0,kcaturglnk)
 global time
-result = kcaturglnk*UTase*GlnKUMP/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default;
+result = kcaturglnk*UTase*GlnKUMP/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default0;
 return
 
-function [result] = Function_for_vgs(ADP,ATP,GLN,GLU,Kgsadp,Kgsatp,Kgseq,Kgsgln,Kgsglu,Kgsnh,Kgspi,NH4int,Pi,Vgs_app,default)
+function [result] = Function_for_vgs(ADP,ATP,GLN,GLU,Kgsadp,Kgsatp,Kgseq,Kgsgln,Kgsglu,Kgsnh,Kgspi,NH4int,Pi,Vgs_app,default0)
 global time
-result = Vgs_app/(Kgsatp*Kgsnh*Kgsglu)*(ATP*NH4int*GLU-ADP*GLN*Pi/Kgseq)/((1+ATP/Kgsatp+ADP/Kgsadp+Pi/Kgspi+ADP*Pi/(Kgsadp*Kgspi))*(1+NH4int/Kgsnh+GLN/Kgsgln+GLU/Kgsglu+GLN*NH4int/(Kgsgln*Kgsnh)+GLU*NH4int/(Kgsglu*Kgsnh)))/default;
+result = Vgs_app/(Kgsatp*Kgsnh*Kgsglu)*(ATP*NH4int*GLU-ADP*GLN*Pi/Kgseq)/((1+ATP/Kgsatp+ADP/Kgsadp+Pi/Kgspi+ADP*Pi/(Kgsadp*Kgspi))*(1+NH4int/Kgsnh+GLN/Kgsgln+GLU/Kgsglu+GLN*NH4int/(Kgsgln*Kgsnh)+GLU*NH4int/(Kgsglu*Kgsnh)))/default0;
 return
 
-function [result] = Function_for_vurglnk2(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default,kcaturglnk)
+function [result] = Function_for_vurglnk2(GLN,GlnKUMP,GlnKUMP2,GlnKUMP3,Kurgln,Kurglnkump,Kurump,UMP,UTase,default0,kcaturglnk)
 global time
-result = kcaturglnk*UTase*GlnKUMP2/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default;
+result = kcaturglnk*UTase*GlnKUMP2/((1+Kurgln/GLN)*(Kurglnkump+(1+UMP/Kurump)*(GlnKUMP+GlnKUMP2+GlnKUMP3)))/default0;
 return
 
 
