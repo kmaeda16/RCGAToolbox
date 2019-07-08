@@ -16,4 +16,12 @@ cd('Maeda2019_AmmoniumTransportAssimilation');
 simulateModel;
 cd ..;
 
+cd('Threestep');
+simulateModel;
+cd ..;
+
+cd('HIV');
+simulateModel;
+cd ..;
+
 diary off;

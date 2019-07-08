@@ -1,7 +1,7 @@
 function [output] = BIOMD0000000005_url_mod_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Tyson1991 - Cell Cycle 6 var
-% Generated: 05-Jul-2019 16:25:42
+% Generated: 08-Jul-2019 12:17:57
 % 
 % [output] = BIOMD0000000005_url_mod_odefun() => output = initial conditions in column vector
 % [output] = BIOMD0000000005_url_mod_odefun('states') => output = state names in cell-array

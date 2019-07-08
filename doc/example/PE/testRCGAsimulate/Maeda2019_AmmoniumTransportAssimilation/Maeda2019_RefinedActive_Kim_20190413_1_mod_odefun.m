@@ -1,7 +1,7 @@
 function [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Maeda2019_AmmoniumTransportAssimilation
-% Generated: 05-Jul-2019 16:25:53
+% Generated: 08-Jul-2019 12:18:08
 % 
 % [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun() => output = initial conditions in column vector
 % [output] = Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun('states') => output = state names in cell-array

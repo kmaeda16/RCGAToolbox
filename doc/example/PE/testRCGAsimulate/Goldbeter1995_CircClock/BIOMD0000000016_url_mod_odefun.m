@@ -1,7 +1,7 @@
 function [output] = BIOMD0000000016_url_mod_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Goldbeter1995_CircClock
-% Generated: 05-Jul-2019 16:25:40
+% Generated: 08-Jul-2019 12:17:54
 % 
 % [output] = BIOMD0000000016_url_mod_odefun() => output = initial conditions in column vector
 % [output] = BIOMD0000000016_url_mod_odefun('states') => output = state names in cell-array
