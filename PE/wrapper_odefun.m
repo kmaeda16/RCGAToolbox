@@ -1,4 +1,4 @@
-function [ dydt, flag ] = wrapper_odefun(odefun,t,y,param)
+function [ dydt, flag ] = wrapper_odefun(odefun,t,y)
 % wrapper_odefun is a wrapper for odefun.
 % 
 % [SYNTAX]
@@ -9,7 +9,6 @@ function [ dydt, flag ] = wrapper_odefun(odefun,t,y,param)
 % odefun :  IQM Tools ODEFUN file.
 % t      :  Time.
 % y      :  State variable vector.
-% param  :  Parameter value vector.
 % 
 % [OUTPUT]
 % dydt      :  Time derivative of y.
@@ -18,5 +17,5 @@ function [ dydt, flag ] = wrapper_odefun(odefun,t,y,param)
 %              * flag < 0: Unrecoverable failure
 %              * flag > 0: Recoverable error
 
-dydt = feval(odefun,t,y,param);
+dydt = feval(odefun,t,y);
 flag = 0;
