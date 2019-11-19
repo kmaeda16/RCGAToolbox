@@ -1,26 +1,15 @@
-function [ T, Y ] = Simulation_stb(odefun, tspan, y0, param, options)
-
-options.Method = @odestb;
-[ T, Y ] = Simulation_odexx(odefun, tspan, y0, param, options);
-
-
-
-
-
-% Simulation_stb simulates an ODE model using CVODE from SundialsTB.
+function [ T, Y ] = odestb(odefun, tspan, y0, options)
+% odestb is a wrapper function that enables to use CVode provided by
+% SundialsTB in the same way as MATLAB ODE solvers.
 % 
 % [SYNTAX]
-% [ T, Y ] = Simulation_stb(odefun, tspan, y0)
-% [ T, Y ] = Simulation_stb(odefun, tspan, y0, param)
-% [ T, Y ] = Simulation_stb(odefun, tspan, y0, [], options)
-% [ T, Y ] = Simulation_stb(odefun, tspan, y0, param, options)
+% [ T, Y ] = odestb(odefun, tspan, y0)
+% [ T, Y ] = odestb(odefun, tspan, y0, options)
 % 
 % [INPUT]
 % odefun :  ODEFUN file.
 % tspan  :  [t0, tf] or [t0, t1, ..., tf].
 % y0     :  Initial value vector.
-% param  :  Parameter value vector. If param is not given, default
-%           parameter values provided in odefun will be used.
 % options:  Structure with integrator options.
 %           * options.LMM: Linear Multistep Method (default: 'BDF')
 %           * options.NonlinearSolver: Type of nonlinear solver used
@@ -37,56 +26,33 @@ options.Method = @odestb;
 % Y      :  Variable matrix. Each column corresponds to each variable. 
 %           Each row of Y corresponds to each row of T. 
 
-%{
+
 %% Handling inputs
 if ~exist('tspan','var')
-    tspan = [];
+    error('tspan should be provided!');
 end
 if ~exist('y0','var')
-    y0 = [];
-end
-if ~exist('param','var')
-    param = [];
+    error('y0 should be provided!');
 end
 if ~exist('options','var')
     options = [];
 end
 
 
-%% Checking file errors 
-odefun_name = func2str(odefun);
-flg = exist(odefun_name,'file');
-
-if flg == 0
-    error('File "%s" does NOT exist!',odefun_name);
-elseif flg ~= 2
-    error('%s is NOT an m file',odefun_name);
-end
-
-
-%% Setting the initial condition and parameters
-if isempty(tspan)
-    tspan = 0:0.1:10;
-end
-if isempty(y0)
-    y0 = feval(odefun);
-end
-if isempty(param)
-    param = feval(odefun,'parametervalues');
-end
-if length(param) ~= length(feval(odefun,'parametervalues'))
-    error('%s has %d parameters, but %d parameters were provided to %s!',...
-        func2str(odefun),length(feval(odefun,'parametervalues')),...
-        length(param),mfilename);
-end
-
+%% Setting the initial condition
 % y0 must be a column vector for CVodeInit
 [n_row, n_col] = size(y0);
 if n_col > n_row
     y0 = y0';
 end
 
-odefun_temp = @(t,y) wrapper_odefun(odefun,t,y,param);
+if length(tspan) <= 1
+    error('tspan must have at least two elements: start time and end time.');
+elseif length(tspan) == 2
+    tspan = linspace(tspan(1),tspan(2),100);
+end
+
+odefun_temp = @(t,y) wrapper_odefun(odefun,t,y);
 
 
 %% Setting solver and initializing CVode
@@ -109,17 +75,10 @@ end
 
 
 %% Solving ODEs
-% try
-    [ ~, T, Y ] = CVode(tspan(2:end),'Normal');
-    T = [tspan(1) T]';
-    Y = [y0 Y]';
-catch ME
-    warning('%s',ME.message);
-    T = NaN;
-    Y = NaN(1,length(y0));
-end
+[ ~, T, Y ] = CVode(tspan(2:end),'Normal');
+T = [tspan(1) T]';
+Y = [y0 Y]';
 
 
 %% Deinitializing CVode
 CVodeFree;
-%}
