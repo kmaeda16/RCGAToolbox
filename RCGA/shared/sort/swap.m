@@ -1,5 +1,5 @@
 function [a, b] = swap(a, b)
-% swap receive two input variables, swap them, and return them.
+% swap receives two input variables, swap them, and return them.
 % 
 % [SYNTAX]
 % [a, b] = swap(a, b)

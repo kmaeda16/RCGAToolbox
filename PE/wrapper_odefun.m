@@ -17,5 +17,6 @@ function [ dydt, flag ] = wrapper_odefun(odefun,t,y)
 %              * flag < 0: Unrecoverable failure
 %              * flag > 0: Recoverable error
 
+
 dydt = feval(odefun,t,y);
 flag = 0;

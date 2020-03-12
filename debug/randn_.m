@@ -1,4 +1,4 @@
-function ret = randn()
+function ret = randn_()
 persistent a;
 if isempty(a)
     a = -1;

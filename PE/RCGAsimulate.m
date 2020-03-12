@@ -8,13 +8,19 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 % [ T, Y ] = RCGAsimulate(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
-% odefun :  IQMmodel, File names of SBML, or ODE function, or MEX files.
-%           File function of ODE function or MEX function.
-% tspan  :  [t0, tf] or [t0, t1, ..., tf]. (default: [0 10])
-% y0     :  Initial value vector. (default: Values stored in the model)
-% param  :  Parameter value vector. (default: Values stored in the model)
-% options:  Structure with integrator options. Fields depend on
-%           Simulation_*. See 'help Simulation_*'.
+% model     :  IQMmodel, File names of SBML, or ODE function, or MEX files.
+%              File function of ODE function or MEX function.
+% tspan     :  [t0, tf] or [t0, t1, ..., tf]. (default: [0 10])
+% y0        :  Initial value vector. (default: Values stored in the model)
+% param     :  Parameter value vector. (default: Values stored in the model)
+% fast_flag :  Solver flag
+%              * fast_flag = 0 : ODEXX by MATLAB
+%              * fast_flag = 1 : CVODE by SundialsTB
+%              * fast_flag = 2 : CVODE by IQM Tools
+% options   :  Structure with integrator options. Fields depend on
+%              Simulation_* functions. For fast_flag = 0, 1, and 2, see
+%              'help Simulation_odexx', 'help Simulation_stb', 'help
+%              Simulation_mex', respectively.
 % 
 % [OUTPUT]
 % T      :  Column vector of timepoints
@@ -189,5 +195,5 @@ if exist_flag == 3 && ~( fast_flag == 2 )
 end
 
 
-%%
+%% Simulation
 [ T, Y ] = feval(Simulation, model, tspan, y0, param, options);

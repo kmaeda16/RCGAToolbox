@@ -5,8 +5,9 @@ function printWelcomeMessage(problem, opts, RCGA_Type)
 % printWelcomeMessage(problem, opts, RCGA_Type)
 % 
 % [INPUT]
-% problem :  Problem structure.
-% opts    :  RCGA options. See XXXXXXXXXXX for options.
+% problem   :  Problem structure.
+% opts      :  RCGA options. See XXXXXXXXXXX for options.
+% RCGA_Type :  String that specifies the type of RCGA. 'UNDXMGG' or 'REXstarJGG'
 
 
 %% Checking RCGA_Type
