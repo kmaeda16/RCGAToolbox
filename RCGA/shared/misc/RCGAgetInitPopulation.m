@@ -1,12 +1,12 @@
-function Population = getInitPopulation(problem,opts)
-% getInitPopulation returns randomly generated initial population.
+function Population = RCGAgetInitPopulation(problem,opts)
+% RCGAgetInitPopulation returns randomly generated initial population.
 % 
 % [SYNTAX]
-% Population = getInitPopulation(problem,opts)
+% Population = RCGAgetInitPopulation(problem,opts)
 % 
 % [INPUT]
-% problem :  Problem structure
-% opts    :  RCGA options. See XXXXXXXXXXX for options.
+% problem    :  Problem structure
+% opts       :  RCGA options. See XXXXXXXXXXX for options.
 % 
 % [OUTPUT]
 % Population :  Randomly generated initial population
@@ -30,8 +30,8 @@ for i = 1 : n_population
     end
 end
 
-Population = requestFitnessCalc(problem,opts,Population);
+Population = RCGArequestFitnessCalc(problem,opts,Population);
 
 
 %% Sorting population
-Population = SRsort(Population,Pf);
+Population = RCGAsrsort(Population,Pf);

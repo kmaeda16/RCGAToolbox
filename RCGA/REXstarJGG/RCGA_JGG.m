@@ -1,8 +1,8 @@
-function Population = JGG(problem, opts, Population)
-% JGG updates population by using Just Generation Gap
+function Population = RCGA_JGG(problem, opts, Population)
+% RCGA_JGG updates population by using Just Generation Gap
 % 
 % [SYNTAX]
-% Population = JGG(problem, opts, Population)
+% Population = RCGA_JGG(problem, opts, Population)
 % 
 % [INPUT]
 % problem   :  Problem structure.
@@ -26,7 +26,7 @@ ip = randperm(n_population,n_parent);
 
 %% Generating children
 p = Population(ip);
-c = REXstar(problem,opts,p);
+c = RCGA_REXstar(problem,opts,p);
 
 
 %% Updating population
@@ -37,7 +37,7 @@ switch selection_type
     case 1
         % Chosen from family (Kimura et al., 2015)
         f = [p c];
-        f = SRsort(f,Pf);
+        f = RCGAsrsort(f,Pf);
         Population(ip) = f(1:n_parent);
     otherwise
         error('Unexpected selection_type!');
@@ -45,4 +45,4 @@ end
 
 
 %% Stochastic ranking sort
-Population = SRsort(Population,Pf);
+Population = RCGAsrsort(Population,Pf);

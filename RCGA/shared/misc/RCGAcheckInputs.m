@@ -1,47 +1,49 @@
-function [problem, opts] = checkInputs(problem,opts,RCGA_Type)
-% checkInputs checks problem and opts and sets default values
+function [problem, opts] = RCGAcheckInputs(problem,opts,RCGA_Type)
+% RCGAcheckInputs checks problem and opts and sets default values
 % 
 % [SYNTAX]
-% [problem, opts] = checkInputs(problem,opts,RCGA_Type)
+% [problem, opts] = RCGAcheckInputs(problem,opts,RCGA_Type)
 % 
 % [INPUT]
-% problem :  Problem structure.
-% opts    :  RCGA options. See XXXXXXXXXXX for options.
+% problem   :  Problem structure.
+% opts      :  RCGA options. See XXXXXXXXXXX for options.
+% RCGA_Type :  
 % 
 % [OUTPUT]
-% problem :  Problem structure with default values.
-% opts    :  RCGA options with default values.
+% problem   :  Problem structure with default values.
+% opts      :  RCGA options with default values.
 
 
 %% Checking RCGA_Type
-if ~strcmp(RCGA_Type,'REXstarJGG') && ~strcmp(RCGA_Type,'UNDXMGG')
-    error('RCGA_Type must be REXstarJGG or UNDXMGG.');
+if ~strcmp(RCGA_Type,'RCGA_REXstarJGG') && ~strcmp(RCGA_Type,'RCGA_UNDXMGG')
+    error('RCGA_Type must be ''RCGA_REXstarJGG'' or ''RCGA_UNDXMGG''.');
 end
 
 
 %% Checking problem
 C1 = {
-    'n_gene',...         %  1
-    'n_constraint',...   %  2
-    'fitnessfun',...     %  3
-    'decodingfun',...    %  4
+    'fitnessfun',...     % 1
+    'decodingfun',...    % 2
+    'n_gene',...         % 3
+    'n_constraint',...   % 4
     };
 
 tf = isfield(problem,C1);
 
-if ~tf(1) % n_gene
+if ~tf(1) % fitnessfun
+    error('fitnessfun needs to be set!');
+end
+if ~tf(2) % decodingfun
+    error('decodingfun needs to be set!');
+end
+if ~tf(3) % n_gene
     error('n_gene needs to be set!');
 end
-if ~tf(2) % n_constraint
+if ~tf(4) % n_constraint
     disp('n_constraint not provided. Default value used (i.e. n_constraint = 0).');
     problem.n_constraint = 0;
 end
-if ~tf(3) % fitnessfun
-    error('fitnessfun needs to be set!');
-end
-if ~tf(4) % decodingfun
-    error('decodingfun needs to be set!');
-end
+
 
 
 %% Checking opts and seting default values
@@ -100,7 +102,7 @@ if ~tf(8) % t_limit
     opts.t_limit = 1000;
 end
 if ~tf(9) % vtr
-    opts.vtr = 0;
+    opts.vtr = -inf;
 end
 if ~tf(10) % output_intvl
     opts.output_intvl = 1;
@@ -118,10 +120,10 @@ if ~tf(14) % out_report
     opts.out_report = 'None';
 end
 if ~tf(15) % interimreportfun
-    opts.interimreportfun = @defaultinterimreportfun;
+    opts.interimreportfun = @RCGAdefaultinterimreportfun;
 end
 if ~tf(16) % finalreportfun
-    opts.finalreportfun = @defaultfinalreportfun;
+    opts.finalreportfun = @RCGAdefaultfinalreportfun;
 end
 if ~tf(17) % par
     opts.par = 0;

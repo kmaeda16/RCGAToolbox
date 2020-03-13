@@ -1,21 +1,21 @@
-function f = SSR(param, Simulation, modelfun, mst, simopts)
-% SSR calculates the sum of squared resudials between simulation and
+function f = RCGAssr(param, Simulation, modelfun, mst, simopts)
+% RCGAssr calculates the sum of squared resudials between simulation and
 % experimental data
 % 
 % [SYNTAX]
-% f = SSR(x, Simulation, modelfun, mst)
-% f = SSR(x, Simulation, modelfun, mst, simopts)
+% f = RCGAssr(x, Simulation, modelfun, mst)
+% f = RCGAssr(x, Simulation, modelfun, mst, simopts)
 % 
 % [INPUT]
-% param     :  Parameter value vector
-% Simulation:  Function handle for Simulation_*
-% modelfun  :  Function handle for model (odefun or mex)
-% mst       :  Experimental data (IQMmeasurement)
-% simopts   :  Structure with integrator options. Fields depend on
-%              Simulation_*. See 'help Simulation_'.
+% param      :  Parameter value vector
+% Simulation :  Function handle for Simulation_*
+% modelfun   :  Function handle for model (odefun or mex)
+% mst        :  Experimental data (IQMmeasurement)
+% simopts    :  Structure with integrator options. Fields depend on
+%               Simulation_*. See 'help Simulation_'.
 % 
 % [OUTPUT]
-% f:  Objective function value (scaler)
+% f          :  Objective function value (scaler)
 
 
 %% Handling inputs

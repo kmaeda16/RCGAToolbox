@@ -1,4 +1,4 @@
-function [a, b] = swap(a, b)
+function [a, b] = RCGAswap(a, b)
 % swap receives two input variables, swap them, and return them.
 % 
 % [SYNTAX]

@@ -1,16 +1,16 @@
-function writeTransition(elapsedTime, generation, problem, opts, best)
-% writeTransition is executed at the end of RCGA, making two output
+function RCGAwriteTransition(elapsedTime, generation, problem, opts, best)
+% RCGAwriteTransition is executed at the end of RCGA, making two output
 % files.
 % 
 % [SYNTAX]
-% writeTransition(elapsedTime, generation, problem, opts, chrom)
+% RCGAwriteTransition(elapsedTime, generation, problem, opts, chrom)
 % 
 % [INPUT]
-% elapsedTime:  Elaplsed time (sec)
-% generation :  Generation
-% problem    :  Problem structure
-% opts       :  RCGA options. See XXXXXXXXXXX for options.
-% best       :  Structure of the the best individual
+% elapsedTime :  Elaplsed time (sec)
+% generation  :  Generation
+% problem     :  Problem structure
+% opts        :  RCGA options. See XXXXXXXXXXX for options.
+% best        :  Structure of the the best individual
 
 
 %% Shortening variable names

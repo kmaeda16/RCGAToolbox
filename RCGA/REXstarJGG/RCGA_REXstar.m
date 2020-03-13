@@ -1,8 +1,9 @@
-function c = REXstar(problem, opts, p)
-% REXstar genertes children by using Real-coded Ensemble Crossover star.
+function c = RCGA_REXstar(problem, opts, p)
+% RCGA_REXstar genertes children by using Real-coded Ensemble Crossover
+% star.
 % 
 % [SYNTAX]
-% c = REXstar(problem, opts, p)
+% c = RCGA_REXstar(problem, opts, p)
 % 
 % [INPUT]
 % problem :  Problem structure.
@@ -68,12 +69,12 @@ for i = 1 : n_parent
     end
 end
 index = index(1:count);
-c(index) = requestFitnessCalc(problem,opts,c(index));
+c(index) = RCGArequestFitnessCalc(problem,opts,c(index));
 
 
 %% Store parents and refrection points
 r = [p c(1:n_parent)];
-r = SRsort(r,Pf);
+r = RCGAsrsort(r,Pf);
 
 
 %% Calculate center of gravity Gb
@@ -123,8 +124,8 @@ for i = 1 : n_children
 end
 
 index = index(1:count);
-c(index) = requestFitnessCalc(problem,opts,c(index));
+c(index) = RCGArequestFitnessCalc(problem,opts,c(index));
 
 
 %% Stochastic ranking sort
-c = SRsort(c,Pf);
+c = RCGAsrsort(c,Pf);

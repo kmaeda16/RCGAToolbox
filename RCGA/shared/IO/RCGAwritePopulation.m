@@ -1,8 +1,8 @@
-function writePopulation(problem, opts, Population)
-% writePopulation makes a text file with population
+function RCGAwritePopulation(problem, opts, Population)
+% RCGAwritePopulation makes a text file with population
 % 
 % [SYNTAX]
-% writePopulation(problem, opts, Population)
+% RCGAwritePopulation(problem, opts, Population)
 % 
 % [INPUT]
 % problem    :  Problem structure

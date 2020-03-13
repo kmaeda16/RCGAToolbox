@@ -1,29 +1,29 @@
-function [ T, Y ] = Simulation_odexx(odefun, tspan, y0, param, options)
-% Simulation_odexx simulates an ODE model using MATLAB odexx solver.
+function [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options)
+% RCGAsimulateODEXX simulates an ODE model using MATLAB odexx solver.
 % 
 % [SYNTAX]
-% [ T, Y ] = Simulation_odexx(odefun, tspan, y0)
-% [ T, Y ] = Simulation_odexx(odefun, tspan, y0, param)
-% [ T, Y ] = Simulation_odexx(odefun, tspan, y0, [], options)
-% [ T, Y ] = Simulation_odexx(odefun, tspan, y0, param, options)
+% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0)
+% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param)
+% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, [], options)
+% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
-% odefun :  ODEFUN file.
-% tspan  :  [t0, tf] or [t0, t1, ..., tf].
-% y0     :  Initial value vector.
-% param  :  Parameter value vector. If param is not given, default
-%           parameter values provided in odefun will be used.
-% options:  Structure with integrator options.
-%           * options.Method: Solver (default: 'ode15s')
-%           * options.AbsTol: Absolute tolerance (default: 1e-6)
-%           * options.RelTol: Relative tolerance (default: 1e-3)
-%           * options.MaxStep: Maximum step-size of integrator (default: 0.1*abs(t0-tf))
-%           For other fields, see MATLAB documentation for oddeset.
+% odefun  :  ODEFUN file.
+% tspan   :  [t0, tf] or [t0, t1, ..., tf].
+% y0      :  Initial value vector.
+% param   :  Parameter value vector. If param is not given, default
+%            parameter values provided in odefun will be used.
+% options :  Structure with integrator options.
+%            * options.Method: Solver (default: 'ode15s')
+%            * options.AbsTol: Absolute tolerance (default: 1e-6)
+%            * options.RelTol: Relative tolerance (default: 1e-3)
+%            * options.MaxStep: Maximum step-size of integrator (default: 0.1*abs(t0-tf))
+%            For other fields, see MATLAB documentation for oddeset.
 % 
 % [OUTPUT]
-% T      :  Column vector of timepoints
-% Y      :  Variable matrix. Each column corresponds to each variable. 
-%           Each row of Y corresponds to each row of T. 
+% T       :  Column vector of timepoints
+% Y       :  Variable matrix. Each column corresponds to each variable. 
+%            Each row of Y corresponds to each row of T. 
 
 
 %% Handling inputs

@@ -1,8 +1,8 @@
-function Sorted_Population = SRsort(Population, Pf)
+function Sorted_Population = RCGAsrsort(Population, Pf)
 % SRsort is a function of stochastic ranking sort.
 % 
 % [SYNTAX]
-% Population = SRsort(Population, Pf)
+% Population = RCGAsrsort(Population, Pf)
 % 
 % [INPUT]
 % Population :  (Unsorted) Population
@@ -46,16 +46,16 @@ for i = 1 : n_population
         u = rand;
         if phi_tmp(j) == phi_tmp(j+1) || u < Pf
             if f_tmp(j) > f_tmp(j+1)
-                [index_tmp(j), index_tmp(j+1)]  = swap(index_tmp(j),index_tmp(j+1));
-                [f_tmp(j), f_tmp(j+1)] = swap(f_tmp(j),f_tmp(j+1));
-                [phi_tmp(j), phi_tmp(j+1)] = swap(phi_tmp(j),phi_tmp(j+1));
+                [index_tmp(j), index_tmp(j+1)]  = RCGAswap(index_tmp(j),index_tmp(j+1));
+                [f_tmp(j), f_tmp(j+1)] = RCGAswap(f_tmp(j),f_tmp(j+1));
+                [phi_tmp(j), phi_tmp(j+1)] = RCGAswap(phi_tmp(j),phi_tmp(j+1));
                 flg = 1;
             end
         else
             if phi_tmp(j) >  phi_tmp(j+1)
-                [index_tmp(j), index_tmp(j+1)] = swap(index_tmp(j),index_tmp(j+1));
-                [f_tmp(j), f_tmp(j+1)] = swap(f_tmp(j),f_tmp(j+1));
-                [phi_tmp(j), phi_tmp(j+1)] = swap(phi_tmp(j),phi_tmp(j+1));
+                [index_tmp(j), index_tmp(j+1)] = RCGAswap(index_tmp(j),index_tmp(j+1));
+                [f_tmp(j), f_tmp(j+1)] = RCGAswap(f_tmp(j),f_tmp(j+1));
+                [phi_tmp(j), phi_tmp(j+1)] = RCGAswap(phi_tmp(j),phi_tmp(j+1));
                 flg = 1;
             end
         end

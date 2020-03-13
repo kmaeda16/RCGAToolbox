@@ -1,9 +1,9 @@
-function Results = UNDXMGG(problem,varargin)
-% UNDXMGG is a function of UNDX/MGG
+function Results = RCGA_UNDXMGG(problem,varargin)
+% RCGA_UNDXMGG is a function of UNDX/MGG
 % 
 % [SYNTAX]
-% Results = UNDXMGG(problem)
-% Results = UNDXMGG(problem,opts)
+% Results = RCGA_UNDXMGG(problem)
+% Results = RCGA_UNDXMGG(problem,opts)
 % 
 % [INPUT]
 % problem :  Problem structure.
@@ -25,12 +25,12 @@ end
 
 
 %% Checking inputs
-[problem, opts] = checkInputs(problem,opts,mfilename);
+[problem, opts] = RCGAcheckInputs(problem,opts,mfilename);
 
 
-%% Printint welcome messages
-printWelcomeMessage(problem,opts,mfilename);
+%% Printing welcome messages
+RCGAprintWelcomeMessage(problem,opts,mfilename);
 
 
 %% Executing UNDX/MGG
-Results = RCGA_Main(problem,opts,@MGG);
+Results = RCGA_Main(problem,opts,@RCGA_MGG);

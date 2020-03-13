@@ -170,11 +170,11 @@ end
 %% Setting Simulation function
 switch fast_flag
     case 0
-        Simulation = @Simulation_odexx;
+        Simulation = @RCGAsimulateODEXX;
     case 1
-        Simulation = @Simulation_stb;
+        Simulation = @RCGAsimulateSTB;
     case 2
-        Simulation = @Simulation_mex;
+        Simulation = @RCGAsimulateMEX;
     otherwise
         error('Unexpected fast_flag!');
 end
@@ -185,13 +185,13 @@ exist_flag = exist(filename,'file');
 if exist_flag == 2 && ~( fast_flag == 0 || fast_flag == 1 )
     warning('fast_flg set to 0!');
     fast_flag = 0;
-    Simulation = @Simulation_odexx;
+    Simulation = @RCGAsimulateODEXX;
 end
 
 if exist_flag == 3 && ~( fast_flag == 2 )
     warning('fast_flg set to 2!');
     fast_flag = 2;
-    Simulation = @Simulation_mex;
+    Simulation = @RCGAsimulateMEX;
 end
 
 

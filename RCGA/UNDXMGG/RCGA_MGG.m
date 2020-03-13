@@ -1,16 +1,16 @@
-function Population = MGG(problem, opts, Population)
-% MGG updates population by using Minimal Generation Gap
+function Population = RCGA_MGG(problem, opts, Population)
+% RCGA_MGG updates population by using Minimal Generation Gap
 % 
 % [SYNTAX]
-% Population = MGG(problem, opts, Population)
+% Population = RCGA_MGG(problem, opts, Population)
 % 
 % [INPUT]
-% problem   :  Problem structure.
-% opts      :  RCGA options. See XXXXXXXXXXX for options.
-% Population:  Array of individuals
+% problem    :  Problem structure.
+% opts       :  RCGA options. See XXXXXXXXXXX for options.
+% Population :  Array of individuals
 % 
 % [OUTPUT]
-% Population:  Array of updated individuals
+% Population :  Array of updated individuals
 % 
 % 
 % See Hiroaki Kitano, "Genetic Algorithms 4", Sangyo-tosho, p234, 2000 
@@ -40,16 +40,16 @@ for i = 1 : n_children
             break;
         end
     end
-    c(i) = getNewChild(Population(ip(1)),Population(ip(2)),Population(ip(3)));
+    c(i) = RCGAgetNewChild(Population(ip(1)),Population(ip(2)),Population(ip(3)));
 end
-c = requestFitnessCalc(problem,opts,c);
+c = RCGArequestFitnessCalc(problem,opts,c);
 
 
 %% Making a family
 f = [ c Population(ip(1:2)) ];
-f = SRsort(f,Pf);
+f = RCGAsrsort(f,Pf);
 
 
 %% Making a new population
 Population(ip(1:2)) = [ f(1),  f(randi([2 n_children+2])) ];
-Population = SRsort(Population,Pf);
+Population = RCGAsrsort(Population,Pf);

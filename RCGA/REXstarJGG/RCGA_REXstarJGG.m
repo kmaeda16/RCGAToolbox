@@ -1,9 +1,9 @@
-function Results = REXstarJGG(problem,varargin)
-% REXstarJGG is a function of REXstar/JGG
+function Results = RCGA_REXstarJGG(problem,varargin)
+% RCGA_REXstarJGG is a function of REXstar/JGG
 % 
 % [SYNTAX]
-% Results = REXstarJGG(problem)
-% Results = REXstarJGG(problem,opts)
+% Results = RCGA_REXstarJGG(problem)
+% Results = RCGA_REXstarJGG(problem,opts)
 % 
 % [INPUT]
 % problem :  Problem structure.
@@ -25,12 +25,12 @@ end
 
 
 %% Checking inputs
-[problem, opts] = checkInputs(problem,opts,mfilename);
+[problem, opts] = RCGAcheckInputs(problem,opts,mfilename);
 
 
-%% Printint welcome messages
-printWelcomeMessage(problem,opts,mfilename);
+%% Printing welcome messages
+RCGAprintWelcomeMessage(problem,opts,mfilename);
 
 
 %% Executing REXstar/JGG
-Results = RCGA_Main(problem,opts,@JGG);
+Results = RCGA_Main(problem,opts,@RCGA_JGG);

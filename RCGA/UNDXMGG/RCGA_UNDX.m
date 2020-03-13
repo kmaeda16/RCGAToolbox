@@ -1,8 +1,8 @@
-function c = UNDX(p1, p2, p3)
-% UNDX genertes children by using Unimordal Distribution Crossover.
+function c = RCGA_UNDX(p1, p2, p3)
+% RCGA_UNDX genertes children by using Unimordal Distribution Crossover.
 % 
 % [SYNTAX]
-% c = UNDX(p1, p2, p3)
+% c = RCGA_UNDX(p1, p2, p3)
 % 
 % [INPUT]
 % p1 :  First main parent
@@ -10,7 +10,7 @@ function c = UNDX(p1, p2, p3)
 % p3 :  Sub-parent
 % 
 % [OUTPUT]
-% c :  Generated child
+% c  :  Generated child
 % 
 % 
 % See Hiroaki Kitano, "Genetic Algorithms 4", Sangyo-tosho, p261, 2000

@@ -8,14 +8,14 @@ function mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 % mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 % 
 % [INPUT]
-% model            : IQMmodel or SBML file name (*.sbml or *.xml)
-% mexfilename      : Name of MEX file
-% doNOTcompileFlag : Flag specifies if a MEX file is compiled (generated)
-%                    * doNOTcompileFlag = 0 : MEX file is compiled (default)
-%                    * doNOTcompileFlag = 1 : MEX file is NOT compiled
+% model            :  IQMmodel or SBML file name (*.sbml or *.xml)
+% mexfilename      :  Name of MEX file
+% doNOTcompileFlag :  Flag specifies if a MEX file is compiled (generated)
+%                     * doNOTcompileFlag = 0 : MEX file is compiled (default)
+%                     * doNOTcompileFlag = 1 : MEX file is NOT compiled
 % 
 % [OUTPUT]
-% mexfilename      : Name of the generated MEX file
+% mexfilename      :  Name of the generated MEX file
 
 
 if ~exist('doNOTcompileFlag','var')

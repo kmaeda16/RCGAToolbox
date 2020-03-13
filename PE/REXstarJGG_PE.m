@@ -11,21 +11,21 @@ function Results = REXstarJGG_PE(model,decodingfun,mst,varargin)
 %                         fitnessfun,fast_flag,simopts,opts)
 % 
 % [INPUT]
-% model       : IQMmodel or file name (*.sbml, *.xml, *.m, or *.c)
-% decodingfun : Function handle for decoding function
-% mst         : Experimental data (IQMmeasurement) or filename
-% n_constraint: Number of constraints.
-% fitnessfun  : Function handle for fitness function
-% fast_flag   : Solver flag
-%               * fast_flag = 0 : ODEXX by MATLAB
-%               * fast_flag = 1 : CVODE by SundialsTB
-%               * fast_flag = 2 : CVODE by IQM Tools
-% simopts     : Structure with integrator options. Fields depend on
-%               Simulation_*. See 'help Simulation_*'.
-% opts        : Structure with RCGA options
+% model        :  IQMmodel or file name (*.sbml, *.xml, *.m, or *.c)
+% decodingfun  :  Function handle for decoding function
+% mst          :  Experimental data (IQMmeasurement) or filename
+% n_constraint :  Number of constraints.
+% fitnessfun   :  Function handle for fitness function
+% fast_flag    :  Solver flag
+%                 * fast_flag = 0 : ODEXX by MATLAB
+%                 * fast_flag = 1 : CVODE by SundialsTB
+%                 * fast_flag = 2 : CVODE by IQM Tools
+% simopts      :  Structure with integrator options. Fields depend on
+%                 Simulation_*. See 'help Simulation_*'.
+% opts         :  Structure with RCGA options
 % 
 % [OUTPUT]
-% Results:  Objective function value (scaler)
+% Results      :  Objective function value (scaler)
 
 
 %% Handling input arguments

@@ -1,4 +1,5 @@
-function [ problem, opts ] = getParam(problem,opts,problem_name)
+function [problem, opts] = getParam(problem_name,opts)
+
 
 switch problem_name
     case 'Sphere'
@@ -186,3 +187,15 @@ switch problem_name
     otherwise
         error('Unexpected Problem_Name!');
 end
+
+opts.n_population = 200;
+opts.n_children = 200;
+opts.n_generation = 1e+5;
+opts.n_parent = problem.n_gene + 1;
+opts.t_rextar = 6.0;
+opts.output_intvl = 1e+8;
+opts.selection_type = 0;
+opts.t_limit = 24 * 60 * 60;
+opts.par = 0;
+opts.out_population = 'None'; % 'Population.dat';
+opts.out_solution = 'None'; % 'Solution.dat';

@@ -1,8 +1,8 @@
-function interimreportfun_PE(elapsedTime,generation,problem,opts,Population,best,Simulation,modelfun,mst,simopts)
-% interimreportfun_PE shows fitting.
+function RCGAinterimreportfun_PE(elapsedTime,generation,problem,opts,Population,best,Simulation,modelfun,mst,simopts)
+% RCGAinterimreportfun_PE shows fitting.
 % 
 % [SYNTAX]
-% interimreportfun_PE(elapsedTime,generation,problem,opts,Population, ...
+% RCGAinterimreportfun_PE(elapsedTime,generation,problem,opts,Population, ...
 %                     best,Simulation,modelfun,mst,simopts)
 % 
 % [INPUT]

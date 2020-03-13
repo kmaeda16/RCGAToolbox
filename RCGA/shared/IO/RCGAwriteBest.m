@@ -1,15 +1,15 @@
-function writeBest(elapsedTime, generation, problem, opts, best)
-% writeBest make a elapsed time, generation, fitness, and phi of the
+function RCGAwriteBest(elapsedTime, generation, problem, opts, best)
+% RCGAwriteBest make a elapsed time, generation, fitness, and phi of the
 % best individual.
 % 
 % [SYNTAX]
-% printTransition(elapsedTime, generation, problem, best)
+% RCGAwriteBest(elapsedTime, generation, problem, opts, best)
 % 
 % [INPUT]
-% elapsedTime:  Elaplsed time (sec)
-% generation :  Generation
-% problem    :  Problem structure
-% best       :  Structure of the the best individual
+% elapsedTime :  Elaplsed time (sec)
+% generation  :  Generation
+% problem     :  Problem structure
+% best        :  Structure of the the best individual
 
 
 n_gene = problem.n_gene;

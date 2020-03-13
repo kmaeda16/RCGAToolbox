@@ -1,17 +1,17 @@
-function [f, g, phi] = getFitness(problem,chrom)
-% getFitness returns f, g, and phi for an individual chrom.
+function [f, g, phi] = RCGAgetFitness(problem,chrom)
+% RCGAgetFitness returns f, g, and phi for an individual chrom.
 % 
 % [SYNTAX]
-% [f, g, phi] = getFitness(problem,chrom)
+% [f, g, phi] = RCGAgetFitness(problem,chrom)
 % 
 % [INPUT]
 % problem :  Problem structure
 % chrom   :  Individual
 % 
 % [OUTPUT]
-% f   :  Value of fitness functions
-% g   :  Values of constraint functions
-% phi :  Value of penalty function
+% f       :  Value of fitness functions
+% g       :  Values of constraint functions
+% phi     :  Value of penalty function
 
 
 %% Shortening variable names

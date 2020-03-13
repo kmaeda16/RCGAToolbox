@@ -5,12 +5,12 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 % Results = RCGA_Main(problem, opts, GenerationAlternation)
 % 
 % [INPUT]
-% problem :  Problem structure.
-% opts    :  RCGA options. See XXXXXXXXXXX for options.
-% GenerationAlternation: Function handle to REXstarJGG or UNDXMGG
+% problem               :  Problem structure.
+% opts                  :  RCGA options. See XXXXXXXXXXX for options.
+% GenerationAlternation :  Function handle to REXstarJGG or UNDXMGG
 % 
 % [OUTPUT]
-% Results :  Structure with results
+% Results               :  Structure with results
 
 
 %% Getting the time RCGA starts
@@ -37,15 +37,15 @@ flg_printed = 0; % flg_printed == 1 indicates output is made
 
 %% First generation
 i = 1;
-Population = getInitPopulation(problem,opts);
-index = findBest(Population);
+Population = RCGAgetInitPopulation(problem,opts);
+index = RCGAfindBest(Population);
 best = Population(index);
 
 if 0 < output_intvl
     elapsedTime = toc;
     interimreportfun(elapsedTime,i,problem,opts,Population,best);
-    InitTransition; % RCGA/shared/misc/InitTransition
-    StoreTransition; % RCGA/shared/misc/StoreTransition
+    ScriptInitTransition; % RCGA/shared/misc/ScriptInitTransition
+    ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
     flg_printed = 1;
 end
 
@@ -53,10 +53,10 @@ elapsedTime = toc;
 if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= t_limit
     if 0 < output_intvl && flg_printed == 0
         interimreportfun(elapsedTime,i,problem,opts,Population,best);
-        StoreTransition; % RCGA/shared/misc/StoreTransition
+        ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
     end
     finalreportfun(elapsedTime,i,problem,opts,Population,best);
-    StoreBestAndFinalPopulation; % RCGA/shared/misc/StoreBestAndFinalPopulation
+    ScriptStoreBestAndFinalPopulation; % RCGA/shared/misc/ScriptStoreBestAndFinalPopulation
     return;
 end
 
@@ -66,14 +66,14 @@ while i < n_generation
     i = i + 1;
     flg_printed = 0;
     Population = GenerationAlternation(problem,opts,Population);
-    index = findBest(Population);
+    index = RCGAfindBest(Population);
     if Population(index).phi < best.phi || ( Population(index).phi == best.phi && Population(index).f < best.f )
         best = Population(index);
     end
     if 0 < output_intvl && mod(i,output_intvl) == 0
         elapsedTime = toc;
         interimreportfun(elapsedTime,i,problem,opts,Population,best);
-        StoreTransition; % RCGA/shared/misc/StoreTransition
+        ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
         flg_printed = 1;
     end
     if (best.phi == 0 && best.f <= vtr) || toc >= t_limit
@@ -84,9 +84,9 @@ end
 if 0 < output_intvl && flg_printed == 0
     elapsedTime = toc;
     interimreportfun(elapsedTime,i,problem,opts,Population,best);
-    StoreTransition; % RCGA/shared/misc/StoreTransition
+    ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
 end
 
 finalreportfun(elapsedTime,i,problem,opts,Population,best);
-StoreBestAndFinalPopulation; % RCGA/shared/misc/StoreBestAndFinalPopulation
+ScriptStoreBestAndFinalPopulation; % RCGA/shared/misc/ScriptStoreBestAndFinalPopulation
 

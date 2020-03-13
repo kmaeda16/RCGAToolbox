@@ -1,18 +1,18 @@
-function [ fout_name, flag ] = replaceWords(fin_name,fout_name,list)
-% replaceWords replaces provided words with the provided words + 0,
+function [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name,list)
+% RCGAreplaceWords replaces provided words with the provided words + 0,
 % which avoids errors caused by using reserved words.
 % 
 % [SYNTAX]
-% [ fout_name, flag ] = replaceWords(fin_name)
-% [ fout_name, flag ] = replaceWords(fin_name,fout_name)
-% [ fout_name, flag ] = replaceWords(fin_name,fout_name,list)
+% [ fout_name, flag ] = RCGAreplaceWords(fin_name)
+% [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name)
+% [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name,list)
 % 
 % [INPUT]
-% fin_name  : Input file name
-% fout_name : Output file name (default: 'inputfile_mod.txt' if fin_name =
-%             'inputfile.txt'.
-% list      : Experimental data (IQMmeasurement) or filename (default: Some
-%             of reserved words for C language. See the code below)
+% fin_name  :  Input file name
+% fout_name :  Output file name (default: 'inputfile_mod.txt' if fin_name =
+%              'inputfile.txt'.
+% list      :  Experimental data (IQMmeasurement) or filename (default: Some
+%              of reserved words for C language. See the code below)
 % 
 % [OUTPUT]
 % fout_name :  Output file name.

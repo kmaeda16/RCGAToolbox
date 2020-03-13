@@ -1,8 +1,8 @@
-function Group = requestFitnessCalc(problem,opts,Group)
-% requestFitnessCalc returns Group with calculated f, g, and phi.
+function Group = RCGArequestFitnessCalc(problem,opts,Group)
+% RCGArequestFitnessCalc returns Group with calculated f, g, and phi.
 % 
 % [SYNTAX]
-% Group = requestFitnessCalc(problem,opts,Group)
+% Group = RCGArequestFitnessCalc(problem,opts,Group)
 % 
 % [INPUT]
 % problem :  Problem structure
@@ -28,11 +28,11 @@ phi_temp = zeros(n_group,1);
 %% Calculating f, g, and phi
 if 0 < par
     parfor i = 1 : n_group
-        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(problem,Group(i));
+        [f_temp(i), g_temp(i,:), phi_temp(i)] = RCGAgetFitness(problem,Group(i));
     end
 else
     for i = 1 : n_group
-        [f_temp(i), g_temp(i,:), phi_temp(i)] = getFitness(problem,Group(i));
+        [f_temp(i), g_temp(i,:), phi_temp(i)] = RCGAgetFitness(problem,Group(i));
     end
 end
 
