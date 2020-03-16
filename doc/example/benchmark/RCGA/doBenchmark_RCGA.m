@@ -1,4 +1,4 @@
-function doBenchmark(idum)
+function doBenchmark_RCGA(idum)
 
 
 %% Init
@@ -20,13 +20,13 @@ fprintf('idum = %d\n',idum);
 opts.Pf = 0;
 for Problem_Name = BENCHMARK1
     
-    fprintf('%s\n',char(Problem_Name));
+    fprintf('\n********** %s **********\n',char(Problem_Name));
     [problem, opts] = getParam(char(Problem_Name),opts);
 %     opts.vtr             = 5e+2;
     
-    Param.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_UNDXMGG(problem,opts);
-    Param.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_REXstarJGG(problem,opts);
     
 end
@@ -34,20 +34,20 @@ end
 
 %% Constrained benchmark functions
 for Problem_Name = BENCHMARK2
-    
-    fprintf('%s\n',char(Problem_Name));
+    opts = [];
+    fprintf('\n********** %s **********\n',char(Problem_Name));
     [problem, opts] = getParam(char(Problem_Name),opts);
     
     opts.Pf = 0;
-    Param.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_UNDXMGG(problem,opts);
-    Param.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_REXstarJGG(problem,opts);
     
     opts.Pf = 0.45;
-    Param.out_transition = sprintf('UNDXMGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('UNDXMGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_UNDXMGG(problem,opts);
-    Param.out_transition = sprintf('REXstarJGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('REXstarJGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
     RCGA_REXstarJGG(problem,opts);
     
 end

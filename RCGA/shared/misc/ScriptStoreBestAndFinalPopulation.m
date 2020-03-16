@@ -20,15 +20,15 @@ for j = 1 : n_population
 end
 if best.phi == 0 && best.f <= vtr
     Results.end_crit = 0;
-    fprintf('Value to reach achieved.\n');
+    fprintf('Objective function value to be reached (vtr) reached.\n');
 end
 if elapsedTime >= t_limit
     Results.end_crit = 1;
-    fprintf('Maximum allowed CPU time achieved.\n');
+    fprintf('Maximum allowed CPU time (t_limit) reached.\n');
 end
 if i >= n_generation
     Results.end_crit = 2;
-    fprintf('Maximal number of generations achieved.\n');
+    fprintf('Maximal number of generations (n_generation) reached.\n');
 end
 if ~strcmpi('none',out_report)
     save(out_report,'Results');
