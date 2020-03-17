@@ -16,6 +16,7 @@ BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
+opts = [];
 
 %% Unconstrained benchmark functions
 for Problem_Name = BENCHMARK1
@@ -32,13 +33,17 @@ for Problem_Name = BENCHMARK1
         'FitnessLimit',opts.vtr,...
         'Display','final'); % 'iter' or 'final'
 %     'PopulationSize',opts.n_population,...
+
+    options = optimoptions('fmincon',...
+        'MaxFunctionEvaluations',1e+5);
         
     ObjectiveFunction = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun, gene);
     
     LB = zeros(1,problem.n_gene);   % Lower bound
     UB = ones(1,problem.n_gene);    % Upper bound
     tic;
-    [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
+%     [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
+    [gene, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,[],options); output.generations = nan;
     elapsedTime = toc;
     
     fprintf('Elapsed Time = %e, f = %e\n',elapsedTime,fval);
@@ -69,6 +74,9 @@ for Problem_Name = BENCHMARK2
         'FitnessLimit',-inf,...
         'Display','final'); % 'iter' or 'final'
 %     'PopulationSize',opts.n_population);
+
+    options = optimoptions('fmincon',...
+        'MaxFunctionEvaluations',1e+5);
     
     ObjectiveFunction  = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun, gene);
     ConstraintFunction = @(gene) cst_wrapper(problem.fitnessfun, problem.decodingfun, gene);
@@ -76,7 +84,8 @@ for Problem_Name = BENCHMARK2
     LB = zeros(1,problem.n_gene);   % Lower bound
     UB = ones(1,problem.n_gene);    % Upper bound
     tic;
-    [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,ConstraintFunction,options);
+%     [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,ConstraintFunction,options);
+    [gene, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,ConstraintFunction,options); output.generations = nan;
     % It takes a long time to calculate the first generation 
     elapsedTime = toc;
     

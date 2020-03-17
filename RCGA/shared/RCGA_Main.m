@@ -29,6 +29,7 @@ out_report = opts.out_report;
 n_children = opts.n_children;
 vtr = opts.vtr;
 t_limit = opts.t_limit;
+n_localoptimind = opts.n_localoptimind;
 
 
 %% Setting flg_printed
@@ -38,6 +39,9 @@ flg_printed = 0; % flg_printed == 1 indicates output is made
 %% First generation
 i = 1;
 Population = RCGAgetInitPopulation(problem,opts);
+if n_localoptimind > 0
+    Population = RCGArequestLocalOptimize(problem,opts,Population);
+end
 index = RCGAfindBest(Population);
 best = Population(index);
 
@@ -66,6 +70,9 @@ while i < n_generation
     i = i + 1;
     flg_printed = 0;
     Population = GenerationAlternation(problem,opts,Population);
+    if n_localoptimind > 0
+        Population = RCGArequestLocalOptimize(problem,opts,Population);
+    end
     index = RCGAfindBest(Population);
     if Population(index).phi < best.phi || ( Population(index).phi == best.phi && Population(index).f < best.f )
         best = Population(index);

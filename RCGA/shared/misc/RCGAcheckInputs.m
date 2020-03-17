@@ -65,6 +65,8 @@ C2 = {
     'interimreportfun',... % 15
     'finalreportfun',... % 16
     'par', ...           % 17
+    'n_localoptimind',... % 18
+    'localoptimopts',... % 19
     };
 
 tf = isfield(opts,C2);
@@ -128,3 +130,13 @@ end
 if ~tf(17) % par
     opts.par = 0;
 end
+if ~tf(18) % n_localoptimind
+    opts.n_localoptimind = 0;
+end
+if ~tf(19) % localoptimopts
+    opts.localoptimopts = optimoptions('fmincon',...
+        'ConstraintTolerance',0,...
+        'MaxFunctionEvaluations',opts.n_children,...
+        'Display','off');
+end
+
