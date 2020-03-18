@@ -1,6 +1,6 @@
 function RCGAwriteBest(elapsedTime, generation, problem, opts, best)
-% RCGAwriteBest make a elapsed time, generation, fitness, and phi of the
-% best individual.
+% RCGAwriteBest makes an output file which includes a elapsed time,
+% generation, fitness, and phi of the best individual.
 % 
 % [SYNTAX]
 % RCGAwriteBest(elapsedTime, generation, problem, opts, best)
