@@ -38,6 +38,7 @@ if isempty(strfind(RCGA_Type,'UNDXMGG'))
     fprintf('  selection_type :  %d\n',opts.selection_type);
 end
 fprintf('              Pf :  %g\n',opts.Pf);
+fprintf('      localoptim :  %g\n',opts.localoptim);
 fprintf('    n_generation :  %d\n',opts.n_generation);
 fprintf('         t_limit :  %g\n',opts.t_limit);
 fprintf('             vtr :  %g\n',opts.vtr);

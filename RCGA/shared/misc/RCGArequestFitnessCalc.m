@@ -6,7 +6,7 @@ function Group = RCGArequestFitnessCalc(problem,opts,Group)
 % 
 % [INPUT]
 % problem :  Problem structure
-% chrom   :  Individual
+% opts    :  RCGA options. See XXXXXXXXXXX for options.
 % Group   :  Array of individual
 % 
 % [OUTPUT]

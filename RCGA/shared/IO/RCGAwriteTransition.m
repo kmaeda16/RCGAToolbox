@@ -65,7 +65,8 @@ end
 
 
 %% Calculating the number of fitness function evaluations
-neval = n_population + ( generation - 1 ) * n_children;
+global RCGA_LOCALNEVAL;
+neval = n_population + ( generation - 1 ) * n_children + RCGA_LOCALNEVAL;
 
 
 %% Making outputs

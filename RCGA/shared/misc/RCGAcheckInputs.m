@@ -54,19 +54,19 @@ C2 = {
     't_rextar',...       %  4
     'selection_type',... %  5
     'Pf',...             %  6
-    'n_generation',...   %  7
-    't_limit',...        %  8
-    'vtr',...            %  9
-    'output_intvl',...   % 10
-    'out_transition',... % 11
-    'out_best',...       % 12
-    'out_population',... % 13
-    'out_report',...     % 14
-    'interimreportfun',... % 15
-    'finalreportfun',... % 16
-    'par', ...           % 17
-    'n_localoptimind',... % 18
-    'localoptimopts',... % 19
+    'localoptim',...     %  7
+    'localoptimopts',... %  8
+    'n_generation',...   %  9
+    't_limit',...        % 10
+    'vtr',...            % 11
+    'output_intvl',...   % 12
+    'out_transition',... % 13
+    'out_best',...       % 14
+    'out_population',... % 15
+    'out_report',...     % 16
+    'interimreportfun',... % 17
+    'finalreportfun',... % 18
+    'par', ...           % 19
     };
 
 tf = isfield(opts,C2);
@@ -76,13 +76,17 @@ if strcmpi(RCGA_Type,'UNDXMGG')
 end
 
 if ~tf(1) % n_population
-    opts.n_population = 20 * problem.n_gene;
+%     opts.n_population = 20 * problem.n_gene; % Recommended by Kobayashi 2009
+    opts.n_population = 5 * problem.n_gene;
 end
 if ~tf(2) % n_children
-    opts.n_children = 5 * problem.n_gene;
+%     opts.n_children = 5 * problem.n_gene; % Recommended by Kobayashi 2009
+%     opts.n_children = ceil(0.5 * opts.n_population);
+    opts.n_children = opts.n_population;
 end
 if ~tf(3) % n_parent
-    opts.n_parent = problem.n_gene + 1;
+%     opts.n_parent = problem.n_gene + 1; % Recommended by Kobayashi 2009
+    opts.n_parent = ceil(0.5 * opts.n_population);
 end
 if ~tf(4) % t_rextar
     opts.t_rextar = 6.0;
@@ -97,46 +101,46 @@ if ~tf(6) % Pf
         opts.Pf = 0;
     end
 end
-if ~tf(7) % n_generation
-    opts.n_generation = 1000;
+if ~tf(7) % localoptim
+    opts.localoptim = 0;
 end
-if ~tf(8) % t_limit
-    opts.t_limit = 1000;
-end
-if ~tf(9) % vtr
-    opts.vtr = -inf;
-end
-if ~tf(10) % output_intvl
-    opts.output_intvl = 1;
-end
-if ~tf(11) % out_transition
-    opts.out_transition = 'None';
-end
-if ~tf(12) % out_best
-    opts.out_best = 'None';
-end
-if ~tf(13) % out_population
-    opts.out_population = 'None';
-end
-if ~tf(14) % out_report
-    opts.out_report = 'None';
-end
-if ~tf(15) % interimreportfun
-    opts.interimreportfun = @RCGAdefaultinterimreportfun;
-end
-if ~tf(16) % finalreportfun
-    opts.finalreportfun = @RCGAdefaultfinalreportfun;
-end
-if ~tf(17) % par
-    opts.par = 0;
-end
-if ~tf(18) % n_localoptimind
-    opts.n_localoptimind = 0;
-end
-if ~tf(19) % localoptimopts
+if ~tf(8) % localoptimopts
     opts.localoptimopts = optimoptions('fmincon',...
         'ConstraintTolerance',0,...
         'MaxFunctionEvaluations',opts.n_children,...
         'Display','off');
+end
+if ~tf(9) % n_generation
+    opts.n_generation = 1000;
+end
+if ~tf(10) % t_limit
+    opts.t_limit = 10 * 60; % 10 min
+end
+if ~tf(11) % vtr
+    opts.vtr = -inf;
+end
+if ~tf(12) % output_intvl
+    opts.output_intvl = 1;
+end
+if ~tf(13) % out_transition
+    opts.out_transition = 'None';
+end
+if ~tf(14) % out_best
+    opts.out_best = 'None';
+end
+if ~tf(15) % out_population
+    opts.out_population = 'None';
+end
+if ~tf(16) % out_report
+    opts.out_report = 'None';
+end
+if ~tf(17) % interimreportfun
+    opts.interimreportfun = @RCGAdefaultinterimreportfun;
+end
+if ~tf(18) % finalreportfun
+    opts.finalreportfun = @RCGAdefaultfinalreportfun;
+end
+if ~tf(19) % par
+    opts.par = 0;
 end
 

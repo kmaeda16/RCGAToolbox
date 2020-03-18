@@ -29,7 +29,11 @@ out_report = opts.out_report;
 n_children = opts.n_children;
 vtr = opts.vtr;
 t_limit = opts.t_limit;
-n_localoptimind = opts.n_localoptimind;
+localoptim = opts.localoptim;
+
+
+global RCGA_LOCALNEVAL;
+RCGA_LOCALNEVAL = 0;
 
 
 %% Setting flg_printed
@@ -43,8 +47,9 @@ Population = RCGAgetInitPopulation(problem,opts);
 %     Population = RCGArequestLocalOptimize(problem,opts,Population);
 % end
 index = RCGAfindBest(Population);
-if n_localoptimind > 0
-    Population(index) = RCGAlocalOptimize(problem, opts, Population(index));
+if localoptim > 0
+    [Population(index), localneval] = RCGAlocalOptimize(problem, opts, Population(index));
+    RCGA_LOCALNEVAL = RCGA_LOCALNEVAL + localneval;
 end
 best = Population(index);
 
@@ -78,8 +83,9 @@ while i < n_generation
 %     end
     index = RCGAfindBest(Population);
     if Population(index).phi < best.phi || ( Population(index).phi == best.phi && Population(index).f < best.f )
-        if n_localoptimind > 0
-            Population(index) = RCGAlocalOptimize(problem, opts, Population(index));
+        if localoptim > 0
+            [Population(index), localneval] = RCGAlocalOptimize(problem, opts, Population(index));
+            RCGA_LOCALNEVAL = RCGA_LOCALNEVAL + localneval;
         end
         best = Population(index);
     end

@@ -1,5 +1,5 @@
-function doBenchmark_MATLAB_GA(idum)
-% idum = 1;
+% function doBenchmark_MATLAB_GA(idum)
+idum = 1;
 
 %% Init
 addpath(genpath('../function'))
@@ -8,6 +8,7 @@ addpath(genpath('../../../../RCGA'));
 BENCHMARK1 = {'Sphere','ScaledSphere','Ellipsoid','Cigar','k_tablet', ...
     'MMbenchmark','Rosenbrock_star','Rosenbrock_chain','Ackley','Bohachevsky', ...
     'Rastrigin','Schaffer','Schwefel'};
+BENCHMARK1 = {'Schaffer'};
 BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
     'g06','g07', 'g08','g09','g10', ...
     'g11','g12','g13'};
@@ -36,13 +37,13 @@ for Problem_Name = BENCHMARK1
 %     options = optimoptions('fmincon',...
 %         'MaxFunctionEvaluations',1e+5);
         
-    ObjectiveFunction = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun, gene);
+    ObjectiveFunction = @(x) obj_wrapper_nodecoding(problem.fitnessfun, x);
     
-    LB = zeros(1,problem.n_gene);   % Lower bound
-    UB = ones(1,problem.n_gene);    % Upper bound
+    LB = problem.decodingfun(zeros(1,problem.n_gene));   % Lower bound
+    UB = problem.decodingfun( ones(1,problem.n_gene));   % Upper bound
     tic;
-    [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
-%     [gene, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,[],options); output.generations = nan;
+    [x, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
+%     [x, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,[],options); output.generations = nan;
     elapsedTime = toc;
     
     fprintf('Elapsed Time = %e, f = %e\n',elapsedTime,fval);
@@ -52,8 +53,8 @@ for Problem_Name = BENCHMARK1
         fprintf('Solution NOT found\n');
     end
     
-    out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest_wrapper(elapsedTime, problem.n_gene, problem.n_constraint, problem.fitnessfun, problem.decodingfun, out_best, gene, output)
+    opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
+    writeBest(elapsedTime, output.generations, problem, opts, x);
     
 end
 
@@ -77,18 +78,18 @@ for Problem_Name = BENCHMARK2
 %     options = optimoptions('fmincon',...
 %         'MaxFunctionEvaluations',1e+5);
     
-    ObjectiveFunction  = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun, gene);
-    ConstraintFunction = @(gene) cst_wrapper(problem.fitnessfun, problem.decodingfun, gene);
+    ObjectiveFunction  = @(x) obj_wrapper_nodecoding(problem.fitnessfun, x);
+    ConstraintFunction = @(x) cst_wrapper_nodecoding(problem.fitnessfun, x);
     
-    LB = zeros(1,problem.n_gene);   % Lower bound
-    UB = ones(1,problem.n_gene);    % Upper bound
+    LB = problem.decodingfun(zeros(1,problem.n_gene));   % Lower bound
+    UB = problem.decodingfun( ones(1,problem.n_gene));   % Upper bound
     tic;
-    [gene, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,ConstraintFunction,options);
-%     [gene, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,ConstraintFunction,options); output.generations = nan;
+    [x, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,ConstraintFunction,options);
+%     [x, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,ConstraintFunction,options); output.generations = nan;
     % It takes a long time to calculate the first generation 
     elapsedTime = toc;
     
-    g = ConstraintFunction(gene);
+    g = ConstraintFunction(x);
     phi = sum( max(0,g) .^2 );
     fprintf('Elapsed Time = %e, f = %e, phi = %e\n',elapsedTime,fval,phi);
     if fval < opts.vtr && phi <= eps
@@ -97,8 +98,8 @@ for Problem_Name = BENCHMARK2
         fprintf('Solution NOT found\n');
     end
     
-    out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest_wrapper(elapsedTime, problem.n_gene, problem.n_constraint, problem.fitnessfun, problem.decodingfun, out_best, gene, output)
+    opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
+    writeBest(elapsedTime, output.generations, problem, opts, x);
 
 end
 

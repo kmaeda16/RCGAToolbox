@@ -1,4 +1,19 @@
-function improvedChrom = RCGAlocalOptimize(problem, opts, chrom)
+function [improvedChrom, localneval] = RCGAlocalOptimize(problem, opts, chrom)
+% RCGAlocalOptimize improves chrom by a local optimizer fmincon. Please
+% note that Optiimzation Toolbox is required to use fmincon and thus
+% RCGAlocalOptimize.
+% 
+% [SYNTAX]
+% [improvedChrom, localneval] = RCGAlocalOptimize(problem, opts, chrom)
+% 
+% [INPUT]
+% problem       :  Problem structure
+% opts          :  RCGA options. See XXXXXXXXXXX for options.
+% chrom         :  Individual
+% 
+% [OUTPUT]
+% improvedChrom :  Improved individual
+
 
 localoptimopts = opts.localoptimopts;
 
@@ -9,9 +24,9 @@ ObjectiveFunction  = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun
 ConstraintFunction = @(gene) cst_wrapper(problem.fitnessfun, problem.decodingfun, gene);
 
 if problem.n_constraint == 0
-    improvedChrom.gene = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,[],localoptimopts);
+    [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,[],localoptimopts);
 else
-    improvedChrom.gene = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,ConstraintFunction,localoptimopts);
+    [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,ConstraintFunction,localoptimopts);
 end
 
 [ improvedChrom.f, improvedChrom.g, improvedChrom.phi ] = RCGAgetFitness(problem,improvedChrom);
@@ -20,3 +35,5 @@ end
 if ~( improvedChrom.phi < chrom.phi || ( improvedChrom.phi == chrom.phi && improvedChrom.f < chrom.f ) )
     improvedChrom = chrom;
 end
+
+localneval = output.funcCount + 1;

@@ -9,6 +9,7 @@ function RCGAwriteBest(elapsedTime, generation, problem, opts, best)
 % elapsedTime :  Elaplsed time (sec)
 % generation  :  Generation
 % problem     :  Problem structure
+% opts        :  RCGA options. See XXXXXXXXXXX for options.
 % best        :  Structure of the the best individual
 
 
@@ -43,7 +44,8 @@ end
 fprintf(out,'\n');
 
 x = decodingfun(best.gene);
-neval = n_population + ( generation - 1 ) * n_children;
+global RCGA_LOCALNEVAL;
+neval = n_population + ( generation - 1 ) * n_children + RCGA_LOCALNEVAL;
 
 fprintf(out,'%e\t%e\t%e\t%e\t',elapsedTime,neval,generation,best.f);
 if n_constraint > 0
