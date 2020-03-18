@@ -190,15 +190,15 @@ end
 
 opts.n_population = 200;
 opts.n_children = 200;
-opts.n_generation = 1e+5;
+opts.n_generation = 1e+8;
 opts.n_parent = problem.n_gene + 1;
 opts.t_rextar = 6.0;
-opts.output_intvl = 1e+3; %1e+8;
+opts.output_intvl = 1e+2; %1e+8;
 opts.selection_type = 0;
 % opts.t_limit = 24 * 60 * 60; % 24 hr
 % opts.t_limit = 10 * 60; % 10 min
-% opts.t_limit = 1 * 60; % 1 min
-opts.t_limit = 10;
+opts.t_limit = 1 * 60; % 1 min
+% opts.t_limit = 10; % 10 sec
 opts.par = 0;
 opts.out_population = 'None'; % 'Population.dat';
 opts.out_solution = 'None'; % 'Solution.dat';

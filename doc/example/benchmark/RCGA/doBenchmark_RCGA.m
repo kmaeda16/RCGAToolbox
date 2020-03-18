@@ -1,29 +1,41 @@
 % function doBenchmark_RCGA(idum)
 idum = 1;
 
-
 %% Init
 addpath(genpath('../function'));
 addpath(genpath('../../../../RCGA'));
 
-BENCHMARK1 = {    'MMbenchmark'};
+BENCHMARK1 = {'Sphere','ScaledSphere','Ellipsoid','Cigar','k_tablet', ...
+    'MMbenchmark','Rosenbrock_star','Rosenbrock_chain','Ackley','Bohachevsky', ...
+    'Rastrigin','Schaffer','Schwefel'};
+BENCHMARK1 = {'Rosenbrock_chain'};
+BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
+    'g06','g07', 'g08','g09','g10', ...
+    'g11','g12','g13'};
 BENCHMARK2 = {'g13'};
 
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
+opts = [];
 
 %% Unconstrained benchmark functions
 opts.Pf = 0;
 for Problem_Name = BENCHMARK1
     
-    fprintf('\n********** %s **********\n',char(Problem_Name));
+%     fprintf('\n********** %s **********\n',char(Problem_Name));
     [problem, opts] = getParam(char(Problem_Name),opts);
-%     opts.vtr             = 5e+2;
-     opts.n_localoptimind = 1;
-%     opts.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    
+    opts.n_localoptimind = 0;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
 %     RCGA_UNDXMGG(problem,opts);
-%     opts.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+%     opts.out_transition = sprintf('Results/REXstarJGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+%     RCGA_REXstarJGG(problem,opts);
+% 
+    opts.n_localoptimind = 1;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+%     RCGA_UNDXMGG(problem,opts);
+%     opts.out_transition = sprintf('Results/REXstarJGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
 %     RCGA_REXstarJGG(problem,opts);
     
 end
@@ -36,16 +48,31 @@ for Problem_Name = BENCHMARK2
     [problem, opts] = getParam(char(Problem_Name),opts);
     
     opts.Pf = 0;
-%     opts.out_transition = sprintf('UNDXMGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+    
+%     opts.n_localoptimind = 0;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
 %     RCGA_UNDXMGG(problem,opts);
-%     opts.out_transition = sprintf('REXstarJGG_%s_NR_transition_%d.dat',char(Problem_Name),idum);
+%     opts.out_transition = sprintf('Results/REXstarJGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+%     RCGA_REXstarJGG(problem,opts);
+    
+%     opts.n_localoptimind = 1;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+%     RCGA_UNDXMGG(problem,opts);
+%     opts.out_transition = sprintf('Results/REXstarJGG_%s_NR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
 %     RCGA_REXstarJGG(problem,opts);
     
     opts.Pf = 0.45;
-    opts.n_localoptimind = 1;
-%     opts.out_transition = sprintf('UNDXMGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
+    
+    opts.n_localoptimind = 0;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_SR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
 %     RCGA_UNDXMGG(problem,opts);
-    opts.out_transition = sprintf('REXstarJGG_%s_SR_transition_%d.dat',char(Problem_Name),idum);
+    opts.out_transition = sprintf('Results/REXstarJGG_%s_SR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+    RCGA_REXstarJGG(problem,opts);
+    
+    opts.n_localoptimind = 1;
+%     opts.out_transition = sprintf('Results/UNDXMGG_%s_SR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
+%     RCGA_UNDXMGG(problem,opts);
+    opts.out_transition = sprintf('Results/REXstarJGG_%s_SR_LO%d_transition_%d.dat',char(Problem_Name),opts.n_localoptimind,idum);
     RCGA_REXstarJGG(problem,opts);
     
 end

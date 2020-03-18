@@ -39,10 +39,13 @@ flg_printed = 0; % flg_printed == 1 indicates output is made
 %% First generation
 i = 1;
 Population = RCGAgetInitPopulation(problem,opts);
-if n_localoptimind > 0
-    Population = RCGArequestLocalOptimize(problem,opts,Population);
-end
+% if n_localoptimind > 0
+%     Population = RCGArequestLocalOptimize(problem,opts,Population);
+% end
 index = RCGAfindBest(Population);
+if n_localoptimind > 0
+    Population(index) = RCGAlocalOptimize(problem, opts, Population(index));
+end
 best = Population(index);
 
 if 0 < output_intvl
@@ -70,11 +73,14 @@ while i < n_generation
     i = i + 1;
     flg_printed = 0;
     Population = GenerationAlternation(problem,opts,Population);
-    if n_localoptimind > 0
-        Population = RCGArequestLocalOptimize(problem,opts,Population);
-    end
+%     if n_localoptimind > 0
+%         Population = RCGArequestLocalOptimize(problem,opts,Population);
+%     end
     index = RCGAfindBest(Population);
     if Population(index).phi < best.phi || ( Population(index).phi == best.phi && Population(index).f < best.f )
+        if n_localoptimind > 0
+            Population(index) = RCGAlocalOptimize(problem, opts, Population(index));
+        end
         best = Population(index);
     end
     if 0 < output_intvl && mod(i,output_intvl) == 0
