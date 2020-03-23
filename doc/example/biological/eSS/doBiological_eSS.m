@@ -1,19 +1,22 @@
-% function doBiological_eSS(Problem_Name,idum)
-Problem_Name = {'hiv'};
-idum = 1;
+function doBiological_eSS(problem_name,idum)
+% problem_name = 'hiv';
+% idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
 
 %% Init
-addpath(genpath('../function'));
-addpath(genpath('../../../../RCGA'));
+% addpath(genpath('../function'));
+% addpath(genpath('../../../../RCGA'));
+addpath(genpath('../../function'));
+addpath(genpath('../../../../../RCGA'));
 
 
 %%
 opts = [];
-fprintf('\n********** %s **********\n',char(Problem_Name));
-[problem, opts] = getParam(char(Problem_Name),opts);
+fprintf('\n********** %s **********\n',problem_name);
+[problem, opts] = getParam(problem_name,opts);
+opts.out_best = sprintf('eSS_%s_final_%d.dat',problem_name,idum);
 
 ess_problem.f = func2str(problem.fitnessfun); %mfile containing the objective function
 ess_problem.vtr = opts.vtr; % f = ALLOWABLE ERROR
@@ -41,11 +44,11 @@ else
     fprintf('Solution NOT found\n');
 end
 
-opts.out_best = sprintf('Results/eSS_%s_final_%d.dat',char(Problem_Name),idum);
 writeBest(elapsedTime, generation, problem, opts, x, neval);
 
 
-
 %% Deinit
-rmpath(genpath('../function'));
-rmpath(genpath('../../../../RCGA'));
+% rmpath(genpath('../function'));
+% rmpath(genpath('../../../../RCGA'));
+addpath(genpath('../../function'));
+addpath(genpath('../../../../../RCGA'));

@@ -206,7 +206,7 @@ void readExpdata()
 	int i;
 
 	for(i=1; i<=N_EXPDATA; i++){
-		sprintf(str,"%s%d%s","common/pseudoexpdata",i,".dat");
+		sprintf(str,"%s%d%s","../../function/threestep/ExpData/pseudoexpdata",i,".dat");
 		readMatrix(str, N_ROW, N_COL, ExpData[i]);
 	}
 }

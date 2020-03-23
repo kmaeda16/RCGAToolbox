@@ -1,18 +1,22 @@
-% function doBiological_MATLAB_GA(idum)
-Problem_Name = {'hiv'};
-idum = 1;
+function doBiological_MATLAB_GA(problem_name,idum)
+% problem_name = 'hiv';
+% idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
 
 %% Init
-addpath(genpath('../function'));
-addpath(genpath('../../../../RCGA'));
+% addpath(genpath('../function'));
+% addpath(genpath('../../../../RCGA'));
+addpath(genpath('../../function'));
+addpath(genpath('../../../../../RCGA'));
 
-
+%%
 opts = [];
-fprintf('\n********** %s **********\n',char(Problem_Name));
-[problem, opts] = getParam(char(Problem_Name),opts);
+
+fprintf('\n********** %s **********\n',problem_name);
+[problem, opts] = getParam(problem_name,opts);
+opts.out_best = sprintf('MATLAB_GA_%s_final_%d.dat',problem_name,idum);
 
 options = optimoptions('ga',...
     'MaxGenerations',opts.n_generation,...
@@ -21,7 +25,7 @@ options = optimoptions('ga',...
     'MaxStallGenerations',inf,...
     'ConstraintTolerance',eps,...
     'FitnessLimit',-inf,...
-    'Display','final'); % 'iter' or 'final'
+    'Display','iter'); % 'iter' or 'final'
 
 %     options = optimoptions('fmincon',...
 %         'MaxFunctionEvaluations',1e+5);
@@ -48,10 +52,13 @@ else
     fprintf('Solution NOT found\n');
 end
 
-opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
+opts.out_best = sprintf('MATLAB_GA_%s_final_%d.dat',problem_name,idum);
 writeBest(elapsedTime, generation, problem, opts, x, neval);
 
 
 %% Deinit
-rmpath(genpath('../function'));
-rmpath(genpath('../../../../RCGA'));
+% rmpath(genpath('../function'));
+% rmpath(genpath('../../../../RCGA'));
+addpath(genpath('../../function'));
+addpath(genpath('../../../../../RCGA'));
+

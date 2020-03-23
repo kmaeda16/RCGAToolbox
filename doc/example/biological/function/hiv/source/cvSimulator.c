@@ -46,6 +46,12 @@ int Simulation(N_Vector y, N_Vector param, int neq, realtype t0, realtype tintvl
 	flag = CVodeSetMaxConvFails(cvode_mem, maxncf);
 	if (check_flag(&flag, "CVodeSetMaxConvFails", 1)) return(1);
 
+	flag = CVodeSetMaxHnilWarns(cvode_mem, -1);
+	if (check_flag(&flag, "CVodeSetMaxHnilWarns", 1)) return(1);
+
+	flag = CVodeSetNoInactiveRootWarn(cvode_mem);
+	if (check_flag(&flag, "CVodeSetNoInactiveRootWarn", 1)) return(1);
+
 	Ith(T_out,0+1) = t = t0;
 	for(i=1;i<=neq;i++) IJth(Y_out,0+1,i) = Ith(y,i);
 	iout = 1; tout = t0 + tintvl;

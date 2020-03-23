@@ -204,7 +204,7 @@ void readExpdata()
 	int i;
 
 	for(i=1; i<=N_EXPDATA; i++){
-		sprintf(str,"%s%d%s","common/expdata",i,".dat");
+		sprintf(str,"%s%d%s","../../function/hiv/ExpData/expdata",i,".dat");
 		readMatrix(str, N_ROW, N_COL, ExpData[i]);
 	}
 }

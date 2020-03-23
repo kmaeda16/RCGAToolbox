@@ -6,7 +6,13 @@ function [f, g] = wrapper_hiv_con_mex(x)
 
 [f, g] = hiv_con_mex(x);
 
+% f = sum(x.^2);%1e+22;              % For debug
+% g = 1e+22 * ones(1,12); % For debug
+% if rand < 0.5
+%     g = zeros(1,12);
+% end
+
 % if max(isnan([f g])) > 0
 %     f = 1e+22;
-%     g = 1e+22 * ones(1,24);
+%     g = 1e+22 * ones(1,12);
 % end
