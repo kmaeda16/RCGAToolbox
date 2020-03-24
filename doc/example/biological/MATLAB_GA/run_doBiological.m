@@ -1,6 +1,7 @@
 
 n_repeat = 5;
 
+%%
 for Name = {'hiv','threestep'}
     name = char(Name);
     for i = 1 : n_repeat
@@ -15,5 +16,15 @@ for Name = {'hiv','threestep'}
     end
 end
 
-% diaryname = sprintf('MATLAB_GA_%s_diary_%d.dat',problem_name,idum);
-% diary(job433,diaryname);
+%%
+i = 30;
+for Name = {'hiv','threestep'}
+    name = char(Name);
+    for j = 1 : n_repeat
+        i = i + 1;
+        jobid = sprintf('job%d',i);
+        diaryname = sprintf('MATLAB_GA_%s_diary_%d.txt',name,j);
+        expression = sprintf('diary(%s,''%s'')',jobid,diaryname);
+        eval(expression);
+    end
+end
