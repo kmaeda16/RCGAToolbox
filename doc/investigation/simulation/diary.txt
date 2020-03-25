@@ -1,0 +1,102 @@
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Goldbeter1995_CircClock
+
+Making SBML file ...
+BIOMD0000000016_url_mod.xml created.
+Making M file ...
+BIOMD0000000016_url_mod_odefun.m created.
+Making MEX file ...
+BIOMD0000000016_url_mod_mex.c created.
+BIOMD0000000016_url_mod_mex.h created.
+BIOMD0000000016_url_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	3.39e-02	9.54e-03
+CVODE(SundialsTB)	1.41e-02	3.36e-03
+CVODE(IQMTools)  	3.85e-03	1.27e-03
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Tyson1991_CellCycle6var
+
+Making SBML file ...
+BIOMD0000000005_url_mod.xml created.
+Making M file ...
+BIOMD0000000005_url_mod_odefun.m created.
+Making MEX file ...
+BIOMD0000000005_url_mod_mex.c created.
+BIOMD0000000005_url_mod_mex.h created.
+BIOMD0000000005_url_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	6.24e-02	9.53e-04
+CVODE(SundialsTB)	3.16e-02	7.23e-04
+CVODE(IQMTools)  	3.27e-03	1.44e-04
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Chassagnole2002_CarbonMetabolism
+
+Making SBML file ...
+BIOMD0000000051_url_mod.xml created.
+Making M file ...
+BIOMD0000000051_url_mod_odefun.m created.
+Making MEX file ...
+BIOMD0000000051_url_mod_mex.c created.
+BIOMD0000000051_url_mod_mex.h created.
+BIOMD0000000051_url_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	4.29e-02	1.75e-02
+CVODE(SundialsTB)	2.82e-02	1.54e-03
+CVODE(IQMTools)  	4.50e-03	2.57e-04
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Maeda2019_AmmoniumTransportAssimilation
+
+Making SBML file ...
+Maeda2019_RefinedActive_Kim_20190413_1_mod.xml created.
+Making M file ...
+Maeda2019_RefinedActive_Kim_20190413_1_mod_odefun.m created.
+Making MEX file ...
+Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.c created.
+Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.h created.
+Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	5.13e-02	8.83e-04
+CVODE(SundialsTB)	3.55e-02	6.95e-04
+CVODE(IQMTools)  	3.56e-03	1.07e-04
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Threestep
+
+Making SBML file ...
+Threestep_mod.xml created.
+Making M file ...
+Threestep_mod_odefun.m created.
+Making MEX file ...
+Threestep_mod_mex.c created.
+Threestep_mod_mex.h created.
+Threestep_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	2.34e-02	5.12e-04
+CVODE(SundialsTB)	1.42e-02	2.69e-04
+CVODE(IQMTools)  	2.77e-03	7.81e-05
+
+ans =
+
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\HIV
+
+Making SBML file ...
+HIV_mod.xml created.
+Making M file ...
+HIV_mod_odefun.m created.
+Making MEX file ...
+HIV_mod_mex.c created.
+HIV_mod_mex.h created.
+HIV_mod_mex.mexw64 created.
+                 	Mean	SD
+ODE15s           	6.15e-02	7.03e-04
+CVODE(SundialsTB)	2.03e-02	5.49e-04
+CVODE(IQMTools)  	3.26e-03	8.14e-05

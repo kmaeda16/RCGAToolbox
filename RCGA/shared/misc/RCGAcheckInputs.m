@@ -54,8 +54,8 @@ C2 = {
     't_rextar',...       %  4
     'selection_type',... %  5
     'Pf',...             %  6
-    'localoptim',...     %  7
-    'localoptimopts',... %  8
+    'local',...     %  7
+    'localopts',... %  8
     'n_generation',...   %  9
     't_limit',...        % 10
     'vtr',...            % 11
@@ -101,11 +101,11 @@ if ~tf(6) % Pf
         opts.Pf = 0;
     end
 end
-if ~tf(7) % localoptim
-    opts.localoptim = 0;
+if ~tf(7) % local
+    opts.local = 0;
 end
-if ~tf(8) % localoptimopts
-    opts.localoptimopts = optimoptions('fmincon',...
+if ~tf(8) % localopts
+    opts.localopts = optimoptions('fmincon',...
         'ConstraintTolerance',0,...
         'MaxFunctionEvaluations',opts.n_children,...
         'Display','off');

@@ -20,8 +20,8 @@ function RCGAinterimreportfun_PE(elapsedTime,generation,problem,opts,Population,
 
 
 %% Making outputs
-printTransition(elapsedTime,generation,problem,best);
-writeTransition(elapsedTime,generation,problem,opts,best);
+RCGAprintTransition(elapsedTime,generation,problem,best);
+RCGAwriteTransition(elapsedTime,generation,problem,opts,best);
 
 
 %% Decoding gene to x
@@ -61,6 +61,6 @@ end
 T_sim = T;
 Y_sim = Y;
 statename = modelfun('states');
-plotter(T_sim,Y_sim,T_exp,Y_exp,'Time','AU',statename);
+RCGAplotter(T_sim,Y_sim,T_exp,Y_exp,'Time','AU',statename);
 title(sprintf('Generation = %d',generation));
 drawnow;
