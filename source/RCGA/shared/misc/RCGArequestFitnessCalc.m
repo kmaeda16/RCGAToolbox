@@ -15,7 +15,7 @@ function Group = RCGArequestFitnessCalc(problem,opts,Group)
 
 %% Shortening variable names
 n_constraint = problem.n_constraint;
-par = opts.par;
+n_par = opts.n_par;
 n_group = length(Group);
 
 
@@ -26,7 +26,7 @@ phi_temp = zeros(n_group,1);
 
 
 %% Calculating f, g, and phi
-if 0 < par
+if 1 < n_par
     parfor i = 1 : n_group
         [f_temp(i), g_temp(i,:), phi_temp(i)] = RCGAgetFitness(problem,Group(i));
     end

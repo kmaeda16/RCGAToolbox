@@ -45,7 +45,6 @@ if ~tf(4) % n_constraint
 end
 
 
-
 %% Checking opts and seting default values
 C2 = {
     'n_population',...   %  1
@@ -54,20 +53,20 @@ C2 = {
     't_rextar',...       %  4
     'selection_type',... %  5
     'Pf',...             %  6
-    'local',...     %  7
-    'localopts',... %  8
+    'local',...          %  7
+    'localopts',...      %  8
     'n_generation',...   %  9
     't_limit',...        % 10
     'vtr',...            % 11
-    'output_intvl',...   % 12
-    'out_transition',... % 13
-    'out_best',...       % 14
-    'out_population',... % 15
-    'out_report',...     % 16
-    'interimreportfun',... % 17
-    'finalreportfun',... % 18
-    'par', ...           % 19
-    };
+    'n_par', ...         % 12
+    'output_intvl',...   % 13
+    'out_transition',... % 14
+    'out_best',...       % 15
+    'out_population',... % 16
+    'out_report',...     % 17
+    'interimreportfun',... % 18
+    'finalreportfun',... % 19
+};
 
 tf = isfield(opts,C2);
 
@@ -119,28 +118,29 @@ end
 if ~tf(11) % vtr
     opts.vtr = -inf;
 end
-if ~tf(12) % output_intvl
+if ~tf(12) % n_par
+    opts.n_par = 1;
+end
+if ~tf(13) % output_intvl
     opts.output_intvl = 1;
 end
-if ~tf(13) % out_transition
+if ~tf(14) % out_transition
     opts.out_transition = 'None';
 end
-if ~tf(14) % out_best
+if ~tf(15) % out_best
     opts.out_best = 'None';
 end
-if ~tf(15) % out_population
+if ~tf(16) % out_population
     opts.out_population = 'None';
 end
-if ~tf(16) % out_report
+if ~tf(17) % out_report
     opts.out_report = 'None';
 end
-if ~tf(17) % interimreportfun
+if ~tf(18) % interimreportfun
     opts.interimreportfun = @RCGAdefaultinterimreportfun;
 end
-if ~tf(18) % finalreportfun
+if ~tf(19) % finalreportfun
     opts.finalreportfun = @RCGAdefaultfinalreportfun;
 end
-if ~tf(19) % par
-    opts.par = 0;
-end
+
 

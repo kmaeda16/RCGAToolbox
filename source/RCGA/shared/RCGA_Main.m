@@ -29,11 +29,26 @@ out_report = opts.out_report;
 n_children = opts.n_children;
 vtr = opts.vtr;
 t_limit = opts.t_limit;
+n_par = opts.n_par;
 local = opts.local;
 
 
 global RCGA_LOCALNEVAL;
 RCGA_LOCALNEVAL = 0;
+
+
+%% Making parallel pool
+if 1 < n_par
+    p = gcp('nocreate');
+    if isempty(p)
+        parpool(n_par);
+    elseif ~isempty(p)
+        if p.NumWorkers ~= n_par
+            delete(p);
+            parpool(n_par);
+        end
+    end
+end
 
 
 %% Setting flg_printed

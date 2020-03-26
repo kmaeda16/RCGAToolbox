@@ -38,10 +38,11 @@ if isempty(strfind(RCGA_Type,'UNDXMGG'))
     fprintf('  selection_type :  %d\n',opts.selection_type);
 end
 fprintf('              Pf :  %g\n',opts.Pf);
-fprintf('      localoptim :  %g\n',opts.localoptim);
+fprintf('           local :  %g\n',opts.local);
 fprintf('    n_generation :  %d\n',opts.n_generation);
 fprintf('         t_limit :  %g\n',opts.t_limit);
 fprintf('             vtr :  %g\n',opts.vtr);
+fprintf('           n_par :  %d\n',opts.n_par);
 fprintf('    output_intvl :  %g\n',opts.output_intvl);
 fprintf('  out_transition :  %s\n',opts.out_transition);
 fprintf('        out_best :  %s\n',opts.out_best);
@@ -49,7 +50,6 @@ fprintf('  out_population :  %s\n',opts.out_population);
 fprintf('      out_report :  %s\n',opts.out_report);
 fprintf('interimreportfun :  %s\n',func2str(opts.interimreportfun));
 fprintf('  finalreportfun :  %s\n',func2str(opts.finalreportfun));
-fprintf('             par :  %d\n',opts.par);
 disp('------------------------------------------');
 fprintf('\n');
 
