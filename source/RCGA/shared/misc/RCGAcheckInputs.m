@@ -50,7 +50,7 @@ C2 = {
     'n_population',...   %  1
     'n_children',...     %  2
     'n_parent',...       %  3
-    't_rextar',...       %  4
+    't_rexstar',...       %  4
     'selection_type',... %  5
     'Pf',...             %  6
     'local',...          %  7
@@ -87,8 +87,8 @@ if ~tf(3) % n_parent
     opts.n_parent = problem.n_gene + 1; % Recommended by Kobayashi 2009
 %     opts.n_parent = ceil(0.5 * opts.n_population);
 end
-if ~tf(4) % t_rextar
-    opts.t_rextar = 6.0;
+if ~tf(4) % t_rexstar
+    opts.t_rexstar = 6.0;
 end
 if ~tf(5) % selection_type
     opts.selection_type = 0;

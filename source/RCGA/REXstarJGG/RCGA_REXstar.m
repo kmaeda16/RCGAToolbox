@@ -33,7 +33,7 @@ n_parent = opts.n_parent;
 n_gene = problem.n_gene;
 n_children = opts.n_children;
 n_constraint = problem.n_constraint;
-t = opts.t_rextar;
+t = opts.t_rexstar;
 Pf = opts.Pf;
 
 

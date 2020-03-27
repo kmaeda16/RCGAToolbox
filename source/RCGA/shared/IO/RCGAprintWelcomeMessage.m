@@ -34,7 +34,7 @@ fprintf('    n_population :  %d\n',opts.n_population);
 fprintf('      n_children :  %d\n',opts.n_children);
 if isempty(strfind(RCGA_Type,'UNDXMGG'))
     fprintf('        n_parent :  %d\n',opts.n_parent);
-    fprintf('        t_rextar :  %g\n',opts.t_rextar);
+    fprintf('       t_rexstar :  %g\n',opts.t_rexstar);
     fprintf('  selection_type :  %d\n',opts.selection_type);
 end
 fprintf('              Pf :  %g\n',opts.Pf);

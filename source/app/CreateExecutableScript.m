@@ -1,4 +1,4 @@
-function CreateExecutableScript_UNDXMGG(app)
+function CreateExecutableScript(app)
 
 filename = app.ExecutableScriptFileName.Value;
 
@@ -30,9 +30,14 @@ fprintf(out,'\n');
 fprintf(out,'%% ========= Option Settings ========== %%\n');
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
+if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
+    fprintf(out,'opts.n_parent = problem.n_gene + 1; %% # Parents used for REXstar\n');
+    fprintf(out,'opts.t_rexstar = 6.0; %% Step-size parameter for REXstar\n');
+    fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
+end
 fprintf(out,'opts.Pf = %e; %% Pf\n',app.Pf.Value);
 fprintf(out,'opts.n_generation = %d; %% Max # Generations\n',app.Max_N_Generation.Value);
-fprintf(out,'opts.t_limit = 60 * %e; %% Max Time (min) (but t_limit uses "sec")\n',app.MaxTime.Value);
+fprintf(out,'opts.t_limit = 60 * %e; %% Max Time (sec)\n',app.MaxTime.Value);
 fprintf(out,'opts.vtr = %e; %% Value To Be Reached\n',app.ValueToBeReached.Value);
 fprintf(out,'opts.output_intvl = %d; %% Output Interval Generation\n',app.OutputIntervalGeneration.Value);
 fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.TransitionFileName.Value);
@@ -54,7 +59,11 @@ fprintf(out,'\n');
 
 %% Executing RCGA
 fprintf(out,'%% ========== Executing RCGA ========== %%\n');
-fprintf(out,'RCGA_UNDXMGG(problem,opts);\n');
+if strcmp(app.AlgorithmSwitch.Value,'UNDX/MGG')
+    fprintf(out,'RCGA_UNDXMGG(problem,opts);\n');
+else
+    fprintf(out,'RCGA_REXstarJGG(problem,opts);\n');
+end
 fprintf(out,'\n');
 
 %% Removing Path
