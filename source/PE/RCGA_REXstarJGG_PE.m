@@ -286,15 +286,26 @@ opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) .
     elapsedTime,generation,problem,opts,Population,best,...
     Simulation,model,mst,simopts);
 
-if ~isfield(opts,'finalreportfun')
-    opts.finalreportfun = @RCGAfinalreportfun_PE;
-end
-finalreportfun = opts.finalreportfun;
-opts.finalreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
-    finalreportfun(...
-    elapsedTime,generation,problem,opts,Population,best,...
-    Simulation,model,mst,simopts);
+%% Decomment here if you want to use parameter names for out_transition, out_best, and out_population
+% if ~isfield(opts,'finalreportfun')
+%     opts.finalreportfun = @RCGAfinalreportfun_PE;
+% end
+% finalreportfun = opts.finalreportfun;
+% opts.finalreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
+%     finalreportfun(...
+%     elapsedTime,generation,problem,opts,Population,best,...
+%     Simulation,model,mst,simopts);
 
 
 %% Run parameter estimation
 Results = RCGA_REXstarJGG(problem,opts);
+
+
+%% Print best
+paramnames = model('parameters');
+
+fprintf('\n--- Best parameter set (f = %e) ---\n',Results.Best.f);
+for i = 1 : n_param
+    fprintf('%s = %e\n',char(paramnames(i)),Results.Best.x(i));
+end
+
