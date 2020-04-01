@@ -21,7 +21,7 @@ function RCGAinterimreportfun_PE(elapsedTime,generation,problem,opts,Population,
 
 %% Making outputs
 RCGAprintTransition(elapsedTime,generation,problem,best);
-RCGAwriteTransition(elapsedTime,generation,problem,opts,best);
+RCGAwriteTransition_PE(elapsedTime,generation,problem,opts,best,modelfun);
 
 
 %% Decoding gene to x

@@ -202,14 +202,26 @@ elseif file_type < 2 || 3 < file_type
 end
 
 
+%% Checking whether model returns parameter names
+try
+    output = feval(model,'parameters');
+catch ME
+    warning(ME.message);
+    error('%s should return parameter names when ''parameters'' is given as an argument!',func2str(model));
+end
+
+
 %% Checking whether model returns the number of parameters
 try
     output = feval(model,'parametervalues');
-    n_param = length(output);
 catch ME
     warning(ME.message);
     error('%s should return default parameter values when ''parametervalues'' is given as an argument!',func2str(model));
 end
+
+
+%% Number of parameters
+n_param = length(output);
 
 
 %% Setting Simulation function
@@ -264,12 +276,22 @@ problem.n_gene = n_param;
 problem.n_constraint = n_constraint;
 problem.decodingfun = decodingfun;
 problem.fitnessfun = @(x) fitnessfun(x,Simulation,model,mst,simopts);
+
 if ~isfield(opts,'interimreportfun')
     opts.interimreportfun = @RCGAinterimreportfun_PE;
 end
 interimreportfun = opts.interimreportfun;
 opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
     interimreportfun(...
+    elapsedTime,generation,problem,opts,Population,best,...
+    Simulation,model,mst,simopts);
+
+if ~isfield(opts,'finalreportfun')
+    opts.finalreportfun = @RCGAfinalreportfun_PE;
+end
+finalreportfun = opts.finalreportfun;
+opts.finalreportfun = @(elapsedTime,generation,problem,opts,Population,best) ...
+    finalreportfun(...
     elapsedTime,generation,problem,opts,Population,best,...
     Simulation,model,mst,simopts);
 
