@@ -61,6 +61,6 @@ end
 T_sim = T;
 Y_sim = Y;
 statename = modelfun('states');
-RCGAplotter(T_sim,Y_sim,T_exp,Y_exp,'Time','AU',statename);
+RCGAplotter(T_sim,Y_sim,T_exp,Y_exp,'Time','Value',statename);
 title(sprintf('Generation = %d',generation));
 drawnow;

@@ -1,3 +1,3 @@
 addpath(genpath('../../../../source'));
 
-RCGAToolbox_Mission_Control;
+RCGAToolbox_Mission_Control_PE;
