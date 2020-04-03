@@ -20,7 +20,7 @@ out_best = opts.out_best;
 n_population = opts.n_population;
 n_children = opts.n_children;
 
-if strcmpi('none',out_best)
+if isempty(out_best) || strcmpi('none',out_best)
     return;
 end
 

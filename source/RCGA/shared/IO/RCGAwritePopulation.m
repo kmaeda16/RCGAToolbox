@@ -19,7 +19,7 @@ out_population = opts.out_population;
 
 
 %% If out_transition is 'none', nothing done.
-if strcmpi('none',out_population)
+if isempty(out_population) || strcmpi('none',out_population)
     return;
 end
 

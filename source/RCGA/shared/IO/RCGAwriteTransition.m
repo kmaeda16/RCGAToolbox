@@ -23,7 +23,7 @@ n_children = opts.n_children;
 
 
 %% If out_transition is 'none', nothing done.
-if  strcmpi('none',out_transition)
+if  isempty(out_transition) || strcmpi('none',out_transition)
     return;
 end
 

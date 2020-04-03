@@ -30,6 +30,6 @@ if i >= n_generation
     Results.end_crit = 2;
     fprintf('Maximal number of generations (n_generation) reached.\n');
 end
-if ~strcmpi('none',out_report)
+if ~isempty(out_report) && ~strcmpi('none',out_report)
     save(out_report,'Results');
 end

@@ -1,7 +1,7 @@
 function [output] = SBMLexampleLevel2_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % hill
-% Generated: 01-Apr-2020 16:00:55
+% Generated: 03-Apr-2020 14:54:08
 % 
 % [output] = SBMLexampleLevel2_odefun() => output = initial conditions in column vector
 % [output] = SBMLexampleLevel2_odefun('states') => output = state names in cell-array

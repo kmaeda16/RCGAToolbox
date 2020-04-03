@@ -10,6 +10,6 @@ if n_constraint > 0
     Results.Transition.phi(end+1,1) = best.phi;
     Results.Transition.g(end+1,:) = best.g;
 end
-if ~strcmpi('none',out_report)
+if ~isempty(out_report) && ~strcmpi('none',out_report)
     save(out_report,'Results');
 end
