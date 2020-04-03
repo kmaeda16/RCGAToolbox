@@ -45,7 +45,8 @@ y0 = modelfun();
 
 
 %% If simulation faild, return f = 1e+10
-if max(max(isnan(Y)))
+[n_row, ~] = size(Y);
+if max(max(isnan(Y))) || length(tspan) ~= n_row
     warning('Simulation failed!');
     f = 1e+10;
     return;

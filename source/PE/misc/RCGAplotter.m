@@ -14,6 +14,13 @@ function RCGAplotter(T_sim,Y_sim,T_exp,Y_exp,t_label,y_label,statename)
 % statename :  Cell array for state variable names
 
 
+persistent Y_prv;
+if isequal(Y_prv,Y_sim)
+    return;
+else
+    Y_prv = Y_sim;
+end
+
 plot(T_exp,Y_exp,'o','LineWidth',2);
 set(gca,'FontSize',10,'FontName','Arial');
 legend(statename);
@@ -29,3 +36,5 @@ ylabel(y_label);
 T = [ T_sim; T_exp ];
 xlim( [ min(T) max(T) ] );
 ylim( [ min(min(Y_exp)) max(max(Y_exp)) ] );
+
+

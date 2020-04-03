@@ -14,7 +14,7 @@ function [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options)
 % param   :  Parameter value vector. If param is not given, default
 %            parameter values provided in odefun will be used.
 % options :  Structure with integrator options.
-%            * options.Method: Solver (default: 'ode15s')
+%            * options.Method: Solver (default: 'ode23s')
 %            * options.AbsTol: Absolute tolerance (default: 1e-6)
 %            * options.RelTol: Relative tolerance (default: 1e-3)
 %            * options.MaxStep: Maximum step-size of integrator (default: 0.1*abs(t0-tf))
@@ -77,7 +77,7 @@ if isfield(options,'Method')
 elseif isfield(options,'method')
     method = options.method;
 else
-    method = 'ode15s';
+    method = 'ode23s';
 end
 
 
