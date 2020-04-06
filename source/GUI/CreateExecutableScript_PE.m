@@ -37,7 +37,7 @@ fprintf(out,'%% ========= Option Settings ========== %%\n');
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
-    fprintf(out,'opts.n_parent = problem.n_gene + 1; %% # Parents used for REXstar\n');
+    fprintf(out,'%% opts.n_parent = n_gene + 1; %% # Parents used for REXstar\n');
     fprintf(out,'opts.t_rexstar = 6.0; %% Step-size parameter for REXstar\n');
     fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
 end
