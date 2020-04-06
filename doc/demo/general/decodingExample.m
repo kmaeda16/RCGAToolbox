@@ -1,4 +1,17 @@
 function x = decodingExample(gene)
+% decodingExample is an example of decoding function. "gene" takes values
+% from 0 to 1. The purpose of decoding functions is to change the value
+% range, i.e. to decode "gene" and return it as x.
+% 
+% [SYNTAX]
+% x = decodingExample(gene)
+% 
+% [INPUT]
+% gene : Encoded decision variables.
+% 
+% [OUTPUT]
+% x    : Decoded decision variables.
+% 
 % --------------------- Example Problem ---------------------
 % Minimize:
 %   f = x(1)^2 + x(2)^2 + ... + x(10)^2

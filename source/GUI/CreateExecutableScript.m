@@ -10,10 +10,12 @@ if out == -1
 end
 
 %% Print Information
-fprintf(out,'%% This script was created by RCGAToolbox Mission Control on %s\n\n',date);
+fprintf(out,'%% This script was created by RCGAToolbox Mission Control\n');
+fprintf(out,'%% %s\n\n',date);
 
 %% Problem Settings
 fprintf(out,'%% ========= Problem Settings ========= %%\n');
+
 fprintf(out,'problem.n_gene = %d; %% # Variables\n',app.N_Variables.Value);
 fprintf(out,'problem.n_constraint = %d; %% # Constraints\n',app.N_Constraints.Value);
 
@@ -31,6 +33,7 @@ fprintf(out,'\n');
 
 %% Option Settings
 fprintf(out,'%% ========= Option Settings ========== %%\n');
+
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')

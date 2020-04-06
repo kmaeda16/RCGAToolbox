@@ -1,4 +1,16 @@
 function [f, g] = fitnessExample(x)
+% fitnessExample is an example of fitness function.
+% 
+% [SYNTAX]
+% [f, g] = fitnessExample(x)
+% 
+% [INPUT]
+% x : Decision variables.
+% 
+% [OUTPUT]
+% f : Objective function to be miniimzed.
+% g : Constraint functions to be less than zero.
+% 
 % --------------------- Example Problem ---------------------
 % Minimize:
 %   f = x(1)^2 + x(2)^2 + ... + x(10)^2

@@ -1,13 +1,21 @@
-% This script is created by RCGAToolbox Mission Control on 03-Apr-2020
+% This script runs a real-coded genetic algorithm to solve an example
+% constrained optimization problem.
+% 
+% --------------------- Example Problem ---------------------
+% Minimize:
+%   f = x(1)^2 + x(2)^2 + ... + x(10)^2
+% 	
+% Subject to:
+%   g(1) = x(1) * x(2) + 1 <= 0
+%   g(2) = x(1) + x(2) + 1 <= 0
+% 	-5.12 <= x(i) <= 5.12 for all i
+% -----------------------------------------------------------
+
 
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Variables
 problem.n_constraint = 2; % # Constraints
-fitnesspath = ''; % Path to Fitness Function File
-addpath(fitnesspath);
 problem.fitnessfun = @fitnessExample; % Fitness Function
-decodingpath = ''; % Path to Decoding Function File
-addpath(decodingpath);
 problem.decodingfun = @decodingExample; % Decoding Function
 
 % ========= Option Settings ========== %
@@ -32,10 +40,5 @@ opts.local = 0; % Local Optimizer
 rng(1); % Random Seed
 
 % ========== Executing RCGA ========== %
-RCGA_REXstarJGG(problem,opts);
-
-% ========== Removing Path =========== %
-rmpath(fitnesspath);
-if ~strcmp(fitnesspath,decodingpath)
-    rmpath(decodingpath);
-end
+% RCGA_UNDXMGG(problem,opts); % UNDX/MGG
+RCGA_REXstarJGG(problem,opts); % REXstar/JGG

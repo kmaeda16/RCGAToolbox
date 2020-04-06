@@ -1,5 +1,5 @@
 function Results = RCGA_Main(problem, opts, GenerationAlternation)
-% checkInputs checks problem and opts and sets default values
+% RCGA_Main is the main function of real-coded genetic algorithms.
 % 
 % [SYNTAX]
 % Results = RCGA_Main(problem, opts, GenerationAlternation)

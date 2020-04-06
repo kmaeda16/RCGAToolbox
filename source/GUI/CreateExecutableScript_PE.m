@@ -10,7 +10,8 @@ if out == -1
 end
 
 %% Print Information
-fprintf(out,'%% This script was created by RCGAToolbox Mission Control PE on %s\n\n',date);
+fprintf(out,'%% This script was created by RCGAToolbox Mission Control PE\n');
+fprintf(out,'%% %s\n\n',date);
 
 %% Problem Settings
 fprintf(out,'%% ========= Problem Settings ========= %%\n');
@@ -32,6 +33,7 @@ fprintf(out,'\n');
 
 %% Option Settings
 fprintf(out,'%% ========= Option Settings ========== %%\n');
+
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
