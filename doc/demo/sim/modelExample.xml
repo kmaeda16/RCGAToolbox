@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model name="modelExample">
+    <listOfCompartments>
+      <compartment id="compart" name="compart" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="S1" name="S1" compartment="compart" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S2" name="S2" compartment="compart" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="S3" name="S3" compartment="compart" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="S4" name="S4" value="0" constant="true"/>
+      <parameter id="S0" name="S0" value="5" constant="true"/>
+      <parameter id="J1_Vmax" name="J1_Vmax" value="5.5" constant="true"/>
+      <parameter id="J1_n" name="J1_n" value="4" constant="true"/>
+      <parameter id="J1_K" name="J1_K" value="0.5" constant="true"/>
+      <parameter id="J2_J2_k" name="J2_J2_k" value="0.1" constant="true"/>
+      <parameter id="J3_J3_k" name="J3_J3_k" value="0.1" constant="true"/>
+      <parameter id="J0_J0_k" name="J0_J0_k" value="0.01" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="J1" name="J1" reversible="false">
+        <listOfReactants>
+          <speciesReference species="S1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="S2" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> J1_Vmax </ci>
+                <apply>
+                  <power/>
+                  <ci> S1 </ci>
+                  <ci> J1_n </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <ci> J1_K </ci>
+                  <ci> J1_n </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <ci> S1 </ci>
+                  <ci> J1_n </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="J2" name="J2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="S2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="S3" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> J2_J2_k </ci>
+              <ci> S2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="J3" name="J3" reversible="false">
+        <listOfReactants>
+          <speciesReference species="S3" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> J3_J3_k </ci>
+              <ci> S3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="J0" name="J0" reversible="false">
+        <listOfProducts>
+          <speciesReference species="S1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> J0_J0_k </ci>
+              <ci> S0 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -1,11 +1,11 @@
-% This script runs a real-coded genetic algorithm to solve an example
-% parameter estimation problem.
+% This script demonstrates how to run real-coded genetic algorithm to solve
+% an example parameter estimation problem.
 
 
 % ========= Problem Settings ========= %
-modelfile = 'modelExample.xml'; % SBML File
+% modelfile = 'modelExample.xml'; % SBML File
 % modelfile = IQMmodel('modelExample.xml'); % Creating IQMmodel
-% modelfile = 'modelExample_odefun.m'; % MATLAB ODE Function File
+modelfile = 'modelExample_odefun.m'; % MATLAB ODE Function File
 % modelfile = 'modelExample_mex.c'; % C ODE File
 % modelfile = 'modelExample_mex.mexw64'; % MEX ODE File for Windows
 % modelfile = 'modelExample_mex.mexmaci64'; % MEX ODE File for macOS
