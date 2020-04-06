@@ -1,13 +1,13 @@
-function Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,varargin)
-% RCGA_REXstarJGG_PE estimates parameters included in model by fitting it
+function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
+% RCGA_UNDXMGG_PE estimates parameters included in model by fitting it
 % to experimental data mst.
 % 
 % [SYNTAX]
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,simopts,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,fast_flag,simopts,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,n_constraint, ...
+% Results = RCGA_UNDXMGG_PE(model,decodingfun,mst)
+% Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,opts)
+% Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,simopts,opts)
+% Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,fast_flag,simopts,opts)
+% Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,n_constraint, ...
 %                         fitnessfun,fast_flag,simopts,opts)
 % 
 % [INPUT]
@@ -82,4 +82,4 @@ end
 
 
 %% Run parameter estimation
-Results = RCGA_PE(model,decodingfun,mst,n_constraint,fitnessfun,fast_flag,simopts,opts,@RCGA_REXstarJGG);
+Results = RCGA_PE(model,decodingfun,mst,n_constraint,fitnessfun,fast_flag,simopts,opts,@RCGA_UNDXMGG);
