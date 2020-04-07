@@ -56,16 +56,17 @@ C2 = {
     'local',...          %  7
     'localopts',...      %  8
     'n_generation',...   %  9
-    't_limit',...        % 10
-    'vtr',...            % 11
-    'n_par', ...         % 12
-    'output_intvl',...   % 13
-    'out_transition',... % 14
-    'out_best',...       % 15
-    'out_population',... % 16
-    'out_report',...     % 17
-    'interimreportfun',... % 18
-    'finalreportfun',... % 19
+    'maxtime',...        % 10
+    'maxeval',...        % 11
+    'vtr',...            % 12
+    'n_par', ...         % 13
+    'output_intvl',...   % 14
+    'out_transition',... % 15
+    'out_best',...       % 16
+    'out_population',... % 17
+    'out_report',...     % 18
+    'interimreportfun',... % 19
+    'finalreportfun',... % 20
 };
 
 tf = isfield(opts,C2);
@@ -112,34 +113,37 @@ end
 if ~tf(9) % n_generation
     opts.n_generation = 1000;
 end
-if ~tf(10) % t_limit
-    opts.t_limit = 10 * 60; % 10 min
+if ~tf(10) % maxtime
+    opts.maxtime = 10 * 60; % 10 min
 end
-if ~tf(11) % vtr
+if ~tf(11) % maxeval
+    opts.maxeval = inf;
+end
+if ~tf(12) % vtr
     opts.vtr = -inf;
 end
-if ~tf(12) % n_par
+if ~tf(13) % n_par
     opts.n_par = 1;
 end
-if ~tf(13) % output_intvl
+if ~tf(14) % output_intvl
     opts.output_intvl = 1;
 end
-if ~tf(14) % out_transition
+if ~tf(15) % out_transition
     opts.out_transition = 'None';
 end
-if ~tf(15) % out_best
+if ~tf(16) % out_best
     opts.out_best = 'None';
 end
-if ~tf(16) % out_population
+if ~tf(17) % out_population
     opts.out_population = 'None';
 end
-if ~tf(17) % out_report
+if ~tf(18) % out_report
     opts.out_report = 'None';
 end
-if ~tf(18) % interimreportfun
+if ~tf(19) % interimreportfun
     opts.interimreportfun = @RCGAdefaultinterimreportfun;
 end
-if ~tf(19) % finalreportfun
+if ~tf(20) % finalreportfun
     opts.finalreportfun = @RCGAdefaultfinalreportfun;
 end
 

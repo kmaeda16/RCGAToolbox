@@ -2,7 +2,7 @@
 % This script is called by RCGA_Main
 
 Results.Transition.time(end+1,1) = elapsedTime;
-Results.Transition.neval(end+1,1) = n_population;
+Results.Transition.neval(end+1,1) = neval;
 Results.Transition.generation(end+1,1) = i;
 Results.Transition.f(end+1,1) = best.f;
 Results.Transition.x(end+1,:) = decodingfun(best.gene);

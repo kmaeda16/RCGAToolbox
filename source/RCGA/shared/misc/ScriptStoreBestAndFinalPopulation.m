@@ -22,13 +22,17 @@ if best.phi == 0 && best.f <= vtr
     Results.end_crit = 0;
     fprintf('Objective function value to be reached (vtr) reached.\n');
 end
-if elapsedTime >= t_limit
-    Results.end_crit = 1;
-    fprintf('Maximum allowed CPU time (t_limit) reached.\n');
-end
 if i >= n_generation
-    Results.end_crit = 2;
+    Results.end_crit = 1;
     fprintf('Maximal number of generations (n_generation) reached.\n');
+end
+if elapsedTime >= maxtime
+    Results.end_crit = 2;
+    fprintf('Maximum allowed CPU time (maxtime) reached.\n');
+end
+if neval >= maxeval
+    Results.end_crit = 3;
+    fprintf('Maximum number of fitnessfun evaluations (maxeval) reached.\n');
 end
 if ~isempty(out_report) && ~strcmpi('none',out_report)
     save(out_report,'Results');

@@ -42,7 +42,8 @@ if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
     fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
 end
 fprintf(out,'opts.n_generation = %d; %% Max # Generations\n',app.Max_N_Generation.Value);
-fprintf(out,'opts.t_limit = 60 * %e; %% Max Time (sec)\n',app.MaxTime.Value);
+fprintf(out,'opts.maxtime = 60 * %e; %% Max Time (sec)\n',app.MaxTime.Value);
+fprintf(out,'opts.maxeval = inf; %% Max # fitnessfun Evaluations\n');
 fprintf(out,'opts.vtr = %e; %% Value To Be Reached\n',app.ValueToBeReached.Value);
 fprintf(out,'opts.output_intvl = %d; %% Output Interval Generation\n',app.OutputIntervalGeneration.Value);
 fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.TransitionFileName.Value);

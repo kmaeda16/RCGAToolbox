@@ -28,7 +28,8 @@ n_population = opts.n_population;
 out_report = opts.out_report;
 n_children = opts.n_children;
 vtr = opts.vtr;
-t_limit = opts.t_limit;
+maxtime = opts.maxtime;
+maxeval = opts.maxeval;
 n_par = opts.n_par;
 local = opts.local;
 
@@ -65,6 +66,9 @@ if local > 0
 end
 best = Population(index);
 
+elapsedTime = toc;
+neval = n_population + ( i - 1 ) * n_children + RCGA_LOCALNEVAL;
+
 if 0 < output_intvl
     elapsedTime = toc;
     interimreportfun(elapsedTime,i,problem,opts,Population,best);
@@ -73,8 +77,7 @@ if 0 < output_intvl
     flg_printed = 1;
 end
 
-elapsedTime = toc;
-if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= t_limit
+if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval
     if 0 < output_intvl && flg_printed == 0
         interimreportfun(elapsedTime,i,problem,opts,Population,best);
         ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
@@ -98,19 +101,22 @@ while i < n_generation
         end
         best = Population(index);
     end
+    
+    elapsedTime = toc;
+    neval = n_population + ( i - 1 ) * n_children + RCGA_LOCALNEVAL;
+
     if 0 < output_intvl && mod(i,output_intvl) == 0
-        elapsedTime = toc;
         interimreportfun(elapsedTime,i,problem,opts,Population,best);
         ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
         flg_printed = 1;
     end
-    if (best.phi == 0 && best.f <= vtr) || toc >= t_limit
+
+    if (best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval
         break;
     end
 end
 
 if 0 < output_intvl && flg_printed == 0
-    elapsedTime = toc;
     interimreportfun(elapsedTime,i,problem,opts,Population,best);
     ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
 end

@@ -40,7 +40,8 @@ end
 fprintf('              Pf :  %g\n',opts.Pf);
 fprintf('           local :  %g\n',opts.local);
 fprintf('    n_generation :  %d\n',opts.n_generation);
-fprintf('         t_limit :  %g\n',opts.t_limit);
+fprintf('         maxtime :  %g\n',opts.maxtime);
+fprintf('         maxeval :  %g\n',opts.maxeval);
 fprintf('             vtr :  %g\n',opts.vtr);
 fprintf('           n_par :  %d\n',opts.n_par);
 fprintf('    output_intvl :  %g\n',opts.output_intvl);
