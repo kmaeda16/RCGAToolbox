@@ -68,9 +68,9 @@ fprintf(out,'\n');
 fprintf(out,'%% ========== Executing RCGA ========== %%\n');
 fprintf(out,'clear RCGAssr;\n');
 if strcmp(app.AlgorithmSwitch.Value,'UNDX/MGG')
-    fprintf(out,'RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
+    fprintf(out,'Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
 else
-    fprintf(out,'RCGA_REXstarJGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
+    fprintf(out,'Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
 end
 fprintf(out,'\n');
 

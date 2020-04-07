@@ -28,7 +28,7 @@ if i >= n_generation
 end
 if elapsedTime >= maxtime
     Results.end_crit = 2;
-    fprintf('Maximum allowed CPU time (maxtime) reached.\n');
+    fprintf('Maximum CPU time (maxtime) reached.\n');
 end
 if neval >= maxeval
     Results.end_crit = 3;

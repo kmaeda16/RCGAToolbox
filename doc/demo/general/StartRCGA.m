@@ -41,5 +41,5 @@ opts.local = 0; % Local Optimizer
 rng(1); % Random Seed
 
 % ========== Executing RCGA ========== %
-% RCGA_UNDXMGG(problem,opts); % UNDX/MGG
-RCGA_REXstarJGG(problem,opts); % REXstar/JGG
+% Results = RCGA_UNDXMGG(problem,opts); % UNDX/MGG
+Results = RCGA_REXstarJGG(problem,opts); % REXstar/JGG

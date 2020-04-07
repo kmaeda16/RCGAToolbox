@@ -67,9 +67,9 @@ fprintf(out,'\n');
 %% Executing RCGA
 fprintf(out,'%% ========== Executing RCGA ========== %%\n');
 if strcmp(app.AlgorithmSwitch.Value,'UNDX/MGG')
-    fprintf(out,'RCGA_UNDXMGG(problem,opts);\n');
+    fprintf(out,'Results = RCGA_UNDXMGG(problem,opts);\n');
 else
-    fprintf(out,'RCGA_REXstarJGG(problem,opts);\n');
+    fprintf(out,'Results = RCGA_REXstarJGG(problem,opts);\n');
 end
 fprintf(out,'\n');
 
