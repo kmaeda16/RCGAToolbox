@@ -23,10 +23,17 @@ UB = ones(1,problem.n_gene);  % Upper bound
 ObjectiveFunction  = @(gene) obj_wrapper(problem.fitnessfun, problem.decodingfun, gene);
 ConstraintFunction = @(gene) cst_wrapper(problem.fitnessfun, problem.decodingfun, gene);
 
-if problem.n_constraint == 0
-    [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,[],localopts);
-else
-    [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,ConstraintFunction,localopts);
+try
+    if problem.n_constraint == 0
+        [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,[],localopts);
+    else
+        [improvedChrom.gene, ~, ~, output] = fmincon(ObjectiveFunction,chrom.gene,[],[],[],[],LB,UB,ConstraintFunction,localopts);
+    end
+catch ME
+    warning('Local optimization failed in RCGAlocalOptimize: %s',ME.message);
+    improvedChrom = chrom;
+    localneval = 1;
+    return;
 end
 
 [ improvedChrom.f, improvedChrom.g, improvedChrom.phi ] = RCGAgetFitness(problem,improvedChrom);

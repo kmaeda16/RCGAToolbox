@@ -36,6 +36,10 @@ if n_constraint == 0
         warning('n_constraint was set to %d, but %s returns g.',n_constraint,func2str(fitnessfun));
     end
     f = feval(fitnessfun,x);
+    if ~isreal(f)
+        warning('f is a complex value. The imaginary part was discarded.');
+        f = real(f);
+    end
     g = 0;
     phi = 0;
 else
@@ -43,6 +47,11 @@ else
         error('n_constraint was set to %d, but %s does not returns g.',n_constraint,func2str(fitnessfun));
     end
     [f, g] = feval(fitnessfun,x);
+    if ~isreal(f) || ~isreal(g)
+        warning('f and/or g are complex values. The imaginary parts were discarded.');
+        f = real(f);
+        g = real(g);
+    end
     phi = sum( max(0,g) .^ 2 );
     length_g = length(g);
     if n_constraint ~= length_g
