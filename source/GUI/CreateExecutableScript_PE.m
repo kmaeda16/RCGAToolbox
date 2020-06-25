@@ -13,6 +13,10 @@ end
 fprintf(out,'%% This script was created by RCGAToolbox Mission Control PE\n');
 fprintf(out,'%% %s\n\n',date);
 
+%% Clear variables
+fprintf(out,'clearvars;\n');
+fprintf(out,'\n');
+
 %% Problem Settings
 fprintf(out,'%% ========= Problem Settings ========= %%\n');
 

@@ -8,7 +8,7 @@ function [f, g] = fitnessExample(x)
 % x : Decision variables.
 % 
 % [OUTPUT]
-% f : Objective function to be miniimzed.
+% f : Objective function to be minimized.
 % g : Constraint functions to be less than zero.
 % 
 % --------------------- Example Problem ---------------------

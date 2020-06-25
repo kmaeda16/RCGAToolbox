@@ -12,6 +12,8 @@
 % -----------------------------------------------------------
 
 
+clearvars;
+
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Variables
 problem.n_constraint = 2; % # Constraints

@@ -2,6 +2,8 @@
 % an example parameter estimation problem.
 
 
+clearvars;
+
 % ========= Problem Settings ========= %
 % modelfile = 'modelExample.xml'; % SBML File
 % modelfile = IQMmodel('modelExample.xml'); % Creating IQMmodel
