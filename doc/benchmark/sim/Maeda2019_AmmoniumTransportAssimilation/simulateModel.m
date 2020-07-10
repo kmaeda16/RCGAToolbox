@@ -6,8 +6,12 @@ addpath(genpath('../../../../../RCGA'));
 addpath('../../../../../PE');
 addpath('../../Common');
 
-simopts.abstol = 1e-6;
-simopts.reltol = 1e-6;
+simopts = struct;
+AbsTol = 1e-6;
+RelTol = 1e-6;
+
+% simopts.abstol = 1e-6;
+% simopts.reltol = 1e-6;
 
 SBMLfilename = 'Maeda2019_RefinedActive_Kim_20190413_1.xml';
 
@@ -37,18 +41,29 @@ simtime = zeros(N_TRIAL,3);
 
 %%
 for i = 1 : N_TRIAL
+    
+    simopts.AbsTol = AbsTol;
+    simopts.RelTol = RelTol;
+    simopts.Method = 'ode15s';
+    simopts.BDF = 'on';
     tic;
     [ T, Y ] = RCGAsimulate(odefilename,0:100,[],[],0,simopts);
     simtime(i,1) = toc;
+    
+    simopts.AbsTol = AbsTol;
+    simopts.RelTol = RelTol;
     tic;
     [ T, Y ] = RCGAsimulate(odefilename,0:100,[],[],1,simopts);
     simtime(i,2) = toc;
+    
+    simopts.abstol = AbsTol;
+    simopts.reltol = RelTol;
     tic;
     [ T, Y ] = RCGAsimulate(mexfilename,0:100,[],[],2,simopts);
     simtime(i,3) = toc;
 end
 
-simtime(1,:) = [];
+% simtime(1,:) = [];
 avg = mean(simtime);
 stdev = std(simtime);
 

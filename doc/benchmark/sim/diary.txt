@@ -1,7 +1,17 @@
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Goldbeter1995_CircClock\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Goldbeter1995_CircClock\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 4)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',4,0)">line 4</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Goldbeter1995_CircClock\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Goldbeter1995_CircClock\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 4)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',4,0)">line 4</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Goldbeter1995_CircClock
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Goldbeter1995_CircClock
 
 Making SBML file ...
 BIOMD0000000016_url_mod.xml created.
@@ -12,13 +22,23 @@ BIOMD0000000016_url_mod_mex.c created.
 BIOMD0000000016_url_mod_mex.h created.
 BIOMD0000000016_url_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	3.39e-02	9.54e-03
-CVODE(SundialsTB)	1.41e-02	3.36e-03
-CVODE(IQMTools)  	3.85e-03	1.27e-03
+ODE15s           	6.71e-02	2.89e-03
+CVODE(SundialsTB)	2.61e-02	9.68e-04
+CVODE(IQMTools)  	2.41e-03	1.69e-04
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Tyson1991_CellCycle6var\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Tyson1991_CellCycle6var\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 8)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',8,0)">line 8</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Tyson1991_CellCycle6var\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Tyson1991_CellCycle6var\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 8)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',8,0)">line 8</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Tyson1991_CellCycle6var
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Tyson1991_CellCycle6var
 
 Making SBML file ...
 BIOMD0000000005_url_mod.xml created.
@@ -29,13 +49,23 @@ BIOMD0000000005_url_mod_mex.c created.
 BIOMD0000000005_url_mod_mex.h created.
 BIOMD0000000005_url_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	6.24e-02	9.53e-04
-CVODE(SundialsTB)	3.16e-02	7.23e-04
-CVODE(IQMTools)  	3.27e-03	1.44e-04
+ODE15s           	9.03e-02	3.15e-03
+CVODE(SundialsTB)	3.34e-02	1.18e-03
+CVODE(IQMTools)  	2.62e-03	2.26e-04
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Chassagnole2002_CarbonMetabolism\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Chassagnole2002_CarbonMetabolism\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 12)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',12,0)">line 12</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Chassagnole2002_CarbonMetabolism\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Chassagnole2002_CarbonMetabolism\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 12)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',12,0)">line 12</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Chassagnole2002_CarbonMetabolism
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Chassagnole2002_CarbonMetabolism
 
 Making SBML file ...
 BIOMD0000000051_url_mod.xml created.
@@ -46,13 +76,23 @@ BIOMD0000000051_url_mod_mex.c created.
 BIOMD0000000051_url_mod_mex.h created.
 BIOMD0000000051_url_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	4.29e-02	1.75e-02
-CVODE(SundialsTB)	2.82e-02	1.54e-03
-CVODE(IQMTools)  	4.50e-03	2.57e-04
+ODE15s           	9.56e-02	1.79e-02
+CVODE(SundialsTB)	6.89e-02	1.88e-03
+CVODE(IQMTools)  	3.88e-03	1.35e-04
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Maeda2019_AmmoniumTransportAssimilation\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Maeda2019_AmmoniumTransportAssimilation\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 16)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',16,0)">line 16</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Maeda2019_AmmoniumTransportAssimilation\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Maeda2019_AmmoniumTransportAssimilation\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 16)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',16,0)">line 16</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Maeda2019_AmmoniumTransportAssimilation
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Maeda2019_AmmoniumTransportAssimilation
 
 Making SBML file ...
 Maeda2019_RefinedActive_Kim_20190413_1_mod.xml created.
@@ -63,13 +103,23 @@ Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.c created.
 Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.h created.
 Maeda2019_RefinedActive_Kim_20190413_1_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	5.13e-02	8.83e-04
-CVODE(SundialsTB)	3.55e-02	6.95e-04
-CVODE(IQMTools)  	3.56e-03	1.07e-04
+ODE15s           	1.15e-01	3.07e-02
+CVODE(SundialsTB)	8.38e-02	1.97e-03
+CVODE(IQMTools)  	3.09e-03	1.60e-04
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Threestep\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Threestep\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 20)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',20,0)">line 20</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Threestep\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Threestep\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 20)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',20,0)">line 20</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\Threestep
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\Threestep
 
 Making SBML file ...
 Threestep_mod.xml created.
@@ -80,13 +130,23 @@ Threestep_mod_mex.c created.
 Threestep_mod_mex.h created.
 Threestep_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	2.34e-02	5.12e-04
-CVODE(SundialsTB)	1.42e-02	2.69e-04
-CVODE(IQMTools)  	2.77e-03	7.81e-05
+ODE15s           	3.21e-02	8.24e-03
+CVODE(SundialsTB)	1.99e-02	6.87e-04
+CVODE(IQMTools)  	2.22e-03	1.18e-04
+[Warning: Name is nonexistent or not a directory: ..\..\..\..\..\PE] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\HIV\simulateModel.m', 6)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\HIV\simulateModel.m',6,0)">line 6</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 24)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',24,0)">line 24</a>)] 
+[Warning: Name is nonexistent or not a directory: ..\..\Common] 
+[> In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('path', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m', 109)" style="font-weight:bold">path</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\path.m',109,0)">line 109</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('addpath', 'C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m', 88)" style="font-weight:bold">addpath</a> (<a href="matlab: opentoline('C:\Program Files\MATLAB\R2016a\toolbox\matlab\general\addpath.m',88,0)">line 88</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\HIV\simulateModel.m', 7)" style="font-weight:bold">simulateModel</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\HIV\simulateModel.m',7,0)">line 7</a>)
+  In <a href="matlab:matlab.internal.language.introspective.errorDocCallback('simulateModel_all', 'D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m', 24)" style="font-weight:bold">simulateModel_all</a> (<a href="matlab: opentoline('D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\simulateModel_all.m',24,0)">line 24</a>)] 
 
 ans =
 
-D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\example\PE\testRCGAsimulate\HIV
+D:\cygwin64\home\maeda\GitHub\RCGAToolbox\doc\benchmark\sim\HIV
 
 Making SBML file ...
 HIV_mod.xml created.
@@ -97,6 +157,6 @@ HIV_mod_mex.c created.
 HIV_mod_mex.h created.
 HIV_mod_mex.mexw64 created.
                  	Mean	SD
-ODE15s           	6.15e-02	7.03e-04
-CVODE(SundialsTB)	2.03e-02	5.49e-04
-CVODE(IQMTools)  	3.26e-03	8.14e-05
+ODE15s           	1.59e-02	5.03e-03
+CVODE(SundialsTB)	1.04e-02	4.91e-04
+CVODE(IQMTools)  	2.10e-03	1.21e-04

@@ -34,7 +34,7 @@ er(1,2).LineStyle = 'none';
 er(1,3).LineStyle = 'none';
 
 xlim([0.5 6.5]);
-ylim([0 70]);
+ylim([0 150]);
 
 set(gca,'FontSize',12,'FontName','Arial');
 ylabel('Time (ms)','FontSize',12,'FontName','Arial');
