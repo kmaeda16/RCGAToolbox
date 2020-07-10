@@ -54,8 +54,8 @@ fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.Transi
 fprintf(out,'opts.out_best = ''%s''; %% Best Individual File Name\n',app.BestIndividualFileName.Value);
 fprintf(out,'opts.out_population = ''%s''; %% Final Population File Name\n',app.FinalPopulationFileName.Value);
 fprintf(out,'opts.out_report = ''%s''; %% Report File Name\n',app.ReportFileName.Value);
-fprintf(out,'opts.n_par = %d; %% # Workders\n',app.N_Workers.Value);
-fprintf(out,'fast_flag = %d; %% # fast_flag\n',app.FastFlag.Value);
+fprintf(out,'opts.n_par = %d; %% # Workers\n',app.N_Workers.Value);
+fprintf(out,'fast_flag = %d; %% fast_flag\n',app.FastFlag.Value);
 if strcmp(app.LocalSwitch.Value,'Off')
     fprintf(out,'opts.local = 0; %% Local Optimizer\n');
 else

@@ -29,14 +29,14 @@ opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen
 opts.Pf = 4.500000e-01; % Pf
 opts.n_generation = 1000; % Max # Generations
 opts.maxtime = 60 * 1.000000e+00; % Max Time (sec)
-opts.maxeval = inf; %% Max # fitnessfun Evaluations
+opts.maxeval = inf; % Max # fitnessfun Evaluations
 opts.vtr = 0.000000e+00; % Value To Be Reached
 opts.output_intvl = 10; % Output Interval Generation
 opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
-opts.n_par = 1; % # Workders
+opts.n_par = 1; % # Workers
 opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %

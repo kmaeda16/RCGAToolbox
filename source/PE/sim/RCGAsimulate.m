@@ -19,8 +19,8 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 %              * fast_flag = 2 : CVODE by IQM Tools
 % options   :  Structure with integrator options. Fields depend on
 %              Simulation_* functions. For fast_flag = 0, 1, and 2, see
-%              'help Simulation_odexx', 'help Simulation_stb', 'help
-%              Simulation_mex', respectively.
+%              'help RCGAsimulateODEXX', 'help RCGAsimulateSTB', 'help
+%              RCGAsimulateMEX', respectively.
 % 
 % [OUTPUT]
 % T      :  Column vector of timepoints
