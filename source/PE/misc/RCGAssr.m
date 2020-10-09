@@ -54,7 +54,7 @@ end
 
 
 %% Preparing Y_sim and Y_exp
-Y_sim = Y;
+Y_sim = real(Y);
 [n_row, n_col] = size(Y_sim);
 Y_exp = zeros([n_row n_col]);
 for i = 1 : n_col

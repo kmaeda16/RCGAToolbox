@@ -1,6 +1,6 @@
 function x = decodingExample(gene)
 % decodingExample is an example of decoding function for
-% "modelExample.xml". "gene" takes values from 0 to 1. The purpose of
+% "modelExample_odefun.m". "gene" takes values from 0 to 1. The purpose of
 % decoding functions is to change the value range, i.e. to decode "gene"
 % and return it as x.
 % 

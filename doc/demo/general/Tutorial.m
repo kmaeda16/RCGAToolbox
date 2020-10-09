@@ -1,15 +1,33 @@
 % This script demonstrates how to run a real-coded genetic algorithm to
-% solve an example constrained optimization problem.
+% estimate model parameters in an example kinetic model.
 % 
-% --------------------- Example Problem ---------------------
-% Minimize:
-%   f = x(1)^2 + x(2)^2 + ... + x(10)^2
-% 	
-% Subject to:
-%   g(1) = x(1) * x(2) + 1 <= 0
-%   g(2) = x(1) + x(2) + 1 <= 0
-% 	-5.12 <= x(i) <= 5.12 for all i
-% -----------------------------------------------------------
+% ------------------------ Example Kinetic Model ------------------------
+% - Initial States
+% S1 = 0
+% S2 = 0
+% S3 = 0
+% 
+% - Model Parameters
+% S4 = 0
+% S0 = 5
+% J1_Vmax = 5.5
+% J1_n = 4
+% J1_K = 0.5
+% J2_J2_k = 0.1
+% J3_J3_k = 0.1
+% J0_J0_k = 0.01
+% 
+% - Reaction Kinetics
+% J1 = J1_Vmax * power(S1, J1_n) / (power(J1_K, J1_n) + power(S1, J1_n))
+% J2 = J2_J2_k * S2
+% J3 = J3_J3_k * S3
+% J0 = J0_J0_k * S0
+% 
+% - Differential Equations
+% S1_dot = J0 - J1
+% S2_dot = J1 - J2
+% S3_dot = J2 - J3
+% -----------------------------------------------------------------------
 
 
 clearvars;
