@@ -2,10 +2,10 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 % RCGAsimulate simulates model.
 % 
 % [SYNTAX]
-% [ T, Y ] = RCGAsimulate(odefun, tspan, y0)
-% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, param)
-% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, [], options)
-% [ T, Y ] = RCGAsimulate(odefun, tspan, y0, param, options)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, param)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, [], options)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, param, options)
 % 
 % [INPUT]
 % model     :  IQMmodel, File names of SBML, or ODE function, or MEX files.

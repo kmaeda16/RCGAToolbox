@@ -1,22 +1,21 @@
-function [output] = modelExample_odefun(varargin)
+function [output] = ExampleModel_converted_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% modelExample
-% Generated: 06-Apr-2020 16:08:47
+% ExampleModel
+% Generated: 09-Oct-2020 16:32:26
 % 
-% [output] = modelExample_odefun() => output = initial conditions in column vector
-% [output] = modelExample_odefun('states') => output = state names in cell-array
-% [output] = modelExample_odefun('algebraic') => output = algebraic variable names in cell-array
-% [output] = modelExample_odefun('parameters') => output = parameter names in cell-array
-% [output] = modelExample_odefun('parametervalues') => output = parameter values in column vector
-% [output] = modelExample_odefun('variablenames') => output = variable names in cell-array
-% [output] = modelExample_odefun('variableformulas') => output = variable formulas in cell-array
-% [output] = modelExample_odefun(time,statevector) => output = time derivatives in column vector
+% [output] = ExampleModel_converted_odefun() => output = initial conditions in column vector
+% [output] = ExampleModel_converted_odefun('states') => output = state names in cell-array
+% [output] = ExampleModel_converted_odefun('algebraic') => output = algebraic variable names in cell-array
+% [output] = ExampleModel_converted_odefun('parameters') => output = parameter names in cell-array
+% [output] = ExampleModel_converted_odefun('parametervalues') => output = parameter values in column vector
+% [output] = ExampleModel_converted_odefun('variablenames') => output = variable names in cell-array
+% [output] = ExampleModel_converted_odefun('variableformulas') => output = variable formulas in cell-array
+% [output] = ExampleModel_converted_odefun(time,statevector) => output = time derivatives in column vector
 % 
 % State names and ordering:
 % 
-% statevector(1): S1
-% statevector(2): S2
-% statevector(3): S3
+% statevector(1): X1
+% statevector(2): X2
 % 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -28,28 +27,28 @@ parameterValuesNew = [];
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if nargin == 0,
 	% Return initial conditions of the state variables (and possibly algebraic variables)
-	output = [0, 0, 0];
+	output = [0, 0];
 	output = output(:);
 	return
 elseif nargin == 1,
 	if strcmp(varargin{1},'states'),
 		% Return state names in cell-array
-		output = {'S1', 'S2', 'S3'};
+		output = {'X1', 'X2'};
 	elseif strcmp(varargin{1},'algebraic'),
 		% Return algebraic variable names in cell-array
 		output = {};
 	elseif strcmp(varargin{1},'parameters'),
 		% Return parameter names in cell-array
-		output = {'S4', 'S0', 'J1_Vmax', 'J1_n', 'J1_K', 'J2_J2_k', 'J3_J3_k', 'J0_J0_k', 'compart'};
+		output = {'X0', 'k1', 'k2', 'k3', 'K2', 'K3', 'rootCompartment'};
 	elseif strcmp(varargin{1},'parametervalues'),
 		% Return parameter values in column vector
-		output = [0, 5, 5.5, 4, 0.5, 0.1, 0.1, 0.01, 1];
+		output = [0.1, 1, 1, 1, 1, 1, 1];
 	elseif strcmp(varargin{1},'variablenames'),
 		% Return variable names in cell-array
-		output = {};
+		output = {'X12'};
 	elseif strcmp(varargin{1},'variableformulas'),
 		% Return variable formulas in cell-array
-		output = {};
+		output = {'(X1/rootCompartment)+(X2/rootCompartment)'};
 	else
 		error('Wrong input arguments! Please read the help text to the ODE file.');
 	end
@@ -62,7 +61,7 @@ elseif nargin == 3,
 	time = varargin{1};
 	statevector = varargin{2};
 	parameterValuesNew = varargin{3};
-	if length(parameterValuesNew) ~= 9,
+	if length(parameterValuesNew) ~= 7,
 		parameterValuesNew = [];
 	end
 elseif nargin == 4,
@@ -76,57 +75,54 @@ end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STATES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-S1 = statevector(1);
-S2 = statevector(2);
-S3 = statevector(3);
+X1 = statevector(1);
+X2 = statevector(2);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % PARAMETERS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 if isempty(parameterValuesNew),
-	S4 = 0;
-	S0 = 5;
-	J1_Vmax = 5.5;
-	J1_n = 4;
-	J1_K = 0.5;
-	J2_J2_k = 0.1;
-	J3_J3_k = 0.1;
-	J0_J0_k = 0.01;
-	compart = 1;
+	X0 = 0.1;
+	k1 = 1;
+	k2 = 1;
+	k3 = 1;
+	K2 = 1;
+	K3 = 1;
+	rootCompartment = 1;
 else
-	S4 = parameterValuesNew(1);
-	S0 = parameterValuesNew(2);
-	J1_Vmax = parameterValuesNew(3);
-	J1_n = parameterValuesNew(4);
-	J1_K = parameterValuesNew(5);
-	J2_J2_k = parameterValuesNew(6);
-	J3_J3_k = parameterValuesNew(7);
-	J0_J0_k = parameterValuesNew(8);
-	compart = parameterValuesNew(9);
+	X0 = parameterValuesNew(1);
+	k1 = parameterValuesNew(2);
+	k2 = parameterValuesNew(3);
+	k3 = parameterValuesNew(4);
+	K2 = parameterValuesNew(5);
+	K3 = parameterValuesNew(6);
+	rootCompartment = parameterValuesNew(7);
 end
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% VARIABLES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+X12 = (X1/rootCompartment)+(X2/rootCompartment);
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % REACTION KINETICS 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-J1 = J1_Vmax * power(S1, J1_n) / (power(J1_K, J1_n) + power(S1, J1_n));
-J2 = J2_J2_k * S2;
-J3 = J3_J3_k * S3;
-J0 = J0_J0_k * S0;
+v1 = k1 * X0;
+v2 = k2 * (X1/rootCompartment) / (K2 + (X1/rootCompartment));
+v3 = k3 * (X2/rootCompartment) / (K3 + (X2/rootCompartment));
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % DIFFERENTIAL EQUATIONS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-S1_dot = (-J1+J0)/compart;
-S2_dot = (+J1-J2)/compart;
-S3_dot = (+J2-J3)/compart;
+X1_dot = +v1-v2;
+X2_dot = +v2-v3;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % RETURN VALUES
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % STATE ODEs
-output(1) = S1_dot;
-output(2) = S2_dot;
-output(3) = S3_dot;
+output(1) = X1_dot;
+output(2) = X2_dot;
 % return a column vector 
 output = output(:);
 return

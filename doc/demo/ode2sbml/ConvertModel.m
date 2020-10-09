@@ -25,10 +25,9 @@ figure;
 plot(T1,Y1,'-','LineWidth',2);
 hold on;
 plot(T2,Y2,'--','LineWidth',2);
-xlabel('Time','FontSize',11,'FontName','Arial');
-ylabel('Conc.','FontSize',11,'FontName','Arial');
-set(gca,'FontSize',11,'FontName','Arial');
 legend('X_1 (ExampleModel\_original.m)','X_2 (ExampleModel\_original.m)',...
     'X_1 (ExampleModel\_converted.xml)','X_2 (ExampleModel\_converted.xml)'...
     ,'Location','best');
+xlabel('Time');
+ylabel('Concentration');
 hold off;
