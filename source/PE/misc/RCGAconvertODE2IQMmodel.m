@@ -1,8 +1,24 @@
 function model = RCGAconvertODE2IQMmodel(ODEfileName)
+% RCGAconvertODE2IQMmodel converts a formatted ODE file into a IQMmodel
+% object.
+% 
+% [SYNTAX]
+% model = RCGAconvertODE2IQMmodel(ODEfileName)
+% 
+% [INPUT]
+% ODEfileName :  Names of the formatted ODE file.
+% 
+% [OUTPUT]
+% model       :  IQMmodel object (For details, see the user guide for IQM 
+%                Tools)
 
 
-% fileID = fopen('ExampleModel.m','r');
 fileID = fopen(ODEfileName,'r');
+
+if fileID == -1
+    error('Cannot open %s!',ODEfileName);
+end
+
 
 ModelStruct = struct(IQMmodel);
 
