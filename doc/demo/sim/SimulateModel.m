@@ -4,10 +4,10 @@
 clearvars;
 
 % =============== Model =============== %
-% model = 'ExampleModel.xml'; % SBML File
-% model = IQMmodel('ExampleModel.xml'); % Creating IQMmodel
+% model = 'ExampleModel.xml'; % SBML File (IQM Tools required)
+% model = IQMmodel('ExampleModel.xml'); % Creating IQMmodel (IQM Tools required)
 model = 'ExampleModel_odefun.m'; % MATLAB ODE Function File
-% model = 'ExampleModel_mex.c'; % C ODE File
+% model = 'ExampleModel_mex.c'; % C ODE File (IQM Tools required)
 % model = 'ExampleModel_mex.mexw64'; % MEX ODE File for Windows
 % model = 'ExampleModel_mex.mexmaci64'; % MEX ODE File for macOS
 % model = 'ExampleModel_mex.mexa64'; % MEX ODE File for Linux
@@ -30,8 +30,8 @@ param(7) = 1;   % rootCompartment
 
 % ============ ODE Solver ============= %
 fast_flag = 0; % # fast_flag (0: MATLAB ODEXX)
-% fast_flag = 1; % # fast_flag (1: SundialsTB CVODE)
-% fast_flag = 2; % # fast_flag (2: IQMTools CVODE MEX)
+% fast_flag = 1; % # fast_flag (1: SundialsTB CVODE) (SundialsTB required)
+% fast_flag = 2; % # fast_flag (2: IQM Tools CVODE MEX) (IQM Tools required)
 
 % ============ Simulation ============= %
 [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag);

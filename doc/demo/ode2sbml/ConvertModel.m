@@ -1,4 +1,4 @@
-% This script demonstrates how to convert a ODE file into a SBML file.
+% This script demonstrates how to convert an ODE file into an SBML file.
 % For the functions RCGAconvertODE2IQMmodel and IQMexportSBML, IQM Tools is
 % required
 
