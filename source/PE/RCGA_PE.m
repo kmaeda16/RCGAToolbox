@@ -21,7 +21,7 @@ function Results = RCGA_PE(model,decodingfun,mst,n_constraint,fitnessfun,fast_fl
 % opts         :  Structure with RCGA options
 % 
 % [OUTPUT]
-% Results      :  Objective function value (scaler)
+% Results      :  Structure with results
 
 
 %% If model is an IQMmodel, it is converted into odefun.m or odefun.c.
@@ -229,7 +229,7 @@ opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) .
     elapsedTime,generation,problem,opts,Population,best,...
     Simulation,model,mst,simopts);
 
-%% Decomment here if you want to use parameter names for out_transition, out_best, and out_population
+%% Uncomment here if you want to use parameter names for out_transition, out_best, and out_population
 % if ~isfield(opts,'finalreportfun')
 %     opts.finalreportfun = @RCGAfinalreportfun_PE;
 % end

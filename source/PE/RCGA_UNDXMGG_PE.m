@@ -25,7 +25,7 @@ function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
 % opts         :  Structure with RCGA options
 % 
 % [OUTPUT]
-% Results      :  Objective function value (scaler)
+% Results      :  Structure with results
 
 
 %% Handling input arguments
