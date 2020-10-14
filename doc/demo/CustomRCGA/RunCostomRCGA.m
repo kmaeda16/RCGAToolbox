@@ -25,5 +25,6 @@ problem.fitnessfun = @fitnessExample; % Fitness Function
 problem.decodingfun = @decodingExample; % Decoding Function
 
 % ========== Executing RCGA ========== %
-% Results = RCGA_UNDXMGG(problem); % UNDX/MGG
-Results = RCGA_REXstarJGG(problem); % REXstar/JGG
+% ExampleGenerationAlteration is a user-defined custom generation
+% alteration function
+Results = RCGA_CustomRCGA(problem, @ExampleGenerationAlteration);

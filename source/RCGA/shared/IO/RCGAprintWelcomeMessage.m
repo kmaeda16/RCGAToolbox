@@ -11,28 +11,28 @@ function RCGAprintWelcomeMessage(problem, opts, RCGA_Type)
 
 
 %% Checking RCGA_Type
-if ~strcmp(RCGA_Type,'RCGA_REXstarJGG') && ~strcmp(RCGA_Type,'RCGA_UNDXMGG')
-    error('RCGA_Type must be ''RCGA_REXstarJGG'' or ''RCGA_UNDXMGG''.');
+if ~strcmp(RCGA_Type,'RCGA_REXstarJGG') && ~strcmp(RCGA_Type,'RCGA_UNDXMGG') && ~strcmp(RCGA_Type,'RCGA_CustomRCGA')
+    error('RCGA_Type must be ''RCGA_REXstarJGG'', ''RCGA_UNDXMGG'', or ''RCGA_CustomRCGA''.');
 end
 
 
 %% Prenting details
 fprintf('\n');
-fprintf('==========================================\n\n');
-fprintf('        %s by RCGAToolbox\n\n',RCGA_Type);
-fprintf('==========================================\n\n');
+fprintf('================================================\n\n');
+fprintf('           %s by RCGAToolbox\n\n',RCGA_Type);
+fprintf('================================================\n\n');
 fprintf('\n');
 
 
-disp('---------------- Problem -----------------');
+disp('------------------- Problem --------------------');
 fprintf('          n_gene :  %d\n',problem.n_gene);
 fprintf('    n_constraint :  %d\n',problem.n_constraint);
 fprintf('      fitnessfun :  %s\n',func2str(problem.fitnessfun));
 fprintf('     decodingfun :  %s\n',func2str(problem.decodingfun));
-disp('-------------- RCGA Options --------------');
+disp('----------------- RCGA Options -----------------');
 fprintf('    n_population :  %d\n',opts.n_population);
 fprintf('      n_children :  %d\n',opts.n_children);
-if isempty(strfind(RCGA_Type,'UNDXMGG'))
+if strcmp(RCGA_Type,'RCGA_REXstarJGG')
     fprintf('        n_parent :  %d\n',opts.n_parent);
     fprintf('       t_rexstar :  %g\n',opts.t_rexstar);
     fprintf('  selection_type :  %d\n',opts.selection_type);
@@ -51,7 +51,7 @@ fprintf('  out_population :  %s\n',opts.out_population);
 fprintf('      out_report :  %s\n',opts.out_report);
 fprintf('interimreportfun :  %s\n',func2str(opts.interimreportfun));
 fprintf('  finalreportfun :  %s\n',func2str(opts.finalreportfun));
-disp('------------------------------------------');
+disp('------------------------------------------------');
 fprintf('\n');
 
 fprintf('%s starts.\n',RCGA_Type);

@@ -15,8 +15,8 @@ function [problem, opts] = RCGAcheckInputs(problem,opts,RCGA_Type)
 
 
 %% Checking RCGA_Type
-if ~strcmp(RCGA_Type,'RCGA_REXstarJGG') && ~strcmp(RCGA_Type,'RCGA_UNDXMGG')
-    error('RCGA_Type must be ''RCGA_REXstarJGG'' or ''RCGA_UNDXMGG''.');
+if ~strcmp(RCGA_Type,'RCGA_REXstarJGG') && ~strcmp(RCGA_Type,'RCGA_UNDXMGG') && ~strcmp(RCGA_Type,'RCGA_CustomRCGA')
+    error('RCGA_Type must be ''RCGA_REXstarJGG'', ''RCGA_UNDXMGG'', or ''RCGA_CustomRCGA''.');
 end
 
 
@@ -50,7 +50,7 @@ C2 = {
     'n_population',...   %  1
     'n_children',...     %  2
     'n_parent',...       %  3
-    't_rexstar',...       %  4
+    't_rexstar',...      %  4
     'selection_type',... %  5
     'Pf',...             %  6
     'local',...          %  7
@@ -71,7 +71,7 @@ C2 = {
 
 tf = isfield(opts,C2);
 
-if strcmpi(RCGA_Type,'UNDXMGG')
+if strcmp(RCGA_Type,'RCGA_UNDXMGG') || strcmp(RCGA_Type,'RCGA_CustomRCGA')
     tf(3:5) = 1;
 end
 
