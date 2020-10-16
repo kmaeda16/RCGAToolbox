@@ -95,11 +95,7 @@ if ~tf(5) % selection_type
     opts.selection_type = 0;
 end
 if ~tf(6) % Pf
-    if problem.n_constraint > 0
-        opts.Pf = 0.45;
-    else
-        opts.Pf = 0;
-    end
+    opts.Pf = 0.45;
 end
 if ~tf(7) % local
     opts.local = 0;

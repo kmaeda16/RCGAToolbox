@@ -52,7 +52,7 @@ for i = 1 : n_population
                 flg = 1;
             end
         else
-            if phi_tmp(j) >  phi_tmp(j+1)
+            if phi_tmp(j) > phi_tmp(j+1)
                 [index_tmp(j), index_tmp(j+1)] = RCGAswap(index_tmp(j),index_tmp(j+1));
                 [f_tmp(j), f_tmp(j+1)] = RCGAswap(f_tmp(j),f_tmp(j+1));
                 [phi_tmp(j), phi_tmp(j+1)] = RCGAswap(phi_tmp(j),phi_tmp(j+1));

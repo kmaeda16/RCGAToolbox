@@ -1,6 +1,6 @@
 function Population = ExampleGenerationAlteration(problem, opts, Population)
 % ExampleGenerationAlteration updates population by a simple generation
-% alteration algorithm. This function can be used as a templete for costom
+% alteration algorithm. This function can be used as a template for custom
 % generation alteration functions.
 % 
 % [SYNTAX]

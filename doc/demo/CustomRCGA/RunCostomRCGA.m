@@ -1,5 +1,5 @@
-% This script demonstrates how to run a real-coded genetic algorithm to
-% solve an example constrained optimization problem.
+% This script demonstrates how to run a user-defined custom real-coded
+% genetic algorithm to solve an example constrained optimization problem.
 % 
 % --------------------- Example Problem ---------------------
 % Minimize:
