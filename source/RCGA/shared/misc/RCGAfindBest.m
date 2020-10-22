@@ -1,14 +1,14 @@
 function index = RCGAfindBest(Population)
-% RCGAfindBest returns index of the best individual in Population
+% RCGAfindBest returns the index of the best individual in Population.
 % 
 % [SYNTAX]
 % index = RCGAfindBest(Population)
 % 
 % [INPUT]
-% Population :  Array of individuals
+% Population :  Array of individuals (chrom structure).
 % 
 % [OUTPUT]
-% index      :  Index of the best individual in Population
+% index      :  Index of the best individual in Population.
 
 
 %% Preparation

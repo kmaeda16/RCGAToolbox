@@ -1,17 +1,24 @@
-function [f, g, phi] = RCGAgetFitness(problem,chrom)
-% RCGAgetFitness returns f, g, and phi for an individual chrom.
+function [f, g, phi] = RCGAgetFitness(problem, chrom)
+% RCGAgetFitness evaluates the fitness function and returns f, g, and phi
+% for an individual (chrom).
 % 
 % [SYNTAX]
-% [f, g, phi] = RCGAgetFitness(problem,chrom)
+% [f, g, phi] = RCGAgetFitness(problem, chrom)
 % 
 % [INPUT]
-% problem :  Problem structure
-% chrom   :  Individual
+% problem :  Problem structure:
+%            - problem.n_gene: Number of decision variables.
+%            - problem.n_constraint: Number of constraint functions. For 
+%               unconstained problems, this must be zero.
+%            - problem.fitnessfun: Function handle for a fitness function.
+%            - problem.decodingfun: Function handle for a decoding 
+%               function.
+% chrom   :  Individual (chrom structure).
 % 
 % [OUTPUT]
-% f       :  Value of fitness functions
-% g       :  Values of constraint functions
-% phi     :  Value of penalty function
+% f       :  Fitness function value.
+% g       :  Constraint function value vector.
+% phi     :  Penalty function value.
 
 
 %% Shortening variable names

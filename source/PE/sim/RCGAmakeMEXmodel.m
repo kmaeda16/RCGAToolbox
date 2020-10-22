@@ -1,6 +1,6 @@
 function mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 % RCGAmakeMEXmodel makes a MEX file based on model. Note that C source
-% code is always generated.
+% code is always generated. IQM Tools is required for RCGAmakeMEXmodel.
 % 
 % [SYNTAX]
 % mexfilename = RCGAmakeMEXmodel(model)

@@ -35,8 +35,8 @@ clearvars;
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Decision Variables
 problem.n_constraint = 2; % # Constraints
-problem.fitnessfun = @fitnessExample; % Fitness Function
-problem.decodingfun = @decodingExample; % Decoding Function
+problem.fitnessfun = @fitness_Example; % Fitness Function
+problem.decodingfun = @decoding_Example; % Decoding Function
 
 % ========= Option Settings ========== %
 opts.n_population = 200; % Population Size

@@ -1,16 +1,16 @@
-function [output] = modelExample_odefun(varargin)
+function [output] = model_Example_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % modelExample
 % Generated: 06-Apr-2020 16:08:47
 % 
-% [output] = modelExample_odefun() => output = initial conditions in column vector
-% [output] = modelExample_odefun('states') => output = state names in cell-array
-% [output] = modelExample_odefun('algebraic') => output = algebraic variable names in cell-array
-% [output] = modelExample_odefun('parameters') => output = parameter names in cell-array
-% [output] = modelExample_odefun('parametervalues') => output = parameter values in column vector
-% [output] = modelExample_odefun('variablenames') => output = variable names in cell-array
-% [output] = modelExample_odefun('variableformulas') => output = variable formulas in cell-array
-% [output] = modelExample_odefun(time,statevector) => output = time derivatives in column vector
+% [output] = model_Example_odefun() => output = initial conditions in column vector
+% [output] = model_Example_odefun('states') => output = state names in cell-array
+% [output] = model_Example_odefun('algebraic') => output = algebraic variable names in cell-array
+% [output] = model_Example_odefun('parameters') => output = parameter names in cell-array
+% [output] = model_Example_odefun('parametervalues') => output = parameter values in column vector
+% [output] = model_Example_odefun('variablenames') => output = variable names in cell-array
+% [output] = model_Example_odefun('variableformulas') => output = variable formulas in cell-array
+% [output] = model_Example_odefun(time,statevector) => output = time derivatives in column vector
 % 
 % State names and ordering:
 % 

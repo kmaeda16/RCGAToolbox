@@ -1,5 +1,5 @@
 function odefilename = RCGAmakeODEmodel(model, odefilename)
-% RCGAmakeODEmodel makes an ODE file based on model.
+% RCGAmakeODEmodel makes an ODE file based on model. IQM Tools is required for RCGAmakeODEmodel.
 % 
 % [SYNTAX]
 % odefilename = RCGAmakeODEmodel(model)

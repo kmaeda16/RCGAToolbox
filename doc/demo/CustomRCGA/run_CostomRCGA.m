@@ -21,10 +21,10 @@ clearvars;
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Decision Variables
 problem.n_constraint = 2; % # Constraints
-problem.fitnessfun = @fitnessExample; % Fitness Function
-problem.decodingfun = @decodingExample; % Decoding Function
+problem.fitnessfun = @fitness_Example; % Fitness Function
+problem.decodingfun = @decoding_Example; % Decoding Function
 
 % ========== Executing RCGA ========== %
 % ExampleGenerationAlteration is a user-defined custom generation
 % alteration function
-Results = RCGA_CustomRCGA(problem, @ExampleGenerationAlteration);
+Results = RCGA_CustomRCGA(problem, @GenerationAlternation_Example);

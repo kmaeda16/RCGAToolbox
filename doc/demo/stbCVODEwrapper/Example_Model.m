@@ -1,5 +1,5 @@
-function dydt = ExampleModel_original(t,y)
-% ExampleModel_original is an example of the the ODE file ready for
+function dydt = Example_Model(t,y)
+% Example_Model is an example of the the ODE file ready for
 % conversion into the IQMmodel object by RCGAconvertODE2IQMmodel. In this
 % file, the only sections sandwiched between "BEGIN" and "END" are used for
 % the conversion.

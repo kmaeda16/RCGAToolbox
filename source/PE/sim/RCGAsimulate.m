@@ -1,31 +1,35 @@
 function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
-% RCGAsimulate simulates model.
+% RCGAsimulate simulates model. RCGAsimulate checks the type of model and
+% fast_flag and then chooses an appropriate solver.
 % 
 % [SYNTAX]
+% [ T, Y ] = RCGAsimulate(model)
+% [ T, Y ] = RCGAsimulate(model, tspan)
 % [ T, Y ] = RCGAsimulate(model, tspan, y0)
 % [ T, Y ] = RCGAsimulate(model, tspan, y0, param)
-% [ T, Y ] = RCGAsimulate(model, tspan, y0, [], options)
-% [ T, Y ] = RCGAsimulate(model, tspan, y0, param, options)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, [], fast_flag)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag)
+% [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 % 
 % [INPUT]
-% model     :  IQMmodel, File names of SBML, or ODE function, or MEX files.
-%              File function of ODE function or MEX function.
-% tspan     :  [t0, tf] or [t0, t1, ..., tf]. (default: [0 10])
-% y0        :  Initial value vector. (default: Values stored in the model)
-% param     :  Parameter value vector. (default: Values stored in the model)
-% fast_flag :  Solver flag
-%              * fast_flag = 0 : ODEXX by MATLAB
-%              * fast_flag = 1 : CVODE by SundialsTB
-%              * fast_flag = 2 : CVODE by IQM Tools
-% options   :  Structure with integrator options. Fields depend on
-%              Simulation_* functions. For fast_flag = 0, 1, and 2, see
-%              'help RCGAsimulateODEXX', 'help RCGAsimulateSTB', 'help
-%              RCGAsimulateMEX', respectively.
+% model     :  An IQMmodel object, the name of SBML file, the function 
+%              handle for an ODE function, or the function handle for a 
+%              MEXed model.
+% tspan     :  [t0, tf] or [t0, t1, ..., tf] (default: [0 10]).
+% y0        :  Initial value vector (default: Values stored in model).
+% param     :  Parameter value vector (default: Values stored in model).
+% fast_flag :  ODE solver flag:
+%              - fast_flag = 0: ODEXX by MATLAB built-ins.
+%              - fast_flag = 1: CVODE by SundialsTB.
+%              - fast_flag = 2: CVODE by IQM Tools.
+% options   :  Solver option structure. The fields depend on fast_flag. For
+%              fast_flag = 0, 1, and 2, see 'help RCGAsimulateODEXX', 'help
+%              RCGAsimulateSTB', 'help RCGAsimulateMEX', respectively.
 % 
 % [OUTPUT]
-% T      :  Column vector of timepoints
-% Y      :  Variable matrix. Each column corresponds to each variable. 
-%           Each row of Y corresponds to each row of T. 
+% T         :  Column vector of timepoints.
+% Y         :  Variable matrix. Each column corresponds to each variable. 
+%              Each row corresponds to each timepoint.
 
 
 %% Handling inputs

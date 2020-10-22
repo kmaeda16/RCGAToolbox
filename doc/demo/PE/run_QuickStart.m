@@ -34,9 +34,9 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-modelfile = 'modelExample_odefun.m'; % Model File
-decodingfun = @decodingExample; % Decoding Function
-measurement = 'measurementExample.xls'; % Measurement File
+modelfile = 'model_Example_odefun.m'; % Model File
+decodingfun = @decoding_Example; % Decoding Function
+measurement = 'measurement_Example.xls'; % Measurement File
 
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement); % UNDX/MGG

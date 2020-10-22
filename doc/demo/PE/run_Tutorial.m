@@ -34,15 +34,15 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-% modelfile = 'modelExample.xml'; % SBML File
-% modelfile = IQMmodel('modelExample.xml'); % Creating IQMmodel
-modelfile = 'modelExample_odefun.m'; % MATLAB ODE Function File
-% modelfile = 'modelExample_mex.c'; % C ODE File
-% modelfile = 'modelExample_mex.mexw64'; % MEX ODE File for Windows
-% modelfile = 'modelExample_mex.mexmaci64'; % MEX ODE File for macOS
-% modelfile = 'modelExample_mex.mexa64'; % MEX ODE File for Linux
-decodingfun = @decodingExample; % Decoding Function
-measurement = 'measurementExample.xls'; % Measurement File
+% modelfile = 'model_Example.xml'; % SBML File
+% modelfile = IQMmodel('model_Example.xml'); % Creating IQMmodel
+modelfile = 'model_Example_odefun.m'; % MATLAB ODE Function File
+% modelfile = 'model_Example_mex.c'; % C ODE File
+% modelfile = 'model_Example_mex.mexw64'; % MEX ODE File for Windows
+% modelfile = 'model_Example_mex.mexmaci64'; % MEX ODE File for macOS
+% modelfile = 'model_Example_mex.mexa64'; % MEX ODE File for Linux
+decodingfun = @decoding_Example; % Decoding Function
+measurement = 'measurement_Example.xls'; % Measurement File
 
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size

@@ -1,4 +1,4 @@
-function x = decodingExample(gene)
+function x = decoding_Example(gene)
 % decodingExample is an example of decoding function for
 % "fitnessExample.m". "gene" takes values from 0 to 1. The purpose of
 % decoding functions is to change the value range, i.e. to decode "gene"

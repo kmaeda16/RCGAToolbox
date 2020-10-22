@@ -1,16 +1,17 @@
 function c = RCGA_UNDX(p1, p2, p3)
-% RCGA_UNDX genertes children by using Unimordal Distribution Crossover.
+% RCGA_UNDX genertes a child by using Unimordal Distribution Crossover
+% (UNDX).
 % 
 % [SYNTAX]
 % c = RCGA_UNDX(p1, p2, p3)
 % 
 % [INPUT]
-% p1 :  First main parent
-% p2 :  Second main parent
-% p3 :  Sub-parent
+% p1 :  First main parent (chrom structure).
+% p2 :  Second main parent (chrom structure).
+% p3 :  Sub-parent (chrom structure).
 % 
 % [OUTPUT]
-% c  :  Generated child
+% c  :  Generated child (chrom structure).
 % 
 % 
 % See Hiroaki Kitano, "Genetic Algorithms 4", Sangyo-tosho, p261, 2000

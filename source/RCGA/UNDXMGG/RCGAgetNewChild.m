@@ -1,17 +1,17 @@
 function c = RCGAgetNewChild(p1, p2, p3)
-% RCGAgetNewChild generates a child with UNDX and checks wheather it is in
-% search region
+% RCGAgetNewChild generates a child with UNDX and checks wheather it is
+% within the search space.
 % 
 % [SYNTAX]
 % c = RCGAgetNewChild(p1, p2, p3)
 % 
 % [INPUT]
-% p1 :  First main parent
-% p2 :  Second main parent
-% p3 :  Sub-parent
+% p1 :  First main parent (chrom structure).
+% p2 :  Second main parent (chrom structure).
+% p3 :  Sub-parent (chrom structure).
 % 
 % [OUTPUT]
-% c  :  Generated child
+% c  :  Generated child (chrom structure).
 
 
 %% Default number of trials of generating children

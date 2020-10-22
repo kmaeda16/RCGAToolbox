@@ -1,17 +1,17 @@
 function [c, ceq] = cst_wrapper(fitnessfun, decodingfun, gene)
-% cst_wrapper returns g of fitnessfun.
+% cst_wrapper returns the constraint function value vector g of fitnessfun.
 % 
 % [SYNTAX]
 % [c, ceq] = cst_wrapper(fitnessfun, decodingfun, gene)
 % 
 % [INPUT]
-% fitnessfun  :  Fitness function
-% decodingfun :  Decoding function
-% gene        :  Genes (encoded decision variables)
+% fitnessfun  :  Function handle for a fitness function.
+% decodingfun :  Function handle for a decoding function.
+% gene        :  Genes (vector of encoded decision variables).
 % 
 % [OUTPUT]
-% c           :  Inequality constraint function values
-% ced         :  Equality constraint function values
+% c           :  Inequality constraint function values (g).
+% ced         :  Equality constraint function values (empty).
 
 x = decodingfun(gene);
 [~, c] = fitnessfun(x);

@@ -1,21 +1,22 @@
-function Results = RCGA_PE(model,decodingfun,mst,n_constraint,fitnessfun,fast_flag,simopts,opts,GenerationAlternation)
+function Results = RCGA_PE(model, decodingfun, mst, n_constraint, fitnessfun, fast_flag, simopts, opts, RCGAfun)
 % RCGA_PE estimates parameters included in model by fitting it to
 % experimental data mst.
 % 
 % [SYNTAX]
-% Results = RCGA_PE(model,decodingfun,mst,n_constraint, ...
-%                         fitnessfun,fast_flag,simopts,opts)
+% Results = RCGA_PE(model, decodingfun, mst, n_constraint, ...
+%                         fitnessfun, fast_flag, simopts, opts)
 % 
 % [INPUT]
-% model        :  IQMmodel or file name (*.sbml, *.xml, *.m, *.mex, or *.c)
-% decodingfun  :  Function handle for decoding function
-% mst          :  Experimental data (IQMmeasurement) or filename
+% model        :  IQMmodel or file name (*.sbml, *.xml, *.m, *.mex, or
+%                 *.c).
+% decodingfun  :  Function handle for decoding function.
+% mst          :  Experimental data (IQMmeasurement) or file name (*.xls).
 % n_constraint :  Number of constraints.
 % fitnessfun   :  Function handle for fitness function
-% fast_flag    :  Solver flag
-%                 * fast_flag = 0 : ODEXX by MATLAB
-%                 * fast_flag = 1 : CVODE by SundialsTB
-%                 * fast_flag = 2 : CVODE by IQM Tools
+% fast_flag    :  ODE solver flag:
+%                 - fast_flag = 0 : ODEXX by MATLAB
+%                 - fast_flag = 1 : CVODE by SundialsTB
+%                 - fast_flag = 2 : CVODE by IQM Tools
 % simopts      :  Structure with integrator options. Fields depend on
 %                 Simulation_*. See 'help Simulation_*'.
 % opts         :  Structure with RCGA options
@@ -241,7 +242,7 @@ opts.interimreportfun = @(elapsedTime,generation,problem,opts,Population,best) .
 
 
 %% Run parameter estimation
-Results = GenerationAlternation(problem,opts);
+Results = RCGAfun(problem,opts);
 
 
 %% Print best

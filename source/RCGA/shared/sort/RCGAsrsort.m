@@ -1,16 +1,16 @@
 function Sorted_Population = RCGAsrsort(Population, Pf)
-% SRsort is a function of stochastic ranking sort.
+% RCGAsrsort is a function of stochastic ranking sort.
 % 
 % [SYNTAX]
 % Population = RCGAsrsort(Population, Pf)
 % 
 % [INPUT]
-% Population :  (Unsorted) Population
-% Pf         :  Probability that only f is used in comparisons of
-%               individuals
+% Population        :  (Unsorted) Population.
+% Pf                :  Probability that only the objective function f is used in 
+%                      comparisons of individuals.
 % 
 % [OUTPUT]
-% Population :  Sorted population
+% Sorted_Population :  Sorted population.
 
 
 %% Preparation

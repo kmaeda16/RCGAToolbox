@@ -1,10 +1,10 @@
-function Population = ExampleGenerationAlteration(problem, opts, Population)
-% ExampleGenerationAlteration updates population by a simple generation
-% alteration algorithm. This function can be used as a template for custom
-% generation alteration functions.
+function Population = GenerationAlternation_Example(problem, opts, Population)
+% GenerationAlternation_Example updates population by a simple generation
+% alternation algorithm. This function can be used as a template for custom
+% generation alternation functions.
 % 
 % [SYNTAX]
-% Population = ExampleGenerationAlteration(problem, opts, Population)
+% Population = GenerationAlternation_Example(problem, opts, Population)
 % 
 % [INPUT]
 % problem    :  Problem structure.

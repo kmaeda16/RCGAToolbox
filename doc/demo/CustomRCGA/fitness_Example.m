@@ -1,4 +1,4 @@
-function [f, g] = fitnessExample(x)
+function [f, g] = fitness_Example(x)
 % fitnessExample is an example of fitness function.
 % 
 % [SYNTAX]

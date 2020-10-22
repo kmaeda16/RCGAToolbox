@@ -1,12 +1,12 @@
-function model = RCGAconvertODE2IQMmodel(ODEfileName)
-% RCGAconvertODE2IQMmodel converts a formatted ODE file into a IQMmodel
-% object.
+function model = RCGAconvertConciseOdefunODE2IQMmodel(ODEfileName)
+% RCGAconvertConciseOdefunODE2IQMmodel converts a concise odefun into a
+% IQMmodel object.
 % 
 % [SYNTAX]
-% model = RCGAconvertODE2IQMmodel(ODEfileName)
+% model = RCGAconvertConciseOdefunODE2IQMmodel(ODEfileName)
 % 
 % [INPUT]
-% ODEfileName :  Names of the formatted ODE file.
+% ODEfileName :  Name of a concise odefun (ODE function) file.
 % 
 % [OUTPUT]
 % model       :  IQMmodel object (For details, see the user guide for IQM 

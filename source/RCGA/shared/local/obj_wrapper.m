@@ -1,16 +1,16 @@
 function f = obj_wrapper(fitnessfun, decodingfun, gene)
-% obj_wrapper returns f of fitnessfun.
+% obj_wrapper returns the objective function value f of fitnessfun.
 % 
 % [SYNTAX]
 % f = obj_wrapper(fitnessfun, decodingfun, gene)
 % 
 % [INPUT]
-% fitnessfun  :  Fitness function
-% decodingfun :  Decoding function
-% gene        :  Genes (encoded decision variables)
+% fitnessfun  :  Function handle for a fitness function.
+% decodingfun :  Function handle for a decoding function.
+% gene        :  Genes (vector of encoded decision variables).
 % 
 % [OUTPUT]
-% f           :  Objective function value
+% f           :  Objective function value.
 
 x = decodingfun(gene);
 f = fitnessfun(x);
