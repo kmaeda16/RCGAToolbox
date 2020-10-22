@@ -1,36 +1,64 @@
-function RCGAconvertIQMmodel2conciseOdefun(model)
-% RCGAconvertIQMmodel2conciseOdefun converts model (an IQMmodel object or
-% an SBML file) into a concise odefun.
+function odefilename = RCGAcreateConciseODEfile(model, odefilename)
+% RCGAcreateConciseODEfile reads model (an IQMmodel object or an SBML file)
+% and creates a concise ODE file (RCGAToolbox format).
 % 
 % [SYNTAX]
-% model = RCGAconvertIQMmodel2conciseOdefun(model)
+% odefilename = RCGAcreateConciseODEfile(model)
+% odefilename = RCGAcreateConciseODEfile(model, odefilename)
 % 
 % [INPUT]
-% model :  An IQM object or the name of a SBML file.
+% model       :  An IQM object or the name of a SBML file (*.sbml or 
+%                *.xml).
+% odefilename :  Name of the created concise ODE file (RCGAToolbox format).
+% 
+% [OUTPUT]
+% odefilename :  Name of the created concise ODE file (RCGAToolbox format).
+
+
+if isIQMmodel(model)
+    sbm = model;
+    if ~exist('odefilename','var')
+        st_sbm = struct(sbm);
+        odefilename = strcat(st_sbm.name,'_conciseOdefun');
+        odefilename = regexprep(odefilename,'\W','');
+        odefilename_ext = [ odefilename '.m' ];
+    else
+        [~, odefilename, ext] = fileparts(odefilename);
+        odefilename_ext = [odefilename ext];
+    end
+elseif ischar(model)
+    sbm = IQMmodel(model);
+    if ~exist('odefilename','var')
+        [ ~, filename, ~] = fileparts(model);
+        odefilename = strcat(filename,'_conciseOdefun');
+        odefilename_ext = [ odefilename '.m' ];
+    else
+        [~, odefilename, ext] = fileparts(odefilename);
+        odefilename_ext = [odefilename ext];
+    end
+else
+    error('model must be an IQMmodel or a file name!');
+end
+
+
+% Opening an output file
+fileID = fopen(odefilename_ext,'w');
+
+if fileID == -1
+    error('Cannot open %s!',odefilename_ext);
+end
 
 
 % Reading an IQMmodel object or an SBML file
-ModelStruct = struct(IQMmodel(model));
+ModelStruct = struct(sbm);
 n_state = length(ModelStruct.states);
 n_param = length(ModelStruct.parameters);
 n_variable = length(ModelStruct.variables);
 n_reaction = length(ModelStruct.reactions);
 
 
-funname = [ModelStruct.name '_conciseOdefun'];
-
-
-% Opening an output file
-temp = [funname '.m'];
-fileID = fopen(temp,'w');
-
-if fileID == -1
-    error('Cannot open %s!',temp);
-end
-
-
 % Making header
-fprintf(fileID,'function dydt = %s(t, y)\n',funname);
+fprintf(fileID,'function dydt = %s(t, y)\n',odefilename);
 
 
 % Making comment lines
@@ -40,14 +68,14 @@ if ischar(model)
 else
     fprintf(fileID,'.\n');
 end
-fprintf(fileID,'%% %s\n',date);
+fprintf(fileID,'%% Generated: %s\n',date);
 fprintf(fileID,'%% \n');
 fprintf(fileID,'%% You can simulate the model coded in this function by the following codes.\n');
 fprintf(fileID,'%% tspan = [0 10];\n');
 for i = 1 : n_state
     fprintf(fileID,'%% y0(%d) = %e;\n',i,ModelStruct.states(i).initialCondition);
 end
-fprintf(fileID,'%% [T, Y] = ode15s(@%s,tspan,y0);\n',funname);
+fprintf(fileID,'%% [T, Y] = ode15s(@%s,tspan,y0);\n',odefilename);
 fprintf(fileID,'%% plot(T, Y);\n');
 fprintf(fileID,'%% xlabel(''Time'');\n');
 fprintf(fileID,'%% ylabel(''States'');\n');

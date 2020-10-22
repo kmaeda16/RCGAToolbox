@@ -1,6 +1,6 @@
 function mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
-% RCGAmakeMEXmodel makes a MEX file based on model. Note that C source
-% code is always generated. IQM Tools is required for RCGAmakeMEXmodel.
+% RCGAmakeMEXmodel makes a MEX file based on model. Note that a C source
+% code (*.c) and header file (*.h) are always generated.
 % 
 % [SYNTAX]
 % mexfilename = RCGAmakeMEXmodel(model)
@@ -8,14 +8,16 @@ function mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 % mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 % 
 % [INPUT]
-% model            :  IQMmodel or SBML file name (*.sbml or *.xml)
-% mexfilename      :  Name of MEX file
-% doNOTcompileFlag :  Flag specifies if a MEX file is compiled (generated)
-%                     * doNOTcompileFlag = 0 : MEX file is compiled (default)
-%                     * doNOTcompileFlag = 1 : MEX file is NOT compiled
+% model            :  An IQM object or the name of a SBML file (*.sbml or 
+%                     *.xml).
+% mexfilename      :  Name of the generated MEX file.
+% doNOTcompileFlag :  Flag specifies if a MEX file is compiled (generated).
+%                     - doNOTcompileFlag = 0 : MEX file is compiled
+%                        (default).
+%                     - doNOTcompileFlag = 1 : MEX file is NOT compiled.
 % 
 % [OUTPUT]
-% mexfilename      :  Name of the generated MEX file
+% mexfilename      :  Name of the generated MEX file.
 
 
 if ~exist('doNOTcompileFlag','var')
@@ -36,7 +38,7 @@ elseif ischar(model)
         mexfilename = strcat(filename,'_mex');
     end
 else
-    error('model must be an IQMmodel or file name!');
+    error('model must be an IQMmodel or a file name!');
 end
 
 

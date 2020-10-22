@@ -1,22 +1,22 @@
-function model = RCGAconvertConciseOdefunODE2IQMmodel(ODEfileName)
-% RCGAconvertConciseOdefunODE2IQMmodel converts a concise odefun into a
-% IQMmodel object.
+function model = RCGAreadConciseODEfile(odefilename)
+% RCGAreadConciseODEfile reads a concise ODE file (RCGAToolbox format) and
+% creates an IQMmodel object.
 % 
 % [SYNTAX]
-% model = RCGAconvertConciseOdefunODE2IQMmodel(ODEfileName)
+% model = RCGAreadConciseODEfile(odefilename)
 % 
 % [INPUT]
-% ODEfileName :  Name of a concise odefun (ODE function) file.
+% odefilename :  Name of a concise ODE file (RCGAToolbox format).
 % 
 % [OUTPUT]
 % model       :  IQMmodel object (For details, see the user guide for IQM 
-%                Tools)
+%                Tools).
 
 
-fileID = fopen(ODEfileName,'r');
+fileID = fopen(odefilename,'r');
 
 if fileID == -1
-    error('Cannot open %s!',ODEfileName);
+    error('Cannot open %s!',odefilename);
 end
 
 
