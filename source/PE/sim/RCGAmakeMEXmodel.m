@@ -26,14 +26,14 @@ end
 
 if isIQMmodel(model)
     sbm = model;
-    if ~exist('odefilename','var')
+    if ~exist('mexfilename','var')
         st_sbm = struct(sbm);
         mexfilename = strcat(st_sbm.name,'_mex');
         mexfilename = regexprep(mexfilename,'\W','');
     end
 elseif ischar(model)
     sbm = IQMmodel(model);
-    if ~exist('odefilename','var')
+    if ~exist('mexfilename','var')
         [ ~, filename, ~] = fileparts(model);
         mexfilename = strcat(filename,'_mex');
     end
@@ -44,8 +44,8 @@ end
 
 IQMmakeMEXmodel(sbm,mexfilename,1);
 
-if doNOTcompileFlag == 1
+if doNOTcompileFlag == 0
     mexcompileIQM(mexfilename);
-elseif doNOTcompileFlag ~= 0
+elseif doNOTcompileFlag ~= 1
     error('Unexpected doNOTcompileFlag!');
 end

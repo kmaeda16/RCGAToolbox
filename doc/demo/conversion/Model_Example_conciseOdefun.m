@@ -1,8 +1,8 @@
-function dydt = Model_Example(t, y)
-% Model_Example is an example of the concise ODE file (RCGAToolbox format)
-% ready for conversion into an IQMmodel object by RCGAreadConciseODEfile.
-% In this file, the only sections sandwiched between "BEGIN" and "END" are
-% used for the conversion.
+function dydt = Model_Example_conciseOdefun(t, y)
+% Model_Example_conciseOdefun is an example of the concise ODE file
+% (RCGAToolbox format) ready for conversion into an IQMmodel object by
+% RCGAreadConciseODEfile. In this file, the only sections sandwiched
+% between "BEGIN" and "END" are used for the conversion.
 % 
 % [SYNTAX]
 % dydt = Model_Example(t, y)
