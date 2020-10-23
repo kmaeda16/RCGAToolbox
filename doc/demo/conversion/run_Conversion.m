@@ -11,7 +11,7 @@ y0 = zeros(1,2);
 [T1, Y1] = ode15s(@Model_Example, tspan, y0);
 
 % Convert the original file into the SBML file.
-model = RCGAconvertODE2IQMmodel('Model_Example.m');
+model = RCGAreadConciseODEfile('Model_Example.m');
 IQMexportSBML(model,'Model_Example_converted.xml');
 
 % Simulate the ODE model in the generated SBML file

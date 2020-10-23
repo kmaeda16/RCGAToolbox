@@ -1,4 +1,4 @@
-function RCGAprintWelcomeMessage(problem, opts, RCGA_Type)
+function RCGAprintWelcomeMessage(problem, opts, RCGAfun)
 % RCGAprintWelcomeMessage prints the information on the problem and the
 % options.
 % 
@@ -46,8 +46,11 @@ function RCGAprintWelcomeMessage(problem, opts, RCGA_Type)
 %                 report function.
 %              - opts.finalreportfun: Function handle for the final report 
 %                 function.
-% RCGA_Type :  String that specifies the type of RCGA: 'RCGA_UNDXMGG',
-%              'RCGA_REXstarJGG', or 'RCGA_CustomRCGA'
+% RCGAfun   :  Function handle for RCGA_UNDXMGG, RCGA_REXstarJGG,
+%              RCGA_CustomRCGA.
+
+
+RCGA_Type = func2str(RCGAfun);
 
 
 %% Checking RCGA_Type

@@ -1,5 +1,5 @@
 function [ T, Y ] = odestb(odefun, tspan, y0, options)
-% odestb is a wrapper function that enables to use CVode provided by
+% odestb is the wrapper function that enables to use CVode provided by
 % SundialsTB in the same way as MATLAB ODE solvers.
 % 
 % [SYNTAX]
@@ -7,24 +7,24 @@ function [ T, Y ] = odestb(odefun, tspan, y0, options)
 % [ T, Y ] = odestb(odefun, tspan, y0, options)
 % 
 % [INPUT]
-% odefun  :  ODEFUN file.
+% odefun  :  Function handle for odefun (an ODE function).
 % tspan   :  [t0, tf] or [t0, t1, ..., tf].
 % y0      :  Initial value vector.
-% options :  Structure with integrator options.
-%            * options.LMM: Linear Multistep Method (default: 'BDF')
-%            * options.NonlinearSolver: Type of nonlinear solver used
-%              (default: 'Newton')
-%            * options.AbsTol:  Absolute tolerance (default: 1e-6)
-%            * options.RelTol:  Relative tolerance (default: 1e-4)
-%            * options.MinStep: Minimum stepsize (default: 0)
-%            * options.MaxStep: Maximum stepsize (default: inf)
-%            * options.MaxNumSteps: Maximum number of steps (default: 500)
+% options :  Solver option structure:
+%            - options.LMM: Linear Multistep Method (default: 'BDF').
+%            - options.NonlinearSolver: Type of nonlinear solver used
+%               (default: 'Newton').
+%            - options.AbsTol:  Absolute tolerance (default: 1e-6).
+%            - options.RelTol:  Relative tolerance (default: 1e-4).
+%            - options.MinStep: Minimum stepsize (default: 0).
+%            - options.MaxStep: Maximum stepsize (default: inf).
+%            - options.MaxNumSteps: Maximum number of steps (default: 500).
 %            For other fields, see SundialsTB documentation.
 % 
 % [OUTPUT]
-% T       :  Column vector of timepoints
+% T       :  Column vector of timepoints.
 % Y       :  Variable matrix. Each column corresponds to each variable. 
-%            Each row of Y corresponds to each row of T. 
+%            Each row corresponds to each timepoint.
 
 
 %% Handling inputs

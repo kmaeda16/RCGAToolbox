@@ -68,11 +68,11 @@ end
 
 
 %% Checking inputs
-[problem, opts] = RCGAcheckInputs(problem,opts,mfilename);
+[problem, opts] = RCGAcheckInputs(problem,opts,str2func(mfilename));
 
 
 %% Printing welcome messages
-RCGAprintWelcomeMessage(problem,opts,mfilename);
+RCGAprintWelcomeMessage(problem,opts,str2func(mfilename));
 
 
 %% Executing UNDX/MGG

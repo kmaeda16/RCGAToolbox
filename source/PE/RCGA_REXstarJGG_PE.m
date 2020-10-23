@@ -1,31 +1,74 @@
-function Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,varargin)
+function Results = RCGA_REXstarJGG_PE(model, decodingfun, mst, varargin)
 % RCGA_REXstarJGG_PE estimates parameters included in model by fitting it
-% to experimental data mst.
+% to experimental data mst, using REXstar/JGG.
 % 
 % [SYNTAX]
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,simopts,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,fast_flag,simopts,opts)
-% Results = RCGA_REXstarJGG_PE(model,decodingfun,mst,n_constraint, ...
-%                         fitnessfun,fast_flag,simopts,opts)
+% Results = RCGA_REXstarJGG_PE(model, decodingfun, mst)
+% Results = RCGA_REXstarJGG_PE(model, decodingfun, mst, opts)
+% Results = RCGA_REXstarJGG_PE(model, decodingfun, mst, simopts, opts)
+% Results = RCGA_REXstarJGG_PE(model, decodingfun, mst, fast_flag, simopts,
+%                              opts)
+% Results = RCGA_REXstarJGG_PE(model, decodingfun, mst, n_constraint, ...
+%                              fitnessfun, fast_flag, simopts, opts)
 % 
 % [INPUT]
-% model        :  IQMmodel or file name (*.sbml, *.xml, *.m, *.mex, or *.c)
-% decodingfun  :  Function handle for decoding function
-% mst          :  Experimental data (IQMmeasurement) or filename
-% n_constraint :  Number of constraints.
-% fitnessfun   :  Function handle for fitness function
-% fast_flag    :  Solver flag
-%                 * fast_flag = 0 : ODEXX by MATLAB
-%                 * fast_flag = 1 : CVODE by SundialsTB
-%                 * fast_flag = 2 : CVODE by IQM Tools
-% simopts      :  Structure with integrator options. Fields depend on
-%                 Simulation_*. See 'help Simulation_*'.
-% opts         :  Structure with RCGA options
+% model        :  An IQMmodel object, the name of SBML file, the function 
+%                 handle for an ODE function (IQM Tools format), the 
+%                 function handle for a MEXed model, or the C source code.
+% decodingfun  :  Function handle for a decoding function.
+% mst          :  Experimental data (An IQMmeasurement object).
+% n_constraint :  Number of constraint functions.
+% fitnessfun   :  Function handle for a fitness function.
+% fast_flag    :  ODE solver flag:
+%                 - fast_flag = 0: ODEXX by MATLAB built-ins.
+%                 - fast_flag = 1: CVODE by SundialsTB.
+%                 - fast_flag = 2: CVODE by IQM Tools.
+% simopts      :  Solver option structure. The fields depend on fast_flag. 
+%                 For fast_flag = 0, 1, and 2, see 
+%                 'help RCGAsimulateODEXX', 'help RCGAsimulateSTB', 
+%                 'help RCGAsimulateMEX', respectively.
+% opts         :  Option structure:
+%                 - opts.n_population: Population size.
+%                 - opts.n_children: Number of children.
+%                 - opts.n_parent: Number of parents.
+%                 - opts.t_rexstar: Step-size parameter for REXstar/JGG.
+%                 - opts.selection_type: Selection type for REXstar/JGG 
+%                    (0 or 1).
+%                 - opts.Pf: Probability that only the objective function f
+%                    is used in comparisons of individuals in the 
+%                    stochastic ranking.
+%                 - opts.local: Local optimizer (0 or 1). If it is 1, the 
+%                    local optimizer is used.
+%                 - opts.localopts: Options for the local optimizer.
+%                 - opts.n_generation: Number of maximum generations.
+%                 - opts.maxtime: Maximum time (sec).
+%                 - opts.maxeval: Maximum number of fitnessfun evaluations.
+%                 - opts.vtr: Value to be reached.
+%                 - opts.n_par: Number of workers in parallel computation.
+%                 - opts.output_intvl: Interval generation for updating the 
+%                    transition file and the report file.
+%                 - opts.out_transition: Name of an output file called the 
+%                    transition file.
+%                 - opts.out_best: Name of an output file called the best 
+%                    individual file.
+%                 - opts.out_population: Name of an output file called the 
+%                    final population file.
+%                 - opts.out_report: Name of an output file called the 
+%                    report file.
+%                 - opts.interimreportfun: Function handle for the interim 
+%                    report function.
+%                 - opts.finalreportfun: Function handle for the final 
+%                    report function.
 % 
 % [OUTPUT]
-% Results      :  Structure with results
+% Results      :  Results structure:
+%                 - Results.Transition: Information on the fitness 
+%                    transition.
+%                 - Results.Best: Information on the best individual.
+%                 - Results.FinalPopulation: Information on the final 
+%                    population.
+%                 - Results.end_crit: Exit flag: Success (0), n_generation 
+%                    reached (1), maxtime reached (2), maxeval reached (3).
 
 
 %% Handling input arguments

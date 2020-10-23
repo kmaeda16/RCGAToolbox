@@ -13,8 +13,8 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 % 
 % [INPUT]
 % model     :  An IQMmodel object, the name of SBML file, the function 
-%              handle for an ODE function, or the function handle for a 
-%              MEXed model.
+%              handle for an ODE function (IQM Tools format), the function 
+%              handle for a MEXed model, or the C source code.
 % tspan     :  [t0, tf] or [t0, t1, ..., tf] (default: [0 10]).
 % y0        :  Initial value vector (default: Values stored in model).
 % param     :  Parameter value vector (default: Values stored in model).

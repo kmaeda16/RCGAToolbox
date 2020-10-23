@@ -1,5 +1,5 @@
 % Script InitTransition
-% This script is called by RCGA_Main
+% This script is called by RCGA_Main.
 
 Results.Transition.time = [];
 Results.Transition.neval = [];

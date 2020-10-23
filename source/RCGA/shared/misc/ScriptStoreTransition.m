@@ -1,5 +1,5 @@
 % Script StoreTransition
-% This script is called by RCGA_Main
+% This script is called by RCGA_Main.
 
 Results.Transition.time(end+1,1) = elapsedTime;
 Results.Transition.neval(end+1,1) = neval;

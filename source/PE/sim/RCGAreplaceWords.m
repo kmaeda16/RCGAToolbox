@@ -1,21 +1,23 @@
-function [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name,list)
-% RCGAreplaceWords replaces provided words with the provided words + 0,
-% which avoids errors caused by using reserved words.
+function [ fout_name, flag ] = RCGAreplaceWords(fin_name, fout_name, list)
+% RCGAreplaceWords replaces "word" in list with "word0", which avoids
+% errors caused by wrongly used reserved words. Use this function when the
+% function mexcompileIQM gives you errors because of C-language-reserved
+% words wrongly used in a C-source code.
 % 
 % [SYNTAX]
 % [ fout_name, flag ] = RCGAreplaceWords(fin_name)
-% [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name)
-% [ fout_name, flag ] = RCGAreplaceWords(fin_name,fout_name,list)
+% [ fout_name, flag ] = RCGAreplaceWords(fin_name, fout_name)
+% [ fout_name, flag ] = RCGAreplaceWords(fin_name, fout_name, list)
 % 
 % [INPUT]
-% fin_name  :  Input file name
-% fout_name :  Output file name (default: 'inputfile_mod.txt' if fin_name =
-%              'inputfile.txt'.
-% list      :  Experimental data (IQMmeasurement) or filename (default: Some
-%              of reserved words for C language. See the code below)
+% fin_name  :  Name of the input file.
+% fout_name :  Name of the output file (default: 'inputfile_mod.txt' if 
+%              fin_name = 'inputfile.txt'.
+% list      :  Cell array of words to be replaced (default: Some of 
+%              reserved words for C language. See the codes below).
 % 
 % [OUTPUT]
-% fout_name :  Output file name.
+% fout_name :  Name of the output file.
 % flag      :  flag = 0 for successs, and flag = 1 for error. 
 
 

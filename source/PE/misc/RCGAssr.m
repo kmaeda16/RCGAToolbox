@@ -1,21 +1,25 @@
-function f = RCGAssr(param, Simulation, modelfun, mst, simopts)
-% RCGAssr calculates the sum of squared resudials between simulation and
-% experimental data
+function ssr = RCGAssr(param, Simulation, model, mst, simopts)
+% RCGAssr calculates the sum of squared resudials (SSR) between simulation
+% and experimental data.
 % 
 % [SYNTAX]
-% f = RCGAssr(x, Simulation, modelfun, mst)
-% f = RCGAssr(x, Simulation, modelfun, mst, simopts)
+% ssr = RCGAssr(param, Simulation, model, mst)
+% ssr = RCGAssr(param, Simulation, model, mst, simopts)
 % 
 % [INPUT]
-% param      :  Parameter value vector
-% Simulation :  Function handle for Simulation_*
-% modelfun   :  Function handle for model (odefun or mex)
-% mst        :  Experimental data (IQMmeasurement)
-% simopts    :  Structure with integrator options. Fields depend on
-%               Simulation_*. See 'help Simulation_'.
+% param      :  Parameter value vector.
+% Simulation :  Function handle for RCGAsimulateODEXX, RCGAsimulateSTB, or
+%               RCGAsimulateMEX.
+% model      :  Function handle for an ODE function (IQM Tools format) or a 
+%               MEXed model.
+% mst        :  Experimental data (An IQMmeasurement object).
+% simopts    :  Solver option structure. The fields depend on fast_flag. 
+%               For fast_flag = 0, 1, and 2, see 'help RCGAsimulateODEXX', 
+%               'help RCGAsimulateSTB', 'help RCGAsimulateMEX', 
+%               respectively.
 % 
 % [OUTPUT]
-% f          :  Objective function value (scaler)
+% ssr        :  Sum of squared resudials (SSR).
 
 
 %% Handling inputs
@@ -24,7 +28,7 @@ if nargin == 4
 end
 
 
-%% Converting IQMmeasuremen into structure
+%% Converting IQMmeasurement into structure
 mst = struct(mst);
 
 
@@ -40,15 +44,15 @@ end
 
 
 %% Running simulation
-y0 = modelfun();
-[ ~, Y ] = feval(Simulation, modelfun, tspan, y0, param, simopts);
+y0 = model();
+[ ~, Y ] = feval(Simulation, model, tspan, y0, param, simopts);
 
 
-%% If simulation faild, return f = 1e+10
+%% If simulation faild, return ssr = 1e+10
 [n_row, ~] = size(Y);
 if max(max(isnan(Y))) || length(tspan) ~= n_row
     warning('Simulation failed!');
-    f = 1e+10;
+    ssr = 1e+10;
     return;
 end
 
@@ -63,14 +67,14 @@ end
 
 
 %% Calculating SSR
-f = 0;
+ssr = 0;
 for i = 1 : n_row
     for j = 1 : n_col
         if ~isnan(Y_exp(i,j))
-            % f = f + abs( Y_sim(i,j) - Y_exp(i,j) );
-            % f = f + abs( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) );
-            f = f + ( Y_sim(i,j) - Y_exp(i,j) ) ^ 2;
-            % f = f + ( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) ) ^ 2;
+            % ssr = ssr + abs( Y_sim(i,j) - Y_exp(i,j) );
+            % ssr = ssr + abs( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) );
+            ssr = ssr + ( Y_sim(i,j) - Y_exp(i,j) ) ^ 2;
+            % ssr = ssr + ( ( Y_sim(i,j) - Y_exp(i,j) ) / Y_exp(i,j) ) ^ 2;
         end
     end
 end

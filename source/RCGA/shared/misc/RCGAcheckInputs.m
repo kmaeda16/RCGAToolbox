@@ -1,4 +1,4 @@
-function [problem, opts] = RCGAcheckInputs(problem, opts, RCGA_Type)
+function [problem, opts] = RCGAcheckInputs(problem, opts, RCGAfun)
 % RCGAcheckInputs checks problem and opts and sets default values.
 % 
 % [SYNTAX]
@@ -45,14 +45,18 @@ function [problem, opts] = RCGAcheckInputs(problem, opts, RCGA_Type)
 %                 report function.
 %              - opts.finalreportfun: Function handle for the final report 
 %                 function.
-% RCGA_Type :  String that specifies the type of RCGA: 'RCGA_UNDXMGG',
-%              'RCGA_REXstarJGG', or 'RCGA_CustomRCGA'
+% RCGAfun   :  Function handle for RCGA_UNDXMGG, RCGA_REXstarJGG,
+%              RCGA_CustomRCGA.
 % 
 % [OUTPUT]
 % problem   :  Problem structure with default values assigned to empty 
 %              fields.
 % opts      :  Option structure with default values assigned to empty 
 %              fields.
+
+
+
+RCGA_Type = func2str(RCGAfun);
 
 
 %% Checking RCGA_Type
