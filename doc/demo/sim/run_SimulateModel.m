@@ -1,19 +1,19 @@
-% This script demonstrates how to run simulations using RCGAToolbox.
+% This script demonstrates how to run simulation using RCGAToolbox.
 
 
 clearvars;
 
 % =============== Model =============== %
-% model = 'ExampleModel.xml'; % SBML File (IQM Tools required)
-% model = IQMmodel('ExampleModel.xml'); % Creating IQMmodel (IQM Tools required)
-model = 'ExampleModel_odefun.m'; % MATLAB ODE Function File
-% model = 'ExampleModel_mex.c'; % C ODE File (IQM Tools required)
-% model = 'ExampleModel_mex.mexw64'; % MEX ODE File for Windows
-% model = 'ExampleModel_mex.mexmaci64'; % MEX ODE File for macOS
-% model = 'ExampleModel_mex.mexa64'; % MEX ODE File for Linux
+% model = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)
+% model = IQMmodel('Model_Example_SBML.xml'); % Creating an IQMmodel object (IQM Tools required)
+model = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
+% model = 'Model_Example_mex.c'; % C source code (IQM Tools required)
+% model = 'Model_Example_mex.mexw64'; % MEX model for Windows
+% model = 'Model_Example_mex.mexmaci64'; % MEX model file for macOS
+% model = 'Model_Example_mex.mexa64'; % MEX model file for Linux
 
 % =============== Time ================ %
-tspan = 0 : 0.2 : 20;
+tspan = 0 : 0.1 : 10;
 
 % ========= Initial Condition ========= %
 y0(1) = 0; % X1

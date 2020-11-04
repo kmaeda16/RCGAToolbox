@@ -21,7 +21,7 @@ title('Original');
 iqmmodel1 = RCGAreadConciseODEfile('Model_Example_conciseOdefun.m');
 
 figure;
-[T, Y] = RCGAsimulate(iqmmodel1);
+[T, Y] = RCGAsimulate(iqmmodel1); % Model_Example_odefun.m automatically created.
 plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
 ylabel('Concentration');
