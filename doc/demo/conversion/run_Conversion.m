@@ -1,18 +1,18 @@
-% This script demonstrates different file convresions. IQM Tools are
+% This script demonstrates different format convresions. IQM Tools are
 % required for the demonstration.
 
 clear all;
 
 %% Simulate the model in Model_Example_conciseOdefun.m
 figure;
-tspan = [0 10];
+tspan = 0 : 0.1 : 10;
 y0(1) = 0.000000e+00;
 y0(2) = 0.000000e+00;
 [T, Y] = ode23s(@Model_Example_conciseOdefun,tspan,y0);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('Original');
 
 
@@ -22,10 +22,10 @@ iqmmodel1 = RCGAreadConciseODEfile('Model_Example_conciseOdefun.m');
 
 figure;
 [T, Y] = RCGAsimulate(iqmmodel1);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('Concise ODE file (RCGAToolbox format) --> IQMmodel object');
 
 
@@ -34,14 +34,14 @@ title('Concise ODE file (RCGAToolbox format) --> IQMmodel object');
 RCGAcreateConciseODEfile(iqmmodel1,'Model_Example_conciseOdefun_1.m');
 
 figure;
-tspan = [0 10];
+tspan = 0 : 0.1 : 10;
 y0(1) = 0.000000e+00;
 y0(2) = 0.000000e+00;
 [T, Y] = ode23s(@Model_Example_conciseOdefun_1,tspan,y0);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('IQMmodel object --> Concise ODE file (RCGAToolbox format)');
 
 
@@ -51,10 +51,10 @@ IQMexportSBML(iqmmodel1,'Model_Example_SBML.xml');
 
 figure;
 [T, Y] = RCGAsimulate('Model_Example_SBML.xml'); % Model_Example_SBML_odefun.m automatically created.
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('IQMmodel object --> SBML file');
 
 
@@ -63,14 +63,14 @@ title('IQMmodel object --> SBML file');
 RCGAcreateConciseODEfile('Model_Example_SBML.xml','Model_Example_conciseOdefun_2.m');
 
 figure;
-tspan = [0 10];
+tspan = 0 : 0.1 : 10;
 y0(1) = 0.000000e+00;
 y0(2) = 0.000000e+00;
 [T, Y] = ode23s(@Model_Example_conciseOdefun_2,tspan,y0);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('SBML file --> Concise ODE file (RCGAToolbox format)');
 
 
@@ -80,10 +80,10 @@ iqmmodel2 = IQMmodel('Model_Example_SBML.xml');
 
 figure;
 [T, Y] = RCGAsimulate(iqmmodel2); % Model_Example_SBML_odefun.m automatically created.
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('SBML file --> IQMmodel object');
 
 
@@ -94,10 +94,10 @@ RCGAcreateODEfile(iqmmodel1,'Model_Example_odefun_1.m');
 
 figure;
 [T, Y] = RCGAsimulate(@Model_Example_odefun_1);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('IQMmodel object --> ODE file (IQM Tools format)');
 
 
@@ -107,10 +107,10 @@ RCGAcreateODEfile('Model_Example_SBML.xml','Model_Example_odefun_2.m');
 
 figure;
 [T, Y] = RCGAsimulate(@Model_Example_odefun_2);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('SBML file --> ODE file (IQM Tools format)');
 
 
@@ -121,10 +121,10 @@ RCGAmakeMEXmodel(iqmmodel1,'Model_Example_C',1);
 
 figure;
 [T, Y] = RCGAsimulate('Model_Example_C.c'); % Model_Example_C.mex* automatically generated.
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('IQMmodel object --> C source code');
 
 %% C source code --> MEX file
@@ -133,10 +133,10 @@ mexcompileIQM('Model_Example_C');
 
 figure;
 [T, Y] = RCGAsimulate(@Model_Example_C);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('C source code --> MEX file');
 
 
@@ -147,10 +147,10 @@ RCGAmakeMEXmodel(iqmmodel1,'Model_Example_mex_1');
 
 figure;
 [T, Y] = RCGAsimulate(@Model_Example_mex_1);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('IQMmodel --> MEX file');
 
 
@@ -160,8 +160,8 @@ RCGAmakeMEXmodel('Model_Example_SBML.xml','Model_Example_mex_2');
 
 figure;
 [T, Y] = RCGAsimulate(@Model_Example_mex_2);
-plot(T, Y);
+plot(T,Y,'-','LineWidth',2);
 xlabel('Time');
-ylabel('States');
-legend('X1','X2');
+ylabel('Concentration');
+legend('X_1','X_2','Location','best');
 title('SBML file --> MEX file');
