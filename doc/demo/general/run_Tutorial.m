@@ -1,33 +1,19 @@
 % This script demonstrates how to run a real-coded genetic algorithm to
-% estimate model parameters in an example kinetic model.
+% solve an example constrained optimization problem.
 % 
-% ------------------------ Example Kinetic Model ------------------------
-% - Initial States
-% S1 = 0
-% S2 = 0
-% S3 = 0
+% --------------------- Example Problem ---------------------
+% Minimize:
+%   f = x(1)^2 + x(2)^2 + ... + x(10)^2
 % 
-% - Model Parameters
-% S4 = 0
-% S0 = 5
-% J1_Vmax = 5.5
-% J1_n = 4
-% J1_K = 0.5
-% J2_J2_k = 0.1
-% J3_J3_k = 0.1
-% J0_J0_k = 0.01
+% Subject to:
+%   g(1) = x(1) * x(2) + 1 <= 0
+%   g(2) = x(1) + x(2) + 1 <= 0
+% 	-5.12 <= x(i) <= 5.12 for all i
 % 
-% - Reaction Kinetics
-% J1 = J1_Vmax * power(S1, J1_n) / (power(J1_K, J1_n) + power(S1, J1_n))
-% J2 = J2_J2_k * S2
-% J3 = J3_J3_k * S3
-% J0 = J0_J0_k * S0
 % 
-% - Differential Equations
-% S1_dot = J0 - J1
-% S2_dot = J1 - J2
-% S3_dot = J2 - J3
-% -----------------------------------------------------------------------
+% Global minimum is f = 3, g(1) = 0, g(2) = 0 at x = (-1.618, 0.6180, 0, 0,
+% 0, 0, 0, 0, 0, 0) or at x = (0.6180, -1.618, 0, 0, 0, 0, 0, 0, 0, 0)
+% -----------------------------------------------------------
 
 
 clearvars;
@@ -35,14 +21,14 @@ clearvars;
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Decision Variables
 problem.n_constraint = 2; % # Constraints
-problem.fitnessfun = @fitness_Example; % Fitness Function
-problem.decodingfun = @decoding_Example; % Decoding Function
+problem.fitnessfun = @Fitness_Example; % Fitness Function
+problem.decodingfun = @Decoding_Example; % Decoding Function
 
 % ========= Option Settings ========== %
 opts.n_population = 200; % Population Size
 opts.n_children = 100; % # Children per Generation
-opts.n_parent = problem.n_gene + 1; % # Parents used for REXstar
-opts.t_rexstar = 6.0; % Step-size parameter for REXstar
+opts.n_parent = problem.n_gene + 1; % # Parents Used for REXstar
+opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
 opts.Pf = 4.500000e-01; % Pf
 opts.n_generation = 1000; % Max # Generations
@@ -54,7 +40,7 @@ opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
-opts.n_par = 1; % # Workers
+opts.n_par = 1; % # Workers for Parallel Computation
 opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %

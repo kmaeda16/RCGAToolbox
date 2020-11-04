@@ -21,4 +21,4 @@
 % 0, 0, 0, 0, 0, 0) or at x = (0.6180, -1.618, 0, 0, 0, 0, 0, 0, 0, 0)
 % -----------------------------------------------------------
 
-RCGAToolbox_Mission_Control;
+RCGAToolbox_MissionControl;

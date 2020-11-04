@@ -1,8 +1,8 @@
-function [f, g] = fitness_Example(x)
-% fitnessExample is an example of fitness function.
+function [f, g] = Fitness_Example(x)
+% Fitness_Example is an example of fitness function.
 % 
 % [SYNTAX]
-% [f, g] = fitnessExample(x)
+% [f, g] = Fitness_Example(x)
 % 
 % [INPUT]
 % x : Decision variables.

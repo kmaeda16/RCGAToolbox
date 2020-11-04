@@ -44,8 +44,8 @@ fprintf(out,'%% ========= Option Settings ========== %%\n');
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
-    fprintf(out,'opts.n_parent = problem.n_gene + 1; %% # Parents used for REXstar\n');
-    fprintf(out,'opts.t_rexstar = 6.0; %% Step-size parameter for REXstar\n');
+    fprintf(out,'opts.n_parent = problem.n_gene + 1; %% # Parents Used for REXstar\n');
+    fprintf(out,'opts.t_rexstar = 6.0; %% Step-size Parameter for REXstar\n');
     fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
 end
 fprintf(out,'opts.Pf = %e; %% Pf\n',app.Pf.Value);
@@ -58,7 +58,7 @@ fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.Transi
 fprintf(out,'opts.out_best = ''%s''; %% Best Individual File Name\n',app.BestIndividualFileName.Value);
 fprintf(out,'opts.out_population = ''%s''; %% Final Population File Name\n',app.FinalPopulationFileName.Value);
 fprintf(out,'opts.out_report = ''%s''; %% Report File Name\n',app.ReportFileName.Value);
-fprintf(out,'opts.n_par = %d; %% # Workers\n',app.N_Workers.Value);
+fprintf(out,'opts.n_par = %d; %% # Workers for Parallel Computation\n',app.N_Workers.Value);
 if strcmp(app.LocalSwitch.Value,'Off')
     fprintf(out,'opts.local = 0; %% Local Optimizer\n');
 else

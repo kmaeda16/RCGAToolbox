@@ -21,8 +21,8 @@ clearvars;
 % ========= Problem Settings ========= %
 problem.n_gene = 10; % # Decision Variables
 problem.n_constraint = 2; % # Constraints
-problem.fitnessfun = @fitness_Example; % Fitness Function
-problem.decodingfun = @decoding_Example; % Decoding Function
+problem.fitnessfun = @Fitness_Example; % Fitness Function
+problem.decodingfun = @Decoding_Example; % Decoding Function
 
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG(problem); % UNDX/MGG
