@@ -23,7 +23,7 @@ end
 
 plot(T_exp,Y_exp,'o','LineWidth',2);
 set(gca,'FontSize',10,'FontName','Arial');
-legend(statename);
+legend(statename,'Location','best');
 hold on;
 ax = gca;
 ax.ColorOrderIndex = 1;
@@ -35,4 +35,4 @@ ylabel(y_label);
 
 T = [ T_sim; T_exp ];
 xlim( [ min(T) max(T) ] );
-ylim( [ min(min(Y_exp)) max(max(Y_exp)) ] );
+ylim( [ min(min(Y_exp)) max(max(Y_exp))*1.05 ] );

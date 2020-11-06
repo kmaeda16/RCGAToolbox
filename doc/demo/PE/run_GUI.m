@@ -7,4 +7,4 @@
 % 3. While RCGAs are running, output files are created in the current
 %    working directry.
 
-RCGAToolbox_Mission_Control_PE;
+RCGAToolbox_MissionControl_PE;

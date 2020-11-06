@@ -2,32 +2,30 @@
 % estimate model parameters in an example kinetic model.
 % 
 % ------------------------ Example Kinetic Model ------------------------
-% - Initial States
-% S1 = 0
-% S2 = 0
-% S3 = 0
+% - INITIAL CONDITION
+% X1 = 0
+% X2 = 0
 % 
-% - Model Parameters
-% S4 = 0
-% S0 = 5
-% J1_Vmax = 5.5
-% J1_n = 4
-% J1_K = 0.5
-% J2_J2_k = 0.1
-% J3_J3_k = 0.1
-% J0_J0_k = 0.01
-% compart = 1
+% - PARAMETERS
+% X0 = 0.1
+% k1 = 1
+% k2 = 1
+% k3 = 1
+% K2 = 1
+% K3 = 1
+% rootCompartment = 1
 % 
-% - Reaction Kinetics
-% J1 = J1_Vmax * power(S1, J1_n) / (power(J1_K, J1_n) + power(S1, J1_n))
-% J2 = J2_J2_k * S2
-% J3 = J3_J3_k * S3
-% J0 = J0_J0_k * S0
+% - VARIABLES
+% X12 = X1 + X2
 % 
-% - Differential Equations
-% S1_dot = ( J0 - J1 ) / compart
-% S2_dot = ( J1 - J2 ) / compart
-% S3_dot = ( J2 - J3 ) / compart
+% - REACTIONS
+% v1 = k1 * X0
+% v2 = k2 * (X1/rootCompartment) / (K2 + (X1/rootCompartment))
+% v3 = k3 * (X2/rootCompartment) / (K3 + (X2/rootCompartment))
+% 
+% - BALANCE
+% X1_dot = v1 - v2;
+% X2_dot = v2 - v3;
 % -----------------------------------------------------------------------
 
 
@@ -36,18 +34,18 @@ clearvars;
 % ========= Problem Settings ========= %
 % modelfile = 'model_Example.xml'; % SBML File
 % modelfile = IQMmodel('model_Example.xml'); % Creating IQMmodel
-modelfile = 'model_Example_odefun.m'; % MATLAB ODE Function File
-% modelfile = 'model_Example_mex.c'; % C ODE File
-% modelfile = 'model_Example_mex.mexw64'; % MEX ODE File for Windows
-% modelfile = 'model_Example_mex.mexmaci64'; % MEX ODE File for macOS
-% modelfile = 'model_Example_mex.mexa64'; % MEX ODE File for Linux
-decodingfun = @decoding_Example; % Decoding Function
-measurement = 'measurement_Example.xls'; % Measurement File
+modelfile = 'Model_Example_odefun.m'; % MATLAB ODE Function File
+% modelfile = 'Model_Example_mex.c'; % C ODE File
+% modelfile = 'Model_Example_mex.mexw64'; % MEX ODE File for Windows
+% modelfile = 'Model_Example_mex.mexmaci64'; % MEX ODE File for macOS
+% modelfile = 'Model_Example_mex.mexa64'; % MEX ODE File for Linux
+decodingfun = @Decoding_Example; % Decoding Function
+measurement = 'Measurement_Example.xls'; % Measurement File
 
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size
 opts.n_children = 25; % # Children per Generation
-% opts.n_parent = n_gene + 1; % # Parents used for REXstar
+% opts.n_parent = n_gene + 1; % # Parents Used for REXstar
 opts.t_rexstar = 6.0; % Step-size parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
 opts.n_generation = 200; % Max # Generations
@@ -59,10 +57,10 @@ opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
-opts.n_par = 1; % # Workders
+opts.n_par = 1; % # Workers for Parallel Computation
 fast_flag = 0; % # fast_flag (0: MATLAB ODEXX)
-% fast_flag = 1; % # fast_flag (1: SundialsTB CVODE)
-% fast_flag = 2; % # fast_flag (2: IQMTools CVODE MEX)
+% fast_flag = 1; % # fast_flag (1: SundialsTB CVODE) (SundialsTB required)
+% fast_flag = 2; % # fast_flag (2: IQM Tools CVODE MEX) (IQM Tools required)
 opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %

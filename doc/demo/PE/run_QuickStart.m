@@ -2,41 +2,39 @@
 % estimate model parameters in an example kinetic model.
 % 
 % ------------------------ Example Kinetic Model ------------------------
-% - Initial States
-% S1 = 0
-% S2 = 0
-% S3 = 0
+% - INITIAL CONDITION
+% X1 = 0
+% X2 = 0
 % 
-% - Model Parameters
-% S4 = 0
-% S0 = 5
-% J1_Vmax = 5.5
-% J1_n = 4
-% J1_K = 0.5
-% J2_J2_k = 0.1
-% J3_J3_k = 0.1
-% J0_J0_k = 0.01
-% compart = 1
+% - PARAMETERS
+% X0 = 0.1
+% k1 = 1
+% k2 = 1
+% k3 = 1
+% K2 = 1
+% K3 = 1
+% rootCompartment = 1
 % 
-% - Reaction Kinetics
-% J1 = J1_Vmax * power(S1, J1_n) / (power(J1_K, J1_n) + power(S1, J1_n))
-% J2 = J2_J2_k * S2
-% J3 = J3_J3_k * S3
-% J0 = J0_J0_k * S0
+% - VARIABLES
+% X12 = X1 + X2
 % 
-% - Differential Equations
-% S1_dot = ( J0 - J1 ) / compart
-% S2_dot = ( J1 - J2 ) / compart
-% S3_dot = ( J2 - J3 ) / compart
+% - REACTIONS
+% v1 = k1 * X0
+% v2 = k2 * (X1/rootCompartment) / (K2 + (X1/rootCompartment))
+% v3 = k3 * (X2/rootCompartment) / (K3 + (X2/rootCompartment))
+% 
+% - BALANCE
+% X1_dot = v1 - v2;
+% X2_dot = v2 - v3;
 % -----------------------------------------------------------------------
 
 
 clearvars;
 
 % ========= Problem Settings ========= %
-modelfile = 'model_Example_odefun.m'; % Model File
-decodingfun = @decoding_Example; % Decoding Function
-measurement = 'measurement_Example.xls'; % Measurement File
+modelfile = 'Model_Example_odefun.m'; % Model File
+decodingfun = @Decoding_Example; % Decoding Function
+measurement = 'Measurement_Example.xls'; % Measurement File
 
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement); % UNDX/MGG
