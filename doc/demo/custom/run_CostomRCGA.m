@@ -25,6 +25,6 @@ problem.fitnessfun = @fitness_Example; % Fitness Function
 problem.decodingfun = @decoding_Example; % Decoding Function
 
 % ========== Executing RCGA ========== %
-% ExampleGenerationAlteration is a user-defined custom generation
-% alteration function
+% GenerationAlternation_Example is a user-defined custom generation
+% alternation function
 Results = RCGA_CustomRCGA(problem, @GenerationAlternation_Example);
