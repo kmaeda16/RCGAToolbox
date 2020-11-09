@@ -35,4 +35,6 @@ ylabel(y_label);
 
 T = [ T_sim; T_exp ];
 xlim( [ min(T) max(T) ] );
-ylim( [ min(min(Y_exp)) max(max(Y_exp))*1.05 ] );
+miny = min(min(Y_exp));
+maxy = max(max(Y_exp));
+ylim( [ miny, maxy + ( maxy - miny ) * 0.05 ] );

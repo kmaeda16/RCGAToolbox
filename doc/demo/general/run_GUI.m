@@ -21,4 +21,9 @@
 % 0, 0, 0, 0, 0, 0) or at x = (0.6180, -1.618, 0, 0, 0, 0, 0, 0, 0, 0)
 % -----------------------------------------------------------
 
+
+% In some versions of MATLAB, you get warnings when the GUI opens. This is
+% a known bug of MATLAB. Turn off the warning using warning('off', ...)
+warning('off', 'MATLAB:subscripting:noSubscriptsSpecified');
+
 RCGAToolbox_MissionControl;
