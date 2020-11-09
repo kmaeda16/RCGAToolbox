@@ -32,13 +32,13 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-% modelfile = 'Model_Example_SBML.xml'; % SBML File
-% modelfile = IQMmodel('Model_Example_SBML.xml'); % Creating IQMmodel
-modelfile = 'Model_Example_odefun.m'; % MATLAB ODE Function File
-% modelfile = 'Model_Example_SBML_mex.c'; % C ODE File
-% modelfile = 'Model_Example_SBML_mex.mexw64'; % MEX ODE File for Windows
-% modelfile = 'Model_Example_SBML_mex.mexmaci64'; % MEX ODE File for macOS
-% modelfile = 'Model_Example_SBML_mex.mexa64'; % MEX ODE File for Linux
+% modelfile = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)
+% modelfile = IQMmodel('Model_Example_SBML.xml'); % Creating an IQMmodel object (IQM Tools required)
+modelfile = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
+% modelfile = 'Model_Example_SBML_mex.c'; % C source code (IQM Tools required)
+% modelfile = 'Model_Example_SBML_mex.mexw64'; % MEX model for Windows
+% modelfile = 'Model_Example_SBML_mex.mexmaci64'; % MEX model file for macOS
+% modelfile = 'Model_Example_SBML_mex.mexa64'; % MEX model file for Linux
 decodingfun = @Decoding_Example; % Decoding Function
 measurement = 'Measurement_Example.xls'; % Measurement File
 
@@ -64,7 +64,7 @@ fast_flag = 0; % # fast_flag (0: MATLAB ODEXX)
 opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %
-rng(1); % Random Seed
+rng(0); % Random Seed
 
 % ========== Executing RCGA ========== %
 clear RCGAssr;

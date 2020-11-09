@@ -44,7 +44,7 @@ opts.n_par = 1; % # Workers for Parallel Computation
 opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %
-rng(1); % Random Seed
+rng(0); % Random Seed
 
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG(problem,opts); % UNDX/MGG
