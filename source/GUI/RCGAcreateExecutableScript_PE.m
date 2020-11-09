@@ -23,10 +23,17 @@ fprintf(out,'\n');
 %% Problem Settings
 fprintf(out,'%% ========= Problem Settings ========= %%\n');
 
-[modelpath, modelfile, ~] = fileparts(app.Model.Value);
+[modelpath, modelfile, modelext] = fileparts(app.Model.Value);
 fprintf(out,'modelpath = ''%s''; %% Path to Model File\n',modelpath);
 fprintf(out,'addpath(modelpath);\n');
-fprintf(out,'modelfile = ''%s''; %% Model File\n',modelfile);
+addpath(modelpath)
+if exist(modelfile)
+    fprintf(out,'modelfile = @%s; %% Model File\n',modelfile);
+else
+    modelfile = strcat(modelpath,'/',modelfile,modelext);
+    fprintf(out,'modelfile = ''%s''; %% Model File\n',modelfile);
+end
+
 
 [decodingpath, decodingfile, ~] = fileparts(app.DecodingFunction.Value);
 fprintf(out,'decodingpath = ''%s''; %% Path to Decoding Function File\n',decodingpath);

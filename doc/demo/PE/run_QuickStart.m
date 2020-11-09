@@ -32,7 +32,7 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-modelfile = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
+modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)
 decodingfun = @Decoding_Example; % Decoding Function
 measurement = 'Measurement_Example.xls'; % Measurement File
 

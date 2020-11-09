@@ -6,7 +6,8 @@ clearvars;
 % =============== Model =============== %
 % model = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)
 % model = IQMmodel('Model_Example_SBML.xml'); % Creating an IQMmodel object (IQM Tools required)
-model = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
+model = @Model_Example_odefun; % ODE file (IQM Tools format)
+% model = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
 % model = 'Model_Example_mex.c'; % C source code (IQM Tools required)
 % model = 'Model_Example_mex.mexw64'; % MEX model for Windows
 % model = 'Model_Example_mex.mexmaci64'; % MEX model file for macOS

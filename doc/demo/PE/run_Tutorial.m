@@ -34,7 +34,8 @@ clearvars;
 % ========= Problem Settings ========= %
 % modelfile = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)
 % modelfile = IQMmodel('Model_Example_SBML.xml'); % Creating an IQMmodel object (IQM Tools required)
-modelfile = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
+modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)
+% modelfile = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
 % modelfile = 'Model_Example_SBML_mex.c'; % C source code (IQM Tools required)
 % modelfile = 'Model_Example_SBML_mex.mexw64'; % MEX model for Windows
 % modelfile = 'Model_Example_SBML_mex.mexmaci64'; % MEX model file for macOS
