@@ -143,4 +143,17 @@ end
 fclose(fileID);
 
 
+if isempty(ModelStruct.states)
+    warning('states is empty!');
+end
+
+if isempty(ModelStruct.parameters)
+    warning('parameters is empty!');
+end
+
+if isempty(ModelStruct.reactions)
+    warning('reactions is empty!');
+end
+
+
 model = IQMmodel(ModelStruct);
