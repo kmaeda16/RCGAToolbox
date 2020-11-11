@@ -76,9 +76,9 @@ end
 flg2 = 1;
 try
     %========= TEST =========%
-    model = RCGAconvertODE2IQMmodel('ExampleModel_original.m');
-    IQMexportSBML(model,'ExampleModel_converted.xml');
-    model = IQMmodel('ExampleModel_converted.xml');
+    model = RCGAreadConciseODEfile('Model_Example_conciseOdefun.m');
+    IQMexportSBML(model,'Model_Example_conciseOdefun_SBML.xml');
+    model = IQMmodel('Model_Example_conciseOdefun_SBML.xml');
     %========================%
 catch ME
     warning(ME.message);
@@ -111,7 +111,7 @@ end
 flg2 = 1;
 try
     %========= TEST =========%
-    model = IQMmodel('ExampleModel_converted.xml');
+    model = IQMmodel('Model_Example_SBML.xml');
     simdata = IQMPsimulate(model);
     %========================%
 catch ME
@@ -289,4 +289,3 @@ if Flag(6) == 0
 else
     fprintf('Not Available\n');
 end
-
