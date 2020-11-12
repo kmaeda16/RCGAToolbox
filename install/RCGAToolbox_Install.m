@@ -7,3 +7,5 @@ cd install;
 f = fullfile(currentdir,'source');
 addpath(genpath(f));
 savepath;
+
+fprintf('Done!\n');
