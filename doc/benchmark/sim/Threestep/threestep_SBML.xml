@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model name="threestep">
+    <notes>
+      <html xmlns="http://www.w3.org/1999/xhtml">
+        <body>
+Simple metabolic pathway with three enzymes.</body>
+      </html>
+    </notes>
+    <listOfCompartments>
+      <compartment id="rootCompartment" name="rootCompartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="G1" name="G1" compartment="rootCompartment" initialAmount="0.66667" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="G2" name="G2" compartment="rootCompartment" initialAmount="0.57254" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="G3" name="G3" compartment="rootCompartment" initialAmount="0.41758" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="E1" name="E1" compartment="rootCompartment" initialAmount="0.4" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="E2" name="E2" compartment="rootCompartment" initialAmount="0.36409" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="E3" name="E3" compartment="rootCompartment" initialAmount="0.29457" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="M1" name="M1" compartment="rootCompartment" initialAmount="1.419" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="M2" name="M2" compartment="rootCompartment" initialAmount="0.93464" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="S" name="S" value="0.1" constant="true"/>
+      <parameter id="P" name="P" value="0.05" constant="true"/>
+      <parameter id="V1" name="V1" value="1" constant="true"/>
+      <parameter id="Ki1" name="Ki1" value="1" constant="true"/>
+      <parameter id="ni1" name="ni1" value="2" constant="true"/>
+      <parameter id="Ka1" name="Ka1" value="1" constant="true"/>
+      <parameter id="na1" name="na1" value="2" constant="true"/>
+      <parameter id="k1" name="k1" value="1" constant="true"/>
+      <parameter id="V2" name="V2" value="1" constant="true"/>
+      <parameter id="Ki2" name="Ki2" value="1" constant="true"/>
+      <parameter id="ni2" name="ni2" value="2" constant="true"/>
+      <parameter id="Ka2" name="Ka2" value="1" constant="true"/>
+      <parameter id="na2" name="na2" value="2" constant="true"/>
+      <parameter id="k2" name="k2" value="1" constant="true"/>
+      <parameter id="V3" name="V3" value="1" constant="true"/>
+      <parameter id="Ki3" name="Ki3" value="1" constant="true"/>
+      <parameter id="ni3" name="ni3" value="2" constant="true"/>
+      <parameter id="Ka3" name="Ka3" value="1" constant="true"/>
+      <parameter id="na3" name="na3" value="2" constant="true"/>
+      <parameter id="k3" name="k3" value="1" constant="true"/>
+      <parameter id="V4" name="V4" value="0.1" constant="true"/>
+      <parameter id="K4" name="K4" value="1" constant="true"/>
+      <parameter id="k4" name="k4" value="0.1" constant="true"/>
+      <parameter id="V5" name="V5" value="0.1" constant="true"/>
+      <parameter id="K5" name="K5" value="1" constant="true"/>
+      <parameter id="k5" name="k5" value="0.1" constant="true"/>
+      <parameter id="V6" name="V6" value="0.1" constant="true"/>
+      <parameter id="K6" name="K6" value="1" constant="true"/>
+      <parameter id="k6" name="k6" value="0.1" constant="true"/>
+      <parameter id="kcat1" name="kcat1" value="1" constant="true"/>
+      <parameter id="Km1" name="Km1" value="1" constant="true"/>
+      <parameter id="Km2" name="Km2" value="1" constant="true"/>
+      <parameter id="kcat2" name="kcat2" value="1" constant="true"/>
+      <parameter id="Km3" name="Km3" value="1" constant="true"/>
+      <parameter id="Km4" name="Km4" value="1" constant="true"/>
+      <parameter id="kcat3" name="kcat3" value="1" constant="true"/>
+      <parameter id="Km5" name="Km5" value="1" constant="true"/>
+      <parameter id="Km6" name="Km6" value="1" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="vg1s" name="vg1s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="G1" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> V1 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> P </ci>
+                    <ci> Ki1 </ci>
+                  </apply>
+                  <ci> ni1 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> Ka1 </ci>
+                    <ci> S </ci>
+                  </apply>
+                  <ci> na1 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vg2s" name="vg2s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="G2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> V2 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> P </ci>
+                    <ci> Ki2 </ci>
+                  </apply>
+                  <ci> ni2 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> Ka2 </ci>
+                    <ci> M1 </ci>
+                  </apply>
+                  <ci> na2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vg3s" name="vg3s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="G3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="M2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <ci> V3 </ci>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> P </ci>
+                    <ci> Ki3 </ci>
+                  </apply>
+                  <ci> ni3 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <apply>
+                    <divide/>
+                    <ci> Ka3 </ci>
+                    <ci> M2 </ci>
+                  </apply>
+                  <ci> na3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vg1d" name="vg1d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="G1" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k1 </ci>
+              <ci> G1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vg2d" name="vg2d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="G2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k2 </ci>
+              <ci> G2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vg3d" name="vg3d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="G3" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k3 </ci>
+              <ci> G3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve1s" name="ve1s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="E1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="G1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> V4 </ci>
+                <ci> G1 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> K4 </ci>
+                <ci> G1 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve2s" name="ve2s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="E2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="G2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> V5 </ci>
+                <ci> G2 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> K5 </ci>
+                <ci> G2 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve3s" name="ve3s" reversible="false">
+        <listOfProducts>
+          <speciesReference species="E3" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="G3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> V6 </ci>
+                <ci> G3 </ci>
+              </apply>
+              <apply>
+                <plus/>
+                <ci> K6 </ci>
+                <ci> G3 </ci>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve1d" name="ve1d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="E1" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k4 </ci>
+              <ci> E1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve2d" name="ve2d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="E2" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k5 </ci>
+              <ci> E2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="ve3d" name="ve3d" reversible="false">
+        <listOfReactants>
+          <speciesReference species="E3" stoichiometry="1"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> k6 </ci>
+              <ci> E3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vr1" name="vr1" reversible="false">
+        <listOfProducts>
+          <speciesReference species="M1" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="E1"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcat1 </ci>
+                <ci> E1 </ci>
+                <apply>
+                  <divide/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> Km1 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <ci> S </ci>
+                  <ci> M1 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> S </ci>
+                  <ci> Km1 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> M1 </ci>
+                  <ci> Km2 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vr2" name="vr2" reversible="false">
+        <listOfReactants>
+          <speciesReference species="M1" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M2" stoichiometry="1"/>
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference species="E2"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcat2 </ci>
+                <ci> E2 </ci>
+                <apply>
+                  <divide/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> Km3 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <ci> M1 </ci>
+                  <ci> M2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> M1 </ci>
+                  <ci> Km3 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> M2 </ci>
+                  <ci> Km4 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vr3" name="vr3" reversible="false">
+        <listOfReactants>
+          <speciesReference species="M2" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfModifiers>
+          <modifierSpeciesReference species="E3"/>
+        </listOfModifiers>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> kcat3 </ci>
+                <ci> E3 </ci>
+                <apply>
+                  <divide/>
+                  <cn type="integer"> 1 </cn>
+                  <ci> Km5 </ci>
+                </apply>
+                <apply>
+                  <minus/>
+                  <ci> M2 </ci>
+                  <ci> P </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <cn type="integer"> 1 </cn>
+                <apply>
+                  <divide/>
+                  <ci> M2 </ci>
+                  <ci> Km5 </ci>
+                </apply>
+                <apply>
+                  <divide/>
+                  <ci> P </ci>
+                  <ci> Km6 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

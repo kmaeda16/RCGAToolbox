@@ -1,11 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Created by COPASI version 4.24 (Build 197) on 2019-04-13 19:04 with libSBML version 5.17.0. -->
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
 <sbml xmlns="http://www.sbml.org/sbml/level2/version4" level="2" version="4">
-  <model metaid="COPASI0" id="Maeda2019_AmmoniumTransportAssimilation" name="Maeda2019_AmmoniumTransportAssimilation">
+  <model id="Maeda2019_AmmoniumTransportAssimilation" metaid="COPASI0" name="Maeda2019_AmmoniumTransportAssimilation">
     <notes>
       <body xmlns="http://www.w3.org/1999/xhtml">
-        <pre>The E. coli ammonium transport and assimilation network. This SBML model simulates Kim&apos;s experiment with glucose as a carbon source and external NH4+ = 4 microM for wild type (the refined active transporter model). SBML does not support some of the functions required for the complete simulations shown in the original article. For the complete simulations, please refer to the MATLAB program provided as a part of the original article: Maeda K, Westerhoff HV, Kurata H, Boogerd FC: Ranking network mechanisms by how they fit diverse experiments and deciding on E. coli&apos;s ammonium transport and assimilation network. npj Systems Biology and Applications 2019, 5(1):14, https://doi.org/10.1038/s41540-019-0091-6.</pre>
-      </body>
+     <p>The E. coli ammonium transport and assimilation network. This SBML model simulates Kim's experiment with glucose as a carbon source and external NH4+ = 4 microM for wild type (the refined active transporter model). SBML does not support some of the functions required for the complete simulations shown in the original article. For the complete simulations, please refer to the MATLAB program provided as a part of the original article: Maeda K, Westerhoff HV, Kurata H, Boogerd FC: Ranking network mechanisms by how they fit diverse experiments and deciding on E. coli's ammonium transport and assimilation network. npj Systems Biology and Applications 2019, 5(1):14, https://doi.org/10.1038/s41540-019-0091-6.</p>
+  </body>
     </notes>
     <annotation>
       <COPASI xmlns="http://www.copasi.org/static/sbml">
@@ -20,9 +19,9 @@
         </rdf:RDF>
       </COPASI>
     </annotation>
-    <listOfFunctionDefinitions>
+      <listOfFunctionDefinitions>
       <functionDefinition id="Function_for_vamtb" name="Function for vamtb">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> Kamtbnh </ci>
@@ -69,9 +68,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vdiff" name="Function for vdiff">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> NH3int </ci>
@@ -100,9 +99,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vdead" name="Function for vdead">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GSAMP </ci>
@@ -135,9 +134,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vglndemf" name="Function for vglndemf">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLNdemf </ci>
@@ -159,9 +158,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vglndemn" name="Function for vglndemn">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLNdemn </ci>
@@ -183,9 +182,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vgludemf" name="Function for vgludemf">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLUdemf </ci>
@@ -207,9 +206,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vad" name="Function for vad">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GS </ci>
@@ -242,9 +241,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vgdh" name="Function for vgdh">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLU </ci>
@@ -365,9 +364,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vgludemn" name="Function for vgludemn">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLUdemn </ci>
@@ -389,9 +388,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnk2" name="Function for vutglnk2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -532,9 +531,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnk3" name="Function for vutglnk3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -675,9 +674,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnb1" name="Function for vurglnb1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -761,9 +760,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnb2" name="Function for vurglnb2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -847,9 +846,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnb3" name="Function for vutglnb3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -990,9 +989,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnk3" name="Function for vurglnk3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1076,9 +1075,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnk1" name="Function for vutglnk1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1219,9 +1218,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnb1" name="Function for vutglnb1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1362,9 +1361,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vutglnb2" name="Function for vutglnb2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1505,9 +1504,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnb3" name="Function for vurglnb3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1591,9 +1590,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vgog" name="Function for vgog">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1701,9 +1700,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnk1" name="Function for vurglnk1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -1787,9 +1786,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vgs" name="Function for vgs">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> ADP </ci>
@@ -1957,9 +1956,9 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
       <functionDefinition id="Function_for_vurglnk2" name="Function for vurglnk2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <lambda>
             <bvar>
               <ci> GLN </ci>
@@ -2043,31 +2042,33 @@
             </apply>
           </lambda>
         </math>
-      </functionDefinition>
+            </functionDefinition>
     </listOfFunctionDefinitions>
     <listOfUnitDefinitions>
       <unitDefinition id="time" name="time">
         <listOfUnits>
-          <unit kind="second" exponent="1" scale="0" multiplier="60"/>
+          <unit exponent="1" kind="second" multiplier="60" scale="0"/>
         </listOfUnits>
       </unitDefinition>
       <unitDefinition id="substance" name="substance">
         <listOfUnits>
-          <unit kind="mole" exponent="1" scale="-3" multiplier="1"/>
+          <unit exponent="1" kind="mole" multiplier="1" scale="-3"/>
         </listOfUnits>
       </unitDefinition>
     </listOfUnitDefinitions>
     <listOfCompartments>
-      <compartment metaid="COPASI1" id="default" name="default" spatialDimensions="3" size="1" constant="true">
+      <compartment constant="true" id="default" metaid="COPASI1" name="default" size="1" spatialDimensions="3">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI1">
-              <bqmodel:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000410"/>
-                </rdf:Bag>
-              </bqmodel:is>
-            </rdf:Description>
+	<bqmodel:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/biomodels.sbo/SBO:0000410"/>
+	</rdf:Bag>
+	</bqmodel:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
@@ -2081,10 +2082,10 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </compartment>
+            </compartment>
     </listOfCompartments>
     <listOfSpecies>
-      <species metaid="COPASI2" id="ADP" name="ADP" compartment="default" initialConcentration="0.56" boundaryCondition="true" constant="true">
+      <species boundaryCondition="true" compartment="default" constant="true" id="ADP" initialConcentration="0.56" metaid="COPASI2" name="ADP">
         <annotation>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:dcterms="http://purl.org/dc/terms/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2098,18 +2099,20 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species id="ATP" name="ATP" compartment="default" initialConcentration="9.6" boundaryCondition="true" constant="true"/>
-      <species metaid="COPASI3" id="GLN" name="GLN" compartment="default" initialConcentration="2" boundaryCondition="false" constant="false">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="ATP" initialConcentration="9.6" name="ATP"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GLN" initialConcentration="2" metaid="COPASI3" name="GLN">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI3">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00064"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00064"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2123,17 +2126,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI4" id="GLU" name="GLU" compartment="default" initialConcentration="80" boundaryCondition="false" constant="false">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GLU" initialConcentration="80" metaid="COPASI4" name="GLU">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI4">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00025"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00025"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2147,17 +2152,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI5" id="GS" name="GS" compartment="default" initialConcentration="0.01083759" boundaryCondition="false" constant="false">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GS" initialConcentration="0.01083759" metaid="COPASI5" name="GS">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI5">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/ec-code/6.3.1.2"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/ec-code/6.3.1.2"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2171,18 +2178,20 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species id="GSAMP" name="GSAMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species metaid="COPASI6" id="GlnB" name="GlnB" compartment="default" initialConcentration="0.00065" boundaryCondition="false" constant="false">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GSAMP" initialConcentration="0" name="GSAMP"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnB" initialConcentration="0.00065" metaid="COPASI6" name="GlnB">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI6">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/interpro/IPR002187"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/interpro/IPR002187"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2196,20 +2205,22 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species id="GlnBUMP" name="GlnBUMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species id="GlnBUMP2" name="GlnBUMP2" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species id="GlnBUMP3" name="GlnBUMP3" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species metaid="COPASI7" id="GlnK" name="GlnK" compartment="default" initialConcentration="0.002033376" boundaryCondition="false" constant="false">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnBUMP" initialConcentration="0" name="GlnBUMP"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnBUMP2" initialConcentration="0" name="GlnBUMP2"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnBUMP3" initialConcentration="0" name="GlnBUMP3"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnK" initialConcentration="0.002033376" metaid="COPASI7" name="GlnK">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI7">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://www.biocyc.org/gene?orgid=ECOLI&amp;id=PROTEIN-PII2"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://www.biocyc.org/gene?orgid=ECOLI&amp;id=PROTEIN-PII2"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2223,20 +2234,22 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species id="GlnKUMP" name="GlnKUMP" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species id="GlnKUMP2" name="GlnKUMP2" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species id="GlnKUMP3" name="GlnKUMP3" compartment="default" initialConcentration="0" boundaryCondition="false" constant="false"/>
-      <species metaid="COPASI8" id="NADP" name="NADP" compartment="default" initialConcentration="0.076" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnKUMP" initialConcentration="0" name="GlnKUMP"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnKUMP2" initialConcentration="0" name="GlnKUMP2"/>
+      <species boundaryCondition="false" compartment="default" constant="false" id="GlnKUMP3" initialConcentration="0" name="GlnKUMP3"/>
+      <species boundaryCondition="true" compartment="default" constant="true" id="NADP" initialConcentration="0.076" metaid="COPASI8" name="NADP">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI8">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00006"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00006"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2250,17 +2263,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI9" id="NADPH" name="NADPH" compartment="default" initialConcentration="0.12" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="NADPH" initialConcentration="0.12" metaid="COPASI9" name="NADPH">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI9">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00005"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00005"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2274,18 +2289,20 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species id="NHxint" name="NHxint" compartment="default" initialConcentration="0.02" boundaryCondition="false" constant="false"/>
-      <species metaid="COPASI10" id="OG" name="OG" compartment="default" initialConcentration="3.86260171443297" boundaryCondition="true" constant="false">
+            </species>
+      <species boundaryCondition="false" compartment="default" constant="false" id="NHxint" initialConcentration="0.02" name="NHxint"/>
+      <species boundaryCondition="true" compartment="default" constant="false" id="OG" initialConcentration="3.86260171443297" metaid="COPASI10" name="OG">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI10">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00026"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2299,17 +2316,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI11" id="PPi" name="PPi" compartment="default" initialConcentration="0.05" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="PPi" initialConcentration="0.05" metaid="COPASI11" name="PPi">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI11">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00013"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00013"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2323,17 +2342,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI12" id="Pi" name="Pi" compartment="default" initialConcentration="10" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="Pi" initialConcentration="10" metaid="COPASI12" name="Pi">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI12">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00009"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2347,17 +2368,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI13" id="UMP" name="UMP" compartment="default" initialConcentration="0.01" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="UMP" initialConcentration="0.01" metaid="COPASI13" name="UMP">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI13">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00105"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00105"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2371,17 +2394,19 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
-      <species metaid="COPASI14" id="UTP" name="UTP" compartment="default" initialConcentration="8.3" boundaryCondition="true" constant="true">
+            </species>
+      <species boundaryCondition="true" compartment="default" constant="true" id="UTP" initialConcentration="8.3" metaid="COPASI14" name="UTP">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI14">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00075"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.compound/C00075"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -2395,171 +2420,171 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-      </species>
+            </species>
     </listOfSpecies>
     <listOfParameters>
-      <parameter id="Acell" name="Acell" value="9.18e-12" constant="true"/>
-      <parameter id="AmtB" name="AmtB" value="0.001683954" constant="true"/>
-      <parameter id="AmtB_GlnKfree" name="AmtB_GlnKfree" value="0.00106774115968089" constant="false"/>
-      <parameter id="Dpsi" name="Dpsi" value="-0.15" constant="true"/>
-      <parameter id="EXTERNAL" name="EXTERNAL" value="0" constant="true"/>
-      <parameter id="F" name="F" value="96485" constant="true"/>
-      <parameter id="GLNdemf" name="GLNdemf" value="84.65745" constant="true"/>
-      <parameter id="GLNdemn" name="GLNdemn" value="645.1632" constant="true"/>
-      <parameter id="GLUdemf" name="GLUdemf" value="316.0761" constant="true"/>
-      <parameter id="GLUdemn" name="GLUdemn" value="2116.809" constant="true"/>
-      <parameter id="GStotal" name="GStotal" value="0.01083759" constant="false"/>
-      <parameter id="GlnBOG1" name="GlnBOG1" value="2.3934824459275e-06" constant="false"/>
-      <parameter id="GlnBUMP3OG3" name="GlnBUMP3OG3" value="0" constant="false"/>
-      <parameter id="GlnB_OGfree" name="GlnB_OGfree" value="1.02282466419361e-09" constant="false"/>
-      <parameter id="GlnKAmtB" name="GlnKAmtB" value="0.000616212840319108" constant="false"/>
-      <parameter id="GlnKOG1" name="GlnKOG1" value="0.000749732072892402" constant="false"/>
-      <parameter id="GlnKOG2" name="GlnKOG2" value="0.000534784406987038" constant="false"/>
-      <parameter id="GlnKOG3" name="GlnKOG3" value="0.000132610542305484" constant="false"/>
-      <parameter id="GlnK_AmtBfree" name="GlnK_AmtBfree" value="0.00141716315968089" constant="false"/>
-      <parameter id="GlnK_OGfree" name="GlnK_OGfree" value="0.000616248977815077" constant="false"/>
-      <parameter id="Hext" name="Hext" value="3.98107170553497e-05" constant="false"/>
-      <parameter id="Hint" name="Hint" value="2.51188643150958e-05" constant="false"/>
-      <parameter id="Ka" name="Ka" value="1.12201845430197e-06" constant="false"/>
-      <parameter id="Kadgln" name="Kadgln" value="0.9525115" constant="true"/>
-      <parameter id="Kadglnbog" name="Kadglnbog" value="1.199286e-05" constant="true"/>
-      <parameter id="Kadgs" name="Kadgs" value="7.485307e-05" constant="true"/>
-      <parameter id="Kamtbnh" name="Kamtbnh" value="0.005" constant="true"/>
-      <parameter id="Kdeadgln" name="Kdeadgln" value="0.2023639" constant="true"/>
-      <parameter id="Kdeadglnbog" name="Kdeadglnbog" value="2.588919e-06" constant="true"/>
-      <parameter id="Kdeadglnbump" name="Kdeadglnbump" value="7.074544e-06" constant="true"/>
-      <parameter id="Kdeadgsamp" name="Kdeadgsamp" value="0.0004478599" constant="true"/>
-      <parameter id="Kgdheq" name="Kgdheq" value="1290" constant="true"/>
-      <parameter id="Kgdhglu" name="Kgdhglu" value="6.278361" constant="true"/>
-      <parameter id="Kgdhnadp" name="Kgdhnadp" value="0.03482614" constant="true"/>
-      <parameter id="Kgdhnadph" name="Kgdhnadph" value="0.04858572" constant="true"/>
-      <parameter id="Kgdhnh" name="Kgdhnh" value="1.1" constant="true"/>
-      <parameter id="Kgdhog" name="Kgdhog" value="0.5188787" constant="true"/>
-      <parameter id="Kglnbog1" name="Kglnbog1" value="0.004951903" constant="true"/>
-      <parameter id="Kglnbog2" name="Kglnbog2" value="0.137803" constant="true"/>
-      <parameter id="Kglnbog3" name="Kglnbog3" value="0.1487975" constant="true"/>
-      <parameter id="Kglnbumpog1" name="Kglnbumpog1" value="0.02412875" constant="true"/>
-      <parameter id="Kglnbumpog2" name="Kglnbumpog2" value="0.1516126" constant="true"/>
-      <parameter id="Kglnbumpog3" name="Kglnbumpog3" value="0.1329721" constant="true"/>
-      <parameter id="Kglnkamtb" name="Kglnkamtb" value="6.261715e-08" constant="true"/>
-      <parameter id="Kglnkog1" name="Kglnkog1" value="9.5247" constant="true"/>
-      <parameter id="Kglnkog2" name="Kglnkog2" value="5.41511" constant="true"/>
-      <parameter id="Kglnkog3" name="Kglnkog3" value="5.192295" constant="true"/>
-      <parameter id="Kgoggln" name="Kgoggln" value="0.2874419" constant="true"/>
-      <parameter id="Kgogglu" name="Kgogglu" value="6.920785" constant="true"/>
-      <parameter id="Kgognadp" name="Kgognadp" value="0.003391094" constant="true"/>
-      <parameter id="Kgognadph" name="Kgognadph" value="0.001641051" constant="true"/>
-      <parameter id="Kgogog" name="Kgogog" value="0.006878996" constant="true"/>
-      <parameter id="Kgrowthgln" name="Kgrowthgln" value="1.507154" constant="true"/>
-      <parameter id="Kgrowthglu" name="Kgrowthglu" value="31.16965" constant="true"/>
-      <parameter id="Kgsadp" name="Kgsadp" value="0.07306878" constant="true"/>
-      <parameter id="Kgsatp" name="Kgsatp" value="0.2640569" constant="true"/>
-      <parameter id="Kgseq" name="Kgseq" value="460" constant="true"/>
-      <parameter id="Kgsgln" name="Kgsgln" value="5.811517" constant="true"/>
-      <parameter id="Kgsglu" name="Kgsglu" value="4.12683" constant="true"/>
-      <parameter id="Kgsnh" name="Kgsnh" value="0.1" constant="true"/>
-      <parameter id="Kgspi" name="Kgspi" value="4.513852" constant="true"/>
-      <parameter id="Kurgln" name="Kurgln" value="0.06360099" constant="true"/>
-      <parameter id="Kurglnbump" name="Kurglnbump" value="0.004632101" constant="true"/>
-      <parameter id="Kurglnkump" name="Kurglnkump" value="0.001979528" constant="true"/>
-      <parameter id="Kurump" name="Kurump" value="8.339747" constant="true"/>
-      <parameter id="Kutgln" name="Kutgln" value="0.0640159" constant="true"/>
-      <parameter id="Kutglnb" name="Kutglnb" value="0.002925671" constant="true"/>
-      <parameter id="Kutglnk" name="Kutglnk" value="0.00456417" constant="true"/>
-      <parameter id="Kutiglnb" name="Kutiglnb" value="0.001856939" constant="true"/>
-      <parameter id="Kutiglnbump" name="Kutiglnbump" value="0.003632328" constant="true"/>
-      <parameter id="Kutiglnk" name="Kutiglnk" value="0.001768462" constant="true"/>
-      <parameter id="Kutiglnkump" name="Kutiglnkump" value="0.002457601" constant="true"/>
-      <parameter id="Kutippi" name="Kutippi" value="0.1079356" constant="true"/>
-      <parameter id="Kututp" name="Kututp" value="0.04173016" constant="true"/>
-      <parameter id="NH3ext" name="NH3ext" value="0.000112735308554336" constant="false"/>
-      <parameter id="NH3int" name="NH3int" value="0.000855168222930722" constant="false"/>
-      <parameter id="NH3surf" name="NH3surf" value="0.000112735308554336" constant="false"/>
-      <parameter id="NH4ext" name="NH4ext" value="0.00399999969144566" constant="false"/>
-      <parameter id="NH4int" name="NH4int" value="0.0191448317770693" constant="false"/>
-      <parameter id="NH4surf" name="NH4surf" value="0.00399999969144566" constant="false"/>
-      <parameter id="NHxext" name="NHxext" value="0.004112735" constant="true"/>
-      <parameter id="NHxsurf" name="NHxsurf" value="0.004112735" constant="false"/>
-      <parameter id="Nintstar" name="Nintstar" value="0.033" constant="true"/>
-      <parameter id="OGbasal" name="OGbasal" value="0.5500384" constant="true"/>
-      <parameter id="Pcm" name="Pcm" value="0.07339047" constant="true"/>
-      <parameter id="R" name="R" value="8.314" constant="true"/>
-      <parameter id="T" name="T" value="310" constant="true"/>
-      <parameter id="UTase" name="UTase" value="0.0006" constant="true"/>
-      <parameter id="Vad" name="Vad" value="0.4183307" constant="true"/>
-      <parameter id="Vad_app" name="Vad_app" value="0.0239873407805062" constant="false"/>
-      <parameter id="Vamtb" name="Vamtb" value="1339.3405600884" constant="false"/>
-      <parameter id="Vamtb_app" name="Vamtb_app" value="849.232842961532" constant="false"/>
-      <parameter id="Vcell" name="Vcell" value="2.15e-18" constant="true"/>
-      <parameter id="Vdead" name="Vdead" value="0.6593675" constant="true"/>
-      <parameter id="Vdead_app" name="Vdead_app" value="0.0103772347822307" constant="false"/>
-      <parameter id="Vgdh" name="Vgdh" value="352.6402" constant="true"/>
-      <parameter id="Vgog" name="Vgog" value="83.19334" constant="true"/>
-      <parameter id="Vgs" name="Vgs" value="574.9279720737" constant="false"/>
-      <parameter id="Vgs_app" name="Vgs_app" value="581.827107738584" constant="false"/>
-      <parameter id="a1" name="a1" value="1e-22" constant="true"/>
-      <parameter id="aamp" name="aamp" value="10" constant="true"/>
-      <parameter id="b1" name="b1" value="0.7532627" constant="true"/>
-      <parameter id="bamp" name="bamp" value="2.3667" constant="true"/>
-      <parameter id="c1" name="c1" value="0.2959227" constant="true"/>
-      <parameter id="camp" name="camp" value="0.1012" constant="true"/>
-      <parameter id="d1" name="d1" value="0.01584525" constant="true"/>
-      <parameter id="damp" name="damp" value="10.8688" constant="true"/>
-      <parameter id="e1" name="e1" value="1e-22" constant="true"/>
-      <parameter id="f1" name="f1" value="0.6629458" constant="true"/>
-      <parameter id="g1" name="g1" value="14.42668" constant="true"/>
-      <parameter id="h1" name="h1" value="0.2074902" constant="true"/>
-      <parameter id="i1" name="i1" value="1e-22" constant="true"/>
-      <parameter id="j1" name="j1" value="1e-22" constant="true"/>
-      <parameter id="k1" name="k1" value="1e-22" constant="true"/>
-      <parameter id="kappa" name="kappa" value="7.889806" constant="true"/>
-      <parameter id="kcatamtb" name="kcatamtb" value="795354.6" constant="true"/>
-      <parameter id="kcatgs" name="kcatgs" value="53049.43" constant="true"/>
-      <parameter id="kcaturglnb" name="kcaturglnb" value="2.815787" constant="true"/>
-      <parameter id="kcaturglnk" name="kcaturglnk" value="17.31281" constant="true"/>
-      <parameter id="kcatutglnb" name="kcatutglnb" value="132.2476" constant="true"/>
-      <parameter id="kcatutglnk" name="kcatutglnk" value="74.26847" constant="true"/>
-      <parameter id="kdb" name="kdb" value="13.93793" constant="true"/>
-      <parameter id="kdiff" name="kdiff" value="313360.239348837" constant="false"/>
-      <parameter id="l1" name="l1" value="0.01740505" constant="true"/>
-      <parameter id="m1" name="m1" value="0.8794302" constant="true"/>
-      <parameter id="mu" name="mu" value="0.00879460681233234" constant="false"/>
-      <parameter id="n1" name="n1" value="9.963059" constant="true"/>
-      <parameter id="n1amp" name="n1amp" value="1.1456" constant="true"/>
-      <parameter id="n2amp" name="n2amp" value="19.2166" constant="true"/>
-      <parameter id="nAMP" name="nAMP" value="0" constant="false"/>
-      <parameter id="o1" name="o1" value="1.291713" constant="true"/>
-      <parameter id="pHext" name="pHext" value="7.4" constant="true"/>
-      <parameter id="pHint" name="pHint" value="7.6" constant="true"/>
-      <parameter id="pKa" name="pKa" value="8.95" constant="true"/>
-      <parameter id="phi" name="phi" value="274.618407833867" constant="false"/>
-      <parameter id="tau" name="tau" value="78.815027817727" constant="false"/>
-      <parameter id="tau0" name="tau0" value="45.83115" constant="true"/>
-      <parameter id="theta_ad" name="theta_ad" value="0.0573406177947404" constant="false"/>
-      <parameter id="theta_dead" name="theta_dead" value="0.0157381654118995" constant="false"/>
-      <parameter id="theta_gs" name="theta_gs" value="1.012" constant="false"/>
+      <parameter constant="true" id="Acell" name="Acell" value="9.18E-12"/>
+      <parameter constant="true" id="AmtB" name="AmtB" value="0.001683954"/>
+      <parameter constant="false" id="AmtB_GlnKfree" name="AmtB_GlnKfree" value="0.00106774115968089"/>
+      <parameter constant="true" id="Dpsi" name="Dpsi" value="-0.15"/>
+      <parameter constant="true" id="EXTERNAL" name="EXTERNAL" value="0"/>
+      <parameter constant="true" id="F" name="F" value="96485"/>
+      <parameter constant="true" id="GLNdemf" name="GLNdemf" value="84.65745"/>
+      <parameter constant="true" id="GLNdemn" name="GLNdemn" value="645.1632"/>
+      <parameter constant="true" id="GLUdemf" name="GLUdemf" value="316.0761"/>
+      <parameter constant="true" id="GLUdemn" name="GLUdemn" value="2116.809"/>
+      <parameter constant="false" id="GStotal" name="GStotal" value="0.01083759"/>
+      <parameter constant="false" id="GlnBOG1" name="GlnBOG1" value="2.3934824459275E-6"/>
+      <parameter constant="false" id="GlnBUMP3OG3" name="GlnBUMP3OG3" value="0"/>
+      <parameter constant="false" id="GlnB_OGfree" name="GlnB_OGfree" value="1.02282466419361E-9"/>
+      <parameter constant="false" id="GlnKAmtB" name="GlnKAmtB" value="0.000616212840319108"/>
+      <parameter constant="false" id="GlnKOG1" name="GlnKOG1" value="0.000749732072892402"/>
+      <parameter constant="false" id="GlnKOG2" name="GlnKOG2" value="0.000534784406987038"/>
+      <parameter constant="false" id="GlnKOG3" name="GlnKOG3" value="0.000132610542305484"/>
+      <parameter constant="false" id="GlnK_AmtBfree" name="GlnK_AmtBfree" value="0.00141716315968089"/>
+      <parameter constant="false" id="GlnK_OGfree" name="GlnK_OGfree" value="0.000616248977815077"/>
+      <parameter constant="false" id="Hext" name="Hext" value="3.98107170553497E-5"/>
+      <parameter constant="false" id="Hint" name="Hint" value="2.51188643150958E-5"/>
+      <parameter constant="false" id="Ka" name="Ka" value="1.12201845430197E-6"/>
+      <parameter constant="true" id="Kadgln" name="Kadgln" value="0.9525115"/>
+      <parameter constant="true" id="Kadglnbog" name="Kadglnbog" value="1.199286E-5"/>
+      <parameter constant="true" id="Kadgs" name="Kadgs" value="7.485307E-5"/>
+      <parameter constant="true" id="Kamtbnh" name="Kamtbnh" value="0.005"/>
+      <parameter constant="true" id="Kdeadgln" name="Kdeadgln" value="0.2023639"/>
+      <parameter constant="true" id="Kdeadglnbog" name="Kdeadglnbog" value="2.588919E-6"/>
+      <parameter constant="true" id="Kdeadglnbump" name="Kdeadglnbump" value="7.074544E-6"/>
+      <parameter constant="true" id="Kdeadgsamp" name="Kdeadgsamp" value="0.0004478599"/>
+      <parameter constant="true" id="Kgdheq" name="Kgdheq" value="1290"/>
+      <parameter constant="true" id="Kgdhglu" name="Kgdhglu" value="6.278361"/>
+      <parameter constant="true" id="Kgdhnadp" name="Kgdhnadp" value="0.03482614"/>
+      <parameter constant="true" id="Kgdhnadph" name="Kgdhnadph" value="0.04858572"/>
+      <parameter constant="true" id="Kgdhnh" name="Kgdhnh" value="1.1"/>
+      <parameter constant="true" id="Kgdhog" name="Kgdhog" value="0.5188787"/>
+      <parameter constant="true" id="Kglnbog1" name="Kglnbog1" value="0.004951903"/>
+      <parameter constant="true" id="Kglnbog2" name="Kglnbog2" value="0.137803"/>
+      <parameter constant="true" id="Kglnbog3" name="Kglnbog3" value="0.1487975"/>
+      <parameter constant="true" id="Kglnbumpog1" name="Kglnbumpog1" value="0.02412875"/>
+      <parameter constant="true" id="Kglnbumpog2" name="Kglnbumpog2" value="0.1516126"/>
+      <parameter constant="true" id="Kglnbumpog3" name="Kglnbumpog3" value="0.1329721"/>
+      <parameter constant="true" id="Kglnkamtb" name="Kglnkamtb" value="6.261715E-8"/>
+      <parameter constant="true" id="Kglnkog1" name="Kglnkog1" value="9.5247"/>
+      <parameter constant="true" id="Kglnkog2" name="Kglnkog2" value="5.41511"/>
+      <parameter constant="true" id="Kglnkog3" name="Kglnkog3" value="5.192295"/>
+      <parameter constant="true" id="Kgoggln" name="Kgoggln" value="0.2874419"/>
+      <parameter constant="true" id="Kgogglu" name="Kgogglu" value="6.920785"/>
+      <parameter constant="true" id="Kgognadp" name="Kgognadp" value="0.003391094"/>
+      <parameter constant="true" id="Kgognadph" name="Kgognadph" value="0.001641051"/>
+      <parameter constant="true" id="Kgogog" name="Kgogog" value="0.006878996"/>
+      <parameter constant="true" id="Kgrowthgln" name="Kgrowthgln" value="1.507154"/>
+      <parameter constant="true" id="Kgrowthglu" name="Kgrowthglu" value="31.16965"/>
+      <parameter constant="true" id="Kgsadp" name="Kgsadp" value="0.07306878"/>
+      <parameter constant="true" id="Kgsatp" name="Kgsatp" value="0.2640569"/>
+      <parameter constant="true" id="Kgseq" name="Kgseq" value="460"/>
+      <parameter constant="true" id="Kgsgln" name="Kgsgln" value="5.811517"/>
+      <parameter constant="true" id="Kgsglu" name="Kgsglu" value="4.12683"/>
+      <parameter constant="true" id="Kgsnh" name="Kgsnh" value="0.1"/>
+      <parameter constant="true" id="Kgspi" name="Kgspi" value="4.513852"/>
+      <parameter constant="true" id="Kurgln" name="Kurgln" value="0.06360099"/>
+      <parameter constant="true" id="Kurglnbump" name="Kurglnbump" value="0.004632101"/>
+      <parameter constant="true" id="Kurglnkump" name="Kurglnkump" value="0.001979528"/>
+      <parameter constant="true" id="Kurump" name="Kurump" value="8.339747"/>
+      <parameter constant="true" id="Kutgln" name="Kutgln" value="0.0640159"/>
+      <parameter constant="true" id="Kutglnb" name="Kutglnb" value="0.002925671"/>
+      <parameter constant="true" id="Kutglnk" name="Kutglnk" value="0.00456417"/>
+      <parameter constant="true" id="Kutiglnb" name="Kutiglnb" value="0.001856939"/>
+      <parameter constant="true" id="Kutiglnbump" name="Kutiglnbump" value="0.003632328"/>
+      <parameter constant="true" id="Kutiglnk" name="Kutiglnk" value="0.001768462"/>
+      <parameter constant="true" id="Kutiglnkump" name="Kutiglnkump" value="0.002457601"/>
+      <parameter constant="true" id="Kutippi" name="Kutippi" value="0.1079356"/>
+      <parameter constant="true" id="Kututp" name="Kututp" value="0.04173016"/>
+      <parameter constant="false" id="NH3ext" name="NH3ext" value="0.000112735308554336"/>
+      <parameter constant="false" id="NH3int" name="NH3int" value="0.000855168222930722"/>
+      <parameter constant="false" id="NH3surf" name="NH3surf" value="0.000112735308554336"/>
+      <parameter constant="false" id="NH4ext" name="NH4ext" value="0.00399999969144566"/>
+      <parameter constant="false" id="NH4int" name="NH4int" value="0.0191448317770693"/>
+      <parameter constant="false" id="NH4surf" name="NH4surf" value="0.00399999969144566"/>
+      <parameter constant="true" id="NHxext" name="NHxext" value="0.004112735"/>
+      <parameter constant="false" id="NHxsurf" name="NHxsurf" value="0.004112735"/>
+      <parameter constant="true" id="Nintstar" name="Nintstar" value="0.033"/>
+      <parameter constant="true" id="OGbasal" name="OGbasal" value="0.5500384"/>
+      <parameter constant="true" id="Pcm" name="Pcm" value="0.07339047"/>
+      <parameter constant="true" id="R" name="R" value="8.314"/>
+      <parameter constant="true" id="T" name="T" value="310"/>
+      <parameter constant="true" id="UTase" name="UTase" value="0.0006"/>
+      <parameter constant="true" id="Vad" name="Vad" value="0.4183307"/>
+      <parameter constant="false" id="Vad_app" name="Vad_app" value="0.0239873407805062"/>
+      <parameter constant="false" id="Vamtb" name="Vamtb" value="1339.3405600884"/>
+      <parameter constant="false" id="Vamtb_app" name="Vamtb_app" value="849.232842961532"/>
+      <parameter constant="true" id="Vcell" name="Vcell" value="2.15E-18"/>
+      <parameter constant="true" id="Vdead" name="Vdead" value="0.6593675"/>
+      <parameter constant="false" id="Vdead_app" name="Vdead_app" value="0.0103772347822307"/>
+      <parameter constant="true" id="Vgdh" name="Vgdh" value="352.6402"/>
+      <parameter constant="true" id="Vgog" name="Vgog" value="83.19334"/>
+      <parameter constant="false" id="Vgs" name="Vgs" value="574.9279720737"/>
+      <parameter constant="false" id="Vgs_app" name="Vgs_app" value="581.827107738584"/>
+      <parameter constant="true" id="a1" name="a1" value="1E-22"/>
+      <parameter constant="true" id="aamp" name="aamp" value="10"/>
+      <parameter constant="true" id="b1" name="b1" value="0.7532627"/>
+      <parameter constant="true" id="bamp" name="bamp" value="2.3667"/>
+      <parameter constant="true" id="c1" name="c1" value="0.2959227"/>
+      <parameter constant="true" id="camp" name="camp" value="0.1012"/>
+      <parameter constant="true" id="d1" name="d1" value="0.01584525"/>
+      <parameter constant="true" id="damp" name="damp" value="10.8688"/>
+      <parameter constant="true" id="e1" name="e1" value="1E-22"/>
+      <parameter constant="true" id="f1" name="f1" value="0.6629458"/>
+      <parameter constant="true" id="g1" name="g1" value="14.42668"/>
+      <parameter constant="true" id="h1" name="h1" value="0.2074902"/>
+      <parameter constant="true" id="i1" name="i1" value="1E-22"/>
+      <parameter constant="true" id="j1" name="j1" value="1E-22"/>
+      <parameter constant="true" id="k1" name="k1" value="1E-22"/>
+      <parameter constant="true" id="kappa" name="kappa" value="7.889806"/>
+      <parameter constant="true" id="kcatamtb" name="kcatamtb" value="7.953546E5"/>
+      <parameter constant="true" id="kcatgs" name="kcatgs" value="5.304943E4"/>
+      <parameter constant="true" id="kcaturglnb" name="kcaturglnb" value="2.815787"/>
+      <parameter constant="true" id="kcaturglnk" name="kcaturglnk" value="17.31281"/>
+      <parameter constant="true" id="kcatutglnb" name="kcatutglnb" value="132.2476"/>
+      <parameter constant="true" id="kcatutglnk" name="kcatutglnk" value="74.26847"/>
+      <parameter constant="true" id="kdb" name="kdb" value="13.93793"/>
+      <parameter constant="false" id="kdiff" name="kdiff" value="3.13360239348837E5"/>
+      <parameter constant="true" id="l1" name="l1" value="0.01740505"/>
+      <parameter constant="true" id="m1" name="m1" value="0.8794302"/>
+      <parameter constant="false" id="mu" name="mu" value="0.00879460681233234"/>
+      <parameter constant="true" id="n1" name="n1" value="9.963059"/>
+      <parameter constant="true" id="n1amp" name="n1amp" value="1.1456"/>
+      <parameter constant="true" id="n2amp" name="n2amp" value="19.2166"/>
+      <parameter constant="false" id="nAMP" name="nAMP" value="0"/>
+      <parameter constant="true" id="o1" name="o1" value="1.291713"/>
+      <parameter constant="true" id="pHext" name="pHext" value="7.4"/>
+      <parameter constant="true" id="pHint" name="pHint" value="7.6"/>
+      <parameter constant="true" id="pKa" name="pKa" value="8.95"/>
+      <parameter constant="false" id="phi" name="phi" value="274.618407833867"/>
+      <parameter constant="false" id="tau" name="tau" value="78.815027817727"/>
+      <parameter constant="true" id="tau0" name="tau0" value="45.83115"/>
+      <parameter constant="false" id="theta_ad" name="theta_ad" value="0.0573406177947404"/>
+      <parameter constant="false" id="theta_dead" name="theta_dead" value="0.0157381654118995"/>
+      <parameter constant="false" id="theta_gs" name="theta_gs" value="1.012"/>
     </listOfParameters>
     <listOfRules>
       <assignmentRule variable="GStotal">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <plus/>
             <ci> GS </ci>
             <ci> GSAMP </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vgs">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> kcatgs </ci>
             <ci> GStotal </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Ka">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <apply>
@@ -2573,9 +2598,9 @@
             <cn> 1000 </cn>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Hint">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <apply>
@@ -2589,9 +2614,9 @@
             <cn> 1000 </cn>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Hext">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <apply>
@@ -2605,9 +2630,9 @@
             <cn> 1000 </cn>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH4int">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -2622,9 +2647,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="OG">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <plus/>
             <apply>
@@ -2643,9 +2668,9 @@
             <ci> OGbasal </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnBOG1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -2704,9 +2729,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnB_OGfree">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <ci> GlnB </ci>
@@ -2756,9 +2781,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnKOG2">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -2825,9 +2850,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnBUMP3OG3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -2894,9 +2919,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnK_OGfree">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <ci> GlnK </ci>
@@ -2946,9 +2971,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="AmtB_GlnKfree">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <cn> 0.5 </cn>
@@ -3003,9 +3028,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnKOG3">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3072,9 +3097,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnKOG1">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3133,32 +3158,32 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnKAmtB">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <minus/>
             <ci> AmtB </ci>
             <ci> AmtB_GlnKfree </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="GlnK_AmtBfree">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <minus/>
             <ci> GlnK </ci>
             <ci> GlnKAmtB </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NHxsurf">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <ci> NHxext </ci>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH4surf">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3173,9 +3198,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH3int">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3190,9 +3215,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH4ext">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3207,27 +3232,27 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vamtb_app">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> kcatamtb </ci>
             <ci> AmtB_GlnKfree </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vamtb">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> kcatamtb </ci>
             <ci> AmtB </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH3ext">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3242,9 +3267,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="NH3surf">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3259,9 +3284,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="theta_ad">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3329,18 +3354,18 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vad_app">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> theta_ad </ci>
             <ci> Vad </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="theta_dead">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3510,18 +3535,18 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vdead_app">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> theta_dead </ci>
             <ci> Vdead </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="nAMP">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3532,9 +3557,9 @@
             <ci> GStotal </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="theta_gs">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3573,18 +3598,18 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="Vgs_app">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> theta_gs </ci>
             <ci> Vgs </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="phi">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <exp/>
             <apply>
@@ -3605,9 +3630,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="kdiff">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3618,9 +3643,9 @@
             <ci> Vcell </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="tau">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <times/>
             <ci> tau0 </ci>
@@ -3648,9 +3673,9 @@
             </apply>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
       <assignmentRule variable="mu">
-        <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">        
           <apply>
             <divide/>
             <apply>
@@ -3660,19 +3685,21 @@
             <ci> tau </ci>
           </apply>
         </math>
-      </assignmentRule>
+            </assignmentRule>
     </listOfRules>
     <listOfReactions>
-      <reaction metaid="COPASI15" id="vad" name="vad" reversible="true">
+      <reaction id="vad" metaid="COPASI15" name="vad" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI15">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03473"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03473"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3686,14 +3713,14 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GS" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="GSAMP" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3706,14 +3733,14 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vamtb" name="vamtb" reversible="true">
         <listOfProducts>
           <speciesReference species="NHxint" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3728,18 +3755,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI16" id="vdead" name="vdead" reversible="true">
+      <reaction id="vdead" metaid="COPASI16" name="vdead" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI16">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03474"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R03474"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3753,14 +3782,14 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GSAMP" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
           <speciesReference species="GS" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3773,14 +3802,14 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vdiff" name="vdiff" reversible="true">
         <listOfProducts>
           <speciesReference species="NHxint" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3793,18 +3822,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI17" id="vgdh" name="vgdh" reversible="true">
+      <reaction id="vgdh" metaid="COPASI17" name="vgdh" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI17">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00248"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00248"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3818,7 +3849,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="NADPH" stoichiometry="1"/>
           <speciesReference species="OG" stoichiometry="1"/>
           <speciesReference species="NHxint" stoichiometry="1"/>
@@ -3828,7 +3859,7 @@
           <speciesReference species="GLU" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3850,14 +3881,14 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vglndemf" name="vglndemf" reversible="true">
         <listOfReactants>
           <speciesReference species="GLN" stoichiometry="1"/>
         </listOfReactants>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3869,7 +3900,7 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vglndemn" name="vglndemn" reversible="true">
         <listOfReactants>
@@ -3879,7 +3910,7 @@
           <speciesReference species="GLU" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3891,14 +3922,14 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vgludemf" name="vgludemf" reversible="true">
         <listOfReactants>
           <speciesReference species="GLU" stoichiometry="1"/>
         </listOfReactants>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3910,7 +3941,7 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
       <reaction id="vgludemn" name="vgludemn" reversible="true">
         <listOfReactants>
@@ -3920,7 +3951,7 @@
           <speciesReference species="OG" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3932,18 +3963,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI18" id="vgog" name="vgog" reversible="true">
+      <reaction id="vgog" metaid="COPASI18" name="vgog" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI18">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00114"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00114"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -3957,7 +3990,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="OG" stoichiometry="1"/>
           <speciesReference species="NADPH" stoichiometry="1"/>
           <speciesReference species="GLN" stoichiometry="1"/>
@@ -3967,7 +4000,7 @@
           <speciesReference species="GLU" stoichiometry="2"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -3988,18 +4021,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI19" id="vgs" name="vgs" reversible="true">
+      <reaction id="vgs" metaid="COPASI19" name="vgs" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI19">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00253"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R00253"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4013,7 +4048,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="NHxint" stoichiometry="1"/>
           <speciesReference species="ATP" stoichiometry="1"/>
           <speciesReference species="GLU" stoichiometry="1"/>
@@ -4024,7 +4059,7 @@
           <speciesReference species="GLN" stoichiometry="1"/>
         </listOfProducts>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4048,18 +4083,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI20" id="vurglnb1" name="vurglnb1" reversible="true">
+      <reaction id="vurglnb1" metaid="COPASI20" name="vurglnb1" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI20">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4073,7 +4110,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnBUMP" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4086,7 +4123,7 @@
           <modifierSpeciesReference species="GlnBUMP2"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4106,18 +4143,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI21" id="vurglnb2" name="vurglnb2" reversible="true">
+      <reaction id="vurglnb2" metaid="COPASI21" name="vurglnb2" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI21">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4131,7 +4170,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnBUMP2" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4143,7 +4182,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4163,18 +4202,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI22" id="vurglnb3" name="vurglnb3" reversible="true">
+      <reaction id="vurglnb3" metaid="COPASI22" name="vurglnb3" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI22">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4188,7 +4229,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnBUMP3" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4200,7 +4241,7 @@
           <modifierSpeciesReference species="GlnBUMP"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4220,18 +4261,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI23" id="vurglnk1" name="vurglnk1" reversible="true">
+      <reaction id="vurglnk1" metaid="COPASI23" name="vurglnk1" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI23">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4245,7 +4288,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnKUMP" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4258,7 +4301,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4278,18 +4321,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI24" id="vurglnk2" name="vurglnk2" reversible="true">
+      <reaction id="vurglnk2" metaid="COPASI24" name="vurglnk2" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI24">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4303,7 +4348,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnKUMP2" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4315,7 +4360,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4335,18 +4380,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI25" id="vurglnk3" name="vurglnk3" reversible="true">
+      <reaction id="vurglnk3" metaid="COPASI25" name="vurglnk3" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI25">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="https://biocyc.org/ECOLI/NEW-IMAGE?type=REACTION&amp;object=RXN-16381"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4360,7 +4407,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="GlnKUMP3" stoichiometry="1"/>
         </listOfReactants>
         <listOfProducts>
@@ -4372,7 +4419,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4392,18 +4439,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI26" id="vutglnb1" name="vutglnb1" reversible="true">
+      <reaction id="vutglnb1" metaid="COPASI26" name="vutglnb1" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI26">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4417,7 +4466,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnB" stoichiometry="1"/>
         </listOfReactants>
@@ -4431,7 +4480,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4456,18 +4505,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI27" id="vutglnb2" name="vutglnb2" reversible="true">
+      <reaction id="vutglnb2" metaid="COPASI27" name="vutglnb2" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI27">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4481,7 +4532,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnBUMP" stoichiometry="1"/>
         </listOfReactants>
@@ -4495,7 +4546,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4520,18 +4571,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI28" id="vutglnb3" name="vutglnb3" reversible="true">
+      <reaction id="vutglnb3" metaid="COPASI28" name="vutglnb3" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI28">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4545,7 +4598,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnBUMP2" stoichiometry="1"/>
         </listOfReactants>
@@ -4559,7 +4612,7 @@
           <modifierSpeciesReference species="GlnBUMP"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4584,18 +4637,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI29" id="vutglnk1" name="vutglnk1" reversible="true">
+      <reaction id="vutglnk1" metaid="COPASI29" name="vutglnk1" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI29">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4609,7 +4664,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnK" stoichiometry="1"/>
         </listOfReactants>
@@ -4623,7 +4678,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4648,18 +4703,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI30" id="vutglnk2" name="vutglnk2" reversible="true">
+      <reaction id="vutglnk2" metaid="COPASI30" name="vutglnk2" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI30">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4673,7 +4730,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnKUMP" stoichiometry="1"/>
         </listOfReactants>
@@ -4686,7 +4743,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4711,18 +4768,20 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
-      <reaction metaid="COPASI31" id="vutglnk3" name="vutglnk3" reversible="true">
+      <reaction id="vutglnk3" metaid="COPASI31" name="vutglnk3" reversible="true">
         <annotation>
           <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/" xmlns:bqmodel="http://biomodels.net/model-qualifiers/">
             <rdf:Description rdf:about="#COPASI31">
-              <bqbiol:is>
-                <rdf:Bag>
-                  <rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
-                </rdf:Bag>
-              </bqbiol:is>
-            </rdf:Description>
+	<bqbiol:is>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://identifiers.org/kegg.reaction/R04733"/>
+	</rdf:Bag>
+	</bqbiol:is>
+	</rdf:Description>
+	
+	
           </rdf:RDF>
           <COPASI xmlns="http://www.copasi.org/static/sbml">
             <rdf:RDF xmlns:CopasiMT="http://www.copasi.org/RDF/MiriamTerms#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
@@ -4736,7 +4795,7 @@
             </rdf:RDF>
           </COPASI>
         </annotation>
-        <listOfReactants>
+              <listOfReactants>
           <speciesReference species="UTP" stoichiometry="1"/>
           <speciesReference species="GlnKUMP2" stoichiometry="1"/>
         </listOfReactants>
@@ -4749,7 +4808,7 @@
           <modifierSpeciesReference species="GLN"/>
         </listOfModifiers>
         <kineticLaw>
-          <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <math xmlns="http://www.w3.org/1998/Math/MathML">          
             <apply>
               <times/>
               <ci> default </ci>
@@ -4774,7 +4833,7 @@
               </apply>
             </apply>
           </math>
-        </kineticLaw>
+                </kineticLaw>
       </reaction>
     </listOfReactions>
   </model>

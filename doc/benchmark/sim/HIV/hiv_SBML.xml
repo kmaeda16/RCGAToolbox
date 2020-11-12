@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level2" level="2" version="1">
+  <model name="hiv">
+    <notes>
+      <html xmlns="http://www.w3.org/1999/xhtml">
+        <body>
+HIV model which describes the mechanism of irreversible inhibition of HIV proteinase.</body>
+      </html>
+    </notes>
+    <listOfCompartments>
+      <compartment id="rootCompartment" name="rootCompartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="M" name="M" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="P" name="P" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="S" name="S" compartment="rootCompartment" initialAmount="24.6378" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="I" name="I" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="ES" name="ES" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="EP" name="EP" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="E" name="E" compartment="rootCompartment" initialAmount="0.005387" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="EI" name="EI" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+      <species id="EJ" name="EJ" compartment="rootCompartment" initialAmount="0" hasOnlySubstanceUnits="true" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="kmd" name="kmd" value="0.1" constant="true"/>
+      <parameter id="kdm" name="kdm" value="0.001" constant="true"/>
+      <parameter id="kon" name="kon" value="100" constant="true"/>
+      <parameter id="ks" name="ks" value="46.3493" constant="true"/>
+      <parameter id="kcat" name="kcat" value="5.49137" constant="true"/>
+      <parameter id="kp" name="kp" value="269.804" constant="true"/>
+      <parameter id="ki" name="ki" value="0.000177" constant="true"/>
+      <parameter id="kde" name="kde" value="0.000582" constant="true"/>
+    </listOfParameters>
+    <listOfReactions>
+      <reaction id="vkmd" name="vkmd" reversible="false">
+        <listOfReactants>
+          <speciesReference species="M" stoichiometry="2"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kmd </ci>
+              <ci> M </ci>
+              <ci> M </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkdm" name="vkdm" reversible="false">
+        <listOfReactants>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="M" stoichiometry="2"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kdm </ci>
+              <ci> E </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkcat" name="vkcat" reversible="false">
+        <listOfReactants>
+          <speciesReference species="ES" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="P" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kcat </ci>
+              <ci> ES </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkonp" name="vkonp" reversible="false">
+        <listOfReactants>
+          <speciesReference species="P" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="EP" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kon </ci>
+              <ci> P </ci>
+              <ci> E </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkons" name="vkons" reversible="false">
+        <listOfReactants>
+          <speciesReference species="S" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="ES" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kon </ci>
+              <ci> S </ci>
+              <ci> E </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkoni" name="vkoni" reversible="false">
+        <listOfReactants>
+          <speciesReference species="I" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="EI" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kon </ci>
+              <ci> I </ci>
+              <ci> E </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkp" name="vkp" reversible="false">
+        <listOfReactants>
+          <speciesReference species="EP" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="P" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kp </ci>
+              <ci> EP </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vks" name="vks" reversible="false">
+        <listOfReactants>
+          <speciesReference species="ES" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="S" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ks </ci>
+              <ci> ES </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vkde" name="vkde" reversible="false">
+        <listOfReactants>
+          <speciesReference species="EI" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="EJ" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> kde </ci>
+              <ci> EI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="vki" name="vki" reversible="false">
+        <listOfReactants>
+          <speciesReference species="EI" stoichiometry="1"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="I" stoichiometry="1"/>
+          <speciesReference species="E" stoichiometry="1"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> ki </ci>
+              <ci> EI </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
