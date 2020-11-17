@@ -1,4 +1,4 @@
-function doBenchmark_RCGA(idum)
+function Benchmark_RCGA(idum)
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);

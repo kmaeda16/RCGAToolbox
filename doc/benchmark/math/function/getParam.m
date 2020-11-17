@@ -204,6 +204,4 @@ opts.n_population = 200;
 opts.n_children = 200;
 opts.n_generation = 1e+8;
 opts.output_intvl = 1e+8;
-opts.t_limit = 5 * 60; % 5 min
-% opts.t_limit = 1 * 60; % 1 min
-% opts.t_limit = 2; % 2 sec
+opts.t_limit = 10 * 60; % 10 min

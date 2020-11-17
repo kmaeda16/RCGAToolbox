@@ -1,4 +1,4 @@
-function doBenchmark_eSS(idum)
+function Benchmark_eSS(idum)
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);

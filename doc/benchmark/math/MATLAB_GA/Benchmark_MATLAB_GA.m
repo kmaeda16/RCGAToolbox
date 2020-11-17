@@ -1,4 +1,4 @@
-function doBenchmark_MATLAB_GA(idum)
+function Benchmark_MATLAB_GA(idum)
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
