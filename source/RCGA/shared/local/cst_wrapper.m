@@ -11,7 +11,7 @@ function [c, ceq] = cst_wrapper(fitnessfun, decodingfun, gene)
 % 
 % [OUTPUT]
 % c           :  Inequality constraint function values (g).
-% ced         :  Equality constraint function values (empty).
+% ceq         :  Equality constraint function values (empty).
 
 x = decodingfun(gene);
 [~, c] = fitnessfun(x);
