@@ -1,1 +1,5 @@
-To start benchmark, run run_Benchmark.m in the directories MATLAB_GA, eSS, and RCGA.
+To start benchmark experiments, run run_Benchmark.m in the directories MATLAB_GA, eSS, and RCGA.
+
+- For the function batch, Parallel Computing Toolbox is required.
+- For the function ga, Global Optimization Toolbox is required.
+- For the function ess_kernel, SSm GO Toolbox is required.
