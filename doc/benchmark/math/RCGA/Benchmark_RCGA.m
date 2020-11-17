@@ -1,4 +1,5 @@
 function Benchmark_RCGA(idum)
+
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
@@ -6,7 +7,6 @@ fprintf('idum = %d\n',idum);
 
 %% Init
 addpath(genpath('../function'));
-addpath(genpath('../../../../RCGA'));
 
 BENCHMARK1 = {'Sphere','ScaledSphere','Ellipsoid','Cigar','k_tablet', ...
     'MMbenchmark','Rosenbrock_star','Rosenbrock_chain','Ackley','Bohachevsky', ...
@@ -16,7 +16,7 @@ BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
     'g11','g12','g13'};
 
 
-%% Unconstrained benchmark functions
+%% Unconstrained problems
 for Problem_Name = BENCHMARK1
     
     opts = [];
@@ -40,7 +40,7 @@ for Problem_Name = BENCHMARK1
 end
 
 
-%% Constrained benchmark functions
+%% Constrained problems
 for Problem_Name = BENCHMARK2
     
     opts = [];
@@ -80,4 +80,3 @@ end
 
 %% Deinit
 rmpath(genpath('../function'));
-rmpath(genpath('../../../../RCGA'));

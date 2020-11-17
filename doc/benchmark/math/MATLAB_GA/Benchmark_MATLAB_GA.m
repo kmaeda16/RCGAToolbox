@@ -1,12 +1,12 @@
 function Benchmark_MATLAB_GA(idum)
+
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
 
 %% Init
-addpath(genpath('../function'))
-addpath(genpath('../../../../RCGA'));
+addpath(genpath('../function'));
 
 BENCHMARK1 = {'Sphere','ScaledSphere','Ellipsoid','Cigar','k_tablet', ...
     'MMbenchmark','Rosenbrock_star','Rosenbrock_chain','Ackley','Bohachevsky', ...
@@ -16,7 +16,7 @@ BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
     'g11','g12','g13'};
 
 
-%% Unconstrained benchmark functions
+%% Unconstrained problems
 for Problem_Name = BENCHMARK1
     
     opts = [];
@@ -25,23 +25,21 @@ for Problem_Name = BENCHMARK1
     
     options = optimoptions('ga',...
         'MaxGenerations',opts.n_generation,...
-        'MaxTime',opts.t_limit,...
+        'MaxTime',opts.maxtime,...
         'FunctionTolerance',eps,...
         'MaxStallGenerations',inf,...
         'ConstraintTolerance',eps,...
         'FitnessLimit',opts.vtr,...
         'Display','final'); % 'iter' or 'final'
 
-%     options = optimoptions('fmincon',...
-%         'MaxFunctionEvaluations',1e+5);
-        
     ObjectiveFunction = @(x) obj_wrapper_nodecoding(problem.fitnessfun, x);
     
     LB = problem.decodingfun(zeros(1,problem.n_gene));   % Lower bound
     UB = problem.decodingfun( ones(1,problem.n_gene));   % Upper bound
     tic;
+    
     [x, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
-%     [x, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,[],options); output.generations = nan;
+    
     elapsedTime = toc;
     generation = output.generations;
     neval = output.funccount;
@@ -55,12 +53,12 @@ for Problem_Name = BENCHMARK1
     end
     
     opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest(elapsedTime, output.generations, problem, opts, x, neval);
+    writeBestAlt(elapsedTime, output.generations, problem, opts, x, neval);
     
 end
 
 
-%% Constrained benchmark functions
+%% Constrained problems
 for Problem_Name = BENCHMARK2
     
     opts = [];
@@ -69,24 +67,22 @@ for Problem_Name = BENCHMARK2
     
     options = optimoptions('ga',...
         'MaxGenerations',opts.n_generation,...
-        'MaxTime',opts.t_limit,...
+        'MaxTime',opts.maxtime,...
         'FunctionTolerance',eps,...
         'MaxStallGenerations',inf,...
         'ConstraintTolerance',eps,...
         'FitnessLimit',-inf,...
         'Display','final'); % 'iter' or 'final'
 
-%     options = optimoptions('fmincon',...
-%         'MaxFunctionEvaluations',1e+5);
-    
     ObjectiveFunction  = @(x) obj_wrapper_nodecoding(problem.fitnessfun, x);
     ConstraintFunction = @(x) cst_wrapper_nodecoding(problem.fitnessfun, x);
     
     LB = problem.decodingfun(zeros(1,problem.n_gene));   % Lower bound
     UB = problem.decodingfun( ones(1,problem.n_gene));   % Upper bound
     tic;
+    
     [x, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,ConstraintFunction,options);
-%     [x, fval, exitflag, output] = fmincon(ObjectiveFunction,rand(1,problem.n_gene),[],[],[],[],LB,UB,ConstraintFunction,options);
+    
     elapsedTime = toc;
     generation = output.generations;
     neval = output.funccount;
@@ -102,11 +98,10 @@ for Problem_Name = BENCHMARK2
     end
     
     opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest(elapsedTime, generation, problem, opts, x, neval);
+    writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
 
 end
 
 
 %% Deinit
 rmpath(genpath('../function'));
-rmpath(genpath('../../../../RCGA'));

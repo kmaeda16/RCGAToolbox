@@ -1,5 +1,6 @@
 
 n_repeat = 10;
+% n_repeat = 1;
 
 for i = 1 : n_repeat
 %     Benchmark_RCGA(i); % For normal calculation

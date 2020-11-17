@@ -1,4 +1,5 @@
 function Benchmark_eSS(idum)
+
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
@@ -6,7 +7,6 @@ fprintf('idum = %d\n',idum);
 
 %% Init
 addpath(genpath('../function'));
-addpath(genpath('../../../../RCGA'));
 
 BENCHMARK1 = {'Sphere','ScaledSphere','Ellipsoid','Cigar','k_tablet', ...
     'MMbenchmark','Rosenbrock_star','Rosenbrock_chain','Ackley','Bohachevsky', ...
@@ -16,7 +16,7 @@ BENCHMARK2 = {'g01','g02','g03','g04','g05', ...
     'g11','g12','g13'};
 
 
-%% Unconstrained benchmark functions
+%% Unconstrained problems
 for Problem_Name = BENCHMARK1
     
     opts = [];
@@ -26,20 +26,21 @@ for Problem_Name = BENCHMARK1
     ess_problem = [];
     ess_opts = [];
     ess_problem.f = char(Problem_Name); %mfile containing the objective function
-    ess_problem.vtr = opts.vtr; % f = ALLOWABLE ERROR
+    ess_problem.vtr = opts.vtr;
     ess_problem.x_L = problem.decodingfun(zeros(1,problem.n_gene)); %lower bounds
     ess_problem.x_U = problem.decodingfun( ones(1,problem.n_gene)); %upper bounds
-    ess_opts.maxtime = opts.t_limit;
-    ess_opts.maxeval = 1e+8;
+    ess_opts.maxtime = opts.maxtime;
+    ess_opts.maxeval = opts.maxeval;
     ess_opts.tolc = 1e-30;
     ess_opts.iterprint = 0;
     
     Results = ess_kernel(ess_problem,ess_opts);
+    
     elapsedTime = Results.cpu_time;
     generation = nan;
     neval = Results.numeval;
-    f = Results.fbest;
     x = Results.xbest;
+    f = Results.fbest;
     
     fprintf('Elapsed Time = %e, f = %e\n',elapsedTime,f);
     if f < opts.vtr
@@ -49,11 +50,11 @@ for Problem_Name = BENCHMARK1
     end
     
     opts.out_best = sprintf('Results/eSS_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest(elapsedTime, generation, problem, opts, x, neval);
+    writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
     
 end
 
-%% Constrained benchmark functions
+%% Constrained problems
 for Problem_Name = BENCHMARK2
     
     opts = [];
@@ -63,17 +64,18 @@ for Problem_Name = BENCHMARK2
     ess_problem = [];
     ess_opts = [];
     ess_problem.f = char(Problem_Name); %mfile containing the objective function
-    ess_problem.vtr = opts.vtr; % f = ALLOWABLE ERROR
+    ess_problem.vtr = opts.vtr;
     ess_problem.x_L = problem.decodingfun(zeros(1,problem.n_gene)); %lower bounds
     ess_problem.x_U = problem.decodingfun( ones(1,problem.n_gene)); %upper bounds
     ess_problem.c_L = -inf(1,problem.n_constraint);
     ess_problem.c_U = zeros(1,problem.n_constraint);
-    ess_opts.maxtime = opts.t_limit;
-    ess_opts.maxeval = 1e+8;
+    ess_opts.maxtime = opts.maxtime;
+    ess_opts.maxeval = opts.maxeval;
     ess_opts.tolc = 1e-30;
     ess_opts.iterprint = 0;
     
     Results = ess_kernel(ess_problem,ess_opts);
+    
     elapsedTime = Results.cpu_time;
     generation = nan;
     neval = Results.numeval;
@@ -89,11 +91,10 @@ for Problem_Name = BENCHMARK2
     end
     
     opts.out_best = sprintf('Results/eSS_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBest(elapsedTime, generation, problem, opts, x, neval);
+    writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
     
 end
 
 
 %% Deinit
 rmpath(genpath('../function'));
-rmpath(genpath('../../../../RCGA'));
