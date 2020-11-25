@@ -1,14 +1,16 @@
 function f = obj_wrapper_nodecoding(fitnessfun, x)
-% obj_wrapper_nodecoding returns f of fitnessfun.
+% obj_wrapper_nodecoding returns the objective function value f of 
+% fitnessfun.
 % 
 % [SYNTAX]
-% f = obj_wrapper(fitnessfun, decodingfun, gene)
+% f = obj_wrapper_nodecoding(fitnessfun, x)
 % 
 % [INPUT]
-% x : Decision variables
+% fitnessfun :  Function handle for a fitness function.
+% x          :  Decision variables.
 % 
 % [OUTPUT]
-% f :  Objective function value
+% f          :  Objective function value.
 
-% x = decodingfun(gene);
+
 f = fitnessfun(x);

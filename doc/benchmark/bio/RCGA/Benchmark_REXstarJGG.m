@@ -1,18 +1,15 @@
-function doBiological_RCGA_REXstarJGG(problem_name,idum)
-% problem_name = 'hiv';
+function Benchmark_REXstarJGG(problem_name,idum)
+
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
 
 %% Init
-% addpath(genpath('../function'));
-% addpath(genpath('../../../../RCGA'));
 addpath(genpath('../../function'));
-addpath(genpath('../../../../../RCGA'));
 
 
-%%
+%% Solving
 opts = [];
 fprintf('\n********** %s **********\n',problem_name);
 [problem, opts] = getParam(problem_name,opts);
@@ -21,7 +18,4 @@ RCGA_REXstarJGG(problem,opts);
 
 
 %% Deinit
-% rmpath(genpath('../function'));
-% rmpath(genpath('../../../../RCGA'));
 addpath(genpath('../../function'));
-addpath(genpath('../../../../../RCGA'));

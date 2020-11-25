@@ -1,35 +1,32 @@
-function doBiological_eSS(problem_name,idum)
-% problem_name = 'hiv';
+function Benchmark_eSS(problem_name,idum)
+
 % idum = 1;
 rng(idum); % For Reproducibility
 fprintf('idum = %d\n',idum);
 
 
 %% Init
-% addpath(genpath('../function'));
-% addpath(genpath('../../../../RCGA'));
 addpath(genpath('../../function'));
-addpath(genpath('../../../../../RCGA'));
 
 
-%%
+%% Solving
 opts = [];
 fprintf('\n********** %s **********\n',problem_name);
 [problem, opts] = getParam(problem_name,opts);
-opts.out_best = sprintf('eSS_%s_final_%d.dat',problem_name,idum);
 
 ess_problem.f = func2str(problem.fitnessfun); %mfile containing the objective function
-ess_problem.vtr = opts.vtr; % f = ALLOWABLE ERROR
+ess_problem.vtr = opts.vtr;
 ess_problem.x_L = problem.decodingfun(zeros(1,problem.n_gene)); %lower bounds
 ess_problem.x_U = problem.decodingfun( ones(1,problem.n_gene)); %upper bounds
 ess_problem.c_L = -inf(1,problem.n_constraint);
 ess_problem.c_U = zeros(1,problem.n_constraint);
-ess_opts.maxtime = opts.t_limit;
-ess_opts.maxeval = 1e+8;
+ess_opts.maxtime = opts.maxtime;
+ess_opts.maxeval = opts.maxeval;
 ess_opts.tolc = 1e-30;
 ess_opts.iterprint = 0;
 
 Results = ess_kernel(ess_problem,ess_opts);
+
 elapsedTime = Results.cpu_time;
 generation = nan;
 neval = Results.numeval;
@@ -44,11 +41,9 @@ else
     fprintf('Solution NOT found\n');
 end
 
-writeBest(elapsedTime, generation, problem, opts, x, neval);
+opts.out_best = sprintf('eSS_%s_final_%d.dat',problem_name,idum);
+writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
 
 
 %% Deinit
-% rmpath(genpath('../function'));
-% rmpath(genpath('../../../../RCGA'));
 addpath(genpath('../../function'));
-addpath(genpath('../../../../../RCGA'));
