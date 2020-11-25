@@ -20,14 +20,17 @@ end
 
 %% Make Result files
 % Make the directory Results and execute below in it.
-PROBLEM = {'hiv','threestep'};
-n_repeat = 5;
-
-for i = 1 : length(PROBLEM)
-    name = char(PROBLEM(i));
-    for j = 1 : n_repeat
-        infilename = sprintf('../result_%s_%d/ess_report.mat',name,j);
-        outfilename = sprintf('eSS_%s_transition_%d.dat',name,j);
-        makeResultFiles(infilename,outfilename);
-    end
-end
+% addpath(genpath('../../function'));
+% 
+% n_repeat = 5;
+% 
+% for Name = {'hiv','threestep'}
+%     name = char(Name);
+%     for i = 1 : n_repeat
+%         infilename = sprintf('../result_%s_%d/ess_report.mat',name,i);
+%         outfilename = sprintf('eSS_%s_transition_%d.dat',name,i);
+%         makeResultFiles(infilename,outfilename);
+%     end
+% end
+% 
+% rmpath(genpath('../../function'));

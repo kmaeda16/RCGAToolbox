@@ -18,4 +18,4 @@ RCGA_REXstarJGG(problem,opts);
 
 
 %% Deinit
-addpath(genpath('../../function'));
+rmpath(genpath('../../function'));

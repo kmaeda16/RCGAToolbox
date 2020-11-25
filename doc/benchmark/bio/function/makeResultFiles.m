@@ -1,9 +1,5 @@
 function makeResultFiles(infilename,outfilename)
 
-% name = 'result_hiv_1';
-% filename = sprintf('../%s/ess_report.mat',name);
-% load(filename);
-% outfilename = sprintf('eSS_%s_transition_%d.dat','hiv',1);
 
 load(infilename);
 
@@ -14,6 +10,7 @@ if out == -1
         warning('cannot open %s!\n',outfilename);
         return;
 end
+
 fprintf(out,'Time\tNEval\tGeneration\tf\t');
 for i = 1 : n_gene
     fprintf(out,'x(%d)\t',i);

@@ -18,4 +18,4 @@ RCGA_UNDXMGG(problem,opts);
 
 
 %% Deinit
-addpath(genpath('../../function'));
+rmpath(genpath('../../function'));

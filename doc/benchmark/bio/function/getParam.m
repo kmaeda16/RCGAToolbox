@@ -58,14 +58,14 @@ switch problem_name
         problem.decodingfun  = @threestep_decode;
         problem.n_gene       = 36;
         problem.n_constraint = 24;
-        opts.vtr             = 1e-3;
+        opts.vtr             = -inf; % 1e-3;
         
     case 'hiv'
         problem.fitnessfun   = @wrapper_hiv_con_mex;
         problem.decodingfun  = @hiv_decode;
         problem.n_gene       = 20;
         problem.n_constraint = 12;
-        opts.vtr             = 2e-2;
+        opts.vtr             = -inf; % 2e-2;
         
     otherwise
         error('Unexpected Problem_Name!');

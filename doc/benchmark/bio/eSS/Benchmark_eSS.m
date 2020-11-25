@@ -46,4 +46,4 @@ writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
 
 
 %% Deinit
-addpath(genpath('../../function'));
+rmpath(genpath('../../function'));
