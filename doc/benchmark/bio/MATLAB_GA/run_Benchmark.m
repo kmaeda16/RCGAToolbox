@@ -11,8 +11,8 @@ addpath('..');
 for Name = {'hiv','threestep'}
     name = char(Name);
     for i = 1 : n_repeat
-%         Biological_MATLAB_GA(name,i); % For normal calculation
-        batch(@Biological_MATLAB_GA,0,{name,i}); % For batch calculation
+%         Benchmark_MATLAB_GA(name,i); % For normal calculation
+        batch(@Benchmark_MATLAB_GA,0,{name,i}); % For batch calculation
     end
 end
 

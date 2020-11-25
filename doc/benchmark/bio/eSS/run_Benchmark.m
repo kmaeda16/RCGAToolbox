@@ -10,8 +10,8 @@ for Name = {'hiv','threestep'}
         mkdir(dirname);
         cd(dirname);
         addpath('..');
-%         Biological_eSS(name,i); % For normal calculation
-        batch(@Biological_eSS,0,{name,i}); % For batch calculation
+%         Benchmark_eSS(name,i); % For normal calculation
+        batch(@Benchmark_eSS,0,{name,i}); % For batch calculation
         rmpath('..');
         cd('..');
     end
