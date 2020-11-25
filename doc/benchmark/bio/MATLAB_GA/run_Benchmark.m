@@ -3,20 +3,21 @@ n_repeat = 5;
 dirname = 'Results';
 
 mkdir(dirname);
+cd(dirname);
+addpath('..');
 
 
 %% Start Calculation
 for Name = {'hiv','threestep'}
     name = char(Name);
     for i = 1 : n_repeat
-        cd(dirname);
-        addpath('..');
 %         Biological_MATLAB_GA(name,i); % For normal calculation
         batch(@Biological_MATLAB_GA,0,{name,i}); % For batch calculation
-        rmpath('..');
-        cd('..');
     end
 end
+
+rmpath('..');
+cd('..');
 
 
 %% Save diary
