@@ -19,18 +19,35 @@ end
 
 
 %% Make Result files
-% Make the directory Results and execute below in it.
-% addpath(genpath('../../function'));
+% After finishing calculation, execute below in the directory eSS.
+% It takes a while.
+
+% dirname= 'Results';
+% mkdir(dirname);
+% cd(dirname);
 % 
 % n_repeat = 5;
+% 
+% 
+% addpath(genpath('../../function'));
 % 
 % for Name = {'hiv','threestep'}
 %     name = char(Name);
 %     for i = 1 : n_repeat
+%         fprintf('%s %d ...\n',name,i);
 %         infilename = sprintf('../result_%s_%d/ess_report.mat',name,i);
 %         outfilename = sprintf('eSS_%s_transition_%d.dat',name,i);
-%         makeResultFiles(infilename,outfilename);
+%         switch name
+%             case 'hiv'
+%                 makeResultFiles(infilename,outfilename,@wrapper_hiv_con_mex);
+%             case 'threestep'
+%                 makeResultFiles(infilename,outfilename,@wrapper_threestep_con_mex);
+%             otherwise
+%                 error('Unexpected problem name.');
+%         end  
 %     end
 % end
 % 
 % rmpath(genpath('../../function'));
+% 
+% cd('..');

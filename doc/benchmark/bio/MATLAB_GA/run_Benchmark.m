@@ -21,14 +21,20 @@ cd('..');
 
 
 %% Save diary
-% jobid = 30;
+% After finishing caluculation, execute below under the directory
+% MATLAB_GA.
+% 
+% jobid = 0;
+% myCluster = parcluster('local');
 % for Name = {'hiv','threestep'}
 %     name = char(Name);
 %     for j = 1 : n_repeat
 %         jobid = jobid + 1;
-%         jobid = sprintf('job%d',jobid);
-%         diaryname = sprintf('MATLAB_GA_%s_diary_%d.txt',name,j);
-%         expression = sprintf('diary(%s,''%s'')',jobid,diaryname);
+%         jobid_str = sprintf('job%d',jobid);
+%         expression = sprintf('%s = myCluster.findJob(''ID'',%d);',jobid_str,jobid);
+%         eval(expression);
+%         diaryname = sprintf('Results/MATLAB_GA_%s_diary_%d.txt',name,j);
+%         expression = sprintf('diary(%s,''%s'')',jobid_str,diaryname);
 %         eval(expression);
 %     end
 % end
