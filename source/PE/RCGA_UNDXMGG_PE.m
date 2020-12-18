@@ -16,7 +16,7 @@ function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
 %                 handle for an ODE function (IQM Tools format), the 
 %                 function handle for a MEXed model, or the C source code.
 % decodingfun  :  Function handle for a decoding function.
-% mst          :  Experimental data (An IQMmeasurement object).
+% mst          :  Experimental data (IQMmeasurement) or file name (*.xls).
 % n_constraint :  Number of constraint functions.
 % fitnessfun   :  Function handle for a fitness function.
 % fast_flag    :  ODE solver flag:

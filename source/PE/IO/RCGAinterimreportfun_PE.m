@@ -77,7 +77,7 @@ RCGAwriteTransition(elapsedTime,generation,problem,opts,best);
 param = problem.decodingfun(best.gene);
 
 
-%% Converting IQMmeasuremen into structure
+%% Converting IQMmeasurement into structure
 mst = struct(mst);
 
 
