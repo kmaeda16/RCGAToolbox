@@ -41,7 +41,8 @@ modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)
 % modelfile = 'Model_Example_SBML_mex.mexmaci64'; % MEX model file for macOS
 % modelfile = 'Model_Example_SBML_mex.mexa64'; % MEX model file for Linux
 decodingfun = @Decoding_Example; % Decoding Function
-measurement = 'Measurement_Example.xls'; % Measurement File
+% measurement = 'Measurement_Example.xls'; % Measurement File (EXCEL format)
+measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size

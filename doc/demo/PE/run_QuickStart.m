@@ -34,7 +34,8 @@ clearvars;
 % ========= Problem Settings ========= %
 modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)
 decodingfun = @Decoding_Example; % Decoding Function
-measurement = 'Measurement_Example.xls'; % Measurement File
+% measurement = 'Measurement_Example.xls'; % Measurement File (EXCEL format)
+measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement); % UNDX/MGG
