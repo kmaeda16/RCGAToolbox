@@ -1,5 +1,6 @@
 % Uninstallation script
-% This script must be executed under the directory RCGAToolbox/install/.
+% This script must be executed under the directory RCGAToolbox/install/
+% just after starting MATLAB.
 
 cd ..;
 currentdir = pwd;
