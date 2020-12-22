@@ -1,5 +1,5 @@
 % Diagnosis script.
-% This script must be executed under the directory RCGAToolbox/install/
+% This script must be executed under the directory RCGAToolbox/install/.
 
 clearvars;
 
