@@ -19,7 +19,7 @@ function [problem, opts] = getParam(problem_name,opts)
 %                 - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                    local optimizer is used.
 %                 - opts.localopts: Options for the local optimizer.
-%                 - opts.n_generation: Number of maximum generations.
+%                 - opts.maxgen: Maximum number of generations.
 %                 - opts.maxtime: Maximum time (sec).
 %                 - opts.maxeval: Maximum number of fitnessfun evaluations.
 %                 - opts.vtr: Value to be reached.
@@ -240,7 +240,7 @@ end
 
 opts.n_population = 200;
 opts.n_children = 200;
-opts.n_generation = 1e+8;
+opts.maxgen = 1e+8;
 opts.output_intvl = 1e+8;
 opts.maxtime = 10 * 60; % 10 min
 % opts.maxtime = 1; % 1 sec

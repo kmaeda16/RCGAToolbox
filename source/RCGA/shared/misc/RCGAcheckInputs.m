@@ -26,7 +26,7 @@ function [problem, opts] = RCGAcheckInputs(problem, opts, RCGAfun)
 %              - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                 local optimizer is used.
 %              - opts.localopts: Options for the local optimizer.
-%              - opts.n_generation: Number of maximum generations.
+%              - opts.maxgen: Maximum number of generations.
 %              - opts.maxtime: Maximum time (sec).
 %              - opts.maxeval: Maximum number of fitnessfun evaluations.
 %              - opts.vtr: Value to be reached.
@@ -100,7 +100,7 @@ C2 = {
     'Pf',...             %  6
     'local',...          %  7
     'localopts',...      %  8
-    'n_generation',...   %  9
+    'maxgen',...         %  9
     'maxtime',...        % 10
     'maxeval',...        % 11
     'vtr',...            % 12
@@ -155,8 +155,8 @@ if ~tf(8) % localopts
         'UseParallel',true);
     end
 end
-if ~tf(9) % n_generation
-    opts.n_generation = 1000;
+if ~tf(9) % maxgen
+    opts.maxgen = 1000;
 end
 if ~tf(10) % maxtime
     opts.maxtime = 10 * 60; % 10 min

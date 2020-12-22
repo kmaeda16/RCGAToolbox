@@ -37,8 +37,7 @@ function Results = RCGA_CustomRCGA(problem, GenerationAlternation, varargin)
 %                             1, the local optimizer is used.
 %                          - opts.localopts: Options for the local 
 %                             optimizer.
-%                          - opts.n_generation: Number of maximum 
-%                             generations.
+%                          - opts.maxgen: Maximum number of generations.
 %                          - opts.maxtime: Maximum time (sec).
 %                          - opts.maxeval: Maximum number of fitnessfun 
 %                             evaluations.
@@ -70,8 +69,8 @@ function Results = RCGA_CustomRCGA(problem, GenerationAlternation, varargin)
 %                          - Results.FinalPopulation: Information on the 
 %                             final population.
 %                          - Results.end_crit: Exit flag: Success (0), 
-%                             n_generation reached (1), maxtime reached 
-%                             (2), maxeval reached (3).
+%                             maxgen reached (1), maxtime reached (2), 
+%                             maxeval reached (3).
 
 
 %% Handling inputs

@@ -8,13 +8,13 @@ function ssr = RCGAssr(param, Simulation, model, mst, simopts)
 % 
 % [INPUT]
 % param      :  Parameter value vector.
-% Simulation :  Function handle for RCGAsimulateODEXX, RCGAsimulateSTB, or
+% Simulation :  Function handle for RCGAsimulateODE, RCGAsimulateSTB, or
 %               RCGAsimulateMEX.
 % model      :  Function handle for an ODE function (IQM Tools format) or a 
 %               MEXed model.
 % mst        :  Experimental data (An IQMmeasurement object).
 % simopts    :  Solver option structure. The fields depend on fast_flag. 
-%               For fast_flag = 0, 1, and 2, see 'help RCGAsimulateODEXX', 
+%               For fast_flag = 0, 1, and 2, see 'help RCGAsimulateODE', 
 %               'help RCGAsimulateSTB', 'help RCGAsimulateMEX', 
 %               respectively.
 % 

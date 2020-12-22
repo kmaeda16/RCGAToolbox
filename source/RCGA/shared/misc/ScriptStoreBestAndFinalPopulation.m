@@ -22,9 +22,9 @@ if best.phi == 0 && best.f <= vtr
     Results.end_crit = 0;
     fprintf('Objective function value to be reached (vtr) reached.\n');
 end
-if i >= n_generation
+if i >= maxgen
     Results.end_crit = 1;
-    fprintf('Maximal number of generations (n_generation) reached.\n');
+    fprintf('Maximum number of generations (maxgen) reached.\n');
 end
 if elapsedTime >= maxtime
     Results.end_crit = 2;

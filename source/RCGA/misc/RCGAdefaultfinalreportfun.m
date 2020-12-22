@@ -29,7 +29,7 @@ function RCGAdefaultfinalreportfun(elapsedTime, generation, problem, opts, Popul
 %                - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                   local optimizer is used.
 %                - opts.localopts: Options for the local optimizer.
-%                - opts.n_generation: Number of maximum generations.
+%                - opts.maxgen: Maximum number of generations.
 %                - opts.maxtime: Maximum time (sec).
 %                - opts.maxeval: Maximum number of fitnessfun evaluations.
 %                - opts.vtr: Value to be reached.

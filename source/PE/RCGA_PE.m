@@ -20,7 +20,7 @@ function Results = RCGA_PE(model, decodingfun, mst, n_constraint, fitnessfun, fa
 %                 - fast_flag = 2: CVODE by IQM Tools.
 % simopts      :  Solver option structure. The fields depend on fast_flag. 
 %                 For fast_flag = 0, 1, and 2, see 
-%                 'help RCGAsimulateODEXX', 'help RCGAsimulateSTB', 
+%                 'help RCGAsimulateODE', 'help RCGAsimulateSTB', 
 %                 'help RCGAsimulateMEX', respectively.
 % opts         :  Option structure:
 %                 - opts.n_population: Population size.
@@ -35,7 +35,7 @@ function Results = RCGA_PE(model, decodingfun, mst, n_constraint, fitnessfun, fa
 %                 - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                    local optimizer is used.
 %                 - opts.localopts: Options for the local optimizer.
-%                 - opts.n_generation: Number of maximum generations.
+%                 - opts.maxgen: Maximum number of generations.
 %                 - opts.maxtime: Maximum time (sec).
 %                 - opts.maxeval: Maximum number of fitnessfun evaluations.
 %                 - opts.vtr: Value to be reached.
@@ -63,7 +63,7 @@ function Results = RCGA_PE(model, decodingfun, mst, n_constraint, fitnessfun, fa
 %                 - Results.Best: Information on the best individual.
 %                 - Results.FinalPopulation: Information on the final 
 %                    population.
-%                 - Results.end_crit: Exit flag: Success (0), n_generation 
+%                 - Results.end_crit: Exit flag: Success (0), maxgen 
 %                    reached (1), maxtime reached (2), maxeval reached (3).
 
 
@@ -213,7 +213,7 @@ n_param = length(output);
 %% Setting Simulation function
 switch fast_flag
     case 0
-        Simulation = @RCGAsimulateODEXX;
+        Simulation = @RCGAsimulateODE;
     case 1
         Simulation = @RCGAsimulateSTB;
     case 2
@@ -228,7 +228,7 @@ exist_flag = exist(filename,'file');
 if exist_flag == 2 && ~( fast_flag == 0 || fast_flag == 1 )
     warning('fast_flg set to 0');
     fast_flag = 0;
-    Simulation = @RCGAsimulateODEXX;
+    Simulation = @RCGAsimulateODE;
 end
 
 if exist_flag == 3 && ~( fast_flag == 2 )

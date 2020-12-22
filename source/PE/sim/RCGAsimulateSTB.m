@@ -50,4 +50,4 @@ end
 
 %% Solving ODEs
 options.Method = @odestb;
-[ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options);
+[ T, Y ] = RCGAsimulateODE(odefun, tspan, y0, param, options);

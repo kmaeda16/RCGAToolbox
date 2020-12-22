@@ -1,15 +1,15 @@
-function [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options)
-% RCGAsimulateODEXX simulates an odefun (IQM Tools format) using MATLAB
+function [ T, Y ] = RCGAsimulateODE(odefun, tspan, y0, param, options)
+% RCGAsimulateODE simulates an odefun (IQM Tools format) using MATLAB
 % odexx solver. odefun (IQM Tools format) can be created by
 % RCGAcreateODEfile or IQMcreateODEfile.
 % 
 % [SYNTAX]
-% [ T, Y ] = RCGAsimulateODEXX(odefun)
-% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan)
-% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0)
-% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param)
-% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, [], options)
-% [ T, Y ] = RCGAsimulateODEXX(odefun, tspan, y0, param, options)
+% [ T, Y ] = RCGAsimulateODE(odefun)
+% [ T, Y ] = RCGAsimulateODE(odefun, tspan)
+% [ T, Y ] = RCGAsimulateODE(odefun, tspan, y0)
+% [ T, Y ] = RCGAsimulateODE(odefun, tspan, y0, param)
+% [ T, Y ] = RCGAsimulateODE(odefun, tspan, y0, [], options)
+% [ T, Y ] = RCGAsimulateODE(odefun, tspan, y0, param, options)
 % 
 % [INPUT]
 % odefun  :  Function handle for an ODE function (IQM Tools format).

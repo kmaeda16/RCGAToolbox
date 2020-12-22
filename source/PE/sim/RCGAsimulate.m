@@ -23,7 +23,7 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 %              - fast_flag = 1: CVODE by SundialsTB.
 %              - fast_flag = 2: CVODE by IQM Tools.
 % options   :  Solver option structure. The fields depend on fast_flag. For
-%              fast_flag = 0, 1, and 2, see 'help RCGAsimulateODEXX', 'help
+%              fast_flag = 0, 1, and 2, see 'help RCGAsimulateODE', 'help
 %              RCGAsimulateSTB', 'help RCGAsimulateMEX', respectively.
 % 
 % [OUTPUT]
@@ -174,7 +174,7 @@ end
 %% Setting Simulation function
 switch fast_flag
     case 0
-        Simulation = @RCGAsimulateODEXX;
+        Simulation = @RCGAsimulateODE;
     case 1
         Simulation = @RCGAsimulateSTB;
     case 2
@@ -189,7 +189,7 @@ exist_flag = exist(filename,'file');
 if exist_flag == 2 && ~( fast_flag == 0 || fast_flag == 1 )
     warning('fast_flg set to 0!');
     fast_flag = 0;
-    Simulation = @RCGAsimulateODEXX;
+    Simulation = @RCGAsimulateODE;
 end
 
 if exist_flag == 3 && ~( fast_flag == 2 )

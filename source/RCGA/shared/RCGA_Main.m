@@ -29,8 +29,7 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 %                             1, the local optimizer is used.
 %                          - opts.localopts: Options for the local 
 %                             optimizer.
-%                          - opts.n_generation: Number of maximum 
-%                             generations.
+%                          - opts.maxgen: Maximum number of generations.
 %                          - opts.maxtime: Maximum time (sec).
 %                          - opts.maxeval: Maximum number of fitnessfun 
 %                             evaluations.
@@ -64,8 +63,8 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 %                          - Results.FinalPopulation: Information on the 
 %                             final population.
 %                          - Results.end_crit: Exit flag: Success (0),
-%                             n_generation reached (1), maxtime reached 
-%                             (2), maxeval reached (3).
+%                             maxgen reached (1), maxtime reached (2), 
+%                             maxeval reached (3).
 
 
 %% Getting the time RCGA starts
@@ -77,7 +76,7 @@ decodingfun = problem.decodingfun;
 n_constraint = problem.n_constraint;
 interimreportfun = opts.interimreportfun;
 finalreportfun = opts.finalreportfun;
-n_generation = opts.n_generation;
+maxgen = opts.maxgen;
 output_intvl = opts.output_intvl;
 n_population = opts.n_population;
 out_report = opts.out_report;
@@ -144,7 +143,7 @@ end
 
 
 %% Second to final generations
-while i < n_generation
+while i < maxgen
     i = i + 1;
     flg_printed = 0;
     Population = GenerationAlternation(problem,opts,Population);

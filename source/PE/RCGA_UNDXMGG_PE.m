@@ -25,7 +25,7 @@ function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
 %                 - fast_flag = 2: CVODE by IQM Tools.
 % simopts      :  Solver option structure. The fields depend on fast_flag. 
 %                 For fast_flag = 0, 1, and 2, see 
-%                 'help RCGAsimulateODEXX', 'help RCGAsimulateSTB', 
+%                 'help RCGAsimulateODE', 'help RCGAsimulateSTB', 
 %                 'help RCGAsimulateMEX', respectively.
 % opts         :  Option structure:
 %                 - opts.n_population: Population size.
@@ -40,7 +40,7 @@ function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
 %                 - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                    local optimizer is used.
 %                 - opts.localopts: Options for the local optimizer.
-%                 - opts.n_generation: Number of maximum generations.
+%                 - opts.maxgen: Maximum number of generations.
 %                 - opts.maxtime: Maximum time (sec).
 %                 - opts.maxeval: Maximum number of fitnessfun evaluations.
 %                 - opts.vtr: Value to be reached.
@@ -67,7 +67,7 @@ function Results = RCGA_UNDXMGG_PE(model,decodingfun,mst,varargin)
 %                 - Results.Best: Information on the best individual.
 %                 - Results.FinalPopulation: Information on the final 
 %                    population.
-%                 - Results.end_crit: Exit flag: Success (0), n_generation 
+%                 - Results.end_crit: Exit flag: Success (0), maxgen 
 %                    reached (1), maxtime reached (2), maxeval reached (3).
 
 

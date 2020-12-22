@@ -27,7 +27,7 @@ function RCGAprintWelcomeMessage(problem, opts, RCGAfun)
 %              - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                 local optimizer is used.
 %              - opts.localopts: Options for the local optimizer.
-%              - opts.n_generation: Number of maximum generations.
+%              - opts.maxgen: Maximum number of generations.
 %              - opts.maxtime: Maximum time (sec).
 %              - opts.maxeval: Maximum number of fitnessfun evaluations.
 %              - opts.vtr: Value to be reached.
@@ -82,7 +82,7 @@ if strcmp(RCGA_Type,'RCGA_REXstarJGG')
 end
 fprintf('              Pf :  %g\n',opts.Pf);
 fprintf('           local :  %g\n',opts.local);
-fprintf('    n_generation :  %d\n',opts.n_generation);
+fprintf('          maxgen :  %d\n',opts.maxgen);
 fprintf('         maxtime :  %g\n',opts.maxtime);
 fprintf('         maxeval :  %g\n',opts.maxeval);
 fprintf('             vtr :  %g\n',opts.vtr);
