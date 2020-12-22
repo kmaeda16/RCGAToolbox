@@ -55,7 +55,7 @@ if flg2 > 0
     fprintf('RESULT: Core functions are available.\n');
 else
     warning('Failed Test.');
-    warning('IQM Tools is NOT installed.');
+    warning('RCGAToolbox is NOT installed.');
     warning('RESULT: Core functions are NOT available.');
     Flag(1) = 1;
 end
@@ -90,7 +90,7 @@ if flg2 > 0
     fprintf('RESULT: SBML-related functions are available.\n');
 else
     warning('Failed Test.');
-    warning('IQM Tools is NOT installed.');
+    warning('IQM Tools and/or libSBML are NOT installed.');
     warning('RESULT: SBML-related functions are NOT available.');
     Flag(2) = 1;
 end
@@ -100,32 +100,38 @@ fprintf('\n\n');
 
 %% Checking for fast ODE solver option (fast_flag = 2)
 fprintf('####### Checking for fast ODE solver option (fast_flag = 2)... #######\n');
-
-flg1 = exist('IQMPsimulate','file');
-if flg1 > 0
-    fprintf('IQMPsimulate found.\n');
+if Flag(2) == 0
+    
+    flg1 = exist('IQMPsimulate','file');
+    if flg1 > 0
+        fprintf('IQMPsimulate found.\n');
+    else
+        warning('IQMPsimulate NOT found.');
+    end
+    
+    flg2 = 1;
+    try
+        %========= TEST =========%
+        model = IQMmodel('Model_Example_SBML.xml');
+        simdata = IQMPsimulate(model);
+        %========================%
+    catch ME
+        warning(ME.message);
+        flg2 = 0;
+    end
+    
+    if flg2 > 0
+        fprintf('Passed Test.\n');
+        fprintf('RESULT: Fast ODE solver option (fast_flag = 2) is available.\n');
+    else
+        warning('Failed Test.');
+        warning('IQM Tools is NOT installed.');
+        warning('RESULT: Fast ODE solver option (fast_flag = 2) is NOT available.');
+        Flag(3) = 1;
+    end
+    
 else
-    warning('IQMPsimulate NOT found.');
-end
-
-flg2 = 1;
-try
-    %========= TEST =========%
-    model = IQMmodel('Model_Example_SBML.xml');
-    simdata = IQMPsimulate(model);
-    %========================%
-catch ME
-    warning(ME.message);
-    flg2 = 0;
-end
-
-if flg2 > 0
-    fprintf('Passed Test.\n');
-    fprintf('RESULT: Fast ODE solver option (fast_flag = 2) is available.\n');
-else
-    warning('Failed Test.');
-    warning('IQM Tools is NOT installed.');
-    warning('RESULT: Fast ODE solver option (fast_flag = 2) is NOT available.');
+    warning('Test for the fast ODE solver option (fast_flag = 2) could not be run because SBML-related functions are not available.');
     Flag(3) = 1;
 end
 
