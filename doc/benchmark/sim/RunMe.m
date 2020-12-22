@@ -1,8 +1,9 @@
 % This script runs simulateModel for all the folders
-
+clear all;
 
 diary('diary.txt');
-addpath('../');
+cwd = pwd;
+addpath(cwd);
 
 %% Simulation
 cd('Goldbeter1995_CircClock');
@@ -30,5 +31,5 @@ simulateModel('hiv_SBML.xml');
 cd ..;
 
 %% 
-rmpath('../');
+rmpath(cwd);
 diary off;
