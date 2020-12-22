@@ -1,4 +1,4 @@
-To start simulation benchmark, run RunMe.m.
+To start simulation benchmark, run run_Benchmark.m.
 
 - KM created the SBML files for Threestep and HIV.
 - Other SBML files were obtained from BioModels.
