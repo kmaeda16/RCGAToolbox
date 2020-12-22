@@ -1,21 +1,25 @@
+clear all;
 
 n_repeat = 5;
 
 
 %% Start Calculation
+cwd = pwd;
+addpath(cwd);
+
 for Name = {'hiv','threestep'}
     name = char(Name);
     for i = 1 : n_repeat
         dirname = sprintf('result_%s_%d',name,i);
         mkdir(dirname);
         cd(dirname);
-        addpath('..');
 %         Benchmark_eSS(name,i); % For normal calculation
-        batch(@Benchmark_eSS,0,{name,i}); % For batch calculation
-        rmpath('..');
+        batch(@Benchmark_eSS,0,{name,i}); % For batch calculation (Parallel Computing Toolbox required)
         cd('..');
     end
 end
+
+rmpath(cwd);
 
 
 %% Make Result files

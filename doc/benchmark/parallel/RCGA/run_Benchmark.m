@@ -1,10 +1,14 @@
+clear all;
 
 n_repeat = 5;
-dirname = 'Results';
 
+
+%% Start Calculation
+cwd = pwd;
+addpath(cwd);
+dirname = 'Results';
 mkdir(dirname);
 cd(dirname);
-addpath('..');
 
 for Name = {'hiv','threestep'}
     name = char(Name);
@@ -32,5 +36,5 @@ for Name = {'hiv','threestep'}
     
 end
 
-rmpath('..');
 cd('..');
+rmpath(cwd);

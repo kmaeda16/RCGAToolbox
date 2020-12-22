@@ -1,23 +1,25 @@
+clear all;
 
 n_repeat = 5;
-dirname = 'Results';
-
-mkdir(dirname);
-cd(dirname);
-addpath('..');
 
 
 %% Start Calculation
+cwd = pwd;
+addpath(cwd);
+dirname = 'Results';
+mkdir(dirname);
+cd(dirname);
+
 for Name = {'hiv','threestep'}
     name = char(Name);
     for i = 1 : n_repeat
 %         Benchmark_MATLAB_GA(name,i); % For normal calculation
-        batch(@Benchmark_MATLAB_GA,0,{name,i}); % For batch calculation
+        batch(@Benchmark_MATLAB_GA,0,{name,i}); % For batch calculation (Parallel Computing Toolbox required)
     end
 end
 
-rmpath('..');
 cd('..');
+rmpath(cwd);
 
 
 %% Save diary

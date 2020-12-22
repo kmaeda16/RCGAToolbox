@@ -1,3 +1,5 @@
+clear all;
+
 mkdir('Results');
 
 n_repeat = 10;
