@@ -23,7 +23,11 @@ end
 
 plot(T_exp,Y_exp,'o','LineWidth',2);
 set(gca,'FontSize',10,'FontName','Arial');
-legend(statename,'Location','best');
+if verLessThan('matlab','9.2') % MATLAB 9.2 (R2017a)
+    legend(statename,'Location','best');
+else
+    legend(statename,'Location','best','AutoUpdate','off');
+end
 hold on;
 ax = gca;
 ax.ColorOrderIndex = 1;
