@@ -4,6 +4,8 @@
 #define N_GENE 36 /* 13 */
 #define N_CONSTRAINT 24 /* 9 */
 
+void benchmark(double *x, int n_gene, int n_constraint, double *f, double *g);
+
 void mexFunction(int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	double x[N_GENE+1], f, g[N_CONSTRAINT+1];
