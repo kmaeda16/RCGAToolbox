@@ -33,6 +33,9 @@ for Problem_Name = BENCHMARK1
     ess_opts.maxeval = opts.maxeval;
     ess_opts.tolc = 1e-30;
     ess_opts.iterprint = 0;
+    ess_opts.inter_save = 0;
+    ess_opts.local.solver = 'fmincon';
+    ess_opts.local.finish = 'fmincon';
     
     Results = ess_kernel(ess_problem,ess_opts);
     
@@ -73,6 +76,9 @@ for Problem_Name = BENCHMARK2
     ess_opts.maxeval = opts.maxeval;
     ess_opts.tolc = 1e-30;
     ess_opts.iterprint = 0;
+    ess_opts.inter_save = 0;
+    ess_opts.local.solver = 'fmincon';
+    ess_opts.local.finish = 'fmincon';
     
     Results = ess_kernel(ess_problem,ess_opts);
     

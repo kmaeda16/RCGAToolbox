@@ -23,7 +23,10 @@ ess_problem.c_U = zeros(1,problem.n_constraint);
 ess_opts.maxtime = opts.maxtime;
 ess_opts.maxeval = opts.maxeval;
 ess_opts.tolc = 1e-30;
-ess_opts.iterprint = 0;
+ess_opts.iterprint = 1;
+ess_opts.inter_save = 1;
+ess_opts.local.solver = 'fmincon';
+ess_opts.local.finish = 'fmincon';
 
 Results = ess_kernel(ess_problem,ess_opts);
 
