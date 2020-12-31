@@ -75,7 +75,7 @@ tspan = linspace(experimentaldata(1,1),experimentaldata(end,1),n_point)';
 
 %% Running simulation
 y0 = [0 0];
-[ T, Y ] = RCGAsimulateODEXX(@Model_Example_odefun, tspan, y0, param);
+[ T, Y ] = RCGAsimulateODE(@Model_Example_odefun, tspan, y0, param);
 
 
 %% Making plot

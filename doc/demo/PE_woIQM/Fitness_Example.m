@@ -50,7 +50,7 @@ param = x;
 
 
 %% Running simulation
-[ ~, Y ] = RCGAsimulateODEXX(@Model_Example_odefun, tspan, y0, param);
+[ ~, Y ] = RCGAsimulateODE(@Model_Example_odefun, tspan, y0, param);
 
 
 %% If simulation faild, return ssr = 1e+10

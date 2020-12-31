@@ -45,4 +45,20 @@
 % a known bug of MATLAB. Turn off the warning using warning('off', ...)
 warning('off', 'MATLAB:subscripting:noSubscriptsSpecified');
 
+% ======== Experimental Data ========= %
+global experimentaldata;
+experimentaldata = [ ... % time X1 X2
+    0.000E+00 0.000E+00 0.000E+00;
+    1.000E+00 6.449E-02 2.559E-02;
+    2.000E+00 9.089E-02 5.838E-02;
+    3.000E+00 1.023E-01 8.115E-02;
+    4.000E+00 1.072E-01 9.489E-02;
+    5.000E+00 1.094E-01 1.026E-01;
+    6.000E+00 1.104E-01 1.068E-01;
+    7.000E+00 1.108E-01 1.089E-01;
+    8.000E+00 1.110E-01 1.100E-01;
+    9.000E+00 1.111E-01 1.106E-01;
+    1.000E+01 1.111E-01 1.109E-01;
+    ];
+
 RCGAToolbox_MissionControl;
