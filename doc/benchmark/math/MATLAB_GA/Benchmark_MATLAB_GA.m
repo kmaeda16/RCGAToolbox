@@ -53,7 +53,7 @@ for Problem_Name = BENCHMARK1
     end
     
     opts.out_best = sprintf('Results/MATLAB_GA_%s_final_%d.dat',char(Problem_Name),idum);
-    writeBestAlt(elapsedTime, output.generations, problem, opts, x, neval);
+    writeBestAlt(elapsedTime, generation, problem, opts, x, neval);
     
 end
 
