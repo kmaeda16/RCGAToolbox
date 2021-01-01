@@ -1,7 +1,9 @@
 % This script demonstrates how to run simulation using RCGAToolbox.
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 % =============== Model =============== %
 % model = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)

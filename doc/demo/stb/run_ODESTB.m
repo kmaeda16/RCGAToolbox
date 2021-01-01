@@ -2,7 +2,9 @@
 % required to use the function odestb.
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 
 % =============== Time ================ %

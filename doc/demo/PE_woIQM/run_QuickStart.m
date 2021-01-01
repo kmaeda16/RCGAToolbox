@@ -30,7 +30,9 @@
 % -----------------------------------------------------------------------
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 % ======== Experimental Data ========= %
 global experimentaldata;

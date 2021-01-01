@@ -1,7 +1,7 @@
 function [output] = Model_Example_odefun(varargin)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Model_Example
-% Generated: 04-Nov-2020 16:10:02
+% Generated: 01-Jan-2021 14:51:30
 % 
 % [output] = Model_Example_odefun() => output = initial conditions in column vector
 % [output] = Model_Example_odefun('states') => output = state names in cell-array

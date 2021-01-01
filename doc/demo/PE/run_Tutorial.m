@@ -29,17 +29,19 @@
 % -----------------------------------------------------------------------
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 % ========= Problem Settings ========= %
 % modelfile = 'Model_Example_SBML.xml'; % SBML file (IQM Tools required)
 % modelfile = IQMmodel('Model_Example_SBML.xml'); % Creating an IQMmodel object (IQM Tools required)
 modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)
 % modelfile = 'Model_Example_odefun.m'; % ODE file (IQM Tools format)
-% modelfile = 'Model_Example_SBML_mex.c'; % C source code (IQM Tools required)
-% modelfile = 'Model_Example_SBML_mex.mexw64'; % MEX model for Windows
-% modelfile = 'Model_Example_SBML_mex.mexmaci64'; % MEX model file for macOS
-% modelfile = 'Model_Example_SBML_mex.mexa64'; % MEX model file for Linux
+% modelfile = 'Model_Example_mex.c'; % C source code (IQM Tools required)
+% modelfile = 'Model_Example_mex.mexw64'; % MEX model for Windows
+% modelfile = 'Model_Example_mex.mexmaci64'; % MEX model file for macOS
+% modelfile = 'Model_Example_mex.mexa64'; % MEX model file for Linux
 decodingfun = @Decoding_Example; % Decoding Function
 % measurement = 'Measurement_Example.xls'; % Measurement File (EXCEL format)
 measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
@@ -47,8 +49,7 @@ measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size
 opts.n_children = 25; % # Children per Generation
-% opts.n_parent = n_gene + 1; % # Parents Used for REXstar
-opts.t_rexstar = 6.0; % Step-size parameter for REXstar
+opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
 opts.maxgen = 200; % Max # Generations
 opts.maxtime = 60; % Max Time (sec)

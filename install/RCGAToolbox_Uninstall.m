@@ -1,6 +1,7 @@
 % Uninstallation script
-% This script must be executed under the directory RCGAToolbox/install/
-% just after starting MATLAB.
+% This script must be executed under the directory RCGAToolbox/install/.
+% Run this script just after starting MATLAB. Otherwise, unnecessary paths 
+% might be saved.
 
 cd ..;
 currentdir = pwd;
@@ -9,4 +10,4 @@ f = fullfile(currentdir,'source');
 rmpath(genpath(f));
 savepath;
 
-fprintf('Done!\n');
+fprintf('RCGAToolbox was removed from the MATLAB path, and the current path settings were saved.\n');

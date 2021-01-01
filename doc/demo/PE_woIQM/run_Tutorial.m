@@ -30,7 +30,9 @@
 % -----------------------------------------------------------------------
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 % ======== Experimental Data ========= %
 global experimentaldata;
@@ -56,17 +58,16 @@ problem.decodingfun = @Decoding_Example; % Decoding Function
 
 % ========= Option Settings ========== %
 opts.interimreportfun = @Interimreportfun_Example; % Interim Report Function
-opts.n_population = 200; % Population Size
-opts.n_children = 100; % # Children per Generation
+opts.n_population = 50; % Population Size
+opts.n_children = 25; % # Children per Generation
 opts.n_parent = problem.n_gene + 1; % # Parents Used for REXstar
 opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
-opts.Pf = 4.500000e-01; % Pf
-opts.maxgen = 1000; % Max # Generations
-opts.maxtime = 60 * 1.000000e+00; % Max Time (sec)
+opts.maxgen = 200; % Max # Generations
+opts.maxtime = 60; % Max Time (sec)
 opts.maxeval = inf; % Max # fitnessfun Evaluations
 opts.vtr = 0.000000e+00; % Value To Be Reached
-opts.output_intvl = 10; % Output Interval Generation
+opts.output_intvl = 1; % Output Interval Generation
 opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name

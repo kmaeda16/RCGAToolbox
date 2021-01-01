@@ -29,7 +29,9 @@
 % -----------------------------------------------------------------------
 
 
-clearvars;
+clear mex;
+clear all;
+close all;
 
 % ========= Problem Settings ========= %
 modelfile = @Model_Example_odefun; % ODE file (IQM Tools format)

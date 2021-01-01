@@ -1,7 +1,9 @@
 % This script demonstrates different format convresions. IQM Tools are
 % required for the demonstration.
 
+clear mex;
 clear all;
+close all;
 
 %% Simulate the model in Model_Example_conciseOdefun.m
 figure;
