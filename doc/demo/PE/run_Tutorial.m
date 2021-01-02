@@ -70,6 +70,5 @@ opts.local = 0; % Local Optimizer
 rng(0); % Random Seed
 
 % ========== Executing RCGA ========== %
-clear RCGAssr;
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts); % UNDX/MGG
 Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts); % REXstar/JGG
