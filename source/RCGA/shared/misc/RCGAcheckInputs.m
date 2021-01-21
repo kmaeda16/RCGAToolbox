@@ -121,13 +121,18 @@ if strcmp(RCGA_Type,'RCGA_UNDXMGG') || strcmp(RCGA_Type,'RCGA_CustomRCGA')
 end
 
 if ~tf(1) % n_population
-    opts.n_population = 20 * problem.n_gene; % Recommended by Kobayashi 2009
+%     opts.n_population = 20 * problem.n_gene; % Recommended by Kobayashi 2009
 %     opts.n_population = 5 * problem.n_gene;
+    if tf(2)
+        opts.n_population = opts.n_children;
+    else
+        opts.n_population = 300;
+    end
 end
 if ~tf(2) % n_children
-    opts.n_children = 5 * problem.n_gene; % Recommended by Kobayashi 2009
+%     opts.n_children = 5 * problem.n_gene; % Recommended by Kobayashi 2009
 %     opts.n_children = ceil(0.5 * opts.n_population);
-%     opts.n_children = opts.n_population;
+    opts.n_children = opts.n_population;
 end
 if ~tf(3) % n_parent
     opts.n_parent = problem.n_gene + 1; % Recommended by Kobayashi 2009

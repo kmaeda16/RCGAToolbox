@@ -71,13 +71,9 @@ switch problem_name
         error('Unexpected Problem_Name!');
 end
 
-opts.n_population = 350;
-opts.n_children = 350;
 opts.maxgen = 1000; % 1e+8;
 opts.output_intvl = 10;
 opts.maxtime = 24 * 60 * 60; % 1 day
-% opts.maxtime = 12 * 60 * 60; % 12 hr
-% opts.maxtime = 2 * 60 * 60; % 2 hr
 % opts.maxtime = 5; % 5 sec
 opts.maxeval = 1e+8;
 opts.local = 1;
