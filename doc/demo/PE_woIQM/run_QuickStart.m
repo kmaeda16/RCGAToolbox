@@ -51,8 +51,8 @@ experimentaldata = [ ... % time X1 X2
     ];
 
 % ========= Problem Settings ========= %
-problem.n_gene = 7; % # Decision Variables
-problem.n_constraint = 0; % # Constraints
+problem.n_gene = 7; % Number of Decision Variables
+problem.n_constraint = 0; % Number of Constraints
 problem.fitnessfun = @Fitness_Example; % Fitness Function
 problem.decodingfun = @Decoding_Example; % Decoding Function
 

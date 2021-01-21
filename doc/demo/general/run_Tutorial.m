@@ -19,29 +19,29 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-problem.n_gene = 10; % # Decision Variables
-problem.n_constraint = 2; % # Constraints
+problem.n_gene = 10; % Number of Decision Variables
+problem.n_constraint = 2; % Number of Constraints
 problem.fitnessfun = @Fitness_Example; % Fitness Function
 problem.decodingfun = @Decoding_Example; % Decoding Function
 
 % ========= Option Settings ========== %
-opts.n_population = 200; % Population Size
-opts.n_children = 100; % # Children per Generation
-opts.n_parent = problem.n_gene + 1; % # Parents Used for REXstar
+opts.n_population = 300; % Population Size
+opts.n_children = 300; % Number of Children per Generation
+opts.n_parent = problem.n_gene + 1; % Number of Parents Used for REXstar
 opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
-opts.Pf = 4.500000e-01; % Pf
-opts.maxgen = 1000; % Max # Generations
-opts.maxtime = 60 * 1.000000e+00; % Max Time (sec)
-opts.maxeval = inf; % Max # fitnessfun Evaluations
-opts.vtr = 0.000000e+00; % Value To Be Reached
+opts.Pf = 0.45; % Pf
+opts.local = 0; % Local Optimizer
+opts.maxgen = 1000; % Max Number of Generations
+opts.maxtime = 60; % Max Time (sec)
+opts.maxeval = inf; % Max Number of fitnessfun Evaluations
+opts.vtr = 0; % Value To Be Reached
+opts.n_par = 1; % Number of Workers for Parallel Computation
 opts.output_intvl = 10; % Output Interval Generation
 opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
-opts.n_par = 1; % # Workers for Parallel Computation
-opts.local = 0; % Local Optimizer
 
 % ======= Setting Random Seed ======== %
 rng(0); % Random Seed

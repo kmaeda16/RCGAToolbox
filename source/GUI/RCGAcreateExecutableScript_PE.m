@@ -49,28 +49,28 @@ fprintf(out,'\n');
 fprintf(out,'%% ========= Option Settings ========== %%\n');
 
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
-fprintf(out,'opts.n_children = %d; %% # Children per Generation\n',app.ChildrenSize.Value);
+fprintf(out,'opts.n_children = %d; %% Number of Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
-    fprintf(out,'%% opts.n_parent = n_gene + 1; %% # Parents Used for REXstar\n');
+%     fprintf(out,'%% opts.n_parent = n_gene + 1; %% Number of Parents Used for REXstar\n');
     fprintf(out,'opts.t_rexstar = 6.0; %% Step-size Parameter for REXstar\n');
     fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
 end
-fprintf(out,'opts.maxgen = %d; %% Max # Generations\n',app.MaxGenerations.Value);
-fprintf(out,'opts.maxtime = 60 * %e; %% Max Time (sec)\n',app.MaxTime.Value);
-fprintf(out,'opts.maxeval = inf; %% Max # fitnessfun Evaluations\n');
-fprintf(out,'opts.vtr = %e; %% Value To Be Reached\n',app.ValueToBeReached.Value);
-fprintf(out,'opts.output_intvl = %d; %% Output Interval Generation\n',app.OutputIntervalGeneration.Value);
-fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.TransitionFileName.Value);
-fprintf(out,'opts.out_best = ''%s''; %% Best Individual File Name\n',app.BestIndividualFileName.Value);
-fprintf(out,'opts.out_population = ''%s''; %% Final Population File Name\n',app.FinalPopulationFileName.Value);
-fprintf(out,'opts.out_report = ''%s''; %% Report File Name\n',app.ReportFileName.Value);
-fprintf(out,'opts.n_par = %d; %% # Workers for Parallel Computation\n',app.N_Workers.Value);
-fprintf(out,'fast_flag = %d; %% fast_flag\n',app.FastFlag.Value);
 if strcmp(app.LocalSwitch.Value,'Off')
     fprintf(out,'opts.local = 0; %% Local Optimizer\n');
 else
     fprintf(out,'opts.local = 1; %% Local Optimizer\n');
 end
+fprintf(out,'opts.maxgen = %d; %% Max Number of Generations\n',app.MaxGenerations.Value);
+fprintf(out,'opts.maxtime = 60 * %e; %% Max Time (sec)\n',app.MaxTime.Value);
+fprintf(out,'opts.maxeval = inf; %% Max Number of fitnessfun Evaluations\n');
+fprintf(out,'opts.vtr = %e; %% Value To Be Reached\n',app.ValueToBeReached.Value);
+fprintf(out,'opts.n_par = %d; %% Number of Workers for Parallel Computation\n',app.N_Workers.Value);
+fprintf(out,'opts.output_intvl = %d; %% Output Interval Generation\n',app.OutputIntervalGeneration.Value);
+fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.TransitionFileName.Value);
+fprintf(out,'opts.out_best = ''%s''; %% Best Individual File Name\n',app.BestIndividualFileName.Value);
+fprintf(out,'opts.out_population = ''%s''; %% Final Population File Name\n',app.FinalPopulationFileName.Value);
+fprintf(out,'opts.out_report = ''%s''; %% Report File Name\n',app.ReportFileName.Value);
+fprintf(out,'fast_flag = %d; %% fast_flag\n',app.FastFlag.Value);
 fprintf(out,'\n');
 
 %% Setting Random Seed

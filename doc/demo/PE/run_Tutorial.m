@@ -48,23 +48,23 @@ measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size
-opts.n_children = 25; % # Children per Generation
+opts.n_children = 25; % Number of Children per Generation
 opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
-opts.maxgen = 200; % Max # Generations
+opts.local = 0; % Local Optimizer
+opts.maxgen = 200; % Max Number of Generations
 opts.maxtime = 60; % Max Time (sec)
-opts.maxeval = inf; % Max # fitnessfun Evaluations
-opts.vtr = 0.000000e+00; % Value To Be Reached
+opts.maxeval = inf; % Max Number of fitnessfun Evaluations
+opts.vtr = 0; % Value To Be Reached
+opts.n_par = 1; % Number of Workers for Parallel Computation
 opts.output_intvl = 1; % Output Interval Generation
 opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
-opts.n_par = 1; % # Workers for Parallel Computation
-fast_flag = 0; % # fast_flag (0: MATLAB ODEXX)
-% fast_flag = 1; % # fast_flag (1: SundialsTB CVODE) (SundialsTB required)
-% fast_flag = 2; % # fast_flag (2: IQM Tools CVODE MEX) (IQM Tools required)
-opts.local = 0; % Local Optimizer
+fast_flag = 0; % fast_flag (0: MATLAB ODEXX)
+% fast_flag = 1; % fast_flag (1: SundialsTB CVODE) (SundialsTB required)
+% fast_flag = 2; % fast_flag (2: IQM Tools CVODE MEX) (IQM Tools required)
 
 % ======= Setting Random Seed ======== %
 rng(0); % Random Seed

@@ -19,8 +19,8 @@
 clearvars;
 
 % ========= Problem Settings ========= %
-problem.n_gene = 10; % # Decision Variables
-problem.n_constraint = 2; % # Constraints
+problem.n_gene = 10; % Number of Decision Variables
+problem.n_constraint = 2; % Number of Constraints
 problem.fitnessfun = @Fitness_Example; % Fitness Function
 problem.decodingfun = @Decoding_Example; % Decoding Function
 
