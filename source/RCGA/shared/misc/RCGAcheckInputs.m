@@ -196,3 +196,21 @@ end
 if ~tf(20) % finalreportfun
     opts.finalreportfun = @RCGAdefaultfinalreportfun;
 end
+
+
+%% Additional check for UNDX/MGG
+if strcmp(RCGA_Type,'RCGA_UNDXMGG') && opts.n_population < 2
+    warning('n_population was automatically set to 2 because 2 <= n_population must be satisfied for UNDX/MGG.');
+    opts.n_population = 2;
+end
+
+%% Additional check for REXstar/JGG
+if strcmp(RCGA_Type,'RCGA_REXstarJGG') && opts.n_population < opts.n_parent
+    warning('n_population was automatically set to n_parent because n_parent <= n_population must be satisfied for REXstar/JGG.');
+    opts.n_population = opts.n_parent;
+end
+
+if strcmp(RCGA_Type,'RCGA_REXstarJGG') && opts.n_children < opts.n_parent
+    warning('n_children was automatically set to n_parent because n_parent <= n_children must be satisfied for REXstar/JGG.');
+    opts.n_children = opts.n_parent;
+end
