@@ -40,7 +40,9 @@ try
     problem.n_gene = 1;
     problem.n_constraint = 0;
     problem.fitnessfun = @(x) x^2; % Fitness Function
-    problem.decodingfun = @(gene) 2*gene-0.5; % Decoding Function
+    problem.decodingfun = @(gene) 2*gene-1; % Decoding Function
+    opts.n_population = 10; % Population Size
+    opts.n_children = 10; % Number of Children per Generation
     opts.output_intvl = 500; % Output Interval Generation
     Results = RCGA_UNDXMGG(problem,opts); % UNDX/MGG
     Results = RCGA_REXstarJGG(problem,opts); % REXstar/JGG
