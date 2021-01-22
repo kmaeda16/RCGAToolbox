@@ -97,7 +97,7 @@ switch problem_name
     case 'Rosenbrock_star'
         problem.fitnessfun   = @Rosenbrock_star;
         problem.decodingfun  = @Rosenbrock_star_decode;
-        problem.n_gene       = 50;
+        problem.n_gene       = 100;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         
@@ -111,35 +111,42 @@ switch problem_name
     case 'Ackley'
         problem.fitnessfun   = @Ackley;
         problem.decodingfun  = @Ackley_decode;
-        problem.n_gene       = 50;
+        problem.n_gene       = 100;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         
     case 'Bohachevsky'
         problem.fitnessfun   = @Bohachevsky;
         problem.decodingfun  = @Bohachevsky_decode;
-        problem.n_gene       = 50;
+        problem.n_gene       = 100;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         
     case 'Rastrigin'
         problem.fitnessfun   = @Rastrigin;
         problem.decodingfun  = @Rastrigin_decode;
-        problem.n_gene       = 20;
+        problem.n_gene       = 50;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         
     case 'Schaffer'
         problem.fitnessfun   = @Schaffer;
         problem.decodingfun  = @Schaffer_decode;
-        problem.n_gene       = 20;
+        problem.n_gene       = 50;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         
     case 'Schwefel'
         problem.fitnessfun   = @Schwefel;
         problem.decodingfun  = @Schwefel_decode;
-        problem.n_gene       = 10;
+        problem.n_gene       = 20;
+        problem.n_constraint = 0;
+        opts.vtr             = 1e-6;
+        
+    case 'ScaledShiftedRotatedRastrigin'
+        problem.fitnessfun   = @ScaledShiftedRotatedRastrigin;
+        problem.decodingfun  = @ScaledShiftedRotatedRastrigin_decode;
+        problem.n_gene       = 25;
         problem.n_constraint = 0;
         opts.vtr             = 1e-6;
         

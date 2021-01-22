@@ -76,7 +76,7 @@ Pf = opts.Pf;
 
 %% Error check
 if n_children < n_parent
-    error('n_parent <= n_children must be satisfied!\n');
+    error('n_parent <= n_children must be satisfied!');
 end
 
 
