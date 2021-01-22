@@ -97,4 +97,4 @@ fprintf('  finalreportfun :  %s\n',func2str(opts.finalreportfun));
 disp('------------------------------------------------');
 fprintf('\n');
 
-fprintf('%s starts.\n',RCGA_Type);
+fprintf('%s started.\n',RCGA_Type);

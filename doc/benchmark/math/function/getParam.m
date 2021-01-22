@@ -247,6 +247,6 @@ end
 
 opts.maxgen = 1e+8;
 opts.output_intvl = 1e+8;
-opts.maxtime = 30 * 60; % 10 min
+opts.maxtime = 30 * 60; % 30 min
 % opts.maxtime = 5; % 5 sec
 opts.maxeval = 1e+8;
