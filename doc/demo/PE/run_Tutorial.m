@@ -49,9 +49,11 @@ measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 % ========= Option Settings ========== %
 opts.n_population = 50; % Population Size
 opts.n_children = 25; % Number of Children per Generation
+opts.n_parent = 7 + 1; % Number of Parents Used for REXstar
 opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
 opts.local = 0; % Local Optimizer
+% opts.localopts = optimoptions(@fmincon,'ConstraintTolerance',0,'MaxFunctionEvaluations',opts.n_children,'Display','off'); % Options for Local Optimizer
 opts.maxgen = 200; % Max Number of Generations
 opts.maxtime = 60; % Max Time (sec)
 opts.maxeval = inf; % Max Number of fitnessfun Evaluations

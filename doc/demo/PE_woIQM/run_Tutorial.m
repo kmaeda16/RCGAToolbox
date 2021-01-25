@@ -57,13 +57,13 @@ problem.fitnessfun = @Fitness_Example; % Fitness Function
 problem.decodingfun = @Decoding_Example; % Decoding Function
 
 % ========= Option Settings ========== %
-opts.interimreportfun = @Interimreportfun_Example; % Interim Report Function
 opts.n_population = 50; % Population Size
 opts.n_children = 25; % Number of Children per Generation
 opts.n_parent = problem.n_gene + 1; % Number of Parents Used for REXstar
 opts.t_rexstar = 6.0; % Step-size Parameter for REXstar
 opts.selection_type = 0; % Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)
 opts.local = 0; % Local Optimizer
+% opts.localopts = optimoptions(@fmincon,'ConstraintTolerance',0,'MaxFunctionEvaluations',opts.n_children,'Display','off'); % Options for Local Optimizer
 opts.maxgen = 200; % Max Number of Generations
 opts.maxtime = 60; % Max Time (sec)
 opts.maxeval = inf; % Max Number of fitnessfun Evaluations
@@ -74,6 +74,8 @@ opts.out_transition = 'Transition.txt'; % Transition File Name
 opts.out_best = 'BestIndividual.txt'; % Best Individual File Name
 opts.out_population = 'FinalPopulation.txt'; % Final Population File Name
 opts.out_report = 'Report.mat'; % Report File Name
+opts.interimreportfun = @Interimreportfun_Example; % Interim Report Function
+opts.finalreportfun = @RCGAdefaultfinalreportfun; % Final Report Function
 
 % ======= Setting Random Seed ======== %
 rng(0); % Random Seed
