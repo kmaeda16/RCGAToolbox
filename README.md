@@ -2,7 +2,7 @@
 
 Thank you for using RCGAToolbox!
 
-RCGAToolbox is a MATLAB toolbox for parameter estimation in systems biology, which contains two real-coded genetic algorithms (RCGAs), viz. the Unimodal Normal Distribution Crossover with Minimal Generation Gap (UNDX/MGG) and the Real-coded Ensemble Crossover star with Just Generation Gap (REXstar/JGG). The stochastic ranking method is implemented to handle constrained optimization problems efficiently. RCGAToobox provides not only the access to RCGAs but also to several useful features for parameter estimation. For demonstrations, run scripts in RCGAToolbox/doc/demo. For usage, type "help function_name" in the MATLAB Command Window. ***The complete user guide is provided as a Supplementary Material of the original paper (See Citation below)***.
+RCGAToolbox is a MATLAB toolbox that contains two real-coded genetic algorithms (RCGAs): the unimodal normal distribution crossover with minimal generation gap (UNDX/MGG) and the real-coded ensemble crossover star with just generation gap (REXstar/JGG). The stochastic ranking method is implemented to efficiently handle constrained optimization problems. RCGAToolbox not only provides access to RCGAs but also several useful features for parameter estimation in systems biology. For demonstrations, run scripts in RCGAToolbox/doc/demo. For usage, type "help function_name" in the MATLAB Command Window. ***The complete user guide is provided as a Supplementary Material of the original paper (See Citation below)***.
 
 ## License
 
@@ -34,11 +34,11 @@ Dec 9 2020: RCGAToolbox-1.0 released.
 
 ## Diagnosis
 
-RCGAToolbox/install/RCGAToolbox_Diagnosis.m is the diagnosis script which checks whether RCGAToolbox is properly installed. It also tests the RCGAToolbox functions that depend on optional toolboxes. For the diagnosis, run RCGAToolbox_Diagnosis.m under the directory RCGAToolbox/install/.
+RCGAToolbox/install/RCGAToolbox_Diagnosis.m is the self-diagnosis script that checks whether the RCGAToolbox is properly installed. It also tests the RCGAToolbox functions that depend on optional toolboxes. For the diagnosis, run RCGAToolbox_Diagnosis.m under the directory RCGAToolbox/install/.
 
 ## Citation
 
-Maeda and Kurata, RCGAToolbox: a toolbox for real-coded genetic algorithms for parameter estimation of kinetic models
+Maeda, Boogerd, and Kurata, RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models
 
 
 Good luck! Any suggestions and bug reports are welcome. Please contact KM.

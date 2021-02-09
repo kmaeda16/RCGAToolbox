@@ -1,7 +1,7 @@
 function dydt = Model_Example_conciseOdefun(t, y)
 % Model_Example_conciseOdefun is an example of the concise ODE file
 % (RCGAToolbox format) ready for conversion into an IQMmodel object by
-% RCGAreadConciseODEfile. In this file, the only sections sandwiched
+% RCGAreadConciseODEfile. In this file, only sections sandwiched
 % between "BEGIN" and "END" are used for the conversion.
 % 
 % [SYNTAX]
