@@ -32,7 +32,7 @@ for i = 1 : n_row
     [~, g] = fitnessfun(x);
     phi = sum( max(0,g) .^2 );
     
-    fprintf(out,'%e\t%e\t%e\t%e\t',elapsedTime,neval,generation,f,phi);
+    fprintf(out,'%e\t%e\t%e\t%e\t%e\t',elapsedTime,neval,generation,f,phi);
     for j = 1 : n_gene
         fprintf(out,'%e\t',x(j));
     end
