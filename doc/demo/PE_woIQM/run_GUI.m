@@ -3,7 +3,8 @@
 % does not rely on IQM Tools.
 % 
 % 1. Execute this script to open the "RCGAToolbox Mission Cotrol" window.
-% 2. Set "# Decision Variables = 7" and "# Constraints = 0".
+% 2. Set "# Decision Variables = 7", "# Constraints = 0", "Output Interval
+%    Generation = 1".
 % 3. Push the [Launch] button at the bottom on the window.
 % 4. While RCGAs are running, output files are created in the current
 %    working directry.
