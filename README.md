@@ -10,15 +10,16 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Release Note
 
-Dec 9 2020: RCGAToolbox-1.0 released.
+Dec  9 2020: RCGAToolbox-1.0 released.
+Feb 13 2021: RCGAToolbox-1.1 released: Bug fix, Improved GUIs, Linux and macOS support.
 
 ## Requirements
 
-- MATLAB R2016a or later [We confirmed that RCGAToolbox runs on Windows 10 (1909) and SUSE Linux Enterprise Server 11 (x86_64)].
+- MATLAB R2016a or later. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.1, Intel CPU) with MATLAB R2020b.
 - Optional requirements
-    - Parallel Computing Toolbox is required for parallel computation (opts.n_par > 1). For serial computation, Parallel Computing Toolbox is not required.
-    - Optimization Toolbox is required for local optimization using fmincon (opts.local = 1). It is not required if you do not use the local optimization function.
-    - IQM Tools (formerly known as SBToolbox2/SBPD/SBPOP) is required for handling SBML (Systems Biology Markup Language) and a fast simulation (fast_flag = 2).
+    - Parallel Computing Toolbox is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
+    - Optimization Toolbox is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
+    - IQM Tools (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
     - SundialsTB is required for a fast simulation with CVODE (fast_flag = 1).
 
 
@@ -38,7 +39,7 @@ RCGAToolbox/install/RCGAToolbox_Diagnosis.m is the self-diagnosis script that ch
 
 ## Citation
 
-Maeda, Boogerd, and Kurata, RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models
+Maeda, Boogerd, and Kurata, RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models, bioRxiv, 2021
 
 
 Good luck! Any suggestions and bug reports are welcome. Please contact KM.
