@@ -10,8 +10,8 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Release Note
 
-Dec  9 2020: RCGAToolbox-1.0 released.
-Feb 13 2021: RCGAToolbox-1.1 released: Bug fix, Improved GUIs, Linux and macOS support.
+- Dec  9 2020: RCGAToolbox-1.0 released.
+- Feb 13 2021: RCGAToolbox-1.1 released: Bug fix, Improved GUIs, Linux and macOS support.
 
 ## Requirements
 
@@ -39,12 +39,11 @@ RCGAToolbox/install/RCGAToolbox_Diagnosis.m is the self-diagnosis script that ch
 
 ## Citation
 
-Maeda, Boogerd, and Kurata, RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models, bioRxiv, 2021
+Maeda, Boogerd, and Kurata, RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models, bioRxiv 2021.02.15.431062; doi: https://doi.org/10.1101/2021.02.15.431062
 
 
 Good luck! Any suggestions and bug reports are welcome. Please contact KM.
 
 
 -------------------------------
-Kazuhiro Maeda,
-Kyushu Institute of Technology
+Kazuhiro Maeda (Kyushu Institute of Technology)
