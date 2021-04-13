@@ -27,6 +27,22 @@ function [ T, Y ] = odestb(odefun, tspan, y0, options)
 %            Each row corresponds to each timepoint.
 
 
+%% Checking if SundialsTB is available.
+existflag = 1;
+
+if exist('CVodeInit','file') == 0 || ...
+        exist('CVodeSetOptions','file') == 0 || ...
+        exist('CVodeInit','file') == 0 || ...
+        exist('CVode','file') == 0 || ...
+        exist('CVodeFree','file') == 0
+    existflag = 0;
+end
+
+if existflag == 0
+    warning('SundialsTB is not properly installed. Run the script RCGAToolbox/install/RCGAToolbox_Diagnosis for diagnosis.');
+end
+
+
 %% Handling inputs
 if ~exist('tspan','var')
     error('tspan should be provided!');

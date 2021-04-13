@@ -32,6 +32,24 @@ function [ T, Y ] = RCGAsimulate(model, tspan, y0, param, fast_flag, options)
 %              Each row corresponds to each timepoint.
 
 
+%% Checking if IQM Tools are available.
+existflag = 1;
+
+if exist('isIQMmodel','file') == 0 || ...
+        exist('IQMcreateODEfile','file') == 0 || ...
+        exist('IQMmakeMEXmodel','file') == 0 || ...
+        exist('mexcompileIQM','file') == 0 || ...
+        exist('IQMmodel','file') == 0 || ...
+        exist('isIQMmeasurement','file') == 0 || ...
+        exist('IQMmeasurement','file') == 0
+    existflag = 0;
+end
+
+if existflag == 0
+    warning('IQM Tools are not properly installed. Run the script RCGAToolbox/install/RCGAToolbox_Diagnosis for diagnosis.');
+end
+
+
 %% Handling inputs
 if ~exist('tspan','var')
     tspan = [];

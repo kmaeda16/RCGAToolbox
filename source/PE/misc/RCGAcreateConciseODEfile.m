@@ -15,6 +15,20 @@ function odefilename = RCGAcreateConciseODEfile(model, odefilename)
 % odefilename :  Name of the created concise ODE file (RCGAToolbox format).
 
 
+%% Checking if IQM Tools are available.
+existflag = 1;
+
+if exist('isIQMmodel','file') == 0 || ...
+        exist('IQMmodel','file') == 0
+    existflag = 0;
+end
+
+if existflag == 0
+    warning('IQM Tools are not properly installed. Run the script RCGAToolbox/install/RCGAToolbox_Diagnosis for diagnosis.');
+end
+
+
+%%
 if isIQMmodel(model)
     sbm = model;
     if ~exist('odefilename','var')

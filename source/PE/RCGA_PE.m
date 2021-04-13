@@ -67,6 +67,24 @@ function Results = RCGA_PE(model, decodingfun, mst, n_constraint, fitnessfun, fa
 %                    reached (1), maxtime reached (2), maxeval reached (3).
 
 
+%% Checking if IQM Tools are available.
+existflag = 1;
+
+if exist('isIQMmodel','file') == 0 || ...
+        exist('IQMcreateODEfile','file') == 0 || ...
+        exist('IQMmakeMEXmodel','file') == 0 || ...
+        exist('mexcompileIQM','file') == 0 || ...
+        exist('IQMmodel','file') == 0 || ...
+        exist('isIQMmeasurement','file') == 0 || ...
+        exist('IQMmeasurement','file') == 0
+    existflag = 0;
+end
+
+if existflag == 0
+    warning('IQM Tools are not properly installed. Run the script RCGAToolbox/install/RCGAToolbox_Diagnosis for diagnosis.');
+end
+
+
 %% If model is an IQMmodel, it is converted into odefun.m or odefun.c.
 %  After this section, model will be a string '*_odefun' or '*_mex'.
 if isIQMmodel(model)
