@@ -1,0 +1,8 @@
+parameterId	parameterScale	lowerBound	upperBound	nominalValue	estimate
+X0	lin			0.1	0
+k1	lin	0	10	1	1
+k2	lin	0	10	1	1
+k3	log10	0.1	10	1	1
+K2	log10	0.1	10	1	1
+K3	log10	0.1	10	1	1
+rootCompartment	lin			1	0
