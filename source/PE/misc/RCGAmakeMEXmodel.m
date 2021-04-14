@@ -21,16 +21,10 @@ function mexfilename = RCGAmakeMEXmodel(model, mexfilename, doNOTcompileFlag)
 
 
 %% Checking if IQM Tools are available.
-existflag = 1;
-
 if exist('isIQMmodel','file') == 0 || ...
         exist('IQMmakeMEXmodel','file') == 0 || ...
         exist('mexcompileIQM','file') == 0 || ...
         exist('IQMmodel','file') == 0
-    existflag = 0;
-end
-
-if existflag == 0
     warning('IQM Tools are not properly installed. Run the script RCGAToolbox/install/RCGAToolbox_Diagnosis for diagnosis.');
 end
 

@@ -63,7 +63,7 @@ switch nargin
     case 2
         opts = varargin{1};
     otherwise
-        error('Incorrect number of input arguments');
+        error('Incorrect number of input arguments.');
 end
 
 

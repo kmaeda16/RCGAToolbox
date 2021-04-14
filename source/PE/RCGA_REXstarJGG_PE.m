@@ -104,7 +104,7 @@ switch nargin
         simopts = varargin{4};
         opts = varargin{5};
     otherwise
-        error('Incorrect number of input arguments');
+        error('Incorrect number of input arguments.');
 end
 
 if isempty(n_constraint)
