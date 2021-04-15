@@ -1,0 +1,45 @@
+% Example measurement data file in the format required by IQM Tools
+% ======================================================================
+%
+% This file is based on MeasurementExample.csv from SBPOP PACKAGE.
+% A line starting with the percentage character "%" is interpreted as a
+% comment line and neglected during the import of the measurement data.
+
+[Name]
+% The following line defines the name of the measurement data.
+% It makes sense to keep the name relatively short.
+Measurement
+
+[Notes]
+Here you can enter information about the experiment and the data. 
+Experimental conditions, when the measurement was performed, everything you
+think will be of use to you later.
+
+[Components]
+% A comma separated list, defininig the names of the measured components.
+% The 'time' component should always be called 'time'!
+time,X1,X2
+
+[Componentnotes]
+% For each component a note can be defined. The syntax is as follows:
+X1: Metabolite 1
+X2: Metabolite 2
+
+[Values]
+% Finally, here are the data defined for the components. In this example the 
+% time-vector is defined in the first column (which is not required but makes 
+% most sense). The time vector consists of all time instants at which 
+% measurements have been made. If a certain component has not been measured 
+% at a certain time instant then this can be indicated by 'NaN' or not 
+% entering a value for this time step.
+0,0,0
+1,0.064485063,0.025592125
+2,0.090888764,0.058378583
+3,0.102250309,0.081147069
+4,0.107235215,0.094886024
+5,0.109406623,0.1025948
+6,0.110365043,0.106758366
+7,0.110786853,0.108937286
+8,0.110970383,0.110043733
+9,0.111050028,0.110593817
+10,0.11108463,0.1108633
