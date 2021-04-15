@@ -1,6 +1,17 @@
-% This script shows how to use a PEtab parameter file and PEtab measurement
-% file for RCGAToolbox. In short, use RCGAcreateDecodingfun and 
-% RCGAcreateMeasurement functions.
+% This script shows how to use a PEtab parameter file and a PEtab 
+% measurement file for RCGAToolbox. This script works as follows.
+% 
+% 1. RCGAcreateDecodingfun creates a decoding function from a 
+%    PEtab parameter file. RCGAToolbox uses a decoding function to define 
+%    parameter ranges and scaling.
+% 
+% 2. RCGAcreateMeasurement creates an IQM measurement file from a PEtab 
+%    measurement file. For parameter estimation, RCGAToolbox uses an IQM 
+%    measurement file to specify experimental data to be fitted.
+% 
+% 3. RCGA_UNDXMGG_PE or RCGA_REXstarJGG_PE runs with a model file (e.g. an 
+%    SBML file), the created decoding function, and the created IQM 
+%    measurement file.
 % 
 % ------------------------ Example Kinetic Model ------------------------
 % - INITIAL CONDITION
@@ -48,7 +59,7 @@ PEtabParameterFile = 'PEtab_Parameter.tsv';    % Parameter file in PEtab format
 DecodingfunFile    = 'Created_Decondingfun.m'; % RCGAToolbox decoding function
 RCGAcreateDecodingfun(PEtabParameterFile,DecodingfunFile);
 [~, funcname, ~] = fileparts(DecodingfunFile);
-decodingfun = str2func(funcname);
+decodingfun = str2func(funcname); % Function handle
 
 % ==== Measurement File Conversion (PEtab --> IQM Tools) ==== %
 PEtabMeasurementFile = 'PEtab_Measurement.tsv';      % Measurement file in PEtab format
@@ -81,5 +92,5 @@ fast_flag = 0; % fast_flag (0: MATLAB ODEXX)
 rng(0); % Random Seed
 
 % ========== Executing RCGA ========== %
-Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % UNDX/MGG
-% Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % REXstar/JGG
+% Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % UNDX/MGG
+Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % REXstar/JGG
