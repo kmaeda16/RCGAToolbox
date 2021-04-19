@@ -81,6 +81,16 @@ else
 end
 fprintf(out,'\n');
 
+%% Convergence Curve
+fprintf(out,'%% ======== Convergence Curve ========= %%\n');
+fprintf(out,'figure;\n');
+fprintf(out,'plot(Results.Transition.time,Results.Transition.f,''LineWidth'',2);\n');
+fprintf(out,'set(gca,''FontSize'',10,''FontName'',''Arial'');\n');
+fprintf(out,'title(''Convergence Curve'');\n');
+fprintf(out,'xlabel(''Time (sec)'');\n');
+fprintf(out,'ylabel(''Objective Function'');\n');
+fprintf(out,'\n');
+
 %% Removing Path
 fprintf(out,'%% ========== Removing Path =========== %%\n');
 fprintf(out,'rmpath(fitnesspath);\n');
