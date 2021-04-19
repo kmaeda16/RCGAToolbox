@@ -16,7 +16,7 @@ Experimental conditions, when the measurement was performed, everything you
 think will be of use to you later.
 
 [Components]
-% A comma separated list, defininig the names of the measured components.
+% A comma separated list, defining the names of the measured components.
 % The 'time' component should always be called 'time'!
 time,X1,X2
 
