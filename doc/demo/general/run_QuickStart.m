@@ -27,3 +27,11 @@ problem.decodingfun = @Decoding_Example; % Decoding Function
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG(problem); % UNDX/MGG
 Results = RCGA_REXstarJGG(problem); % REXstar/JGG
+
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');

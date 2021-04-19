@@ -84,6 +84,14 @@ rng(0); % Random Seed
 % Results = RCGA_UNDXMGG(problem,opts); % UNDX/MGG
 Results = RCGA_REXstarJGG(problem,opts); % REXstar/JGG
 
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');
+
 
 %% Print best
 paramnames = Model_Example_odefun('parameters');

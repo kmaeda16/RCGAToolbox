@@ -42,3 +42,11 @@ measurement = 'Measurement_Example.csv'; % Measurement File (CSV)
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement); % UNDX/MGG
 Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,measurement); % REXstar/JGG
+
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');

@@ -94,3 +94,11 @@ rng(0); % Random Seed
 % ========== Executing RCGA ========== %
 % Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % UNDX/MGG
 Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,IQMmeasurementFile,fast_flag,[],opts); % REXstar/JGG
+
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');

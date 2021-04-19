@@ -28,3 +28,11 @@ problem.decodingfun = @Decoding_Example; % Decoding Function
 % GenerationAlternation_Example is a user-defined custom generation
 % alternation function
 Results = RCGA_CustomRCGA(problem, @GenerationAlternation_Example);
+
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');

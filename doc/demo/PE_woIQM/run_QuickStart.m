@@ -63,6 +63,14 @@ opts.interimreportfun = @Interimreportfun_Example; % Interim Report Function
 % Results = RCGA_UNDXMGG(problem,opts); % UNDX/MGG
 Results = RCGA_REXstarJGG(problem,opts); % REXstar/JGG
 
+% ======== Convergence Curve ========= %
+figure;
+plot(Results.Transition.time,Results.Transition.f,'LineWidth',2);
+set(gca,'FontSize',10,'FontName','Arial');
+title('Convergence Curve');
+xlabel('Time (sec)');
+ylabel('Objective Function');
+
 
 %% Print best
 paramnames = Model_Example_odefun('parameters');
@@ -71,4 +79,3 @@ fprintf('\n--- Best parameter set (f = %e) ---\n',Results.Best.f);
 for i = 1 : length(paramnames)
     fprintf('%s = %e\n',char(paramnames(i)),Results.Best.x(i));
 end
-
