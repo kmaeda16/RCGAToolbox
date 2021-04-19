@@ -1,7 +1,7 @@
 function param = Created_Decondingfun(gene)
 % This function was created by RCGAToolbox RCGAcreateDecodingfun
 % based on PEtab_Parameter.tsv.
-% Created: 14-Apr-2021
+% Created: 19-Apr-2021
 
 % X0
 param(1) = 1.000000e-01;
