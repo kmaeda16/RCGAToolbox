@@ -82,4 +82,3 @@ set(gca,'FontSize',10,'FontName','Arial');
 title('Convergence Curve');
 xlabel('Time (sec)');
 ylabel('Objective Function');
-

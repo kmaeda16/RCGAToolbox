@@ -10,8 +10,10 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Release Note
 
-- Dec  9 2020: RCGAToolbox-1.0 released.
-- Feb 13 2021: RCGAToolbox-1.1 released: Bug fix, Improved GUIs, Linux and macOS support.
+- Apr 27 2021: RCGAToolbox-1.2: PEtab support. Friendlier error messages.
+- Feb 13 2021: RCGAToolbox-1.1: Bug fix, Improved GUIs, Linux and macOS support.
+- Dec  9 2020: RCGAToolbox-1.0.
+
 
 ## Requirements
 

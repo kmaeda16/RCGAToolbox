@@ -48,7 +48,7 @@ norm_flag = 1; % Normalization only for p, i.e., Sensitivity = ( f_ptb - f_std )
 S = RCGAsensitivity(model, measurement, param, [], [], [], [], norm_flag);
 
 fprintf('\n');
-display('Sensitivities of f to parameters:');
+disp('Sensitivities of f to parameters:');
 for i = 1 : length(param)
     fprintf('%s: %e\n',char(S.Properties.RowNames(i)),table2array(S(i,1)));
 end
