@@ -8,7 +8,7 @@ RCGAToolbox is a MATLAB toolbox that contains two real-coded genetic algorithms 
 
 RCGAToolbox is distributed under GNU General Public License v3.0. For academic usage, RCGAToolbox is free. For other usages, please contact the author(s).
 
-## Release Note
+## Release Notes
 
 - Apr 27 2021: RCGAToolbox-1.2: PEtab support. Friendlier error messages.
 - Feb 13 2021: RCGAToolbox-1.1: Bug fix, Improved GUIs, Linux and macOS support.
@@ -17,12 +17,12 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Requirements
 
-- MATLAB R2016a or later. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.1, Intel CPU) with MATLAB R2020b.
+- ***MATLAB R2016a or later***. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.1, Intel CPU) with MATLAB R2020b.
 - Optional requirements
-    - Parallel Computing Toolbox is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
-    - Optimization Toolbox is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
-    - IQM Tools (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
-    - SundialsTB is required for a fast simulation with CVODE (fast_flag = 1).
+    - ***Parallel Computing Toolbox*** is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
+    - ***Optimization Toolbox*** is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
+    - ***IQM Tools*** (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
+    - ***undialsTB*** is required for a fast simulation with CVODE (fast_flag = 1).
 
 
 ## Installation
@@ -38,6 +38,12 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 ## Diagnosis
 
 RCGAToolbox/install/RCGAToolbox_Diagnosis.m is the self-diagnosis script that checks whether the RCGAToolbox is properly installed. It also tests the RCGAToolbox functions that depend on optional toolboxes. For the diagnosis, run RCGAToolbox_Diagnosis.m under the directory RCGAToolbox/install/.
+
+## Directories
+
+- ***doc***: User guide (not yet), demo scripts, and benchmark scripts are included. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
+- ***install***: Installation, uninstallation, and diagnosis scripts are included.
+- ***source***: Source codes are included.
 
 ## Citation
 
