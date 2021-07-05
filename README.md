@@ -45,9 +45,9 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 - `install`: Installation, uninstallation, and diagnosis scripts are included.
 - `source`: Source codes are included.
 
-## Screen shot
+## Screenshot
 
-<img src="ScreenShot.png" height="320px"/>
+<img src="Screenshot.png" height="320px"/>
 
 ## Citation
 
