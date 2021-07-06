@@ -244,7 +244,8 @@ delete('foo.c')
 delete(sprintf('foo.%s', mexext))
 
 fprintf('\n\nMEX files will be compiled and built using the above options\n');
-answ = input('    Proceed? (y/n) ','s');
+% answ = input('    Proceed? (y/n) ','s');
+answ = 'y';
 if answ == 'y'
   mex_ok = true;
 else
