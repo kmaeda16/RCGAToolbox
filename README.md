@@ -17,7 +17,7 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Requirements
 
-- ***MATLAB R2016a or later***. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.3.1, Intel CPU) with MATLAB R2021a.
+- ***MATLAB R2016a or later***. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.4, Intel CPU and Apple silicon) with MATLAB R2021a.
 - Optional requirements
     - ***Parallel Computing Toolbox*** is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
     - ***Optimization Toolbox*** is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
