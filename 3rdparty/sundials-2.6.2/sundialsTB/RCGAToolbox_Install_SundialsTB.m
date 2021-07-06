@@ -8,7 +8,7 @@ flg = 0;
 
 try
     install_STB_mod;
-    startup_STB_mod;
+    startup_STB(pwd);
     savepath;
 catch ME
     warning(ME.message);

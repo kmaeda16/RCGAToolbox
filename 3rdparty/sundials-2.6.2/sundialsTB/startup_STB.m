@@ -1,4 +1,4 @@
-function [] = startup_STB()
+function [] = startup_STB(stb)
 % STARTUP_STB  path/environment setup script for sundialsTB
 
 % Radu Serban <radu@llnl.gov>
@@ -7,8 +7,6 @@ function [] = startup_STB()
 
 % If called without any argument, use the path specified which was
 % harcoded when startup_STB.m was created.
-
-stb = '.';
 
 if nargin == 0
   stb_path = '@STB_PATH@';
