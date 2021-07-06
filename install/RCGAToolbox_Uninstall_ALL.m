@@ -6,10 +6,19 @@
 cd ..;
 currentdir = pwd;
 cd install;
+
 f = fullfile(currentdir,'source');
 rmpath(genpath(f));
-f = fullfile(currentdir,'3rdparty');
+
+f = fullfile(currentdir,'3rdparty/IQMtools V1.2.2.2');
 rmpath(genpath(f));
+
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB');
+rmpath(genpath(f));
+
+f = fullfile(currentdir,'3rdparty/libSBML-5.18.0-matlab-binaries');
+rmpath(genpath(f));
+
 savepath;
 
 fprintf('RCGAToolbox and the third-party software tools were removed from the MATLAB path, and the current path settings were saved.\n');
