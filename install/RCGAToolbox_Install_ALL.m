@@ -3,19 +3,26 @@
 % Run this script just after starting MATLAB. Otherwise, unnecessary paths 
 % might be saved.
 
+cd ..;
+currentdir = pwd;
+cd install;
+
 % RCGAToolbox
 RCGAToolbox_Install;
 
 % IQM Tools
-cd('../3rdparty/IQMtools V1.2.2.2'); % MEX command and a C compiler compatible with MATLAB required.
-RCGAToolbox_Install_IQMTools;
+f = fullfile(currentdir,'3rdparty/IQMtools V1.2.2.2');
+cd(f);
+RCGAToolbox_Install_IQMTools; % MEX command and a C compiler compatible with MATLAB required.
 
 % SundialsTB
-cd('../sundials-2.6.2/sundialsTB');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB');
+cd(f);
 RCGAToolbox_Install_SundialsTB; % MEX command and a C compiler compatible with MATLAB required.
 
 % libSBML
-cd('../../libSBML-5.18.0-matlab-binaries');
+f = fullfile(currentdir,'3rdparty/libSBML-5.18.0-matlab-binaries');
+cd(f);
 RCGAToolbox_Install_libSBML;
 
 cd('../../install');

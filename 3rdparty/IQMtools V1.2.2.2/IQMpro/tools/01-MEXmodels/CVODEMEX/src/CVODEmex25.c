@@ -20,6 +20,7 @@
 #include <nvector/nvector_serial.h>
 #include <sundials/sundials_types.h>
 #include <sundials/sundials_math.h>
+#include <cvodes/cvodes_dense.h>
 #include "CVODEmex25.h"
 
 /* Definitions for CVODES */
@@ -43,6 +44,7 @@ static int f(double time, N_Vector u, N_Vector udot, void *f_data);
 static int g(double time, N_Vector y, double *gout, void *g_data);
 static void errorMsg(char *text);
 static void freeMem();
+static void calc_ic_model(double *initialconditions, ParamData *modeldata);
 
 /* Some global variables for the interface */
 int k,k2;   /* some loop variables */
