@@ -24,19 +24,21 @@ f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/cvodes/cvm');
 rmpath(f);
 f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/cvodes/function_types');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/idas');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/idas');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/idas/idm');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/idas/idm');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/idas/function_types');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/idas/function_types');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/kinsol/');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/kinsol/');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/kinsol/kim');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/kinsol/kim');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/kinsol/function_types');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/kinsol/function_types');
 rmpath(f);
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/nvector');
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/nvector');
+rmpath(f);
+f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB/putils');
 rmpath(f);
 
 % libSBML
