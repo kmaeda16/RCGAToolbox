@@ -3,9 +3,9 @@ The optional third-party software tools are included in this directory.
 Read their license files before use.
 
 IQMtools V1.2.2.2
-- Original file  : https://iqmtools.intiquan.com/
-- Added files    : IQMtools V1.2.2.2/RCGAToolbox_Install_IQMTools.m
-- Modified files : IQMtools V1.2.2.2/IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c
+- Original file : https://iqmtools.intiquan.com/
+- Added files   : IQMtools V1.2.2.2/RCGAToolbox_Install_IQMTools.m
+                : IQMtools V1.2.2.2/IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25_Mac.m
 
 sundials-2.6.2
 - Original file: https://computing.llnl.gov/projects/sundials/sundials-software

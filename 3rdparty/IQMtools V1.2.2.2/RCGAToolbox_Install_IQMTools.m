@@ -6,12 +6,24 @@
 
 flg = 0;
 
+
 try
+    
+    archstr = computer('arch');
+    if strcmp(archstr,'maci64')
+        movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
+            'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25_temp.c');
+        movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25_Mac.c',...
+            'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c');
+    end
     installIQMtoolsInitial;
     savepath;
+    
 catch ME
+    
     warning(ME.message);
     flg = 1;
+    
 end
 
 
