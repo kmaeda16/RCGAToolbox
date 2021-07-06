@@ -1,4 +1,4 @@
-% Uninstallation script
+% Uninstallation script for RCGAToolbox only (no third-party software tools uninstalled)
 % This script must be executed under the directory RCGAToolbox/install/.
 % Run this script just after starting MATLAB. Otherwise, unnecessary paths 
 % might be saved.

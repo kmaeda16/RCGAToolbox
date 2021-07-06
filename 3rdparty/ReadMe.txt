@@ -1,4 +1,4 @@
-The optional third party software tools are included in this directory.
+The optional third-party software tools are included in this directory.
 
 Read their license files before use.
 
