@@ -1,3 +1,4 @@
+function [] = RCGAToolbox_Install_libSBML
 % libSBML installation script
 % This script must be executed under the directory
 % RCGAToolbox/3rdparty/libSBML-5.18.0-matlab-binaries/

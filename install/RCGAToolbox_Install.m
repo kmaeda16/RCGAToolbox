@@ -1,3 +1,4 @@
+function [] = RCGAToolbox_Install
 % Installation script for RCGAToolbox only (no third-party software tools installed)
 % This script must be executed under the directory RCGAToolbox/install/.
 % Run this script just after starting MATLAB. Otherwise, unnecessary paths 

@@ -1,3 +1,4 @@
+function [] = RCGAToolbox_Install_SundialsTB
 % SundialsTB installation script
 % This script must be executed under the directory
 % RCGAToolbox/3rdparty/sundials-2.6.2/sundialsTB/

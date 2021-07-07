@@ -53,45 +53,48 @@ end
 
 % Figure out what modules exist and which ones will be built
 % ----------------------------------------------------------
-cvm_ok = true;
-idm_ok = false;
-kim_ok = false;
 
-% fprintf('\n\nSelect modules to be built\n');
-% 
-% q = fullfile(sun,'src','cvodes');
-% if exist(q, 'dir')
-%   answ = input('    Compile CVODES interface? (y/n) ','s');
-%   if answ == 'y'
-%     cvm_ok = true;
-%   else
-%     cvm_ok = false;
-%   end
-% end
-% 
-% if exist(q, 'dir')
-%   answ = input('    Compile IDAS interface? (y/n) ','s');
-%   if answ == 'y'
-%     idm_ok = true;
-%   else
-%     idm_ok = false;
-%   end
-% end
-% 
-% q = fullfile(sun,'src','kinsol');
-% if exist(q, 'dir')
-%   answ = input('    Compile KINSOL interface? (y/n) ','s');
-%   if answ == 'y'
-%     kim_ok = true;
-%   else
-%     kim_ok = false;
-%   end
-% end
-% 
-% if ~cvm_ok && ~idm_ok && ~kim_ok
-%   fprintf('\nOK. All done.\n');
-%   return
-% end
+fprintf('\n\nSelect modules to be built\n');
+
+q = fullfile(sun,'src','cvodes');
+if exist(q, 'dir')
+  % answ = input('    Compile CVODES interface? (y/n) ','s');
+  fprintf('    Compile CVODES interface? (y/n) y\n');
+  answ = 'y';
+  if answ == 'y'
+    cvm_ok = true;
+  else
+    cvm_ok = false;
+  end
+end
+
+if exist(q, 'dir')
+  % answ = input('    Compile IDAS interface? (y/n) ','s');
+  fprintf('    Compile IDAS interface? (y/n) n\n');
+  answ = 'n';
+  if answ == 'y'
+    idm_ok = true;
+  else
+    idm_ok = false;
+  end
+end
+
+q = fullfile(sun,'src','kinsol');
+if exist(q, 'dir')
+  % answ = input('    Compile KINSOL interface? (y/n) ','s');
+  fprintf('    Compile KINSOL interface? (y/n) n\n');
+  answ = 'n';
+  if answ == 'y'
+    kim_ok = true;
+  else
+    kim_ok = false;
+  end
+end
+
+if ~cvm_ok && ~idm_ok && ~kim_ok
+  fprintf('\nOK. All done.\n');
+  return
+end
 
 % Create sundials_config.h
 % ------------------------
@@ -129,6 +132,7 @@ rmdir('sundials','s');
 
 fprintf('\n\nMEX files were successfully created.\n');
 % answ = input('    Install toolbox? (y/n) ','s');
+fprintf('    Install toolbox? (y/n) n\n');
 answ = 'n';
 if answ ~= 'y'
   fprintf('\n\nOK. All done.\n');
@@ -244,8 +248,7 @@ delete('foo.c')
 delete(sprintf('foo.%s', mexext))
 
 fprintf('\n\nMEX files will be compiled and built using the above options\n');
-% answ = input('    Proceed? (y/n) ','s');
-answ = 'y';
+answ = input('    Proceed? (y/n) ','s');
 if answ == 'y'
   mex_ok = true;
 else

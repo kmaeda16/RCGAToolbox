@@ -1,3 +1,4 @@
+function [] = RCGAToolbox_Install_ALL
 % Installation script for RCGAToolbox, IQM Tools, SundialsTB, and libSBML.
 % This script must be executed under the directory RCGAToolbox/install/.
 % Run this script just after starting MATLAB. Otherwise, unnecessary paths 

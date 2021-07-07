@@ -1,7 +1,7 @@
+function [] = RCGAToolbox_Diagnosis
 % Diagnosis script.
 % This script must be executed under the directory RCGAToolbox/install/.
 
-clearvars;
 
 Flag = zeros(1,6);
 
