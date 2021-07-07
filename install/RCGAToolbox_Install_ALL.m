@@ -4,26 +4,59 @@ function [] = RCGAToolbox_Install_ALL
 % Run this script just after starting MATLAB. Otherwise, unnecessary paths 
 % might be saved.
 
+diary('RCGAToolbox_Install_Log.txt');
+
+
+fprintf('################################################################\n');
+fprintf('#                RCGAToolbox Installation Tool                 #\n');
+fprintf('################################################################\n');
+fprintf('\n');
+
+
 cd ..;
-currentdir = pwd;
+rcgatoolbox_root = pwd;
 cd install;
 
+
 % RCGAToolbox
-RCGAToolbox_Install;
+answ = input('    Install RCGAToolbox core components? (y/n) ','s');
+if answ == 'y'
+    RCGAToolbox_Install;
+end
+
 
 % IQM Tools
-f = fullfile(currentdir,'3rdparty/IQMtools V1.2.2.2');
-cd(f);
-RCGAToolbox_Install_IQMTools; % MEX command and a C compiler compatible with MATLAB required.
+answ = input('    Install IQM Tools? (y/n) ','s');
+if answ == 'y'
+    f = fullfile(rcgatoolbox_root,'3rdparty/IQMtools V1.2.2.2');
+    cd(f);
+    RCGAToolbox_Install_IQMTools;
+end
+
 
 % SundialsTB
-f = fullfile(currentdir,'3rdparty/sundials-2.6.2/sundialsTB');
-cd(f);
-RCGAToolbox_Install_SundialsTB; % MEX command and a C compiler compatible with MATLAB required.
+answ = input('    Install SundialsTB? (y/n) ','s');
+if answ == 'y'
+    f = fullfile(rcgatoolbox_root,'3rdparty/sundials-2.6.2/sundialsTB');
+    cd(f);
+    RCGAToolbox_Install_SundialsTB;
+end
+
 
 % libSBML
-f = fullfile(currentdir,'3rdparty/libSBML-5.18.0-matlab-binaries');
-cd(f);
-RCGAToolbox_Install_libSBML;
+answ = input('    Install libSBML? (y/n) ','s');
+if answ == 'y'
+    f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
+    cd(f);
+    RCGAToolbox_Install_libSBML;
+end
 
-cd('../../install');
+
+f = fullfile(rcgatoolbox_root,'install');
+cd(f);
+
+
+fprintf('RCGAToolbox installation, all done.\n');
+
+
+diary off;

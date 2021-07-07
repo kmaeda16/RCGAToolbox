@@ -2,6 +2,8 @@ function [] = RCGAToolbox_Diagnosis
 % Diagnosis script.
 % This script must be executed under the directory RCGAToolbox/install/.
 
+diary('RCGAToolbox_Diagnosis_Log.txt');
+
 
 Flag = zeros(1,6);
 
@@ -297,3 +299,6 @@ if Flag(6) == 0
 else
     fprintf('Not Available\n');
 end
+
+
+diary off;
