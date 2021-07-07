@@ -23,21 +23,23 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
     - <a href="https://www.mathworks.com/products/optimization.html">***Optimization Toolbox***</a> is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
     - <a href="https://iqmtools.intiquan.com/">***IQM Tools***</a> (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
     - <a href="https://computing.llnl.gov/projects/sundials/sundials-software">***SundialsTB***</a> is required for a fast simulation with CVODE (fast_flag = 1).
-    - <a href="https://sourceforge.net/projects/sbml/files/libsbml/MATLAB%20Interface/">***libSBML***</a> is required to use IQM Tools for Linux and macOS.
+    - <a href="https://sourceforge.net/projects/sbml/files/libsbml/MATLAB%20Interface/">***libSBML***</a> is required to use IQM Tools in Linux and macOS.
+    - <a href="https://www.mathworks.com/support/requirements/supported-compilers.html">***C compiler compatible with MATLAB***</a> is required to install IQM Tools and SundialsTB. To check whether you have a C compiler, type `mex -setup` in the MATLAB Command Window. If you get a message like `MEX configured to use 'gcc' for C language compilation.`, you have one.
 
 ***IQM Tools***, ***SundialsTB***, and ***libSBML*** are included in the distribution of RCGAToolbox.
 
 ## Installation
 
 1. Download RCGAToolbox from https://github.com/kmaeda16/RCGAToolbox.
-2. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. This installation script installs not only RCGAToolbox core components but also IQM Tools, SundialsTB, and libSBML. To install IQM Tools and SundialsTB, the MATLAB `mex` command is used, and thus a <a href="https://www.mathworks.com/support/requirements/supported-compilers.html">C compiler compatible with MATLAB</a> is required.
+2. Place the directory `RCGAToolbox` somewhere favorable (e.g. Documents/MATLAB/).
+3. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. It installs not only RCGAToolbox core components but also IQM Tools, SundialsTB, and libSBML.
 
 ## Uninstallation
 
 1. Run the uninstallation script `RCGAToolbox_Uninstall.m` under the directory `RCGAToolbox/install/`.
-2. Delete the directory RCGAToolbox.
+2. Delete the directory `RCGAToolbox`.
 
-## Diagnosis
+## Troubleshooting
 
 `RCGAToolbox/install/RCGAToolbox_Diagnosis.m` is the self-diagnosis script that checks whether the RCGAToolbox is properly installed. It also tests the RCGAToolbox functions that depend on optional toolboxes. For the diagnosis, run `RCGAToolbox_Diagnosis.m` under the directory `RCGAToolbox/install/`.
 
