@@ -21,12 +21,10 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 - Optional requirements
     - <a href="https://www.mathworks.com/products/parallel-computing.html">***Parallel Computing Toolbox***</a> is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
     - <a href="https://www.mathworks.com/products/optimization.html">***Optimization Toolbox***</a> is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
-    - <a href="https://iqmtools.intiquan.com/">***IQM Tools***</a> (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
-    - <a href="https://computing.llnl.gov/projects/sundials/sundials-software">***SundialsTB***</a> is required for a fast simulation with CVODE (fast_flag = 1).
-    - <a href="https://sourceforge.net/projects/sbml/files/libsbml/MATLAB%20Interface/">***libSBML***</a> is required to use IQM Tools in Linux and macOS.
-    - <a href="https://www.mathworks.com/support/requirements/supported-compilers.html">***C compiler compatible with MATLAB***</a> is required to install IQM Tools and SundialsTB. To check whether you have a C compiler, type `mex -setup` in the MATLAB Command Window. If you get a message like `MEX configured to use 'gcc' for C language compilation.`, you have one.
+    - <a href="https://www.mathworks.com/support/requirements/supported-compilers.html">***C compiler compatible with MATLAB***</a> is required for handling Systems Biology Markup Language (SBML) and fast ordinary differential equation (ODE) solvers. To check whether you have a C compiler on your computer, type `mex -setup` in the MATLAB Command Window. If you get a message like `MEX configured to use 'gcc' for C language compilation.`, you have one. You can get C compilers at no charge: <a href="https://www.mathworks.com/matlabcentral/fileexchange/52848-matlab-support-for-mingw-w64-c-c-compiler">MinGW</a> for Windows, <a href="https://gcc.gnu.org/">GCC</a> for Linux, and <a href="https://apps.apple.com/jp/app/xcode/id497799835?mt=12">Xcode</a> for Mac.
 
-***IQM Tools***, ***SundialsTB***, and ***libSBML*** are included in the distribution of RCGAToolbox.
+The third-party tools, ***IQM Tools***, ***SundialsTB***, and ***libSBML***, are included in the distribution of RCGAToolbox. These tools are used by RCGAToolbox: <a href="https://iqmtools.intiquan.com/">***IQM Tools***</a> are used for SBML and a fast simulation (fast_flag = 2). <a href="https://computing.llnl.gov/projects/sundials/sundials-software">***SundialsTB***</a> is used for a fast simulation with CVODE (fast_flag = 1). <a href="https://sourceforge.net/projects/sbml/files/libsbml/MATLAB Interface/">***libSBML***</a> is required for IQM Tools in Linux and macOS. A C compiler compatible with MATLAB is required to install IQM Tools and SundialsTB.
+
 
 ## Installation
 
