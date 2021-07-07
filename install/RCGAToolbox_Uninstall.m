@@ -10,6 +10,7 @@ diary('RCGAToolbox_Uninstall_Log.txt');
 fprintf('################################################################\n');
 fprintf('#               RCGAToolbox Uninstallation Tool                #\n');
 fprintf('################################################################\n');
+fprintf('Executed: %s\n',char(datetime('now')));
 fprintf('\n');
 
 
@@ -24,7 +25,7 @@ if answ == 'y'
     f = fullfile(rcgatoolbox_root,'source');
     rmpath(genpath(f));
     savepath;
-    fprintf('RCGAToolbox core components were removed from the MATLAB path.\n');
+    fprintf('RCGAToolbox core components were removed from the MATLAB path.\n\n');
 end
 
 
@@ -34,7 +35,7 @@ if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/IQMtools V1.2.2.2');
     rmpath(genpath(f));
     savepath;
-    fprintf('IQM Tools were removed from the MATLAB path.\n');
+    fprintf('IQM Tools were removed from the MATLAB path.\n\n');
 end
 
 
@@ -66,7 +67,7 @@ if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/sundials-2.6.2/sundialsTB/putils');
     rmpath(f);
     savepath;
-    fprintf('SundialsTB was removed from the MATLAB path.\n');
+    fprintf('SundialsTB was removed from the MATLAB path.\n\n');
 end
 
 
@@ -76,11 +77,11 @@ if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
     rmpath(genpath(f));
     savepath;
-    fprintf('libSBML was removed from the MATLAB path.\n');
+    fprintf('libSBML was removed from the MATLAB path.\n\n');
 end
 
 
 %% Finalize
-fprintf('RCGAToolbox uninstallation, all done.\n');
+fprintf('RCGAToolbox uninstallation, all done.\n\n');
 
 diary off;

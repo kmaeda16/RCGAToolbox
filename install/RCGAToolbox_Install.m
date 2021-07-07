@@ -10,6 +10,7 @@ diary('RCGAToolbox_Install_Log.txt');
 fprintf('################################################################\n');
 fprintf('#                RCGAToolbox Installation Tool                 #\n');
 fprintf('################################################################\n');
+fprintf('Executed: %s\n',char(datetime('now')));
 fprintf('\n');
 
 
@@ -27,7 +28,7 @@ answ = input('    Install RCGAToolbox core components? (y/n) ','s');
 if answ == 'y'
     f = fullfile(rcgatoolbox_root,'source');
     addpath(genpath(f));
-    fprintf('RCGAToolbox core components were added to the MATLAB path.\n');
+    fprintf('RCGAToolbox core components were added to the MATLAB path.\n\n');
 end
 
 
@@ -58,7 +59,7 @@ if answ == 'y'
         flg = 1;
     end
     if flg == 0
-        fprintf('IQM Tools were successfully installed.\n');
+        fprintf('IQM Tools were successfully installed.\n\n');
     else
         warning('Installation of IQM Tools failed.');
     end
@@ -80,7 +81,7 @@ if answ == 'y'
         flg = 1;
     end
     if flg == 0
-        fprintf('SundialsTB was successfully installed.\n');
+        fprintf('SundialsTB was successfully installed.\n\n');
     else
         warning('Installation of SundialsTB failed.');
     end
@@ -93,7 +94,7 @@ answ = input('    Install libSBML? (y/n) ','s');
 if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
     addpath(genpath(f));
-    fprintf('libSBML was added to the MATLAB path.\n');
+    fprintf('libSBML was added to the MATLAB path.\n\n');
 end
 
 
@@ -104,10 +105,10 @@ rmpath(genpath(f));
 cd(f);
 
 savepath;
-fprintf('The current path settings were saved.\n');
+fprintf('The current path settings were saved.\n\n');
 
 
-fprintf('RCGAToolbox installation, all done.\n');
+fprintf('RCGAToolbox installation, all done.\n\n');
 
 
 diary off;

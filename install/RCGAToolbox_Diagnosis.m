@@ -5,13 +5,13 @@ function [] = RCGAToolbox_Diagnosis
 diary('RCGAToolbox_Diagnosis_Log.txt');
 
 
-Flag = zeros(1,6);
-
-
 fprintf('################################################################\n');
 fprintf('#                  RCGAToolbox Diagnosis Tool                  #\n');
 fprintf('################################################################\n');
+fprintf('Executed: %s\n',char(datetime('now')));
 fprintf('\n');
+
+Flag = zeros(1,6);
 
 
 %% Checking for System

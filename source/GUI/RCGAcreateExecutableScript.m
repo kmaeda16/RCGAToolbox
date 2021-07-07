@@ -14,7 +14,7 @@ end
 
 %% Print Information
 fprintf(out,'%% This script was created by RCGAToolbox Mission Control\n');
-fprintf(out,'%% Created: %s\n',date);
+fprintf(out,'%% Created: %s\n',char(datetime('now')));
 
 %% Clear variables
 fprintf(out,'clearvars;\n');
