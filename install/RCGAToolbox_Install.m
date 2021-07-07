@@ -81,7 +81,7 @@ if answ == 'y'
     end
     if flg == 0
         copyfile('startup_STB.in','startup_STB.m');
-        startup_STB(f);
+        startup_STB(pwd);
         fprintf('SundialsTB was successfully installed.\n\n');
     else
         warning('Installation of SundialsTB failed.');
