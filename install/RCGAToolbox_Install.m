@@ -18,9 +18,6 @@ cd ..;
 rcgatoolbox_root = pwd;
 cd install;
 
-f = fullfile(rcgatoolbox_root,'install');
-addpath(genpath(f));
-
 
 %% RCGAToolbox
 answ = input('    Install RCGAToolbox core components? (y/n) ','s');
@@ -74,12 +71,16 @@ if answ == 'y'
     cd(f);
     % flg = 0;
     try
+        f = fullfile(rcgatoolbox_root,'install/3rdparty');
+        addpath(f);
         flg = install_STB_mod;
+        rmpath(f);
     catch ME
         warning(ME.message);
         flg = 1;
     end
     if flg == 0
+        copyfile('startup_STB.in','startup_STB.m');
         startup_STB(f);
         fprintf('SundialsTB was successfully installed.\n\n');
     else
@@ -100,8 +101,6 @@ end
 
 %% Finalize
 f = fullfile(rcgatoolbox_root,'install');
-rmpath(genpath(f));
-
 cd(f);
 
 savepath;
