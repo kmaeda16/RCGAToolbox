@@ -1,4 +1,4 @@
-function [] = install_STB_mod
+function flg = install_STB_mod
 %
 % INSTALL_STB Interactive compilation and installtion of sundialsTB
 
@@ -17,6 +17,8 @@ function [] = install_STB_mod
 % MEX compiler command
 % --------------------
 
+flg = 0;
+
 mexcompiler = 'mex -v';
 
 % Location of sundialsTB and top of sundials source tree
@@ -33,6 +35,7 @@ cd(stb);
 mex_ok = check_mex(mexcompiler);
 
 if ~mex_ok
+  flg = 1;
   return
 end
 

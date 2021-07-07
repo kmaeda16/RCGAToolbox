@@ -47,7 +47,7 @@ if answ == 'y'
             if strcmp(archstr,'maci64')
                 movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
                     'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25_temp.c');
-                movefile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_Mac.c'),...
+                copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_Mac.c'),...
                     'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c');
             end
             installIQMtoolsInitial;
@@ -72,15 +72,15 @@ answ = input('    Install SundialsTB? (y/n) ','s');
 if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/sundials-2.6.2/sundialsTB');
     cd(f);
-    flg = 0;
+    % flg = 0;
     try
-        install_STB_mod;
-        startup_STB(f);
+        flg = install_STB_mod;
     catch ME
         warning(ME.message);
         flg = 1;
     end
     if flg == 0
+        startup_STB(f);
         fprintf('SundialsTB was successfully installed.\n\n');
     else
         warning('Installation of SundialsTB failed.');
