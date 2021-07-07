@@ -17,18 +17,20 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 
 ## Requirements
 
-- ***MATLAB R2016a or later***. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.4, Intel CPU and Apple silicon) with MATLAB R2021a.
+- <a href="https://www.mathworks.com/products/matlab.html">***MATLAB R2016a or later***</a>. We confirmed that RCGAToolbox runs on (i) Windows 10 (2004) with MATLAB R2016a, (ii) SUSE Linux Enterprise Server 11 (x86_64) with MATLAB R2016a, and (iii) macOS Big Sur (11.4, Intel CPU and Apple silicon) with MATLAB R2021a.
 - Optional requirements
-    - ***Parallel Computing Toolbox*** is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
-    - ***Optimization Toolbox*** is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
-    - ***IQM Tools*** (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
-    - ***SundialsTB*** is required for a fast simulation with CVODE (fast_flag = 1).
+    - <a href="https://www.mathworks.com/products/parallel-computing.html">***Parallel Computing Toolbox***</a> is required for parallel computation (opts.n_par > 1). It is not required for sequential computation.
+    - <a href="https://www.mathworks.com/products/optimization.html">***Optimization Toolbox***</a> is required for local optimization using fmincon (opts.local = 1). It is not required if the local optimization function is not used.
+    - <a href="https://iqmtools.intiquan.com/">***IQM Tools***</a> (formerly known as SBToolbox2/SBPD) are required for handling Systems Biology Markup Language (SBML) and a fast simulation (fast_flag = 2).
+    - <a href="https://computing.llnl.gov/projects/sundials/sundials-software">***SundialsTB***</a> is required for a fast simulation with CVODE (fast_flag = 1).
+    - <a href="https://sourceforge.net/projects/sbml/files/libsbml/MATLAB%20Interface/">***libSBML***</a> is required to use IQM Tools for Linux and macOS.
 
+***IQM Tools***, ***SundialsTB***, and ***libSBML*** are included in the distribution of RCGAToolbox.
 
 ## Installation
 
 1. Download RCGAToolbox from https://github.com/kmaeda16/RCGAToolbox.
-2. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`.
+2. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. This installation script installs not only RCGAToolbox core components but also IQM Tools, SundialsTB, and libSBML. To install IQM Tools and SundialsTB, the MATLAB `mex` command is used, and thus a <a href="https://www.mathworks.com/support/requirements/supported-compilers.html">C compiler compatible with MATLAB</a> is required.
 
 ## Uninstallation
 
@@ -40,7 +42,7 @@ RCGAToolbox is distributed under GNU General Public License v3.0. For academic u
 `RCGAToolbox/install/RCGAToolbox_Diagnosis.m` is the self-diagnosis script that checks whether the RCGAToolbox is properly installed. It also tests the RCGAToolbox functions that depend on optional toolboxes. For the diagnosis, run `RCGAToolbox_Diagnosis.m` under the directory `RCGAToolbox/install/`.
 
 ## Directories
-
+- `3rdparty`: Optional third-party tools (IQMTools, SundialsTB, and libSBML) are included.
 - `doc`: User guide (not yet), demo scripts, and benchmark scripts are included. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
 - `install`: Installation, uninstallation, and diagnosis scripts are included.
 - `source`: Source codes are included.
