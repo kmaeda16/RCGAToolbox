@@ -96,6 +96,11 @@ if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
     addpath(genpath(f));
     fprintf('libSBML was added to the MATLAB path.\n\n');
+    archstr = computer('arch');
+    if strcmp(archstr,'maci64')
+        warning('When you first use RCGAToolbox SBML-related functions, Mac will block "OutputSBML.mexmaci64" and "TranslateSBML.mexmaci64". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.mexmaci64" and "TranslateSBML.mexmaci64". ');
+        fprintf('\n');
+    end
 end
 
 
