@@ -26,3 +26,6 @@ Demo for simulating kinetic models with different solvers. See Section 4.3 of Us
 
 stb:
 Demo for using the fast ODE solver CVODE provided by SundialsTB. See Section 5.2 of User Guide.
+
+ISMB2021_Demo:
+Files used for demo in ISMB/ECCB 2021 conference.

@@ -1,0 +1,85 @@
+% Example measurement data file in the format required by IQM Tools
+% ======================================================================
+%
+% This file is based on MeasurementExample.csv from SBPOP PACKAGE.
+% A line starting with the percentage character "%" is interpreted as a
+% comment line and neglected during the import of the measurement data.
+
+[Name]
+% The following line defines the name of the measurement data.
+% It makes sense to keep the name relatively short.
+Measurement
+
+[Notes]
+Here you can enter information about the experiment and the data. 
+Experimental conditions, when the measurement was performed, everything you
+think will be of use to you later.
+
+[Components]
+% A comma separated list, defining the names of the measured components.
+% The 'time' component should always be called 'time'!
+time,u,v
+
+[Componentnotes]
+% For each component a note can be defined. The syntax is as follows:
+u: cyclin-dependent protein serine/threonine kinase activity ; MPF complex
+v: Cyclin-dependent kinase 1 ; MPF complex ; cyclin-dependent protein serine/threonine kinase activity
+
+[Values]
+% Finally, here are the data defined for the components. In this example the
+% time-vector is defined in the first column (which is not required but makes 
+% most sense). The time vector consists of all time instants at which 
+% measurements have been made. If a certain component has not been measured 
+% at a certain time instant then this can be indicated by 'NaN' or not 
+% entering a value for this time step.
+0,0.000,0.000 
+4,0.001,0.059 
+8,0.002,0.113 
+12,0.003,0.164 
+16,0.004,0.210 
+20,0.005,0.252 
+24,0.007,0.287 
+28,0.010,0.314 
+32,0.018,0.323 
+36,0.053,0.064 
+40,0.002,0.065 
+44,0.002,0.118 
+48,0.003,0.169 
+52,0.004,0.215 
+56,0.005,0.255 
+60,0.007,0.290 
+64,0.010,0.316 
+68,0.021,0.322 
+72,0.038,0.052 
+76,0.002,0.070 
+80,0.002,0.123 
+84,0.003,0.173 
+88,0.004,0.219 
+92,0.006,0.259 
+96,0.007,0.293 
+100,0.010,0.318 
+104,0.024,0.319 
+108,0.027,0.046 
+112,0.002,0.075 
+116,0.002,0.128 
+120,0.003,0.178 
+124,0.004,0.223 
+128,0.006,0.263 
+132,0.008,0.296 
+136,0.011,0.320 
+140,0.031,0.314 
+144,0.019,0.043 
+148,0.002,0.080 
+152,0.002,0.133 
+156,0.003,0.182 
+160,0.004,0.227 
+164,0.006,0.266 
+168,0.008,0.299 
+172,0.011,0.321 
+176,0.044,0.306 
+180,0.014,0.042 
+184,0.002,0.085 
+188,0.002,0.138 
+192,0.003,0.187 
+196,0.005,0.231 
+200,0.006,0.269 
