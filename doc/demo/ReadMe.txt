@@ -1,4 +1,4 @@
-RCGAToolbox/doc/demo includes demo scripts.
+RCGAToolbox/doc/demo includes demo scripts. Run MATLAB scripts named run_*.m for demos.
 
 conversion:
 Demo for model format conversion. See Section 5.1 of User Guide.
