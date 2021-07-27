@@ -56,7 +56,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 
 ## Directories
 - `3rdparty`:  Third-party tools (IQMTools, SundialsTB, and libSBML) are contained.
-- `doc`: User guide, demo scripts, and benchmark scripts are contained. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
+- `doc`: <a href="https://github.com/kmaeda16/RCGAToolbox/blob/master/doc/RCGAToolbox_UserGuide_v1.3.pdf">User guide</a>, demo scripts, and benchmark scripts are contained. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
 - `install`: Installation, uninstallation, and diagnosis scripts are contained.
 - `source`: Source codes are contained.
 
