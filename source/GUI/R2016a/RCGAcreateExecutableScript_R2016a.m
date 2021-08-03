@@ -1,7 +1,7 @@
-function RCGAcreateExecutableScript_PE(app)
-% RCGAcreateExecutableScript_PE creates an executable script for parameter
-% estimation using real-coded genetic algorithms (RCGAs). This function
-% must be called by the GUI RCGA_MissionControl_PE.
+function RCGAcreateExecutableScript_R2016a(app)
+% RCGAcreateExecutableScript_R2016a creates an executable script for real
+% coded-genetic algorithms (RCGAs). This function must be called by the GUI
+% RCGAToolbox_MissionControl_R2016a.
 
 filename = app.ExecutableScriptFileName.Value;
 
@@ -13,7 +13,7 @@ if out == -1
 end
 
 %% Print Information
-fprintf(out,'%% This script was created by RCGAToolbox Mission Control PE\n');
+fprintf(out,'%% This script was created by RCGAToolbox Mission Control\n');
 fprintf(out,'%% Created: %s\n',char(datetime('now')));
 
 %% Clear variables
@@ -23,25 +23,18 @@ fprintf(out,'\n');
 %% Problem Settings
 fprintf(out,'%% ========= Problem Settings ========= %%\n');
 
-[modelpath, modelfile, modelext] = fileparts(app.Model.Value);
-fprintf(out,'modelpath = ''%s''; %% Path to Model File\n',modelpath);
-fprintf(out,'addpath(modelpath);\n');
-addpath(modelpath)
-if exist(modelfile)
-    fprintf(out,'modelfile = @%s; %% Model File\n',modelfile);
-else
-    modelfile = strcat(modelpath,'/',modelfile,modelext);
-    fprintf(out,'modelfile = ''%s''; %% Model File\n',modelfile);
-end
+fprintf(out,'problem.n_gene = %d; %% Number of Decision Variables\n',app.N_Variables.Value);
+fprintf(out,'problem.n_constraint = %d; %% Number of Constraints\n',app.N_Constraints.Value);
 
+[fitnesspath, fitnessfile, ~] = fileparts(app.FitnessFunction.Value);
+fprintf(out,'fitnesspath = ''%s''; %% Path to Fitness Function File\n',fitnesspath);
+fprintf(out,'addpath(fitnesspath);\n');
+fprintf(out,'problem.fitnessfun = @%s; %% Fitness Function\n',fitnessfile);
 
 [decodingpath, decodingfile, ~] = fileparts(app.DecodingFunction.Value);
 fprintf(out,'decodingpath = ''%s''; %% Path to Decoding Function File\n',decodingpath);
 fprintf(out,'addpath(decodingpath);\n');
-fprintf(out,'decodingfun = @%s; %% Decoding Function\n',decodingfile);
-
-measurement = app.Measurement.Value;
-fprintf(out,'measurement = ''%s''; %% Measurement File\n',measurement);
+fprintf(out,'problem.decodingfun = @%s; %% Decoding Function\n',decodingfile);
 
 fprintf(out,'\n');
 
@@ -51,10 +44,11 @@ fprintf(out,'%% ========= Option Settings ========== %%\n');
 fprintf(out,'opts.n_population = %d; %% Population Size\n',app.PopulationSize.Value);
 fprintf(out,'opts.n_children = %d; %% Number of Children per Generation\n',app.ChildrenSize.Value);
 if strcmp(app.AlgorithmSwitch.Value,'REXstar/JGG')
-%     fprintf(out,'%% opts.n_parent = n_gene + 1; %% Number of Parents Used for REXstar\n');
+    fprintf(out,'opts.n_parent = problem.n_gene + 1; %% Number of Parents Used for REXstar\n');
     fprintf(out,'opts.t_rexstar = 6.0; %% Step-size Parameter for REXstar\n');
     fprintf(out,'opts.selection_type = 0; %% Parameter for JGG (0: Chosen from Children, 1: Chosen from Family)\n');
 end
+fprintf(out,'opts.Pf = %e; %% Pf\n',app.Pf.Value);
 if strcmp(app.LocalSwitch.Value,'Off')
     fprintf(out,'opts.local = 0; %% Local Optimizer\n');
 else
@@ -70,7 +64,7 @@ fprintf(out,'opts.out_transition = ''%s''; %% Transition File Name\n',app.Transi
 fprintf(out,'opts.out_best = ''%s''; %% Best Individual File Name\n',app.BestIndividualFileName.Value);
 fprintf(out,'opts.out_population = ''%s''; %% Final Population File Name\n',app.FinalPopulationFileName.Value);
 fprintf(out,'opts.out_report = ''%s''; %% Report File Name\n',app.ReportFileName.Value);
-fprintf(out,'fast_flag = %d; %% fast_flag\n',app.FastFlag.Value);
+
 fprintf(out,'\n');
 
 %% Setting Random Seed
@@ -80,11 +74,10 @@ fprintf(out,'\n');
 
 %% Executing RCGA
 fprintf(out,'%% ========== Executing RCGA ========== %%\n');
-fprintf(out,'clear RCGAssr;\n');
 if strcmp(app.AlgorithmSwitch.Value,'UNDX/MGG')
-    fprintf(out,'Results = RCGA_UNDXMGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
+    fprintf(out,'Results = RCGA_UNDXMGG(problem,opts);\n');
 else
-    fprintf(out,'Results = RCGA_REXstarJGG_PE(modelfile,decodingfun,measurement,fast_flag,[],opts);\n');
+    fprintf(out,'Results = RCGA_REXstarJGG(problem,opts);\n');
 end
 fprintf(out,'\n');
 
@@ -100,8 +93,8 @@ fprintf(out,'\n');
 
 %% Removing Path
 fprintf(out,'%% ========== Removing Path =========== %%\n');
-fprintf(out,'rmpath(modelpath);\n');
-fprintf(out,'if ~strcmp(modelpath,decodingpath)\n');
+fprintf(out,'rmpath(fitnesspath);\n');
+fprintf(out,'if ~strcmp(fitnesspath,decodingpath)\n');
 fprintf(out,'    rmpath(decodingpath);\n');
 fprintf(out,'end\n');
 
