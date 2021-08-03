@@ -37,8 +37,7 @@ end
 % Newer than or equal to R2021a
 if matlab_version_num >= 2021
     
-    % RCGAToolbox_MissionControl_PE_R2021a;
-    RCGAToolbox_MissionControl_PE_R2016a;
+    RCGAToolbox_MissionControl_PE_R2021a;
     
 % Older than R2021a
 else
