@@ -14,23 +14,37 @@ function RCGAToolbox_MissionControl(matlab_version)
 %                  MATLAB version on your system.
 
 
+flg = 0;
+
+
 if ~exist('matlab_version','var')
     matlab_version = [ 'R' version('-release') ];
 end
 
 
-if lower(matlab_version(end)) == 'a'
+if lower(matlab_version(end)) == 'a' && lower(matlab_version(1)) == 'r' && length(matlab_version) == 6
     
     matlab_version_num = str2double(matlab_version(2:end-1));
     
-elseif lower(matlab_version(end)) == 'b'
+elseif lower(matlab_version(end)) == 'b' && lower(matlab_version(1)) == 'r' && length(matlab_version) == 6
     
     matlab_version_num = str2double(matlab_version(2:end-1)) + 0.5;
     
 else
     
-    error('Invalid MATLAB Version. matlab_version should be something like ''R2016a'' or ''R2020b''.');
+    matlab_version_num = nan;
+    flg = 1;
     
+end
+
+
+if isnan(matlab_version_num)
+    flg = 1;
+end
+
+
+if flg == 1
+    error('Invalid MATLAB Version. matlab_version should be something like ''R2016a'' or ''R2020b''.');
 end
 
 
