@@ -9,6 +9,7 @@ The distribution of RCGAToolbox contains third-party tools, and they have their 
 
 ## Release Notes
 
+- Aug  4 2021: RCGAToolbox-1.4: GUI version selector function added.
 - Jul 27 2021: RCGAToolbox-1.3: Installation script and user guide improved.
 - Apr 27 2021: RCGAToolbox-1.2: PEtab support. Friendlier error messages.
 - Feb 13 2021: RCGAToolbox-1.1: Bug fix, Improved GUIs, Linux and macOS support.
@@ -30,7 +31,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 
 1. Download RCGAToolbox from https://github.com/kmaeda16/RCGAToolbox.
 2. Place the directory `RCGAToolbox` (or `RCGAToolbox-master`) somewhere favorable (e.g. Documents/MATLAB/).
-3. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. It installs not only RCGAToolbox core components but also IQM Tools, SundialsTB, and libSBML.
+3. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. It installs not only RCGAToolbox core components but also necessary third-party tools: IQM Tools, SundialsTB, and libSBML.
 
 ## Uninstallation
 

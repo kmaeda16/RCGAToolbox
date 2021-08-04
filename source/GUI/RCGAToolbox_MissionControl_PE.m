@@ -2,7 +2,7 @@ function RCGAToolbox_MissionControl_PE(matlab_version)
 % RCGAToolbox_MissionControl_PE starts GUI for parameter estimation.
 % 
 % [SYNTAX]
-% RCGAToolbox_MissionControl_PE()
+% RCGAToolbox_MissionControl_PE
 % RCGAToolbox_MissionControl_PE(matlab_version)
 % 
 % [INPUT]

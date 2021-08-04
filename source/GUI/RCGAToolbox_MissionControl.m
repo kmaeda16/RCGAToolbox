@@ -2,7 +2,7 @@ function RCGAToolbox_MissionControl(matlab_version)
 % RCGAToolbox_MissionControl starts GUI for general optimization problem.
 % 
 % [SYNTAX]
-% RCGAToolbox_MissionControl()
+% RCGAToolbox_MissionControl
 % RCGAToolbox_MissionControl(matlab_version)
 % 
 % [INPUT]
