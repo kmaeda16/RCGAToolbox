@@ -1,6 +1,6 @@
 # RCGAToolbox
 
-RCGAToolbox is a MATLAB toolbox that contains two real-coded genetic algorithms (RCGAs): the unimodal normal distribution crossover with minimal generation gap (UNDX/MGG) and the real-coded ensemble crossover star with just generation gap (REXstar/JGG). The stochastic ranking method is implemented to efficiently handle constrained optimization problems. RCGAToolbox not only provides access to RCGAs but also several useful features for parameter estimation in systems biology. For demos, run scripts in `RCGAToolbox/doc/demo`. User guide can be found in `RCGAToolbox/doc/`. Video tutorials are available on <a href="https://www.youtube.com/playlist?list=PLOpE8E-aX1H8qqWvf1YSoN2nA6O-2wfYA">YouTube</a>.
+RCGAToolbox is a MATLAB toolbox that contains two real-coded genetic algorithms (RCGAs): the unimodal normal distribution crossover with minimal generation gap (UNDX/MGG) and the real-coded ensemble crossover star with just generation gap (REXstar/JGG). The stochastic ranking method is implemented to efficiently handle constrained optimization problems. RCGAToolbox not only provides access to RCGAs but also several useful features for parameter estimation in systems biology. For demos, run scripts in `RCGAToolbox/doc/demo`. <a href="https://github.com/kmaeda16/RCGAToolbox/blob/master/doc/RCGAToolbox_UserGuide_v1.4.pdf">User guide</a> can be found in `RCGAToolbox/doc/`. Video tutorials are available on <a href="https://www.youtube.com/playlist?list=PLOpE8E-aX1H8qqWvf1YSoN2nA6O-2wfYA">YouTube</a>.
 
 ## License
 
@@ -31,7 +31,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 
 1. Download RCGAToolbox from https://github.com/kmaeda16/RCGAToolbox.
 2. Place the directory `RCGAToolbox` (or `RCGAToolbox-master`) somewhere favorable (e.g. Documents/MATLAB/).
-3. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. It installs not only RCGAToolbox core components but also necessary third-party tools: IQM Tools, SundialsTB, and libSBML.
+3. Run the installation script `RCGAToolbox_Install.m` under the directory `RCGAToolbox/install/`. It installs RCGAToolbox core components and necessary third-party tools: IQM Tools, SundialsTB, and libSBML.
 
 ## Uninstallation
 
@@ -49,7 +49,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 | Windows 10 (20H2) | R2021a | MinGW |
 | SUSE Linux Enterprise Server 11 (x86_64)  | R2016a | GCC 4.7.4 |
 | macOS Big Sur 11.3.1 (Intel) | R2021a | Xcode 12 |
-| macOS Big Sur 11.4 (Apple silicon) | R2021a | Xcode 12 |
+| macOS Big Sur 11.5.1 (Apple silicon) | R2021a | Xcode 12 |
 
 ## Troubleshooting
 
@@ -57,7 +57,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 
 ## Directories
 - `3rdparty`:  Third-party tools (IQMTools, SundialsTB, and libSBML) are contained.
-- `doc`: <a href="https://github.com/kmaeda16/RCGAToolbox/blob/master/doc/RCGAToolbox_UserGuide_v1.3.pdf">User guide</a>, demo scripts, and benchmark scripts are contained. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
+- `doc`: <a href="https://github.com/kmaeda16/RCGAToolbox/blob/master/doc/RCGAToolbox_UserGuide_v1.4.pdf">User guide</a>, demo scripts, and benchmark scripts are contained. For details in the benchmark experiments, see the original article (Maeda et al., 2021).
 - `install`: Installation, uninstallation, and diagnosis scripts are contained.
 - `source`: Source codes are contained.
 
