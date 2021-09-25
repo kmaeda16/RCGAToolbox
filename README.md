@@ -48,7 +48,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 | Windows 10 (20H2) | R2021a | Microsoft Visual C++ 2015 Professional |
 | Windows 10 (20H2) | R2021a | MinGW |
 | SUSE Linux Enterprise Server 11 (x86_64)  | R2016a | GCC 4.7.4 |
-| macOS Big Sur 11.3.1 (Intel) | R2021a | Xcode 12 |
+| macOS Big Sur 11.6 (Intel) | R2021b | Xcode 12 |
 | macOS Big Sur 11.5.1 (Apple silicon) | R2021a | Xcode 12 |
 
 ## Troubleshooting
