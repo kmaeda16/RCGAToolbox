@@ -69,7 +69,7 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 
 If you make use of RCGAToolbox in any publications, we kindly ask that the following paper is cited:
 
-<a href="https://doi.org/10.1101/2021.02.15.431062">Maeda K, Boogerd FC, Kurata H: RCGAToolbox: A real-coded genetic algorithm software for parameter estimation of kinetic models. bioRxiv 2021:2021.2002.2015.431062.</a>
+<a href="https://www.jstage.jst.go.jp/article/ipsjtbio/14/0/14_30/_article/-char/en">Kazuhiro Maeda, Fred C. Boogerd, Hiroyuki Kurata, RCGAToolbox: A Real-coded Genetic Algorithm Software for Parameter Estimation of Kinetic Models, IPSJ Transactions on Bioinformatics, Volume 14, Pages 30-35, 2021</a>
 
 
 -------------------------------
