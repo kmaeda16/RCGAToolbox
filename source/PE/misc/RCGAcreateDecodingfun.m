@@ -23,8 +23,8 @@ end
 
 
 %% Preparation
-[ ~, funcname, ~ ] = fileparts(DecodingfunFile);
-filename = strcat(funcname,'.m');
+[ filepath, funcname, ~ ] = fileparts(DecodingfunFile);
+filename = strcat(fullfile(filepath,funcname),'.m');
 
 T = tdfread(PEtabParameterFile);
 temp = size(T.parameterId);

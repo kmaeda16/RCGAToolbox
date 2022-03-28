@@ -39,8 +39,8 @@ if isfield(T,'simulationConditionId')
 end
 
 % IQMmeasurementFile
-[ ~, funcname, ~ ] = fileparts(IQMmeasurementFile);
-IQMmeasurementFile = strcat(funcname,'.csv');
+[ filepath, funcname, ~ ] = fileparts(IQMmeasurementFile);
+IQMmeasurementFile = strcat(fullfile(filepath,funcname),'.csv');
 
 % model
 if isa(model,'function_handle')

@@ -31,8 +31,8 @@ if isIQMmodel(model)
         odefilename = regexprep(odefilename,'\W','');
         odefilename_ext = [ odefilename '.m' ];
     else
-        [~, odefilename, ext] = fileparts(odefilename);
-        odefilename_ext = [odefilename ext];
+        [filepath, odefilename, ext] = fileparts(odefilename);
+        odefilename_ext = [ fullfile(filepath,odefilename) ext];
     end
 elseif ischar(model)
     sbm = IQMmodel(model);
@@ -41,8 +41,8 @@ elseif ischar(model)
         odefilename = strcat(filename,'_conciseOdefun');
         odefilename_ext = [ odefilename '.m' ];
     else
-        [~, odefilename, ext] = fileparts(odefilename);
-        odefilename_ext = [odefilename ext];
+        [filepath, odefilename, ext] = fileparts(odefilename);
+        odefilename_ext = [ fullfile(filepath,odefilename) ext];
     end
 else
     error('model must be an IQMmodel or a file name!');

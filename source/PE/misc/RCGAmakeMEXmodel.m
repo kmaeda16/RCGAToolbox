@@ -44,8 +44,8 @@ if isIQMmodel(model)
 elseif ischar(model)
     sbm = IQMmodel(model);
     if ~exist('mexfilename','var')
-        [ ~, filename, ~] = fileparts(model);
-        mexfilename = strcat(filename,'_mex');
+        [ filepath, filename, ~] = fileparts(model);
+        mexfilename = strcat(fullfile(filepath,filename),'_mex');
     end
 else
     error('model must be an IQMmodel or a file name!');
