@@ -35,7 +35,7 @@ elseif ischar(model)
     sbm = IQMmodel(model);
     if ~exist('odefilename','var')
         [ filepath, filename, ~] = fileparts(model);
-        odefilename = strcat(fullpath(filepath,filename),'_odefun');
+        odefilename = strcat(fullfile(filepath,filename),'_odefun');
     end
 else
     error('model must be an IQMmodel or a file name!');
