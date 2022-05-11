@@ -85,9 +85,14 @@ end
 
 
 %% Solving ODEs
-[ ~, T, Y ] = CVode(tspan(2:end),'Normal');
-T = [tspan(1) T]';
-Y = [y0 Y]';
+try
+    [ ~, T, Y ] = CVode(tspan(2:end),'Normal');
+    T = [tspan(1) T]';
+    Y = [y0 Y]';
+catch
+    T = nan;
+    Y = nan;
+end
 
 
 %% Deinitializing CVode
