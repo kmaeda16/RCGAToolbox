@@ -78,9 +78,12 @@ end
 
 %% Setting designated initial population
 if isfield(opts,'initial_population') && ~isempty(opts.initial_population)
-    [ n_designated, ~] = size(opts.initial_population);
-    for i = 1 : min(n_population,n_designated)
-        Population(i).gene = opts.initial_population(i,1:n_gene);
+    [ n_designated_population, n_designated_gene ] = size(opts.initial_population);
+    if n_designated_gene ~= n_gene
+        error('Designated initial population have %d genes, which is not equal to n_gene = %d.\n',n_designated_gene,n_gene);
+    end
+    for i = 1 : min(n_population,n_designated_population)
+        Population(i).gene = opts.initial_population(i,:);
         Population(i).gene(Population(i).gene>1) = 1;
         Population(i).gene(Population(i).gene<0) = 0;
     end
