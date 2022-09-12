@@ -33,9 +33,19 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 %                          - opts.maxtime: Maximum time (sec).
 %                          - opts.maxeval: Maximum number of fitnessfun 
 %                             evaluations.
+%                          - opts.maxstallgen: Maximum number of stall 
+%                             generations for early stopping.
 %                          - opts.vtr: Value to be reached.
 %                          - opts.n_par: Number of workers in parallel 
 %                             computation.
+%                          - opts.initial_population: n x n_gene matrix in
+%                             which each row represents an individual. Note
+%                             that each gene should be 0 ~ 1. The first
+%                             n_population individuals of the designated 
+%                             initial population are used, and others are 
+%                             ignored. If n < n_population, 
+%                             n_population - n individuals are randomly 
+%                             generated. 
 %                          - opts.output_intvl: Interval generation for 
 %                             updating the transition file and the report 
 %                             file.
@@ -64,7 +74,7 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 %                             final population.
 %                          - Results.end_crit: Exit flag: Success (0),
 %                             maxgen reached (1), maxtime reached (2), 
-%                             maxeval reached (3).
+%                             maxeval reached (3), maxstallgen (4).
 
 
 %% Getting the time RCGA starts
@@ -84,6 +94,7 @@ n_children = opts.n_children;
 vtr = opts.vtr;
 maxtime = opts.maxtime;
 maxeval = opts.maxeval;
+maxstallgen = opts.maxstallgen;
 n_par = opts.n_par;
 local = opts.local;
 
@@ -110,6 +121,10 @@ end
 flg_printed = 0; % flg_printed == 1 indicates output is made
 
 
+%% Stall generations
+stallgenerations = 0;
+
+
 %% First generation
 i = 1;
 Population = RCGAgetInitPopulation(problem,opts);
@@ -131,7 +146,7 @@ if 0 < output_intvl
     flg_printed = 1;
 end
 
-if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval
+if ( best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval || stallgenerations >= maxstallgen
     if 0 < output_intvl && flg_printed == 0
         interimreportfun(elapsedTime,i,problem,opts,Population,best);
         ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
@@ -149,11 +164,14 @@ while i < maxgen
     Population = GenerationAlternation(problem,opts,Population);
     index = RCGAfindBest(Population);
     if Population(index).phi < best.phi || ( Population(index).phi == best.phi && Population(index).f < best.f )
+        stallgenerations = 0;
         if local > 0
             [Population(index), localneval] = RCGAlocalOptimize(problem, opts, Population(index));
             RCGA_LOCALNEVAL = RCGA_LOCALNEVAL + localneval;
         end
         best = Population(index);
+    else
+        stallgenerations = stallgenerations + 1;
     end
     
     elapsedTime = toc;
@@ -165,7 +183,7 @@ while i < maxgen
         flg_printed = 1;
     end
 
-    if (best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval
+    if (best.phi == 0 && best.f <= vtr) || elapsedTime >= maxtime || neval >= maxeval || stallgenerations >= maxstallgen
         break;
     end
 end

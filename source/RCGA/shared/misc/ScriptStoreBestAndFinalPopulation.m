@@ -34,6 +34,10 @@ if neval >= maxeval
     Results.end_crit = 3;
     fprintf('Maximum number of fitnessfun evaluations (maxeval) reached.\n');
 end
+if stallgenerations >= maxstallgen
+    Results.end_crit = 4;
+    fprintf('Maximum number of stall generations (maxstallgen) reached.\n');
+end
 if ~isempty(out_report) && ~strcmpi('none',out_report)
     save(out_report,'Results');
 end

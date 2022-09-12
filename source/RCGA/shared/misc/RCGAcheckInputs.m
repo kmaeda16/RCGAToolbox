@@ -20,8 +20,8 @@ function [problem, opts] = RCGAcheckInputs(problem, opts, RCGAfun)
 %              - opts.t_rexstar: Step-size parameter for REXstar/JGG.
 %              - opts.selection_type: Selection type for REXstar/JGG 
 %                 (0 or 1).
-%              - opts.Pf: Probability that only the objective function f is
-%                 used in comparisons of individuals in the stochastic 
+%              - opts.Pf: Probability that only the objective function f 
+%                 is used in comparisons of individuals in the stochastic
 %                 ranking.
 %              - opts.local: Local optimizer (0 or 1). If it is 1, the 
 %                 local optimizer is used.
@@ -29,8 +29,16 @@ function [problem, opts] = RCGAcheckInputs(problem, opts, RCGAfun)
 %              - opts.maxgen: Maximum number of generations.
 %              - opts.maxtime: Maximum time (sec).
 %              - opts.maxeval: Maximum number of fitnessfun evaluations.
+%              - opts.maxstallgen: Maximum number of stall generations for 
+%                 early stopping.
 %              - opts.vtr: Value to be reached.
 %              - opts.n_par: Number of workers in parallel computation.
+%              - opts.initial_population: n x n_gene matrix in which each
+%                 row represents an individual. Note that each gene should 
+%                 be 0 ~ 1. The first n_population individuals of the 
+%                 designated initial population are used, and others are 
+%                 ignored. If n < n_population, 
+%                 n_population - n individuals are randomly generated. 
 %              - opts.output_intvl: Interval generation for updating the 
 %                 transition file and the report file.
 %              - opts.out_transition: Name of an output file called the 
@@ -103,15 +111,17 @@ C2 = {
     'maxgen',...         %  9
     'maxtime',...        % 10
     'maxeval',...        % 11
-    'vtr',...            % 12
-    'n_par', ...         % 13
-    'output_intvl',...   % 14
-    'out_transition',... % 15
-    'out_best',...       % 16
-    'out_population',... % 17
-    'out_report',...     % 18
-    'interimreportfun',... % 19
-    'finalreportfun',... % 20
+    'maxstallgen',...    % 12
+    'vtr',...            % 13
+    'n_par',...          % 14
+    'initial_population',... % 15
+    'output_intvl',...   % 16
+    'out_transition',... % 17
+    'out_best',...       % 18
+    'out_population',... % 19
+    'out_report',...     % 20
+    'interimreportfun',... % 21
+    'finalreportfun',... % 22
 };
 
 tf = isfield(opts,C2);
@@ -155,7 +165,7 @@ if ~tf(8) % localopts
         'ConstraintTolerance',0,...
         'MaxFunctionEvaluations',opts.n_children,...
         'Display','off');
-    if tf(13) && opts.n_par > 1
+    if tf(14) && opts.n_par > 1
         opts.localopts = optimoptions(opts.localopts,...
         'UseParallel',true);
     end
@@ -169,31 +179,37 @@ end
 if ~tf(11) % maxeval
     opts.maxeval = inf;
 end
-if ~tf(12) % vtr
+if ~tf(12) % maxstallgen
+    opts.maxstallgen = inf;
+end
+if ~tf(13) % vtr
     opts.vtr = -inf;
 end
-if ~tf(13) % n_par
+if ~tf(14) % n_par
     opts.n_par = 1;
 end
-if ~tf(14) % output_intvl
+if ~tf(15) % initial_population
+    opts.initial_population = [];
+end
+if ~tf(16) % output_intvl
     opts.output_intvl = 1;
 end
-if ~tf(15) % out_transition
+if ~tf(17) % out_transition
     opts.out_transition = 'None';
 end
-if ~tf(16) % out_best
+if ~tf(18) % out_best
     opts.out_best = 'None';
 end
-if ~tf(17) % out_population
+if ~tf(19) % out_population
     opts.out_population = 'None';
 end
-if ~tf(18) % out_report
+if ~tf(20) % out_report
     opts.out_report = 'None';
 end
-if ~tf(19) % interimreportfun
+if ~tf(21) % interimreportfun
     opts.interimreportfun = @RCGAdefaultinterimreportfun;
 end
-if ~tf(20) % finalreportfun
+if ~tf(22) % finalreportfun
     opts.finalreportfun = @RCGAdefaultfinalreportfun;
 end
 

@@ -31,8 +31,16 @@ function [improvedChrom, localneval] = RCGAlocalOptimize(problem, opts, chrom)
 %                  - opts.maxtime: Maximum time (sec).
 %                  - opts.maxeval: Maximum number of fitnessfun 
 %                     evaluations.
+%                  - opts.maxstallgen: Maximum number of stall generations 
+%                     for early stopping.
 %                  - opts.vtr: Value to be reached.
 %                  - opts.n_par: Number of workers in parallel computation.
+%                  - opts.initial_population: n x n_gene matrix in which 
+%                     each row represents an individual. Note that each 
+%                     gene should be 0 ~ 1. The first n_population 
+%                     individuals of the designated initial population are 
+%                     used, and others are ignored. If n < n_population, 
+%                     n_population - n individuals are randomly generated. 
 %                  - opts.output_intvl: Interval generation for updating 
 %                     the transition file and the report file.
 %                  - opts.out_transition: Name of an output file called the 

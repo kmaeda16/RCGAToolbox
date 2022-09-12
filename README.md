@@ -9,6 +9,7 @@ The distribution of RCGAToolbox contains third-party tools, and they have their 
 
 ## Release Notes
 
+- Sep 12 2022: RCGAToolbox-1.5: Designated initial population and early stopping added.
 - Aug  4 2021: RCGAToolbox-1.4: GUI version selector function added.
 - Jul 27 2021: RCGAToolbox-1.3: Installation script and user guide improved.
 - Apr 27 2021: RCGAToolbox-1.2: PEtab support. Friendlier error messages.
