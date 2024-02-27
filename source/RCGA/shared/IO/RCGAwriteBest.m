@@ -73,6 +73,11 @@ if isempty(out_best) || strcmpi('none',out_best)
     return;
 end
 
+[ dirname, ~, ~ ] = fileparts(out_best);
+if ~exist(dirname,"dir") && ~isempty(dirname)
+    mkdir(dirname);
+end
+
 out = fopen(out_best,'w');
 if out == -1
     warning('cannot open %s!\n',out_best);

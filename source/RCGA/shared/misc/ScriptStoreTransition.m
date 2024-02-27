@@ -11,5 +11,9 @@ if n_constraint > 0
     Results.Transition.g(end+1,:) = best.g;
 end
 if ~isempty(out_report) && ~strcmpi('none',out_report)
+    [ dirname, ~, ~ ] = fileparts(out_report);
+    if ~exist(dirname,"dir") && ~isempty(dirname)
+        mkdir(dirname);
+    end
     save(out_report,'Results');
 end

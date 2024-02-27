@@ -64,16 +64,21 @@ n_population = opts.n_population;
 out_population = opts.out_population;
 
 
-%% If out_transition is 'none', nothing done.
+%% If out_population is 'none', nothing done.
 if isempty(out_population) || strcmpi('none',out_population)
     return;
 end
 
 
-%% Opening out_transition
+%% Opening out_population
+[ dirname, ~, ~ ] = fileparts(out_population);
+if ~exist(dirname,"dir") && ~isempty(dirname)
+    mkdir(dirname);
+end
+
 out = fopen(out_population,'w');
 if out == -1
-    warning('cannot open %s!\n',out_transition);
+    warning('cannot open %s!\n',out_population);
     return;
 end
 

@@ -78,6 +78,11 @@ end
 
 
 %% Opening out_transition
+[ dirname, ~, ~ ] = fileparts(out_transition);
+if ~exist(dirname,"dir") && ~isempty(dirname)
+    mkdir(dirname);
+end
+
 if generation == 1
     out = fopen(out_transition,'w');
     if out == -1

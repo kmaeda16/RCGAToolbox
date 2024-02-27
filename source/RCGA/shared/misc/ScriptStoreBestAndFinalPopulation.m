@@ -39,5 +39,9 @@ if stallgenerations >= maxstallgen
     fprintf('Maximum number of stall generations (maxstallgen) reached.\n');
 end
 if ~isempty(out_report) && ~strcmpi('none',out_report)
+    [ dirname, ~, ~ ] = fileparts(out_report);
+    if ~exist(dirname,"dir") && ~isempty(dirname)
+        mkdir(dirname);
+    end
     save(out_report,'Results');
 end
