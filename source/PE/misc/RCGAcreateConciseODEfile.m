@@ -76,7 +76,7 @@ if ischar(model)
 else
     fprintf(fileID,'.\n');
 end
-fprintf(fileID,'%% Generated: %s\n',date);
+fprintf(fileID,'%% Generated: %s\n',datetime("today"));
 fprintf(fileID,'%% \n');
 fprintf(fileID,'%% You can simulate the model coded in this function by the following codes.\n');
 fprintf(fileID,'%% tspan = [0 10];\n');
@@ -97,7 +97,7 @@ fprintf(fileID,'\n\n');
 
 % Below is active codes
 for i = 1 : n_state
-    fprintf(fileID,'%s = y(%d);\n',ModelStruct.states(i).name,i);
+    fprintf(fileID,'%s = y(%d);\n',replaceInvalidChars(ModelStruct.states(i).name),i);
 end
 fprintf(fileID,'\n');
 
@@ -116,7 +116,7 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'%% === BEGIN INITIAL CONDITION ===\n');
 for i = 1 : n_state
-    fprintf(fileID,'%s_0 = %e;\n',ModelStruct.states(i).name,ModelStruct.states(i).initialCondition);
+    fprintf(fileID,'%s_0 = %e;\n',replaceInvalidChars(ModelStruct.states(i).name),ModelStruct.states(i).initialCondition);
 end
 fprintf(fileID,'%% === END INITIAL CONDITION ===\n');
 fprintf(fileID,'\n');
@@ -124,7 +124,7 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'%% === BEGIN PARAMETERS ===\n');
 for i = 1 : n_param
-    fprintf(fileID,'%s = %e;\n',ModelStruct.parameters(i).name,ModelStruct.parameters(i).value);
+    fprintf(fileID,'%s = %e;\n',replaceInvalidChars(ModelStruct.parameters(i).name),ModelStruct.parameters(i).value);
 end
 fprintf(fileID,'%% === END PARAMETERS ===\n');
 fprintf(fileID,'\n');
@@ -132,7 +132,7 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'%% === BEGIN VARIABLES ===\n');
 for i = 1 : n_variable
-    fprintf(fileID,'%s = %s;\n',ModelStruct.variables(i).name,ModelStruct.variables(i).formula);
+    fprintf(fileID,'%s = %s;\n',replaceInvalidChars(ModelStruct.variables(i).name),ModelStruct.variables(i).formula);
 end
 fprintf(fileID,'%% === END VARIABLES ===\n');
 fprintf(fileID,'\n');
@@ -140,7 +140,7 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'%% === BEGIN REACTIONS ===\n');
 for i = 1 : n_reaction
-    fprintf(fileID,'%s = %s;\n',ModelStruct.reactions(i).name,ModelStruct.reactions(i).formula);
+    fprintf(fileID,'%s = %s;\n',replaceInvalidChars(ModelStruct.reactions(i).name),ModelStruct.reactions(i).formula);
 end
 fprintf(fileID,'%% === END REACTIONS ===\n');
 fprintf(fileID,'\n');
@@ -148,7 +148,7 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'%% === BEGIN BALANCE ===\n');
 for i = 1 : n_state
-    fprintf(fileID,'%s_dot = %s;\n',ModelStruct.states(i).name,ModelStruct.states(i).ODE);
+    fprintf(fileID,'%s_dot = %s;\n',replaceInvalidChars(ModelStruct.states(i).name),ModelStruct.states(i).ODE);
 end
 fprintf(fileID,'%% === END BALANCE ===\n');
 fprintf(fileID,'\n');
@@ -156,8 +156,14 @@ fprintf(fileID,'\n');
 
 fprintf(fileID,'dydt = zeros(%d,1);\n',n_state);
 for i = 1 : n_state
-    fprintf(fileID,'dydt(%d) = %s_dot;\n',i,ModelStruct.states(i).name);
+    fprintf(fileID,'dydt(%d) = %s_dot;\n',i,replaceInvalidChars(ModelStruct.states(i).name));
 end
 
 
 fclose(fileID);
+
+end
+
+function outStr = replaceInvalidChars(inStr)
+    outStr = regexprep(inStr, '[#$%&=~^¥|?\-/]', '_');
+end
