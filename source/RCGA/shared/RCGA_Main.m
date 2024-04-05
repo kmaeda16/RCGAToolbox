@@ -78,7 +78,7 @@ function Results = RCGA_Main(problem, opts, GenerationAlternation)
 
 
 %% Getting the time RCGA starts
-tic;
+timerVal = tic;
 
 
 %% Shortening variable names
@@ -135,11 +135,11 @@ if local > 0
 end
 best = Population(index);
 
-elapsedTime = toc;
+elapsedTime = toc(timerVal);
 neval = n_population + ( i - 1 ) * n_children + RCGA_LOCALNEVAL;
 
 if 0 < output_intvl
-    elapsedTime = toc;
+    elapsedTime = toc(timerVal);
     interimreportfun(elapsedTime,i,problem,opts,Population,best);
     ScriptInitTransition; % RCGA/shared/misc/ScriptInitTransition
     ScriptStoreTransition; % RCGA/shared/misc/ScriptStoreTransition
@@ -174,7 +174,7 @@ while i < maxgen
         stallgenerations = stallgenerations + 1;
     end
     
-    elapsedTime = toc;
+    elapsedTime = toc(timerVal);
     neval = n_population + ( i - 1 ) * n_children + RCGA_LOCALNEVAL;
 
     if 0 < output_intvl && mod(i,output_intvl) == 0

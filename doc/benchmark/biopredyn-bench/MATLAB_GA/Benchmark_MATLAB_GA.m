@@ -27,11 +27,11 @@ ObjectiveFunction  = @(x) obj_wrapper_nodecoding(problem.fitnessfun, x);
 
 LB = problem.decodingfun(zeros(1,problem.n_gene));   % Lower bound
 UB = problem.decodingfun( ones(1,problem.n_gene));   % Upper bound
-tic;
+timerVal = tic;
 
 [x, fval, exitflag, output] = ga(ObjectiveFunction,problem.n_gene,[],[],[],[],LB,UB,[],options);
 
-elapsedTime = toc;
+elapsedTime = toc(timerVal);
 generation = output.generations;
 neval = output.funccount;
 f = ObjectiveFunction(x);
