@@ -66,11 +66,15 @@ while ischar(tline)
             if strfind(tline,'=== END INITIAL CONDITION ===')
                 break;
             end
-            name = regexprep(tline,'\s*(.+)_0\s*=.+','$1');
-            initialCondition = regexprep(tline,'.+=\s*(.+)\s*;','$1');
-            index = index + 1;
-            ModelStruct.states(index).name = strtrim(name);
-            ModelStruct.states(index).initialCondition = str2double(initialCondition);
+            tline = strtrim(tline);
+            tline = strtrim(regexp(tline, '^[^%]*', 'match', 'once'));
+            if ~isempty(tline)
+                name = regexprep(tline,'\s*(.+)_0\s*=.+','$1');
+                initialCondition = regexprep(tline,'.+=\s*(.+)\s*;','$1');
+                index = index + 1;
+                ModelStruct.states(index).name = strtrim(name);
+                ModelStruct.states(index).initialCondition = str2double(initialCondition);
+            end
             tline = fgetl(fileID);
         end
     end
@@ -83,11 +87,15 @@ while ischar(tline)
             if strfind(tline,'=== END PARAMETERS ===')
                 break;
             end
-            name = regexprep(tline,'\s*(.+)\s*=.+','$1');
-            value = regexprep(tline,'.+=\s*(.+)\s*;','$1');
-            index = index + 1;
-            ModelStruct.parameters(index).name = strtrim(name);
-            ModelStruct.parameters(index).value = str2double(value);
+            tline = strtrim(tline);
+            tline = strtrim(regexp(tline, '^[^%]*', 'match', 'once'));
+            if ~isempty(tline)
+                name = regexprep(tline,'\s*(.+)\s*=.+','$1');
+                value = regexprep(tline,'.+=\s*(.+)\s*;','$1');
+                index = index + 1;
+                ModelStruct.parameters(index).name = strtrim(name);
+                ModelStruct.parameters(index).value = str2double(value);
+            end
             tline = fgetl(fileID);
         end
     end
@@ -100,11 +108,15 @@ while ischar(tline)
             if strfind(tline,'=== END VARIABLES ===')
                 break;
             end
-            name = regexprep(tline,'\s*(.+)\s*=.+','$1');
-            formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
-            index = index + 1;
-            ModelStruct.variables(index).name = strtrim(name);
-            ModelStruct.variables(index).formula = formula;
+            tline = strtrim(tline);
+            tline = strtrim(regexp(tline, '^[^%]*', 'match', 'once'));
+            if ~isempty(tline)
+                name = regexprep(tline,'\s*(.+)\s*=.+','$1');
+                formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
+                index = index + 1;
+                ModelStruct.variables(index).name = strtrim(name);
+                ModelStruct.variables(index).formula = formula;
+            end
             tline = fgetl(fileID);
         end
     end
@@ -117,11 +129,15 @@ while ischar(tline)
             if strfind(tline,'=== END REACTIONS ===')
                 break;
             end
-            name = regexprep(tline,'\s*(.+)\s*=.+','$1');
-            formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
-            index = index + 1;
-            ModelStruct.reactions(index).name = strtrim(name);
-            ModelStruct.reactions(index).formula = formula;
+            tline = strtrim(tline);
+            tline = strtrim(regexp(tline, '^[^%]*', 'match', 'once'));
+            if ~isempty(tline)
+                name = regexprep(tline,'\s*(.+)\s*=.+','$1');
+                formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
+                index = index + 1;
+                ModelStruct.reactions(index).name = strtrim(name);
+                ModelStruct.reactions(index).formula = formula;
+            end
             tline = fgetl(fileID);
         end
     end
@@ -134,11 +150,15 @@ while ischar(tline)
             if strfind(tline,'=== END BALANCE ===')
                 break;
             end
-            name = regexprep(tline,'\s*(.+)_dot\s*=.+','$1');
-            formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
-            index = index + 1;
-            % ModelStruct.states(index).name = strtrim(name);
-            ModelStruct.states(index).ODE = formula;
+            tline = strtrim(tline);
+            tline = strtrim(regexp(tline, '^[^%]*', 'match', 'once'));
+            if ~isempty(tline)
+                name = regexprep(tline,'\s*(.+)_dot\s*=.+','$1');
+                formula = regexprep(tline,'.+=\s*(.+)\s*;','$1');
+                index = index + 1;
+                % ModelStruct.states(index).name = strtrim(name);
+                ModelStruct.states(index).ODE = formula;
+            end
             tline = fgetl(fileID);
         end
     end
