@@ -1,4 +1,4 @@
-function flg = install_STB_mod
+function flg = install_STB_patched
 %
 % INSTALL_STB Interactive compilation and installtion of sundialsTB
 
@@ -38,6 +38,10 @@ if ~mex_ok
   flg = 1;
   return
 end
+
+% Patch old SUNDIALS MATLAB interface code for modern MATLAB API
+% ----------------------------------
+patch_modern_matlab_api(stb);
 
 % Should we enable parallel support?
 % ----------------------------------
@@ -1041,4 +1045,59 @@ for i=1:length(stb_files)
   end
 end
 
+end
 
+
+%---------------------------------------------------------------------------------
+% Application of patches for modern MATLAB API
+%---------------------------------------------------------------------------------
+
+function patch_modern_matlab_api(stb)
+    
+files = {
+    fullfile(stb,'cvodes','cvm','src','cvm.c'), ...
+    'int nlhs_bad, dims[3];', ...
+    sprintf('int nlhs_bad;\nmwSize dims[3];');
+    
+    fullfile(stb,'idas','idm','src','idm.c'), ...
+    'int nlhs_needed, dims[3];', ...
+    sprintf('int nlhs_needed;\nmwSize dims[3];')
+};
+
+for k = 1:size(files,1)
+    
+    filename = files{k,1};
+    oldtext  = files{k,2};
+    newtext  = files{k,3};
+    
+    if ~exist(filename,'file')
+        continue
+    end
+    
+    txt = fileread(filename);
+
+    if contains(txt,newtext)
+        % Already patched
+        continue
+    end
+
+    if ~contains(txt,oldtext)
+        warning('Expected code was not found in %s. File was not modified.', ...
+            filename);
+        continue
+    end
+
+    txt = strrep(txt,oldtext,newtext);
+
+    fid = fopen(filename,'w');
+    if fid == -1
+        error('Could not open %s for writing.',filename);
+    end
+
+    fwrite(fid,txt);
+    fclose(fid);
+
+    fprintf('Patched for modern MATLAB API: %s\n',filename);
+end
+
+end

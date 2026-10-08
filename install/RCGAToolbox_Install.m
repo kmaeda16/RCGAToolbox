@@ -71,7 +71,7 @@ if answ == 'y'
     try
         f = fullfile(rcgatoolbox_root,'install/3rdparty');
         addpath(f);
-        flg = install_STB_mod;
+        flg = install_STB_patched;
         rmpath(f);
     catch ME
         warning(ME.message);
