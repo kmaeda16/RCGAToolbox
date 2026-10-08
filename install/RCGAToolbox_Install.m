@@ -13,6 +13,7 @@ fprintf('################################################################\n');
 fprintf('Executed: %s\n',char(datetime('now')));
 fprintf('\n');
 
+archstr = computer('arch');
 
 cd ..;
 rcgatoolbox_root = pwd;
@@ -40,7 +41,6 @@ if answ == 'y'
         mexcompiler = 'mex -v';
         mex_ok = check_mex(mexcompiler);
         if mex_ok
-            archstr = computer('arch');
             movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
                 'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c.bak');
             copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_patched.c'),...
@@ -98,7 +98,6 @@ if answ == 'y'
     end
     addpath(genpath(f));
     fprintf('libSBML was added to the MATLAB path.\n\n');
-    archstr = computer('arch');
     if strcmp(archstr,'maci64') | strcmp(archstr,'maca64')
         ext = mexext;
         warning('When you first use RCGAToolbox SBML-related functions, Mac may block "OutputSBML.%s" and "TranslateSBML.%s". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.%s" and "TranslateSBML.%s". ',ext,ext,ext,ext);
