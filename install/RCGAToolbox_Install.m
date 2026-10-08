@@ -41,12 +41,10 @@ if answ == 'y'
         mex_ok = check_mex(mexcompiler);
         if mex_ok
             archstr = computer('arch');
-            if strcmp(archstr,'maci64') | strcmp(archstr,'maca64')
-                movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
-                    'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c.bak');
-                copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_Mac.c'),...
-                    'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c');
-            end
+            movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
+                'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c.bak');
+            copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_patched.c'),...
+                'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c');
             installIQMtoolsInitial;
         else
             flg = 1;
