@@ -9,12 +9,13 @@ The distribution of RCGAToolbox contains third-party tools, and they have their 
 
 ## Release Notes
 
-- Sep 12 2022: RCGAToolbox-1.5: Designated initial population and early stopping added.
-- Aug  4 2021: RCGAToolbox-1.4: GUI version selector function added.
-- Jul 27 2021: RCGAToolbox-1.3: Installation script and user guide improved.
-- Apr 27 2021: RCGAToolbox-1.2: PEtab support. Friendlier error messages.
-- Feb 13 2021: RCGAToolbox-1.1: Bug fix, Improved GUIs, Linux and macOS support.
-- Dec  9 2020: RCGAToolbox-1.0.
+- Oct  8 2026: RCGAToolbox 1.6: Apple Silicon Mac support.
+- Sep 12 2022: RCGAToolbox 1.5: Designated initial population and early stopping added.
+- Aug  4 2021: RCGAToolbox 1.4: GUI version selector function added.
+- Jul 27 2021: RCGAToolbox 1.3: Installation script and user guide improved.
+- Apr 27 2021: RCGAToolbox 1.2: PEtab support. Friendlier error messages.
+- Feb 13 2021: RCGAToolbox 1.1: Bug fix, Improved GUIs, Linux and macOS support.
+- Dec  9 2020: RCGAToolbox 1.0.
 
 
 ## Requirements
@@ -40,18 +41,16 @@ Installation tutorials are available on <a href="https://www.youtube.com/playlis
 2. Delete the directory `RCGAToolbox`.
 
 
-## Confirmed Environments
- We confirmed that RCGAToolbox runs on the following environments. It's likely that RCGAToolbox also works on other environments.
+## Tested Environments
+ We confirmed that RCGAToolbox runs on the following environments.
 
 | OS  | MATLAB Version | C Compiler |
 | --- | --- | --- |
-| Windows 10 (2004) | R2016a | Microsoft Visual C++ 2015 Professional |
-| Windows 10 (20H2) | R2021a | Microsoft Visual C++ 2015 Professional |
-| Windows 10 (20H2) | R2021a | MinGW |
-| SUSE Linux Enterprise Server 11 (x86_64)  | R2016a | GCC 4.7.4 |
-| macOS Monterey 12.6.3 (Intel) | R2022b | Xcode 14 |
-| macOS Big Sur 11.5.1 (Apple silicon) | R2021a | Xcode 12 |
-| macOS Sonoma 14.3 (Intel) | R2023b | Xcode 15 |
+| Windows 11 (25H2) | R2026b | MinGW |
+| macOS Sonoma 14.8 (Intel) | R2023b | Xcode 15 |
+| macOS Tahoe 26.7.1 (Apple Silicon) | R2026b | Xcode 26 |
+
+RCGAToolbox 1.6 has not yet been tested on Linux. Earlier versions have been used successfully on Linux, so version 1.6 is expected to work on Linux as well, although minor modifications may be required.
 
 ## Troubleshooting
 

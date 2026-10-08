@@ -5,16 +5,19 @@ This directory contains files used to build native Apple Silicon
 
 ## Included files
 
-- `libsbml-5.18.0-maca64.patch`
+- `libsbml-5.18.0-maca64.patch`  
   Compatibility patch for Apple Silicon and modern CMake.
 
-- `build-libsbml-maca64.sh`
+- `build-libsbml-maca64.sh`  
   Build script for generating:
   - `OutputSBML.mexmaca64`
   - `TranslateSBML.mexmaca64`
 
 - `OutputSBML.mexmaca64`
 - `TranslateSBML.mexmaca64`
+
+- `COPYING.txt`  
+  License information for libSBML.
 
 ## Source
 
@@ -26,11 +29,11 @@ https://sourceforge.net/projects/sbml/files/libsbml/5.18.0/stable/
 
 Use the source archive:
 
-libSBML-5.18.0-core-plus-packages-src.tar.gz
+`libSBML-5.18.0-core-plus-packages-src.tar.gz`
 
 After extraction, the source directory should look like:
 
-libSBML-5.18.0-Source/
+`libSBML-5.18.0-Source/`
 
 ## Build requirements
 
@@ -43,9 +46,11 @@ libSBML-5.18.0-Source/
 
 Run:
 
+```bash
 ./build-libsbml-maca64.sh \
     /path/to/libSBML-5.18.0-Source \
     /Applications/MATLAB_R20XXx.app
+```
 
 The script:
 
@@ -68,13 +73,17 @@ libSBML 5.18.0 MATLAB binaries for Intel macOS.
 
 The configuration can be checked in MATLAB using:
 
+```matlab
 info = OutputSBML()
+```
 
 Expected output includes:
 
-    libSBML_version_string: '5.18.0'
-    isFBCEnabled: 'enabled'
-    packagesEnabled: 'fbc;groups;qual'
+```text
+libSBML_version_string: '5.18.0'
+isFBCEnabled: 'enabled'
+packagesEnabled: 'fbc;groups;qual'
+```
 
 The XML parser version may differ depending on the build environment.
 
@@ -86,6 +95,10 @@ Tested with:
 - MATLAB R2026b
 - Xcode 26.6
 - libSBML 5.18.0
+
+## License
+
+libSBML is distributed under the GNU Lesser General Public License (LGPL), version 2.1 or later. See `COPYING.txt` for the applicable license terms.
 
 ## Notes
 
