@@ -82,6 +82,7 @@ end
 
 
 %% Finalize
-fprintf('RCGAToolbox uninstallation, all done.\n\n');
+fprintf('RCGAToolbox uninstallation, all done.\n');
+fprintf('You can remove the RCGAToolbox directory if it is no longer needed.\n\n');
 
 diary off;

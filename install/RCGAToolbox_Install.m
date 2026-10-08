@@ -41,9 +41,9 @@ if answ == 'y'
         mex_ok = check_mex(mexcompiler);
         if mex_ok
             archstr = computer('arch');
-            if strcmp(archstr,'maci64')
+            if strcmp(archstr,'maci64') | strcmp(archstr,'maca64')
                 movefile('IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c',...
-                    'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25_temp.c');
+                    'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c.bak');
                 copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/CVODEmex25_Mac.c'),...
                     'IQMpro/tools/01-MEXmodels/CVODEMEX/src/CVODEmex25.c');
             end
@@ -94,11 +94,16 @@ answ = input('    Install libSBML? (y/n) ','s');
 
 if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
+    if strcmp(archstr,'maca64')
+        copyfile('install/3rdparty/libSBML-maca64/OutputSBML.mexmaca64',f);
+        copyfile('install/3rdparty/libSBML-maca64/TranslateSBML.mexmaca64',f);
+    end
     addpath(genpath(f));
     fprintf('libSBML was added to the MATLAB path.\n\n');
     archstr = computer('arch');
-    if strcmp(archstr,'maci64')
-        warning('When you first use RCGAToolbox SBML-related functions, Mac will block "OutputSBML.mexmaci64" and "TranslateSBML.mexmaci64". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.mexmaci64" and "TranslateSBML.mexmaci64". ');
+    if strcmp(archstr,'maci64') | strcmp(archstr,'maca64')
+        ext = mexext;
+        warning('When you first use RCGAToolbox SBML-related functions, Mac will block "OutputSBML.%s" and "TranslateSBML.%s". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.%s" and "TranslateSBML.%s". ',ext,ext,ext,ext);
         fprintf('\n');
     end
 end

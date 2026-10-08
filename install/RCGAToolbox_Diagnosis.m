@@ -178,7 +178,7 @@ fprintf('\n\n');
 %% Checking for parallel computation option
 fprintf('####### Checking for parallel computation option... #######\n');
 
-flg1 = exist('parfor','file');
+flg1 = exist('parfor');
 if flg1 > 0
     fprintf('parfor found.\n');
 else
