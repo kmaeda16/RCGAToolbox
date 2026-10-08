@@ -95,15 +95,15 @@ answ = input('    Install libSBML? (y/n) ','s');
 if answ == 'y'
     f = fullfile(rcgatoolbox_root,'3rdparty/libSBML-5.18.0-matlab-binaries');
     if strcmp(archstr,'maca64')
-        copyfile('install/3rdparty/libSBML-maca64/OutputSBML.mexmaca64',f);
-        copyfile('install/3rdparty/libSBML-maca64/TranslateSBML.mexmaca64',f);
+        copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/libSBML-maca64/OutputSBML.mexmaca64'),f);
+        copyfile(fullfile(rcgatoolbox_root,'install/3rdparty/libSBML-maca64/TranslateSBML.mexmaca64'),f);
     end
     addpath(genpath(f));
     fprintf('libSBML was added to the MATLAB path.\n\n');
     archstr = computer('arch');
     if strcmp(archstr,'maci64') | strcmp(archstr,'maca64')
         ext = mexext;
-        warning('When you first use RCGAToolbox SBML-related functions, Mac will block "OutputSBML.%s" and "TranslateSBML.%s". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.%s" and "TranslateSBML.%s". ',ext,ext,ext,ext);
+        warning('When you first use RCGAToolbox SBML-related functions, Mac may block "OutputSBML.%s" and "TranslateSBML.%s". Don''t move them to Trash. Go to "Apple menu > System Preferences > Security & Privacy > General", and allow "OutputSBML.%s" and "TranslateSBML.%s". ',ext,ext,ext,ext);
         fprintf('\n');
     end
 end
